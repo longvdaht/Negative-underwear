@@ -1,0 +1,107 @@
+<!-- /snippets/product-grid-item-pairitwith.liquid! image size:: {{ imageSize }} -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+{% endcomment %}
+
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'small--one-half large--one-fifth medium--one-half' %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+	{% unless product.selected_or_first_available_variant.title contains "Pack" or product.title contains "Pack" %}
+		{% assign on_sale = true %}
+	{% endunless %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available or product.title contains "Pack" %}
+	{% assign sold_out = false %}
+{% endif %}
+
+<div class="grid__item grid-product {{ grid_item_width }} product-grid-item-liquid">
+	<a href="{{ product.url | within: collection }}" onClick="ga('send', 'event', 'ProductPage', 'Clicked Pair It With', '{{ product.title }}');">
+		<span class="grid-product__image-wrapper">
+			{% assign showedSaleTagAlready = false %}			
+			{% for tag in product.tags %}
+				{% assign t = tag | handleize %}
+				{% if t == "warehouse-sale" and on_sale %}
+					{% assign showedSaleTagAlready = true %}
+					<div class="saletag"><a href="/collections/warehouse-sale/">Warehouse Sale</a></div>
+				{% endif %}
+				{% if t == "limited" %}
+					<div class="saletag limited">Limited Edition</div>
+				{% endif %}
+			{% endfor %}
+
+			{% unless product.title contains 'Gift Card' or product.title contains "Pack" %}
+				{% assign qty = 0 %}
+				{% for variant in product.variants %}
+					{% assign qty = qty | plus: variant.inventory_quantity %}
+				{% endfor %}
+				{% comment %}<!-- QTY: {{ qty }} -->{% endcomment %}
+				{% if qty == 0 %}
+						<div class="saletag sold-out">Sold Out</div>
+				{% elsif qty < settings.low_stock_threshold %}
+					<div class="saletag almost-sold-out">Only a few left!</div>
+				{% endif %}
+			{% endunless %}
+			{% unless showedSaleTagAlready %}
+				{% if on_sale %}
+					<div class="saletag">Spring Sale</div>
+				{% endif %}
+			{% endunless %}
+			
+			<span class="grid-product__image-link">
+				{% if imageSize == "smaller" %}
+					{% render 'responsive-product-image-smaller',
+						image: product.images[0],
+						sizes: '(max-width: 480px) 30vw, (min-width: 481px) and (max-width: 768px) 30vw, 25vw',
+						attributes: 'class="grid-product__image default lazyload"' 
+					%}
+					{% render 'responsive-product-image-smaller',
+						image: product.images[1],
+						sizes: '(max-width: 480px) 30vw, (min-width: 481px) and (max-width: 768px) 30vw, 25vw',
+						attributes: 'class="grid-product__image alt lazyload"' 
+					%}
+				{% else %}
+					{% render 'responsive-product-image',
+						image: product.images[0],
+						sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+						attributes: 'class="grid-product__image default lazyload"' 
+					%}
+					{% render 'responsive-product-image',
+						image: product.images[1],
+						sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+						attributes: 'class="grid-product__image alt lazyload"' 
+					%}
+				{% endif %}
+			</span>
+		</span>
+		<span class="grid-product__meta{% if on_sale %} on-sale{% endif %}">
+			<span class="grid-product__title">{{ product.title }}</span>
+			<span class="grid-product__price{% if on_sale %} onsale{% endif %}">
+				{% if product.price_varies %}
+					{{ product.price_min | money_without_trailing_zeros }}
+					<span class="icon-fallback-text">
+						<span class="icon icon-plus grid-product__price-min" aria-hidden="true"></span>
+						<span class="fallback-text">+</span>
+					</span>
+				{% else %}
+					{% if on_sale %}<s>{{ product.compare_at_price_max | money_without_trailing_zeros }}</s>{% endif %}
+					<span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+				{% endif %}
+			</span>
+		</span>
+	</a>
+</div>

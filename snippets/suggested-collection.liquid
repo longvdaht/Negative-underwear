@@ -1,0 +1,77 @@
+{% assign productTitle = product.title | split: " in " | first %}
+{% assign productColor = product.title | remove: productTitle | remove_first: " in " | replace: " and in ", " and " | remove: ' - Final Sale' %}
+{% liquid
+	if product.handle contains "my-mini"
+		assign sectionTitle = 'More <span class="nowrap">Whipped ></span>' 
+	else
+		assign sectionTitle = 'Looks good <span class="nowrap">with ></span>' 
+	endif
+
+	assign suggestionColor = productColor | handleize
+	
+	if suggestionColor == "slate-moire"
+		assign suggestionColor = "slate"
+	elsif suggestionColor == "buff-boa"
+		assign suggestionColor = "buff"
+	endif
+	
+	if suggestionColor contains "-pack"
+		unless product.handle contains "-pack"
+			assign suggestionColor = suggestionColor | remove: "-pack"
+		endunless
+	endif
+	
+	assign extra = ""
+	if product.handle contains "glace"
+		unless product.handle contains "glacier"
+			assign extra = "glace-"
+		endunless
+	endif
+	if product.handle contains "trim"
+		unless product.handle contains "sieve-trim"
+			assign extra = "trim-"
+		endunless
+	endif
+	if product.title contains "Pasties"
+		assign productType = "pasties"
+		assign suggestionColor = "any"
+		assign sectionTitle = 'Works great <span class="nowrap">with -></span>' 
+	endif	
+	if productType contains "top" and suggestionColor contains "dye"
+		assign productType = "top"
+		assign suggestionColor = "navy"
+	endif
+%}
+<div class="dte"></div>
+<!--   type: {{ productType }} // color: {% if extra %}{{ extra }}{% endif %}{{ suggestionColor }} -->
+{% capture menuName %}suggestions-{{ suggestionColor }}-{{ extra }}{{ productType }}{% endcapture %}
+<!--    collection name: {{ menuName }} ({{  collections[menuName].products.size }} products) -->
+{% if collections[menuName].products.size == 0 and menuName contains "pack" %}
+	{% assign menuName = "popular-packs" %}
+	{% assign sectionTitle = "Most popular <span>packs -></span>" %}
+{% endif %}
+{% if collections[menuName].products.size > 0 %}
+	{% assign current_product = product %}
+	{% assign imageSize = "smaller" %}
+	{% assign grid_item_width = 'large--one-fifth medium--one-third small--one-half' %}
+	
+	<div class="grid-uniform related-products">
+		<div class="grid__item large--one-fifth medium--full">
+			<h3 class="h1">{{ sectionTitle }}</h3>
+		</div>
+		{% assign count = 0 %}
+		{% for product in collections[menuName].products %}
+			{% comment %}<!-- compare {{ product.handle }} to {{ current_product.handle }}  -->{% endcomment %}
+			{% if product.handle != current_product.handle %}
+				{% if product.available %}
+					{% render 'product-grid-item-pairitwith', product: product %}
+					{% assign count = count | plus: 1 %}
+					{% if count == 4 %}
+						{% break %}
+					{% endif %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</div>
+	{% assign product = current_product %}
+{% endif %}

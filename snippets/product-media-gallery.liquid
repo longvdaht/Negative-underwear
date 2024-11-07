@@ -1,0 +1,284 @@
+{% comment %}
+  Renders a product media gallery. Should be used with 'media-gallery.js'
+  Also see 'product-media-modal'
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+  - is_duplicate: {Boolean} Prevents rendering uneeded elements and duplicate ids for subsequent instances
+
+  Usage:
+  {% render 'product-media-gallery', is_duplicate: true %}
+{% endcomment %}
+
+{%- liquid
+  if section.settings.hide_variants and variant_images.size == product.media.size
+    assign single_media_visible = true
+  endif
+
+  assign media_count = product.media.size
+  if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+    assign media_count = media_count | minus: variant_images.size | plus: 1
+  endif
+
+  if media_count == 1 or single_media_visible
+    assign single_media_visible_mobile = true
+  endif
+
+  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+    assign hide_mobile_slider = true
+  endif
+
+  if section.settings.media_size == 'large'
+    assign media_width = 0.65
+  elsif section.settings.media_size == 'medium'
+    assign media_width = 0.55
+  elsif section.settings.media_size == 'small'
+    assign media_width = 0.45
+  endif
+
+  assign id_append = ''
+  if is_duplicate
+    assign id_append = '-duplicate'
+  endif
+-%}
+
+<media-gallery
+  id="MediaGallery-{{ section.id }}{{ id_append }}"
+  role="region"
+  {% if section.settings.enable_sticky_info %}
+    class="product__column-sticky"
+  {% endif %}
+  aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+  data-desktop-layout="{{ section.settings.gallery_layout }}"
+>
+  <div id="product-photo-thumbs" class="desktop-slider-nav thumbnail-slider">
+    {% for image in product.images %}
+    {% assign imgAlt = image.alt | split: '[' | last %}
+    {% unless imgAlt == "flat" %}
+    {% if image.alt contains '[' %}
+    {% assign model = imgAlt | split: ']' | first | replace: '+', 'plus' | handleize %}
+    {% else %}
+    {% assign model = '' %}
+    {% endif %}
+    {% if image.alt contains 'catalog_only' %}
+      {% continue %}
+    {% endif %}
+    <div class="product-image all">
+      <img src="{{ image.src | product_img_url: '154x154' }}"
+        alt="Thumbnail image #{{ forloop.index }} of {{ product.title }}{% if model.size > 0 %} [{{ imgAlt }}{% endif %}"
+        class="scale-with-grid" loading="lazy" data-model="{{ model }}" width="{{ image.width }}" height="{{ image.height }}" />
+    </div>
+    {% endunless %}
+    {% endfor %}
+  </div>
+  
+  <div id="product-photo-container" class="main-product-image slider-mobile-gutter">
+    <div class="product-photo">
+      {% if hasPacks %}
+      <div class="pack-circle small--hide">
+        <img src="{{ 'circle-buymore.svg' | asset_url }}" class="svg" loading="lazy" alt="Buy more, save money" width="200" height="200" />
+      </div>
+      {% endif %}
+      {% if showTshirtCircle %}
+      <div class="tshirt-circle small--hide">
+        <img src="{{ 'circle-tshirtbra.svg' | asset_url }}" class="svg" loading="lazy" alt="Best T-Shirt Bra - Real Simple" width="200" height="200" />
+      </div>
+      {% elsif showHolidayCircle %}
+      <div class="tshirt-circle holiday small--hide">
+        <img src="{{ 'circle-holiday.svg' | asset_url }}" class="svg" loading="lazy" alt="Holiday Exclusive" width="200" height="200" />
+      </div>
+      {% elsif showJenniCircle %}
+      <div class="tshirt-circle jenni small--hide">
+        <img src="{{ 'circle-jenni.svg' | asset_url }}" class="svg" loading="lazy" alt="Holiday Exclusive" width="200" height="200" />
+      </div>
+      {% elsif showValentinesCircle %}
+      <div class="tshirt-circle valentines small--hide">
+        <img src="{{ 'circle-valentines.svg' | asset_url }}" class="svg" loading="lazy" alt="Valentine’s Exclusive" width="200" height="200" />
+      </div>
+      {% endif %}
+      {% if product.first_available_variant.compare_at_price > 0 and product.first_available_variant.price <
+        product.first_available_variant.compare_at_price %} {% if showSaleSticker %} <span class="sale-tag">SALE</span>
+        {% endif %}
+        {% endif %}
+        <div class="modelnav-holder">
+          <ul class="modelnav small--hide" style="opacity:0">
+            <label>See it on:</label>
+            {% comment %}<li data-model="all" class="active">All</li>{% endcomment %}
+          </ul>
+        </div>
+  
+        <div class="desktop-slider">
+          {% for image in product.images %}
+            {% assign imgAlt = image.alt | split: '[' | last %}
+            {% unless imgAlt == "flat" %}
+            {% if image.alt contains '[' %}
+              {% assign model = imgAlt | split: ']' | first | replace: '+', 'plus' | handleize %}
+            {% else %}
+              {% assign model = '' %}
+            {% endif %}
+            {% if image.alt contains 'catalog_only' %}
+              {% continue %}
+            {% endif %}
+            <div class="product-single__photo-wrapper {{ model }}" data-model="{{ model }}">
+              <img src="{{ image.src | product_img_url: 'thumb' }}"
+                srcset="{{ image.src | product_img_url: 'small' }} 100w,
+                  {{ image.src | product_img_url: 'compact' }} 160w,
+                  {{ image.src | product_img_url: 'medium' }} 240w,
+                  {{ image.src | product_img_url: 'large' }} 480w,
+                  {{ image.src | product_img_url: 'grande' }} 600w,
+                  {{ image.src | product_img_url: '1024x1024' }} 1024w"
+                sizes="{{ sizes }}" 
+                class="image-zoom scale-with-grid"
+                loading="lazy"
+                id="photo-{{ forloop.index }}" alt="{{ image.alt }}"
+                data-zoom="{{ image.src | product_img_url: '2048x' }}" data-model="{{ model }}"
+                width="{{ image.width }}" height="{{ image.height }}" 
+              />
+            </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+</media-gallery>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+
+		var $productImageWrapper = $('#product-photo-thumbs .product-image');
+		var productTitle = $('.product-single__title').text();
+		var modelNavs = ["All"];
+		var modelCount = 0;
+
+		$productImageWrapper.each( function (idx, el) {
+			var $img = $(el).find('img');
+			var imageAlt = $img.attr('alt');
+			var altHasModel = false;
+			var modelExisted = false;
+			var modelClass;
+      // console.log('---> productImageWrapper ' + imageAlt);
+
+			if (imageAlt.indexOf('[') != -1) {
+				altHasModel = true;
+				var altParts = imageAlt.split('[');
+				imageAlt = altParts[0];
+				$img.attr('alt', imageAlt);
+				// console.log('---> has model ' + imageAlt);
+
+	
+				var modelParts = altParts[1].split(']');
+				modelAlt = modelParts[0].replace(' ', ',&nbsp;');
+	
+				modelClass = modelAlt.replace(' ', '-').replace('/', '-').replace('&nbsp;', '-').replace(',', '').replace('+', 'plus').toLowerCase();
+				$img.attr('data-model', modelClass);
+
+        console.log(modelClass);
+	
+				for (var i=0; i<modelNavs.length; i++) {
+					if (modelNavs[i] == modelAlt) {
+						modelExisted = true;
+					}
+				}
+				if (!modelExisted) {
+					modelCount++;
+					$('.modelnav').append('<li data-model="' + modelClass + '">' + modelAlt + '</li>');
+				
+					if (modelCount > 1)
+						$('.modelnav').css('opacity', 1);
+
+					modelNavs.push(modelAlt);
+				}
+			}
+			$(el).addClass(modelClass);
+		});
+
+		$('.modelnav li').click(function() {
+			var model = $(this).data('model');
+	    // console.log(' $$$ clicked modelnav ' + model + ' was it active? ' + $(this).hasClass('active'));
+
+			if ($(window).width() <= 768) {
+				$('.desktop-slider').slick('slickUnfilter');
+				$('.desktop-slider').slick('refresh');
+			} else {
+				$('.desktop-slider').slick('slickUnfilter');
+				$('.desktop-slider-nav').slick('slickUnfilter');
+				$('.desktop-slider').slick('refresh');
+				$('.desktop-slider-nav').slick('refresh');
+ 			}
+		
+			// show all or hide all, depending
+			if (model == "all" || $(this).hasClass('active')) {
+				$('.modelnav li').removeClass('active');
+			} else {
+				$('.modelnav li').removeClass('active');
+				$('.modelnav li[data-model="' + model + '"]').addClass('active');
+
+				// filter sliders
+		    // console.log(' filter sliders: ' + model);
+				var classy = '.' + model;
+				
+				if ($(window).width() <= 768) {
+					$('.desktop-slider').slick('slickFilter', classy);
+					$('.desktop-slider').slick('refresh');
+				} else {
+					$('.desktop-slider').slick('slickFilter', classy);
+					$('.desktop-slider-nav').slick('slickFilter', classy);
+					$('.desktop-slider').slick('refresh');
+					$('.desktop-slider-nav').slick('refresh');
+				}
+			}
+		
+			$('html, body').animate({
+				scrollTop: 0
+			}, 600);
+		});
+
+		$('.mobile-slider').slick({
+			arrows         : false,
+			dots           : true,
+			adaptiveHeight : false,
+      dotsClass: 'slick-dot'
+		});
+		$('.desktop-slider').slick({
+			arrows         : false,
+			dots           : true,
+			{% if product.media.size > 5 %}
+				asNavFor : '.desktop-slider-nav',
+			{% endif %}
+			adaptiveHeight : false,
+      dotsClass: 'slick-dot'
+		});
+		$('.desktop-slider-nav').slick({
+			arrows      	: true,
+			dots        	: false,
+			vertical		: true,
+    		verticalSwiping	: true,
+			{% if product.media.size > 5 %}
+	 			infinite : true, 
+ 			{% endif %}
+			asNavFor		: '.desktop-slider',
+		    slidesToShow	: 5,
+			slidesToScroll	: 1,
+			centerMode		: true,
+		    focusOnSelect	: true,
+        dotsClass: 'slick-dot'
+		});
+		if ($(window).width() >= 591) {
+      var $imageZoom = $('.image-zoom');
+      $imageZoom.each( function (idx, el) {
+        $(el).wrap('<span style="display:inline-block"></span>')
+          .css('display', 'block')
+          .parent()
+          .zoom({
+            url: $(this).attr('data-zoom'),
+            on: 'click',
+            onZoomIn: function() { $('#product-photo-container').addClass('zoomed'); },
+            onZoomOut: function() { $('#product-photo-container').removeClass('zoomed'); }
+        });
+      })
+		};
+    
+	});
+
+</script>

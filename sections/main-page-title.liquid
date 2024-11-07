@@ -1,0 +1,17 @@
+{{ 'section-main-page-title.css' | asset_url | stylesheet_tag }}
+
+<div class="header-title page-title-{{ page.title | replace: ' ', '-' | downcase }} section-{{ section.id }}-padding">
+  <h1 class="page-title-custom">
+    {{ page.title | escape }}
+  </h1>
+</div>
+
+{% schema %}
+{
+  "name": "Main Page Title",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  ]
+}
+{% endschema %}

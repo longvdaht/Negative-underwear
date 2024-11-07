@@ -1,0 +1,169 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "5eabf230-8d56-41f8-886a-048887b21517": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16361513812145__5eabf230-8d56-41f8-886a-048887b21517-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "The Valentine's Edit"
+          }
+        },
+        "template--16361513812145__5eabf230-8d56-41f8-886a-048887b21517-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>PSA: Anyone who says they don't like Valentine's Day has prob never received Negative for the occasion.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16361513812145__5eabf230-8d56-41f8-886a-048887b21517-heading-1",
+        "template--16361513812145__5eabf230-8d56-41f8-886a-048887b21517-text-1"
+      ],
+      "settings": {
+        "section_fullwidth": true,
+        "image": "shopify:\/\/shop_images\/NEG2208_NK-100-98E3-_Sieve-Cutout-Bra_OF_V1Desktop.jpg",
+        "image_fullwidth": true,
+        "image_2": "shopify:\/\/shop_images\/NEG2208_NK-100-98E3-_Sieve-Cutout-Bra_OF_V1mobile_1.jpg",
+        "image_link": "",
+        "invert_on_desktop": false,
+        "invert_on_mobile": true,
+        "show_text_box": false,
+        "enable_content": true,
+        "content_fullwidth": false,
+        "desktop_content_alignment": "center",
+        "desktop_content_position": "middle",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "ca025246-6fb7-455c-bcaa-8d1817a0b0e5": {
+      "type": "details",
+      "blocks": {
+        "template--16361513812145__ca025246-6fb7-455c-bcaa-8d1817a0b0e5-detail-1": {
+          "type": "detail",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HP_GiftGuide_Desktop_01.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "template--16361513812145__ca025246-6fb7-455c-bcaa-8d1817a0b0e5-detail-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading_section": "The Holiday Edit",
+        "description_section": "POV: your love language is gift giving",
+        "background": "#f3f3f3"
+      }
+    },
+    "e0dded19-192f-4e43-afab-b0f4de61f457": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading_section": "Valentine's Day Aesthetic",
+        "heading_font_light": true,
+        "description_section": "Pink + Red for Valentine's Day? Groundbreaking.",
+        "featured_collection": "valentines-day-aesthetic",
+        "products_to_show": 20,
+        "show_button": true,
+        "button_text": "SHOP ALL ->",
+        "button_link": "https:\/\/negativeunderwear.com\/collections\/valentines-day-aesthetic",
+        "padding_top": 23,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "10b5fd86-bc96-449b-a027-e55cea91d342": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading_section": "For the Extravagant Girlies",
+        "heading_font_light": true,
+        "description_section": "If he isn't giving you silk PJs on Valentine's Day, wyd?",
+        "featured_collection": "for-the-extravagant-girlies",
+        "products_to_show": 32,
+        "show_button": true,
+        "button_text": "SHOP ALL ->",
+        "button_link": "https:\/\/negativeunderwear.com\/collections\/for-the-extravagant-girlies",
+        "padding_top": 23,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "4adad482-7ecc-4547-9915-1228ba6aecfd": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading_section": "Stuff to Watch Rom Coms In",
+        "heading_font_light": true,
+        "description_section": "I'm just a girl, standing in front of a boy, asking him to buy her a Whipped set.",
+        "featured_collection": "stuff-to-watch-rom-coms-in",
+        "products_to_show": 32,
+        "show_button": true,
+        "button_text": "SHOP ALL ->",
+        "button_link": "https:\/\/negativeunderwear.com\/collections\/stuff-to-watch-rom-coms-in",
+        "padding_top": 23,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "90d5a63f-d3c1-45d5-b8b2-00b973b7939f": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading_section": "Back to Basics",
+        "heading_font_light": true,
+        "description_section": "Read somewhere that beating a classic is scientifically impossible.",
+        "featured_collection": "back-to-basics",
+        "products_to_show": 32,
+        "show_button": true,
+        "button_text": "SHOP ALL ->",
+        "button_link": "https:\/\/negativeunderwear.com\/collections\/back-to-basics",
+        "padding_top": 23,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "featured_collection_slider_j3MBAD": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "heading_section": "Gifts to Self",
+        "heading_font_light": true,
+        "description_section": "\"Awww, you shouldn't have.\"-Me to me.",
+        "featured_collection": "gifts-to-self",
+        "products_to_show": 32,
+        "show_button": true,
+        "button_text": "SHOP ALL ->",
+        "button_link": "https:\/\/negativeunderwear.com\/collections\/gifts-to-self",
+        "padding_top": 23,
+        "padding_bottom": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "5eabf230-8d56-41f8-886a-048887b21517",
+    "ca025246-6fb7-455c-bcaa-8d1817a0b0e5",
+    "e0dded19-192f-4e43-afab-b0f4de61f457",
+    "10b5fd86-bc96-449b-a027-e55cea91d342",
+    "4adad482-7ecc-4547-9915-1228ba6aecfd",
+    "90d5a63f-d3c1-45d5-b8b2-00b973b7939f",
+    "featured_collection_slider_j3MBAD"
+  ]
+}

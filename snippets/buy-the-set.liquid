@@ -1,0 +1,188 @@
+<!-- go on, buy the set! {{ setHandle }} -->
+{% assign collection = collections[setHandle] %}
+{% assign collectionSuffix = collection.handle | camelcase %}
+
+{% if collections[setHandle].products.size > 0 %}
+<div class="template-collection-kit buy-the-set">
+	{% unless product.title contains "Pack" %}
+		<script>
+		$(document).ready(function(){
+	
+			//	console.log('HEEY NOW, DO WE KNOW IF WE INTERNATIONALZ?? ' + $('body').hasClass('international') );
+	
+			if ($('body').hasClass('international')) {
+				// console.log(' SKIPPING BUY SET');
+				$('.buy-the-set').remove();
+			} else {
+
+		/* add all items in a kit */
+				function addAllItems{{ collectionSuffix }}(e) {
+	  
+					e.stopImmediatePropagation();
+	  
+					$('form#{{ collectionSuffix }} .add-to-cart').addClass('clicked');
+		
+					var array = [];
+
+					for (var i=0; i<{{ collection.products_count }}; i++) {
+						var product = $('form#{{ collectionSuffix }} .product-' + i + " .variants select option:selected");
+						// console.log('product: ' + product.val());
+						array[i] = product.val();
+					}
+
+					// console.log('addAllItems{{ collectionSuffix }} ' + array);
+
+					Shopify.queue = [];
+					var cartCount = {{ cart.item_count }} ;
+
+					for (var i=0; i<array.length; i++) {
+						product = array[i];
+						// console.log(' queueing ' + product);
+			
+						Shopify.queue.push({
+							variantId: product,
+						});
+					}
+		
+		
+					Shopify.moveAlong = function() {
+						// console.log('MOVE ALONG');
+			
+						// If we still have requests in the queue, let's process the next one.
+						if (Shopify.queue.length) {
+							var request = Shopify.queue.shift();
+							var data = 'id='+ request.variantId + '&quantity=1';
+				
+							// console.log('* ADDING // DATA:\r' + data);
+				
+							$.ajax({
+								type: 'POST',
+								url: '/cart/add.js',
+								dataType: 'json',
+								async: false,
+								data: data,
+								success: function(res) {					
+									// str = JSON.stringify(res, null, 4); // (Optional) beautiful indented output.
+									// console.log(" + SUCCESS! (" + data + ")\r:::\r" + str);
+									cartCount += 1;
+									Shopify.moveAlong();
+								},
+								error: function(){
+									// console.log("ERROR...");
+						
+									// if it's not last one Move Along else update the cart number with the current quantity
+									if (Shopify.queue.length){
+										// console.log("  we should move along");
+										Shopify.moveAlong();
+									} else {
+										// console.log("   something else went wrong");
+										// $('#cart-number').replaceWith(quantity);
+									}
+								}
+							});
+						}
+						// If the queue is empty, we add 1 to cart
+						else {
+							if (typeof shappify_pb_main === 'function' && typeof bundlejQuery === 'function') {
+								//	console.log('** new ajax bundle style [ck]');
+								bundlejQuery.ajaxSetup({async:false});
+					
+								shappify_pb_main(function(cart) {
+									ajaxCart.cartUpdateCallback(cart);
+									//	console.log(' + DONE');
+									addToCartOk(cartCount);
+								})
+							} else {
+								ShopifyAPI.getCart(function(cart) {
+									// console.log('** original style');
+									ajaxCart.cartUpdateCallback(cart);
+									// original code 
+									// console.log(' + DONE');
+									addToCartOk(cartCount);
+									// original code
+								})
+							}
+						}
+					};
+					Shopify.moveAlong();
+				};
+				function addToCartOk(cartCount) {
+				// console.log('addToCartOk - success! ' + cartCount);
+	  
+					$('form#{{ collectionSuffix }} .add-to-cart').removeClass('clicked');
+				}
+			
+				$("form#{{ collectionSuffix }} .AddToCart").click(addAllItems{{ collectionSuffix }});
+	
+				$("form#{{ collectionSuffix }} select").change(function() {
+					var readyToGo = true;	
+	
+					$("form#{{ collectionSuffix }} select").each(function(){
+						 if (this.value == "null")
+							readyToGo = false;
+					});
+		
+					if (readyToGo) {
+						// console.log('ready to go');
+						$("form#{{ collectionSuffix }} .AddToCart").prop("disabled", false);
+						$('form#{{ collectionSuffix }} .AddToCart .text').text('Add Set to Cart');
+						$('form#{{ collectionSuffix }} .AddToCartText').addClass('ready');
+					} else {
+						// 	console.log('not ready to go');
+						$("form#{{ collectionSuffix }} .AddToCart").prop("disabled", true);
+						$('form#{{ collectionSuffix }} .AddToCart .text').text('Select Sizes');
+						$('form#{{ collectionSuffix }} .AddToCartText').removeClass('ready');
+					}
+				});
+
+				// console.log('DISABLE THAT {{ collectionSuffix }} form!');
+				$("form#{{ collectionSuffix }} .AddToCart").prop("disabled", true);
+			}
+		});
+		</script>
+
+		{% assign current_product = product %}
+		{% assign imageSize = "smaller" %}
+		{% assign grid_item_width = 'small--one-half medium--one-third large--one-quarter' %}
+		{% if collection.description != blank %}
+			{% assign collectionDescription = collection.description | split: '||' | first %}
+			{% assign collectionPrice = collection.description | split: '||' | last %}
+
+			{% if collectionPrice contains '(' %}
+				{% assign priceparts = collectionPrice | split: '(' %}
+				{% assign collectionPrice = priceparts | first %}
+				{% assign wasPrice = priceparts | last | remove: ')' %}
+			{% endif %}
+		{% endif %}
+	
+		<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-single__form multiadd AddToCartForm" id="{{ collectionSuffix }}" onSubmit="ga('send', 'event', 'BuyTheSet', 'Add Set to Cart', '{{ collection.title }}');">
+		  <div class="grid-uniform related-products">
+			<div class="grid__item small--one-whole medium--one-whole large--one-tenth extralarge--one-fifth titleholder">
+				<h2 class="h1">Buy the <span>set -></span></h2>
+			</div>
+			<div class="grid__item small--one-whole medium--one-whole large--six-tenths extralarge--three-fifths nopadding">
+				<div class="grid-uniform">
+					{% for product in collection.products %}
+						{% render 'product-grid-item-set', product: product %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="grid__item small--one-whole medium--one-whole large--two-tenths extralarge--one-fifth addtocartholder">
+				<div class="add-to-cart">
+					<button type="submit" name="add" class="AddToCart btn" disabled>
+						<span class="AddToCartText">
+                            <i class="small--hide medium--hide">&larr;</i>
+                            <i class="uparrow large--hide">&uarr;</i> 
+                            <span class="text">Select Sizes</span>
+                            <span class="separator">|</span> {{ collectionPrice }} 
+                                <img src="{{ 'ajax-loader-dark.gif' | asset_url }}" alt="Loading" class="loading" loading="lazy" width="32" height="32" />
+                            </span>
+					</button>
+				</div>
+			</div>
+		  </div>
+		</form>
+		{% assign product = current_product %}
+	{% endunless %}
+</div>
+{% endif %}

@@ -1,0 +1,37 @@
+.section-banner-highlight>*{
+	margin: 11px;
+}
+.section-banner-highlight{
+	padding: 30px;
+	border: 1px solid #222;
+}
+.banner-highlight-media{
+	display: flex;
+}
+.banner-highlight-media img{
+	max-width: 100%;
+	height: auto;
+}
+@media screen and (min-width: 769px){
+	.section-banner-highlight{
+		display: flex;
+		align-items: center;
+	}
+	.banner-highlight-media {
+	    width: 40%;
+		}
+	.banner-highlight-content{
+		margin-left: 1.5em;
+		width: 60%;
+	}
+}
+.banner-highlight-content h3{
+	font-size: 1.7em;
+	margin-bottom: 1em;
+	margin-top: 0;
+}
+@media screen and (max-width: 768px){
+	.banner-highlight-media{
+		margin-bottom: 1em;
+	}
+}

@@ -1,0 +1,222 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  - update_url: {Boolean} whether or not to update url when changing variants. If false, the url isn't updated. Default: true (optional).
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+
+{% assign hasPacks = false %}
+{% for variant in product.variants %}
+  {% unless product.title contains "(Pack)" %}
+    {% if variant.title contains "-Pack" %}
+      {% assign hasPacks = true %}
+    {% endif %}
+  {% endunless %}
+{% endfor %}
+
+{% assign wrapper = 'variant-radios' %}
+{% assign wrapper_item = 'fieldset' %}
+
+{% if is_sticky %}
+  {% assign wrapper = 'div' %}
+  {% assign wrapper_item = 'div' %}
+{% endif %}
+
+  {%- unless product.has_only_default_variant -%}
+    {%- if block.settings.picker_type == 'button' -%}
+      <{{ wrapper }}
+        id="variant-radios-{{ id | default: section.id }}"
+        class="variant-radios no-js-hidden {% if hasPacks %} has-packs{% endif %}"
+        data-section="{{ section.id }}"
+        data-url="{{ product.url }}"
+        {% if update_url == false %}
+          data-update-url="false"
+        {% endif %}
+        {{ block.shopify_attributes }}
+      >
+
+        {%- for option in product.options_with_values -%}
+          <{{ wrapper_item }} class="js product-form__input{% if option.name == 'Color' or option.values.size == 1 %} hide{% endif %}">
+
+            <legend class="form__label{% if option.name == 'Size' %} justify-center{% endif %}">
+              <span>{{ option.name }} </span>
+              {% if option.name == 'Size' %}
+              {% unless product.type == "Gift Wrap" or product.title contains "Sock" %}
+                {%- comment -%}
+                  //size me js
+                  <div id="size-quiz"></div>
+                {%- endcomment -%}
+                <a href="#nonwire" class="size-here">Size Chart</a>
+              {% endunless %}
+            {% endif %}</legend>
+
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                currentVariant: currentVariant,
+                index: forloop.index0,
+                has_single_available: has_single_available,
+                no_single_variant: no_single_variant,
+                is_sticky: is_sticky
+              %}
+
+          </{{ wrapper_item }}>
+        {%- endfor -%}
+        <script type="application/json">
+          {{ product.variants | json }}
+        </script>
+      </{{ wrapper }}>
+    {%- else -%}
+      <variant-selects
+        id="variant-selects-{{ section.id }}"
+        class="no-js-hidden {% if hasPacks %} has-packs{% endif %}"
+        data-section="{{ section.id }}"
+        data-url="{{ product.url }}"
+        {% if update_url == false %}
+          data-update-url="false"
+        {% endif %}
+        {{ block.shopify_attributes }}
+      >
+        {%- for option in product.options_with_values -%}
+          <div class="product-form__input product-form__input--dropdown select-{{ option.name }}{% if option.name == 'Color' or option.values.size == 1 %} hide{% endif %}">
+            <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+              {{ option.name }}
+            </label>
+            <div class="custom-select">
+              <select
+                id="ProductSelect"
+                class="select__select Option-{{ section.id }}-{{ forloop.index0 }}"
+                name="options[{{ option.name | escape }}]"
+                form="{{ product_form_id }}"
+              >
+                {% render 'product-variant-options', product: product, option: option, block: block, currentVariant: currentVariant, has_single_available: has_single_available %}
+              </select>
+              {% if block.settings.picker_type == 'dropdown' and option.values.size > 1 %}
+                {% if option.name != 'Size' %}
+                  <div class="select-selected">{{ option.selected_value }}</div>
+                {% else %}
+                  <div class="select-selected">{{ 'products.product.select' | t }}</div>
+                {% endif %}
+                <div class="select-items select-hide">
+                  {%- liquid
+                    assign variants_available_arr = product.variants | map: 'available'
+                    assign variants_option1_arr = product.variants | map: 'option1'
+                    assign variants_option2_arr = product.variants | map: 'option2'
+                    assign variants_option3_arr = product.variants | map: 'option3'
+                  
+                    assign product_form_id = 'product-form-' | append: section.id
+
+                    assign single_disabled = false
+                  -%}
+                  {%- for value in option.values -%}
+                    {%- liquid
+                      assign option_disabled = true
+                  
+                      for option1_name in variants_option1_arr
+                        case option.position
+                          when 1
+                            if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                              assign option_disabled = false
+                            endif
+                          when 2
+                            if option1_name == currentVariant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                              assign option_disabled = false
+                            endif
+                          when 3
+                            if option1_name == currentVariant.option1 and variants_option2_arr[forloop.index0] == currentVariant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                              assign option_disabled = false
+                            endif
+                        endcase
+                      endfor
+                      if option.name == 'Quantity' and option_disabled and value == 'Single'
+                        assign single_disabled = true
+                      endif
+
+                      assign valueLabel = value
+                      
+                    -%}
+                    {% comment %}
+                      if option.name == 'Size' and product.tags contains "Plus Bra Sizing"
+                        if value contains '+'
+                          assign valueLabel = 'DDD/G' | append: value
+                        else
+                          assign valueLabel = 'A-DD' | append: value
+                        endif
+                      endif
+                    {% endcomment %}
+                    
+                    <div class="option-item{% if option.selected_value == value %} selected{% endif %}{% if option_disabled or single_disabled %} value-disabled{% endif %}" data-value="{{ value | escape }}">
+                        {{- valueLabel -}}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <script type="application/json">
+          {{ product.variants | json }}
+        </script>
+      </variant-selects>
+    {%- endif -%}
+  {%- endunless -%}
+
+  <noscript class="product-form__noscript-wrapper-{{ section.id }}">
+    <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+      <label class="form__label" for="Variants-{{ section.id }}">
+        {{- 'products.product.product_variants' | t -}}
+      </label>
+      <div class="select">
+        <select
+          name="id"
+          id="Variants-{{ section.id }}"
+          class="select__select"
+          form="{{ product_form_id }}"
+        >
+          {%- for variant in product.variants -%}
+            <option
+              {% if variant == currentVariant %}
+                selected="selected"
+              {% endif %}
+              {% if variant.available == false %}
+                disabled
+              {% endif %}
+              value="{{ variant.id }}"
+            >
+              {%- liquid
+                echo variant.title
+                echo variant.price | money | strip_html | prepend: ' - '
+                if variant.available == false
+                  echo 'products.product.sold_out' | t | prepend: ' - '
+                endif
+                if variant.quantity_rule.increment > 1
+                  echo 'products.product.quantity.multiples_of' | t: quantity: variant.quantity_rule.increment | prepend: ' - '
+                endif
+                if variant.quantity_rule.min > 1
+                  echo 'products.product.quantity.minimum_of' | t: quantity: variant.quantity_rule.min | prepend: ' - '
+                endif
+                if variant.quantity_rule.max != null
+                  echo 'products.product.quantity.maximum_of' | t: quantity: variant.quantity_rule.max | prepend: ' - '
+                endif
+                # TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter
+                # theme-check-disable
+                assign cart_quantity = cart | item_count_for_variant: variant.id
+                # theme-check-enable
+                if cart_quantity > 0
+                  echo 'products.product.quantity.in_cart_html' | t: quantity: cart_quantity | prepend: ' - '
+                endif
+              -%}
+            </option>
+          {%- endfor -%}
+        </select>
+        {% render 'icon-caret' %}
+      </div>
+    </div>
+  </noscript>

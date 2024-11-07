@@ -1,0 +1,174 @@
+.bra-cheatsheet #MainContent .shopify-section {
+    max-width: none;
+    margin-top: 30px;
+    padding: 0 15px;
+}
+.bra-cheatsheet #MainContent .list-collections .slick-list {
+    width: 100%;
+    max-width: 100%;
+}
+.bra-cheatsheet #MainContent .list-collections .slick-track {
+    display: flex;
+}
+/*.bra-cheatsheet #MainContent .list-collections.altrow .slick-track {
+    flex-direction: row-reverse;
+}*/
+
+.bra-cheatsheet #MainContent .list-collections .slick-slide {
+/*    flex: 0 0 calc(50% - 2%);*/
+
+}
+.bra-cheatsheet #MainContent #section-header {
+    margin-bottom: 10vh;
+}
+
+.bra-cheatsheet #MainContent .section-header h2 {
+    font-size: 8.5vw;
+    font-weight: 300;
+    line-height: 1.2em;
+    margin: 0 0 0.5em;
+}
+
+.bra-cheatsheet #MainContent .list-collections.altrow .section-header h2 {
+    text-align: right;
+}
+
+.bra-cheatsheet #MainContent #section-header .description {
+    margin: auto;
+    padding: 0;
+    float: none;
+    font-size: 1.5em;
+    width: 100%;
+    max-width: 100%;
+    color: #000;
+}
+
+.bra-cheatsheet #MainContent #section-header .description a {
+    text-decoration: none;
+    color: #000;
+}
+
+.bra-cheatsheet #MainContent#gift-guide #section-header {
+    margin-bottom: 60px;
+}
+.bra-cheatsheet #MainContent .scrollNav {
+    margin: 1em 0.2em 3em;
+}
+.bra-cheatsheet #MainContent .scrollNav h5 {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1.6em;
+    margin-right: 1em;
+}
+.bra-cheatsheet #MainContent .scrollNav h5:first-child {
+    font-weight: 500;
+}
+.bra-cheatsheet #MainContent .scrollNav:after {
+    content: none;
+}
+.bra-cheatsheet #MainContent .list-collections {
+    padding: 4em 1em 0;
+}
+.bra-cheatsheet #MainContent .list-collections .slick-prev,
+.bra-cheatsheet #MainContent .list-collections .slick-next {
+    opacity: 0;
+    visible: hidden;
+    transition: all 0.5s;
+}
+.bra-cheatsheet #MainContent .list-collections:hover .slick-prev,
+.bra-cheatsheet #MainContent .list-collections:hover .slick-next {
+    opacity: 1;
+    visible: visible;
+}
+.bra-cheatsheet #MainContent .list-collections .slick-prev {
+    left: -10px;
+}
+.bra-cheatsheet #MainContent .list-collections .slick-next {
+    right: -10px;
+}
+.bra-cheatsheet #MainContent .list-collections.altrow .slick-next  {
+    right: -10px;
+    left: auto;
+}
+.bra-cheatsheet #MainContent .list-collections.altrow .slick-prev{
+    left: -10px;
+    right: auto;
+}
+.bra-cheatsheet #MainContent .list-collections.altrow .slick-prev:before {
+    content: "<"
+}
+.bra-cheatsheet #MainContent .list-collections.altrow .slick-next:before {
+    content: ">"
+}
+
+@media screen and (min-width: 561px) {
+    .bra-cheatsheet #MainContent .section-header h2 {
+        font-size: 3.5vw;
+    }
+}
+
+@media screen and (min-width: 591px) {
+    .bra-cheatsheet #MainContent .shopify-section {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    /* .bra-cheatsheet #MainContent .list-collections .slick-track {
+        align-items: center;
+    } */
+    /*.bra-cheatsheet #MainContent .list-collections .slick-slide {
+        flex: 0 0 33.333%;
+        margin: 0;
+        max-width: 33.333%;
+    }*/
+    .bra-cheatsheet #MainContent .list-collections .slick-prev:before, 
+    .bra-cheatsheet #MainContent .list-collections .slick-next:before {
+        font-size: 36px;
+    }
+    .grid-uniform.list-collections .grid__item h2:after,
+    .grid-uniform.related-products .grid__item h3:after {
+        content: " ->";
+        white-space: nowrap;
+    }
+    .bra-cheatsheet #MainContent .scrollNav {
+        margin: 3em;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .bra-cheatsheet #MainContent .scrollNav h5 {
+        margin: 0 1em;
+    }
+    .bra-cheatsheet #MainContent #section-header .description {
+        max-width: 50%;
+    }
+    .bra-cheatsheet #MainContent .list-collections {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .bra-cheatsheet #MainContent .list-collections.altrow .section-header {
+        text-align: right;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .bra-cheatsheet #MainContent .shopify-section {
+        padding: 0 2%;
+    }
+}
+
+@media screen and (min-width: 1336px) {
+    /*.bra-cheatsheet #MainContent .list-collections .slick-slide {
+        flex: 0 0 25%;
+        margin: 0;
+        max-width: 25%;
+    }*/
+    .bra-cheatsheet #MainContent .list-collections.altrow .section-header {
+        border: 1px solid transparent;
+    }
+    .bra-cheatsheet #MainContent .section-header h2 {
+        font-size: 2.5vw;
+    }
+}

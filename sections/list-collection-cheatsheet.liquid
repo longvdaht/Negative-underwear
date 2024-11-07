@@ -1,0 +1,143 @@
+<!-- /templates/page.list-collections.liquid -->
+
+{{ 'component-list-collection-cheatsheet.css' | asset_url | stylesheet_tag }}
+
+<header id="section-header" class="text-center clearfix">
+  <h1>{{ page.title }}</h1>
+  <div class="grid__item description large--one-half">
+    {{ page.content }}
+  </div>
+</header>
+
+<!-- linklist size: {{ linklists[page.handle].links.size }} -->
+{% if linklists[page.handle].links.size > 0 %}
+	{% assign number_of_links = 0 %}
+	
+	{% for link in linklists[page.handle].links %}
+		{% assign index = forloop.index %}
+		{% assign indexmod = index | modulo: 2 %}
+		{% if indexmod == 0 %}{% assign altrow = "altrow" %}{% else %}{% assign altrow="standard" %}{% endif %}
+
+		<!-- link type: {{ link.type }} {{ link.url }} -->
+		{% if link.type == 'collection_link' %}
+			<!-- this -->
+
+			{% assign collection = link.object %}
+			{% assign number_of_links = number_of_links | plus: 1 %}
+			
+			<div class="hline"></div>
+			<div id="list-{{ index }}" class="grid-uniform list-collections {{ altrow }}">
+
+				<div class="grid__item section-header">
+					<h2 class="h1">{{ collection.description }}</h2>
+				</div>
+				{% for product in collection.products %}
+					{% render 'product-grid-item', product: product %}
+				{% endfor %}
+			</div>
+		{% else %}		
+			<!-- that -->
+			{% assign number_of_links = number_of_links | plus: 1 %}
+			{% capture description %}horoscope_text_{{ forloop.index }}{% endcapture %}
+		
+			<div class="hline"></div>
+			<div class="display-table list-collections text-{{ forloop.index }} {{ altrow }}">
+				<div class="display-table-cell textholder">
+					<h2 class="h1">{{ link.title }}</h2>
+					{% if settings[description] %}
+					<p class="description">{{ settings[description] }}</p>
+					{% endif %}
+				</div>
+				<div class="display-table-cell one-whole large--three-quarters{% if altrow == "altrow" %} pull--large--one-quarter{% endif %} nopadding imgholder">
+					<div class="grid-uniform">			
+						{% for sublink in link.links %}
+							{% assign product = sublink.object %}
+							{% render 'product-grid-item', product: product %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		
+		{% endif %}
+		
+	{% endfor %}
+{% endif %}
+
+<div class="hline"></div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('.list-collections.standard').not('.slick-initialized').slick({
+			arrows         : true,
+			dots           : false,
+			infinite: false,
+			slidesToShow: 4,
+			slidesToScroll	: 1,
+			responsive: [
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2
+					}
+				}
+			],
+			onInit: function() {
+				// Delay the execution of updateSectionHeaderHeight
+				setTimeout(function() {
+					updateSectionHeaderHeights();
+				}, 3000);
+     		}
+		});
+		$('.list-collections.altrow').not('.slick-initialized').slick({
+			arrows         : true,
+			dots           : false,
+			infinite: false,
+			slidesToShow: 4,
+			slidesToScroll	: 1,
+			responsive: [
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2
+					}
+				}
+			],
+			onInit: function() {
+				// Delay the execution of updateSectionHeaderHeight
+				setTimeout(function() {
+					updateSectionHeaderHeights();
+				}, 3000);
+   		}
+		});
+
+		function updateSectionHeaderHeight(elementId) {
+			const listCollections = document.querySelectorAll('.list-collections');
+			listCollections.forEach((collection) => {
+				setTimeout(function() {
+					const elementHeight = getmaxHeight(collection);
+					const sectionHeader = collection.querySelectorAll('.grid__item.section-header');
+					if (sectionHeader) {
+						sectionHeader[0].style.height = elementHeight + 'px';
+					}
+				}, 100);
+			})
+		}
+
+		function getmaxHeight(collection) {
+			var maxHeight = 0;
+			const allProducts = collection.querySelectorAll('.grid-product');
+			allProducts.forEach((product) => {
+				if (product.offsetHeight > maxHeight) {
+					maxHeight = product.offsetHeight;
+				}
+			})
+			return maxHeight;
+		}
+		
+		updateSectionHeaderHeight();
+
+		$(window).resize(function () {
+			updateSectionHeaderHeight();		
+		});
+	});
+</script>

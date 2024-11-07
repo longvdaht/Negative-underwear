@@ -1,0 +1,292 @@
+
+.main-page-title {
+    margin: 0 0 0.5em;
+    font-size: 2.4em;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.page-placeholder-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.page-placeholder {
+    width: 52.5rem;
+    height: 52.5rem;
+}
+.template-page #MainContent .page-width{
+    max-width: 1160px;
+    margin-top: 10vh;
+}
+.template-page #MainContent .rte{
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 1rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 110px;
+}
+/*---- Contact page ----*/
+/*--- Returns Exchanges ---*/
+.contact-us #MainContent .page-width,
+.returns--exchanges #MainContent .page-width,
+.faq #MainContent >.shopify-section {
+    max-width: 1160px;
+    margin: 10vh auto 0;
+    padding: 0 15px;
+}
+
+.contact-us .page-title,
+.returns--exchanges .page-title,
+.faq .page-title {
+    font-size: 2.4em;
+    line-height: 1.2em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-us .rte,
+.returns--exchanges .rte,
+.faq .rte {
+    font-size: 1rem;
+    border-bottom: 1px solid #000;
+    padding-bottom: 110px;
+}
+
+.contact-us .rte hr,
+.faq .rte hr {
+    width: 100%;
+    border-bottom: 1px solid #000;
+    border-width: 0 0 1px;
+    margin: 30px 0;
+}
+
+.contact-us .contact-content p,
+.returns--exchanges .rte p,
+.faq .rte p {
+    margin: 0 0 25px;
+    color: #000;
+    
+}
+
+.contact-us .contact-content strong,
+.returns--exchanges .rte strong,
+.faq .rte strong {
+    font-weight: 500;
+    
+}
+
+.returns--exchanges #MainContent .rte ul,
+.faq #MainContent .rte ul,
+.faq #MainContent .rte ol {
+    margin: 0 0 25px 20px;
+    padding: 0;
+    list-style-position: outside;
+}
+
+.returns--exchanges #MainContent .rte ul li,
+.faq #MainContent .rte ul li,
+.faq #MainContent .rte ol li {
+    margin-bottom: 0;
+    color: #000;
+    
+}
+
+.contact-us .contact-content a,
+.returns--exchanges .rte a {
+    text-decoration: none;
+    border-bottom: 1px solid #222222;
+    color: #000;
+}
+
+.faq #MainContent .rte img {
+    margin: 0;
+}
+
+.contact-us .contact-content a:hover,
+.returns--exchanges .rte a:hover {
+    color: #000;
+}
+
+.returns--exchanges .page-width >.rte,
+.faq #MainContent .page-width {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.returns--exchanges .page-width >.rte {
+    padding-bottom: 110px;
+    border-bottom: 1px solid black;
+}
+
+.returns--exchanges .page-width >.rte p {
+    
+}
+
+.returns--exchanges .page-width >.rte p:last-child {
+    margin-bottom: 0;
+}
+
+.returns--exchanges .page-width >.rte p strong {
+    font-weight: 500;
+    
+}
+
+.returns--exchanges .page-width >.rte p a {
+    color: #222;
+}
+
+/*--- FAQ ---*/
+.faq .faq-section {
+    padding: 100px 0 0;
+    margin: 0 0 15px;
+    color: #000;
+}
+
+.faq .faq-section .h1 {
+    font-size: 24px;
+    line-height: 1.2em;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 48px;
+}
+.faq .faq-section table td {
+    padding: 10px 15px;
+}
+
+.faq .faq-section table tr:first-child td {
+    position: relative;
+}
+
+.faq .faq-section table tr:first-child td:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    right: 15px;
+    border-bottom: 1px solid #222222;
+}
+
+.faq .faq-section table tr:first-child td:first-child:after {
+    left: 15px;
+    right: -15px;
+}
+
+.faq .rte p a,
+.faq .rte .faq-section p a,
+.faq .rte .faq-section ul li a {
+    color: #222;
+    text-decoration: none;
+    border-bottom: 1px solid #222;
+}
+
+@media screen and (max-width: 768px) {
+    .faq .faq-section table td {
+        font-size: 0.8em;
+    }
+}
+
+/*--- Reviews ---*/
+.reviews #MainContent .oke-w-reviewer-name,
+.reviews #MainContent .oke-w-selectAttr-item-title,
+.reviews #MainContent .oke-reviewContent-title,
+.reviews #MainContent .oke-button-text,
+.reviews #MainContent .oke-product-details-title,
+.reviews #MainContent .oke-w-reviewer-verified,
+.reviews #MainContent .oke-w-ratingAverageModule-rating-average {
+    font-weight: 600;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews #MainContent .oke-w-ratingAverageModule-count,
+.reviews #MainContent .oke-button-text {
+    font-weight: 700;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews #MainContent .oke-w-selectAttr-item-value,
+.reviews #MainContent .oke-bodyText,
+.reviews #MainContent div.okeReviews[data-oke-container] .oke-w-reviewer--attributes .oke-w-reviewer-verified,
+.reviews #MainContent .oke-product-details .oke-product-details-name,
+.reviews #MainContent .oke-w-reviewMinimal-date {
+    font-weight: 400;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews #MainContent div.okeReviews select {
+    font-weight: 300;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews #MainContent .okeReviews {
+    max-width: 1160px;
+    padding: 0 15px;
+}
+
+@media screen and (min-width: 591px) {
+    .reviews #MainContent .okeReviews {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .reviews #MainContent .okeReviews {
+        padding: 0 2%;
+    }
+}
+
+/*--- Career ---*/
+.career-opportunities #MainContent .shopify-section {
+    max-width: 1160px;
+    margin: 10vh auto 0;
+    padding: 0 15px;
+}
+
+.career-opportunities #MainContent h1 {
+    margin-top: 0;
+    font-family: "nimbus-sans", sans-serif;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.career-opportunities #MainContent .job-page {
+    box-shadow: none;
+    border: 1px solid #f3f3f3;
+}
+
+@media screen and (min-width: 591px) {
+    .contact-us #MainContent .page-width,
+    .returns--exchanges #MainContent .page-width,
+    .faq #MainContent >.shopify-section, 
+    .career-opportunities #MainContent .shopify-section {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .contact-us .page-title,
+    .faq .page-title,
+    .returns--exchanges .page-title {
+        margin-bottom: 56.880px;
+    }
+    .contact-us #MainContent .page-width,
+    .returns--exchanges #MainContent .page-width,
+    .faq #MainContent >.shopify-section, 
+    .career-opportunities #MainContent .shopify-section {
+        padding: 0 2%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .faq .rte hr {
+        width: calc(100% + 20em);
+        margin: 32px 0 32px -10em;
+    }
+}
+/*-- Cheatsheet --*/

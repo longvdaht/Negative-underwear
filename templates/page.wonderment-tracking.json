@@ -1,0 +1,220 @@
+{
+  "sections": {
+    "track_your_order_heading": {
+      "type": "wonderment-custom-html",
+      "blocks": {
+        "track_your_order": {
+          "type": "html",
+          "settings": {
+            "section_html": "<style>\n  .wndr-sx--heading {\n    font-size: 2.5rem;\n    text-align: center;\n  }\n  .wonderment-ab-container > div > form {\n     margin-top: 20px;\n  }\n  .tp-form-header.tp-search-header {\n    display: none !important;\n  }\n<\/style>\n<h2 class=\"wndr-sx--heading\">Track your order<\/h2>"
+          }
+        }
+      },
+      "block_order": [
+        "track_your_order"
+      ],
+      "settings": {
+        "show_when": "always",
+        "width": "regular"
+      }
+    },
+    "main": {
+      "type": "apps",
+      "blocks": {
+        "wonderment": {
+          "type": "shopify:\/\/apps\/wonderment\/blocks\/wonderBlock\/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "wonderment"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "hero": {
+      "type": "wonderment-hero",
+      "disabled": true,
+      "settings": {
+        "width_override": true,
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "featured_collection_JJkiwp": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "You May Also Like",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "new",
+        "products_to_show": 3,
+        "columns_desktop": 5,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_rating": false,
+        "columns_mobile": "1",
+        "padding_top": 23,
+        "padding_bottom": 0
+      }
+    },
+    "faq": {
+      "type": "wonderment-faq",
+      "blocks": {
+        "faq-getting-started": {
+          "type": "section_heading",
+          "settings": {
+            "title": "FAQs"
+          }
+        },
+        "product-where-made-question": {
+          "type": "question",
+          "settings": {
+            "title": "What are your shipping policies?",
+            "text": "<p><strong>Standard Shipping<\/strong><\/p><ul><li>Sent Monday through Friday, excluding holidays<\/li><li>Orders typically ship 1-2 business days after being placed<\/li><li>Free shipping on all US orders over $100.  No strings attached.<\/li><li>Orders are expected to arrive within 7-10 days from being shipped<\/li><\/ul><p><strong>Expedited Shipping<\/strong><\/p><ul><li>Rush orders ($25 flat rate) are expected to arrive within 2-3 business days from being shipped<\/li><li>Overnight orders ($35 flat rate) must be placed before 12PM EST and are expected to arrive within 1-2 business days from being shipped<\/li><\/ul>"
+          }
+        },
+        "shipping-cost-question": {
+          "type": "question",
+          "settings": {
+            "title": "What is your international shipping policy?",
+            "text": "<ul><li>Ordering: To get started, scroll to the bottom of the page and select your country from the drop down menu. Local currency should update automatically. Duties, taxes, and shipping fees are calculated at checkout.<\/li><li>Shipping: International orders should arrive within 5-10 business days of the ship date. Note, we do not ship to international PO boxes.<\/li><li>Returns: We accept back unworn, unwashed items with tags attached within 30 days of the order date. To initiate a return, please <a href=\"https:\/\/web.global-e.com\/Returns\/Portal\/gsBzq\" target=\"_blank\">click here<\/a> and enter the order number and email address associated with the order. International customers are responsible to pay a flat rate shipping fee which will be deducted from the refund total. Duties, taxes, and shipping fees are non-refundable. Email <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com<\/a> if you have any questions regarding your return.<\/li><li>For more information, <a href=\"https:\/\/service.global-e.com\/?id=74002292-a6b1-4d2d-bace-3cf7ea4f5de9&isPro=true&merchantCsEmail=hello%40negativeunderwear.com\" target=\"_blank\">click here<\/a> to review our International Help Center. If you need any additional assistance, please email <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com<\/a>.<\/li><li>See our Terms of Service for more information on International ordering.<\/li><\/ul>"
+          }
+        },
+        "sizes-question": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "How do your sizes work?",
+            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.<\/p>"
+          }
+        },
+        "shipping-heading": {
+          "type": "section_heading",
+          "disabled": true,
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "when-shipping-question": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy and process?",
+            "text": "<p>You can request a return or exchange up to 30 days after your order was placed. All returns must be unwashed, unworn and undamaged. They’re intimates after all 😉<\/p><p><strong>-&gt; <\/strong><a href=\"https:\/\/negative-underwear.loopreturns.com\/#\/\" target=\"_blank\"><strong>Click right here to start a return!<\/strong><\/a><br\/><br\/>We offer free exchanges and returns to store credit. For refunds to your original payment, we have a $5 restocking fee to help support the many people in our supply chain. You’ll spot this deducted from the balance of your refund once we’ve received and clicked \"good to go!\" on your return.<\/p><p><strong>Please note,<\/strong><\/p><ul><li>All price reduced SALE items are Final Sale and not eligible for return or exchange. Items purchased (unworn, with tags, in original packaging) are eligible to return for credit or exchange only within 30 days of placing your order.<\/li><li>Exchanges, store credits and\/or refunds will be issued only after returned goods have been received and inspected by our warehouse to confirm they meet our return-eligible criteria above.<\/li><li>Store credit requests are free to process and issued electronically; credits do not expire and can be used toward anything on our site.<\/li><li>Please allow up to 5 business days to receive and process your return request after your return package has been shipped.<\/li><li>While we try our best, direct exchange requests are not guaranteed because our stock is limited.<\/li><li>If you’re returning part of a Kit or Pack, the refunded amount will reflect the item’s Kit \/ Pack price, not the standard full price of the item.<\/li><li>If you’re returning an item purchased with a discount code, your refund will reflect the item’s proportionally discounted price, not the standard full price of the item.<\/li><li>Damaged returns and returns sent back without prior authorization will be returned to sender.<\/li><li>Digital gift cards are non-refundable.<\/li><li>No printer? No problem. You can now return via QR code at all eligible USPS QR locations.<\/li><\/ul><p><\/p>"
+          }
+        },
+        "when-arriving-question": {
+          "type": "question",
+          "settings": {
+            "title": "Can I return an internationally shipped order?",
+            "text": "<p>Items purchased through Matches Fashion are only returnable through their website. If an international order is placed through Negative’s site, it is the responsibility of the customer to return the item for either refund or store credit. Please note, international orders are not eligible for direct exchange.<\/p>"
+          }
+        },
+        "ship-international-question": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Currently we are only shipping to USA and Canada.<\/p>"
+          }
+        },
+        "return-policy-question": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-getting-started",
+        "product-where-made-question",
+        "shipping-cost-question",
+        "sizes-question",
+        "shipping-heading",
+        "when-shipping-question",
+        "when-arriving-question",
+        "ship-international-question",
+        "return-policy-question"
+      ],
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#121212",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 94%)",
+        "border_color": "#121212",
+        "base_width": 80,
+        "max_width": "",
+        "inner_padding": 100,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
+      }
+    },
+    "rebuy": {
+      "type": "wonderment-rebuy",
+      "disabled": true,
+      "settings": {
+        "rebuy-widget-id": ""
+      }
+    },
+    "fairing": {
+      "type": "wonderment-fairing",
+      "disabled": true,
+      "settings": {
+        "fairing-key": "",
+        "fairing-padding-tb": 10,
+        "fairing-padding-lr": 10,
+        "fairing-border-color": "#000000",
+        "fairing-border-size": 0,
+        "fairing-border-radius": 0,
+        "fairing-title-text-align": "center",
+        "fairing-title-margin-top": 20,
+        "fairing-title-margin-bottom": 20,
+        "fairing-title-max-width": 100,
+        "fairing-response-border-color": "#000000",
+        "fairing-response-border-size": 0,
+        "fairing-response-border-radius": 0,
+        "fairing-response-padding": 5,
+        "fairing-responses-margin": 20
+      }
+    },
+    "kno": {
+      "type": "wonderment-kno",
+      "disabled": true,
+      "settings": {
+        "shop-key": "",
+        "survey-id": ""
+      }
+    }
+  },
+  "order": [
+    "track_your_order_heading",
+    "main",
+    "hero",
+    "featured_collection_JJkiwp",
+    "faq",
+    "rebuy",
+    "fairing",
+    "kno"
+  ]
+}

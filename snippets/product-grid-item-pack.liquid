@@ -1,0 +1,167 @@
+<!-- /snippets/product-grid-item-pack.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+{% endcomment %}
+
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'small--one-half large--one-third medium--one-half' %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% comment %}
+	{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+		{% unless product.selected_or_first_available_variant.title contains "Pack" or product.title contains "Pack" %}
+			{% assign on_sale = true %}
+		{% endunless %}
+	{% endif %}
+{% endcomment %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% assign img0 = 0 %}
+{% assign img1 = 1 %}
+
+{% unless product.title contains "Pack" %}
+	{% for image in product.images %}
+		{% if image.alt contains "Pack" %}
+			{% assign img0 = forloop.index0 %}
+			{% assign img1 = 0 %}
+		{% endif %}
+	{% endfor %}
+{% endunless %}
+
+{% liquid
+	assign featuredProductPrice = product.price | money_without_trailing_zeros
+	assign featuredProductComparePrice = product.compare_at_price | money_without_trailing_zeros
+	assign foundPackForPrice = false 
+	assign extraProductText = ""
+
+	for variant in product.variants
+		if variant.title contains "2-Pack"
+			assign featuredProductPrice = variant.price | money_without_trailing_zeros
+			assign featuredProductComparePrice = variant.compare_at_price | money_without_trailing_zeros
+			assign foundPackForPrice = true
+			assign extraProductText = " (2&nbsp;Pack)" 
+			break
+		endif
+	endfor
+	
+	unless foundPackForPrice
+		for variant in product.variants
+			if variant.title contains "3-Pack"
+				assign featuredProductPrice = variant.price | money_without_trailing_zeros
+				assign featuredProductComparePrice = variant.compare_at_price | money_without_trailing_zeros
+				assign foundPackForPrice = true
+				assign extraProductText = " (3&nbsp;Pack)"
+				break
+			endif
+		endfor
+	endunless
+%}
+
+<div class="grid__item grid-product {{ grid_item_width }} product-grid-item-liquid{% for t in product.tags %}{% if t contains "show" %} {{ t | handleize }}{% endif %}{% endfor %}">
+
+	<a href="{{ product.url | within: collection }}#photo-{{ img1 }}">
+
+		<span class="grid-product__image-wrapper">
+			{% assign showedSaleTagAlready = false %}			
+			{% for tag in product.tags %}
+				{% assign t = tag | handleize %}
+				{% if t == "warehouse-sale" and on_sale %}
+					{% assign showedSaleTagAlready = true %}
+					<div class="saletag"><a href="/collections/warehouse-sale/">Warehouse Sale</a></div>
+				{% endif %}
+				{% if t == "limited" %}
+					<div class="saletag limited">Limited Edition</div>
+				{% endif %}
+				{% if t == "show-sale-sticker" %}
+					{% assign on_sale = true %}
+				{% endif %}
+			{% endfor %}
+			
+			<!-- is on_sale up in here? {{ on_sale }} -->
+			{% unless showedSaleTagAlready %}
+				{% if on_sale %}
+					<div class="saletag">Sale</div>
+				{% endif %}
+			{% endunless %}
+			<span class="grid-product__image-link">
+				<!-- {{ template }} -->
+				{% if imageSize == "smaller" %}
+					{% include 'responsive-product-image-smaller',
+						image: product.images[img0],
+						sizes: '(max-width: 480px) 30vw, (min-width: 481px) and (max-width: 768px) 30vw, 25vw',
+						attributes: 'class="grid-product__image default lazyload"' 
+					%}
+					{% include 'responsive-product-image-smaller-alt',
+						image: product.images[img1],
+						sizes: '(max-width: 480px) 30vw, (min-width: 481px) and (max-width: 768px) 30vw, 25vw',
+						attributes: 'class="grid-product__image alt lazyload"' 
+					%}
+				{% else %}
+					{% include 'responsive-product-image',
+						image: product.images[img0],
+						sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+						attributes: 'class="grid-product__image default lazyload"' 
+					%}
+					{% include 'responsive-product-image-alt',
+						image: product.images[img1],
+						sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+						attributes: 'class="grid-product__image alt lazyload"' 
+					%}
+				{% endif %}
+			</span>
+		</span>
+
+		<span class="grid-product__meta{% if on_sale %} on-sale{% endif %}">
+			<span class="grid-product__title">{{ product.title | replace: " Pack", "&nbsp;Pack" }}{{ extraProductText }}</span>
+			<span class="grid-product__price {% if on_sale %} onsale{% endif %}">
+				<s>{{ featuredProductComparePrice }}</s>
+				{{ featuredProductPrice }}
+			</span>
+		</span>
+	</a>
+	{% assign colorWording = "colors" %}
+	{% assign productTitle = product.title | replace: " and in ", " and " %}
+	{% assign productFamily = productTitle | split: " in " | first | handleize | remove: '-0' %}
+	{% if product.title contains "Pack" %}
+		{% assign productFamily = productFamily | append: "-pack" %}
+		{% assign colorWording = "combinations" %}
+	{% endif %}
+	{% liquid
+		assign productsInFamily = 0
+		if product.vendor contains "Last Chance"
+			assign isLastChance = true
+		else
+			assign isLastChance = false
+		endif
+		
+		for prod in collections[productFamily].products
+			if prod.vendor contains "Last Chance"
+				if isLastChance
+					assign productsInFamily = productsInFamily | plus: 1
+				endif
+			else
+				if isLastChance == false
+					assign productsInFamily = productsInFamily | plus: 1
+				endif
+			endif
+		endfor
+	%}
+	{% if productsInFamily > 1 %}
+		<div class="products-in-family">Available in {{ productsInFamily }} {{ colorWording }}</div>
+	{% endif %}
+</div>

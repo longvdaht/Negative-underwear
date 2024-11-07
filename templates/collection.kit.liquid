@@ -1,0 +1,197 @@
+<!-- /collection.kit.liquid -->
+{% comment %}
+  Collection template, used on collection.liquid and collection.image.liquid
+{% endcomment %}
+{% assign collectionSuffix = collection.handle | camelcase %}
+
+<script>
+$(document).ready(function(){
+
+/* add all items in a kit */
+	function addAllItems{{ collectionSuffix }}(e) {
+      
+        e.stopImmediatePropagation();
+      
+		$('form#{{ collectionSuffix }} .add-to-cart').addClass('clicked');
+		
+		var array = [];
+
+		for (var i=0; i<{{ collection.products_count }}; i++) {
+			var product = $('form#{{ collectionSuffix }} .product-' + i + " .variants select option:selected");
+			console.log('product: ' + product.val());
+			array[i] = product.val();
+		}
+
+		console.log('addAllItems{{ collectionSuffix }} ' + array);
+
+		Shopify.queue = [];
+		var cartCount = {{ cart.item_count }} ;
+
+		for (var i=0; i<array.length; i++) {
+			product = array[i];
+			console.log(' queueing ' + product);
+			
+			Shopify.queue.push({
+				variantId: product,
+			});
+		}
+		
+		
+		Shopify.moveAlong = function() {
+			console.log('MOVE ALONG');
+			
+			// If we still have requests in the queue, let's process the next one.
+			if (Shopify.queue.length) {
+				var request = Shopify.queue.shift();
+				var data = 'id='+ request.variantId + '&quantity=1';
+				
+				console.log('* ADDING // DATA:\r' + data);
+				
+				$.ajax({
+					type: 'POST',
+					url: '/cart/add.js',
+					dataType: 'json',
+					async: false,
+					data: data,
+					success: function(res) {					
+				//		str = JSON.stringify(res, null, 4); // (Optional) beautiful indented output.
+				//		console.log(" + SUCCESS! (" + data + ")\r:::\r" + str);
+						cartCount += 1;
+						Shopify.moveAlong();
+					},
+					error: function(){
+						console.log("ERROR...");
+						
+						// if it's not last one Move Along else update the cart number with the current quantity
+						if (Shopify.queue.length){
+							console.log("  we should move along");
+							Shopify.moveAlong();
+						} else {
+							console.log("   something else went wrong");
+						//		$('#cart-number').replaceWith(quantity);
+						}
+					}
+				});
+			}
+			// If the queue is empty, we add 1 to cart
+            else {
+				if (typeof shappify_pb_main === 'function' && typeof bundlejQuery === 'function') {
+    	        	console.log('** new ajax bundle style [ck]');
+					bundlejQuery.ajaxSetup({async:false});
+					
+					shappify_pb_main(function(cart) {
+						ajaxCart.cartUpdateCallback(cart);
+						console.log(' + DONE');
+						addToCartOk(cartCount);
+					})
+				} else {
+					ShopifyAPI.getCart(function(cart) {
+						console.log('** original style');
+						ajaxCart.cartUpdateCallback(cart);
+						// original code 
+						console.log(' + DONE');
+						addToCartOk(cartCount);
+						// original code
+					})
+				}
+            }
+		};
+		Shopify.moveAlong();
+	};
+	function addToCartOk(cartCount) {
+		console.log('addToCartOk - success! ' + cartCount);
+      
+		$('form#{{ collectionSuffix }} .add-to-cart').removeClass('clicked');
+	}
+	
+	$("form#{{ collectionSuffix }} .AddToCart").click(addAllItems{{ collectionSuffix }});
+	
+	$("form#{{ collectionSuffix }} select").change(function() {
+		var readyToGo = true;	
+	
+		$("form#{{ collectionSuffix }} select").each(function(){
+			 if (this.value == "null")
+			 	readyToGo = false;
+		});
+		
+		if (readyToGo) {
+			$("form#{{ collectionSuffix }} .AddToCart").prop("disabled", false);
+			$('form#{{ collectionSuffix }} .AddToCart .text').text('Add Kit to Cart');
+			$('form#{{ collectionSuffix }} .AddToCartText').addClass('ready');
+		} else {
+			$("form#{{ collectionSuffix }} .AddToCart").prop("disabled", true);
+			$('form#{{ collectionSuffix }} .AddToCart .text').text('Pick Your Sizes');
+			$('form#{{ collectionSuffix }} .AddToCartText').removeClass('ready');
+		}
+	});
+	
+});
+
+</script>
+{% paginate collection.products by 121 %}
+{% assign grid_item_width = "five-sixths medium--one-third large--one-third" %}
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-single__form multiadd AddToCartForm" id="{{ collectionSuffix }}">
+  <div class="grid-uniform content">
+	<div class="grid__item text-center five-sixths large--hide">
+		<h2>{{ collection.title }}</h2>
+		{% if collection.description != blank %}
+			{% assign collectionDescription = collection.description | split: '||' | first %}
+			{% assign collectionPrice = collection.description | split: '||' | last %}
+
+			{% if collectionPrice contains '(' %}
+				{% assign priceparts = collectionPrice | split: '(' %}
+				{% assign collectionPrice = priceparts | first %}
+				{% assign wasPrice = priceparts | last | remove: ')' %}
+			{% endif %}
+
+			<h3>{% if wasPrice %}<s>{{ wasPrice }}</s> {% endif %}<span class="price">{{ collectionPrice }}</span></h3>
+			<div class="rte nopadding widowkiller">
+				{{ collectionDescription }}
+			</div>
+		{% endif %}
+	</div>
+	<div class="grid__item one-whole large--three-quarters nopadding">
+		<div class="grid-uniform">
+			{% for product in collection.products %}
+				{% include 'product-grid-item-kit' %}
+			{% endfor %}
+		</div>
+	</div>
+	<div class="grid__item five-sixths large--one-quarter textholder">
+		<div class="medium--hide small--hide grid-product__image-wrapper">
+			<div class="grid-product__image-wrapper">
+				<div class="kit-description-overlay">
+					<h2>{{ collection.title }}</h2>
+					{% if collection.description != blank %}
+						<h3>{% if wasPrice %}<s>{{ wasPrice }}</s> {% endif %}<span class="price">{{ collectionPrice }}</span></h3>
+						<div class="rte nopadding widowkiller">
+							{{ collectionDescription }}
+						</div>
+					{% endif %}
+				</div>
+				
+				{% include 'responsive-product-image',
+					image: collection.products[0].images[0],
+					sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+					attributes: 'class="grid-product__image lazyload"' 
+				%}
+			</div>
+		</div>
+		<div class="add-to-cart">
+			<button type="submit" name="add" class="AddToCart button" disabled>
+				<span class="AddToCartText"><i class="small--hide medium--hide">&larr;</i><i class="uparrow large--hide">&uarr;</i> <span class="text">Pick Your Sizes</span> <img src="{{ 'ajax-loader-dark.gif' | asset_url }}" alt="Loading" class="loading" /></span>
+			</button>
+		</div>
+	</div>
+  </div>
+</form>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: '&laquo; Previous', '<span class="icon icon-arrow-left" aria-hidden="true"></span>' | replace: 'Next &raquo;', '<span class="icon icon-arrow-right" aria-hidden="true"></span>' }}
+    </div>
+  {% endif %}
+
+{% endpaginate %}
+

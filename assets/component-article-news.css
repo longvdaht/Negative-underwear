@@ -1,0 +1,120 @@
+.section-news {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-news .wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-news .wrapper.right .group-article { 
+    order: -1;
+ }
+
+.section-news .article {
+    text-align: center;
+    padding: 16px;
+    margin: 16px 16px 80px;
+}
+
+.section-news .wrapper > .article {
+}
+
+.section-news .group-article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-news .group-article .article {
+    margin: 16px 0 80px;
+}
+
+.section-news .group-article .article:first-child {
+    margin-top: 0;
+}
+
+.section-news .article + .group-article .article:last-child {
+    margin-bottom: 0;
+}
+
+.section-news .article p {
+    margin: 0 0 25px;
+    font-size: 16px;
+    line-height: 1.563;
+    color: #000;
+}
+
+.section-news .article p.heading-news {
+    font-weight: 500;
+    color: #000;
+}
+
+.section-news .article img {
+    margin: -1rem auto 0;
+    max-width: 250px;
+    height: auto;
+}
+
+.section-news .article.large {
+    padding: 0;
+}
+
+.section-news .article.large div {
+    border: 1px solid #000;
+    padding: 56px 48px 32px;
+}
+
+@media screen and (min-width: 591px) {
+    .section-news {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .section-news {
+        padding: 0 2%;
+    }
+}
+
+@media screen and (min-width: 1051px) {
+    .section-news .wrapper {
+        flex-direction: row;
+    }
+
+    .section-news .wrapper.right {
+        flex-direction: row-reverse;
+    }
+
+    .section-news .wrapper.right .group-article {
+        order: 1;
+    }
+
+    .section-news .group-article {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .section-news .article + .group-article {
+        flex-direction: column;
+    }
+
+    .section-news .wrapper > .article,
+    .section-news .article + .group-article,
+    .section-news .group-article .article.small {
+        width: 44%;
+        margin: 16px 3% 80px;
+    }
+
+    .section-news .article + .group-article .article.small {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .section-news .article + .group-article .article.small:first-child {
+        margin-top: 0;
+    }
+}

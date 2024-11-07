@@ -1,0 +1,121 @@
+/*********************** Custom CSS for Boost Filter & Search  ************************/
+{% assign breakpointMobile = '767px' %}
+{% assign breakpointDesktop = '768px' %}
+{% assign searchBoxMobileHeight = '64px' %}
+/* *************************** Place your custom css below  *************************** */
+.filters .boost-pfs-filter-tree-h {
+  padding: 50px 0 10px;
+  margin: 0 3.5%;
+  border-bottom: 1px solid #6e6e77;
+}
+.boost-pfs-filter-tree-h .boost-pfs-filter-option.boost-pfs-filter-option-column-full .boost-pfs-filter-option-content {
+  border-radius: 0;
+}
+@media screen and (min-width: 768px) {
+  .boost-pfs-filter-tree-h .boost-pfs-filter-option .boost-pfs-filter-option-content .boost-pfs-filter-option-item-list li {
+    width: auto!important;
+    min-width: 25px!important;
+    margin-right: 8px!important;
+  }
+  .boost-pfs-filter-option.boost-pfs-filter-has-scrollbar .boost-pfs-filter-option-content .boost-pfs-filter-option-content-inner ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 9px;
+  }
+  .boost-pfs-filter-option.boost-pfs-filter-has-scrollbar .boost-pfs-filter-option-content .boost-pfs-filter-option-content-inner ul div.filter-header {
+    flex: 0 0 100%;
+  }
+  .boost-pfs-filter-tree-h .boost-pfs-filter-option .boost-pfs-filter-option-content .boost-pfs-filter-option-item-list li {
+    margin: 0 !important;
+    padding: 0;
+  }
+  .boost-pfs-filter-option-item button {
+    border: 1px solid;
+    padding: 0px 2px 0px 5px;
+    text-align: center;
+  }
+  .boost-pfs-filter-option-item-list.boost-pfs-filter-option-item-list-multiple-list li .boost-pfs-check-box {
+    display: none;
+  }
+  
+  .boost-pfs-filter-tree-h .boost-pfs-filter-option.boost-pfs-filter-option-swatch .boost-pfs-filter-option-content .boost-pfs-filter-option-item-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .boost-pfs-filter-tree-h .boost-pfs-filter-option.boost-pfs-filter-option-swatch .boost-pfs-filter-option-content .boost-pfs-filter-option-item-list li .boost-pfs-filter-option-swatch-image {
+    position: relative;
+  }
+  .boost-pfs-filter-tree-h .boost-pfs-filter-option.boost-pfs-filter-option-swatch .boost-pfs-filter-option-content .boost-pfs-filter-option-item-list li button {
+    border: none;
+  }
+  .boost-pfs-filter-apply-button {
+    border-radius: 0;
+    font-size: 13px;
+    padding: 1em 3em;
+    line-height: 1em;
+    font-family: "nimbus-sans", Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    letter-spacing: .1em;
+    border: none;
+    background-color: #222;
+    color: #fff;
+  }
+}
+
+.boost-pfs-filter-refine-by-wrapper-h .boost-pfs-filter-pc>span {
+  display: none;
+}
+.boost-pfs-filter-refine-by-wrapper-h {
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+}
+.boost-pfs-filter-refine-by-wrapper-h .boost-pfs-filter-refine-by {
+  width: 93%;
+  margin: 0 3.5%;
+}
+.boost-pfs-filter-tree-h .boost-pfs-filter-pc .boost-pfs-filter-refine-by-items .refine-by-item, .boost-pfs-filter-refine-by-wrapper-h .boost-pfs-filter-pc .boost-pfs-filter-refine-by-items .refine-by-item {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .filters .filter-desktop-toolbar {
+    display: flex !important;
+  }
+  .filters .filter-desktop-toolbar .boost-pfs-filter-tree-h {
+    display: none !important;
+    flex: 0;
+  }
+  .filters .filter-desktop-toolbar div {
+    flex: 0 1 50%;
+  }
+  .filters .boost-pfs-filter-tree-mobile-button {
+    margin: 0;
+  }
+  .boost-pfs-filter-tree-mobile-button button {
+    margin: 0;
+  }
+}
+
+.boost-pfs-filter-products.grid-uniform .grid-product__image-link {
+   padding-top: 150%;
+   background-color: #f3f3f3;
+}
+.boost-pfs-filter-products.grid-uniform .grid-product__image-link img {
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+.boost-pfs-filter-products.grid-uniform .grid__item .grid-product__image-wrapper .grid-product__image:first-child {
+   z-index: 1;
+}
+@media screen and (max-width: 767px) {
+  .boost-pfs-filter-products.grid-uniform .grid__item .grid-product__image-wrapper .grid-product__image:first-child {
+     width: 100%;
+  }
+}

@@ -1,0 +1,152 @@
+{{ 'component-quotes.css' | asset_url | stylesheet_tag }}
+
+{% style %} 
+    .background-{{ section.id }}-color {
+        background-color: {{ section.settings.background }};
+    }
+{% endstyle %}
+
+{% for block in section.blocks %}
+    {% case block.type %}
+        {%- when 'feedback' -%}
+            <div class="section-feedback">
+                <h2>{{ block.settings.heading_feedback }}</h2>	
+                
+                <div class="feedback-media">
+                    <img 
+                        src="{{ block.settings.image_feedback | img_url: '384x93' }}" 
+                        data-src="{{ block.settings.image_feedback | img_url: '384x' }}" 
+                        class="lazyload" 
+                        loading="lazy"
+                        alt="Marissa & Lauren signatures" 
+                        width="{{ block.settings.image_feedback.width }}" 
+                        height="{{ block.settings.image_feedback.height }}" 
+                    />
+                </div>
+            </div>
+    {%- endcase -%}
+{% endfor %}
+
+<div class="section-quotes background-{{ section.id }}-color">
+    <div class="quotes-grid">
+    	{% for block in section.blocks %}
+            {% case block.type %}
+                {%- when 'quote' -%}
+                    <div class="quote">
+                        <h3 class="hide">{{ block.settings.title }}</h3>
+                        <blockquote>{{ block.settings.quote }}</blockquote>
+            
+                        <img 
+                            src="{{ block.settings.image | img_url: '850x750' }}" 
+                            data-src="{{ block.settings.image | img_url: '750x' }}"
+                            loading="lazy" 
+                            class="lazyload {{ block.settings.title | handleize }}" 
+                            width="{{ block.settings.image.width }}" 
+                            height="{{ block.settings.image.height }}" 
+                            alt="{{ block.settings.title }}" 
+                        />
+                    </div>
+                {%- endcase -%}
+    	{% endfor %}
+    </div>
+</div>
+
+{% for block in section.blocks %}
+    {% case block.type %}
+        {%- when 'button' -%}
+            <div class="section-button text-center">
+                <a href={{ block.settings.button_url }} class="btn btn--large">{{ block.settings.label_button }} &ndash;&gt;</a>
+            </div>
+    {%- endcase -%}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Quotes",
+  "class": "section--quotes",
+  "max_blocks": 6,
+  "settings": [
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background",
+        "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Brand"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        }
+      ]
+    },
+    {
+        "type": "button",
+        "name": "Button Shop Collection",
+        "settings": [
+            {
+                "type": "text",
+                "id": "label_button",
+                "label": "Button name"
+            },
+            {
+                "type": "url",
+                "id": "button_url",
+                "label": "Link"
+            }
+        ]
+    },
+    {
+        "type": "feedback",
+        "name": "Feedback",
+        "settings": [
+            {
+                "type": "html",
+                "id": "heading_feedback",
+                "default": "Heading feedback",
+                "label": "Heading feedback"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_feedback",
+                "label": "Image feedback"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+        "name": "Quotes",
+        "blocks": [
+            {
+                "type": "quote"
+            },
+            {
+                "type": "button"
+            },
+            {
+                "type": "feedback"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

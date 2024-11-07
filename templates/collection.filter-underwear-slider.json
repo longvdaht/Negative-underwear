@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "category_mobile_carousel_tJiNPH": {
+      "type": "category-mobile-carousel",
+      "blocks": {
+        "collection_hWxYfV": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lounge_WhippedBoxer_Moss_Santana_01_3e32ba7e-6165-4de0-8e65-db240ff50a6a.jpg",
+            "title": "Best Sellers",
+            "link": "https:\/\/negativeunderwear.com\/collections\/best-selling-underwear"
+          }
+        },
+        "collection_Q34XUT": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Pack_Sieve_Brief2x_BlackBlack.jpg",
+            "title": "Packs",
+            "link": "https:\/\/negativeunderwear.com\/collections\/underwear-packs"
+          }
+        },
+        "collection_Xtb6cF": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bottom_GlaceGString_Black_Ksenia_02.jpg",
+            "title": "Thongs",
+            "link": "https:\/\/negativeunderwear.com\/collections\/thongs"
+          }
+        },
+        "collection_tChPTA": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Underwear_BaseHighRiseBrief_Black_Thessica_01_51732094-f207-4ad3-bc02-5ab95bafaa1a.jpg",
+            "title": "Bikinis\/ Briefs",
+            "link": "https:\/\/negativeunderwear.com\/collections\/womens-bikinis-briefs"
+          }
+        },
+        "collection_UUkkWw": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6830f81405669b585fa1b65ad828812a.jpg",
+            "title": "Boxers\/ Boyshorts",
+            "link": "https:\/\/negativeunderwear.com\/collections\/womens-boxers-boyshorts"
+          }
+        },
+        "collection_NT9bpB": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bottom_SieveHWB_Black_Ksenia_03.jpg",
+            "title": "High Waist",
+            "link": "https:\/\/negativeunderwear.com\/collections\/womens-high-waist-briefs"
+          }
+        },
+        "collection_JMmK7Q": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/60a0aa01b41a899a2a7edc7663415afc.jpg",
+            "title": "Shop All",
+            "link": "https:\/\/negativeunderwear.com\/collections\/womens-underwear"
+          }
+        }
+      },
+      "block_order": [
+        "collection_hWxYfV",
+        "collection_Q34XUT",
+        "collection_Xtb6cF",
+        "collection_tChPTA",
+        "collection_UUkkWw",
+        "collection_NT9bpB",
+        "collection_JMmK7Q"
+      ],
+      "settings": {
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-filter",
+      "settings": {
+        "products_per_page": 71,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "category_mobile_carousel_tJiNPH",
+    "product-grid"
+  ]
+}

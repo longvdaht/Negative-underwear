@@ -1,0 +1,78 @@
+/*--- Reviews ---*/
+.reviews-product {
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.reviews-product .okeReviews[data-oke-container].oke-w, div.okeReviews.oke-w {
+    padding: 50px 0 20px;
+}
+
+.reviews-product .oke-w-reviewer-name,
+.reviews-product .oke-w-selectAttr-item-title,
+.reviews-product .okeReviews[data-oke-container] .oke-title,
+.reviews-product div.okeReviews .oke-title,
+.reviews-product .oke-reviewContent-title,
+.reviews-product .oke-product-details-title,
+.reviews-product .oke-w-reviewer-verified,
+.reviews-product .oke-w-ratingAverageModule-rating-average,
+.okeReviews[data-oke-container] .oke-w-filter-title, div.okeReviews .oke-w-filter-title {
+    font-weight: 400;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews-product .oke-button-text,
+div.okeReviews[data-oke-container] .oke-reviewContent-body p,
+.okeReviews[data-oke-container] .oke-w-filterOption-label, div.okeReviews .oke-w-filterOption-label {
+    font-weight: 400;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+div.okeReviews[data-oke-container] .oke-w-header .oke-w-ratingAverageModule-count, 
+.reviews-product .oke-showMore-button .oke-button-text {
+    font-weight: 400;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews-product .oke-w-selectAttr-item-value,
+.reviews-product .oke-bodyText,
+.reviews-product
+    div.okeReviews[data-oke-container]
+    .oke-w-reviewer--attributes
+    .oke-w-reviewer-verified,
+.reviews-product .oke-product-details .oke-product-details-name,
+.reviews-product .oke-w-reviewMinimal-date {
+    font-weight: 400;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+.reviews-product div.okeReviews select {
+    font-weight: 300;
+    font-family: "nimbus-sans", sans-serif;
+}
+
+@media screen and (min-width: 591px) {
+    .reviews-product {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .reviews-product .okeReviews[data-oke-container].oke-w, div.okeReviews.oke-w {
+        padding: 80px 0 20px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .reviews-product {
+        padding: 0 2%;
+    }
+}
+
+.okeReviews[data-oke-container] .oke-w-reviews-list-item .oke-w-reviewer-verified, div.okeReviews .oke-w-reviews-list-item .oke-w-reviewer-verified {
+  font-weight: 400;
+}
+
+.okeReviews[data-oke-container] .oke-w-selectAttr-item .oke-w-selectAttr-item-title, div.okeReviews .oke-w-selectAttr-item .oke-w-selectAttr-item-title {
+  font-weight: 400;
+}

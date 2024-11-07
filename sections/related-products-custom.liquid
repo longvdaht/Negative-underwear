@@ -1,0 +1,84 @@
+
+{% assign hasSet = false %}
+{% assign productType = "null" %}
+{% if product.type == "Swim" or product.type == "swim" %}
+	{% assign productType = "swim" %}
+{% endif %}
+{% for tag in product.tags %}
+    {% assign t = tag | handleize %}
+
+	{% if t contains "-set" %}
+		{% assign hasSet = true %}
+		{% assign setHandle = t %}
+	{% endif %}
+	{% if t == "bras" or t == "non-wire-bra" %}
+		{% assign productType = "bra" %}
+	{% endif %}
+	{% if t == "sleepwear-bottom" %}
+		{% assign productType = "sleepwear-bottom" %}
+	{% endif %}
+	{% if t == "sweat-bottom" %}
+		{% assign productType = "sweat-bottom" %}
+	{% endif %}
+	{% if t == "swim-top" %}
+		{% assign productType = "swim-top" %}
+	{% endif %}
+	{% if t == "swim-bottom" %}
+		{% assign productType = "swim-bottom" %}
+	{% endif %}
+	{% if t == "sweat-top" %}
+		{% assign productType = "sweat-top" %}
+	{% endif %}
+	{% if t == "sleepwear-top" %}
+		{% assign productType = "sleepwear-top" %}
+		{% comment %}
+		<!-- % break % -->
+		<!-- since this seems to go alphabetically, stop checking so we don't override with tops - - - SWITCHED 2/8/21, may need to revisit -->
+		{% endcomment %}
+	{% endif %}
+	{% if t == "tops" %}
+		{% if product.title contains "Crew" %}
+			{% assign productType = "sweat-top" %}
+		{% elsif product.title contains "Bra Top" %}
+			{% assign productType = "bra" %}
+		{% else %}
+			{% assign productType = "top" %}
+		{% endif %}
+	{% endif %}
+	{% if t == "underwear" or t == "thongs" or product.title contains "Thong" or t contains "briefs" or t == "bike-short" or product.type == "Underwear" %}
+		{% assign productType = "underwear" %}
+	{% endif %}
+{% endfor %}
+{% if product.title contains "Bodysuit" %}
+	{% assign productType = "bodysuit" %}
+{% elsif product.title contains "Robe" %}
+	{% assign productType = "robe" %}
+{% endif %}
+
+<div class="later-stuff page-width">
+    {% if hasSet %}
+		<div class="section full-width buy-the-set">
+			{% render 'buy-the-set', product: product, productType: productType %}
+		</div>
+	{% else %}
+		<div class="section full-width suggested-collection">
+			<!-- suggested collection -->
+			{% render 'suggested-collection', product: product, productType: productType %}
+		</div>
+	{% endif %}
+</div>
+
+{% schema %}
+    {
+        "name": "Products Related Custom",
+        "tag": "section",
+        "class": "section",
+        "settings": [],
+        "blocks": [],
+        "presets": [
+            {
+                "name": "Products Related Custom"
+            }
+        ]
+    }
+{% endschema %}

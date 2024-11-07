@@ -1,0 +1,49 @@
+{% comment %}
+  Renders cart drawer
+
+  Usage:
+  {% render 'cart-drawer' %}
+{% endcomment %}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+<div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer">
+  <div class="drawer__fixed-header">
+    <div class="drawer__header">
+      <div class="drawer__title">{{ 'general.cart.title' | t }}</div>
+      <div class="drawer__close">
+        <button type="button" class="icon-fallback-text drawer__close-button js-drawer-close">
+          <span class="burger-icon burger-icon--top"></span>
+          <span class="burger-icon burger-icon--bottom"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="drawer__inner">
+    <div id="CartContainer" class="drawer__cart"></div>
+  </div>
+  {%  if settings.cart_drawer_collection %}
+    {% render 'cart-recommendation' %}
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return msie > 0 || trident > 0;
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function (event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>

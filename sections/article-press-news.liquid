@@ -1,0 +1,187 @@
+{{ 'component-article-news.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+{% endstyle %}
+{% assign block_news_large = section.blocks | where: 'type', 'news_block_large' %}
+{% assign block_news_small = section.blocks | where: 'type', 'news_block_small' %}
+
+<div class="section-news">
+    <div class="wrapper {{ section.settings.layout_block_news_large }}">
+        {% for block in block_news_large %}
+            {%- if block.type == 'news_block_large' -%}
+                <div class="article large">
+                    <div>
+                      {%- if block.settings.heading != blank -%}
+                          <p class="heading-news">{{ block.settings.heading }}</p>
+                      {% endif %}
+                      {%- if block.settings.news_description != blank -%}
+                          <p class="description">{{ block.settings.news_description }}</p>
+                      {% endif %}
+                      {%- if block.settings.insert_br_after_new_description != false -%}
+                        <p style="height: 19px; display: block; margin: 0; padding: 0;"></p>
+                      {% endif %}
+                      {%- if block.settings.news_image != blank -%}
+                          <img 
+                              src="{{ block.settings.news_image | img_url: 'grande' }}" 
+                              data-src="{{ block.settings.news_image | img_url: 'grande' }}" 
+                              class="lazyload" 
+                              loading="lazy"
+                              alt="Marissa & Lauren signatures" 
+                              width="{{ block.settings.width_news_image}}" 
+                              height="{{ block.settings.news_image.height }}" 
+                          />
+                      {% endif %}
+                    </div>
+                </div>
+            {%- endif -%}
+        {% endfor %}
+        <div class="group-article">
+            {% for block in block_news_small %}
+                {%- if block.type == 'news_block_small' -%}
+                    <div class="article small">
+                        {%- if block.settings.description != blank -%}
+                            <p class="description">{{ block.settings.description }}</p>
+                        {% endif %}
+                        {%- if block.settings.insert_br_after_description != false -%}
+                            <p style="height: 19px; display: block; margin: 0; padding: 0;"></p>
+                        {% endif %}
+                        {%- if block.settings.image != blank -%}
+                            <img 
+                                src="{{ block.settings.image | img_url: 'grande' }}" 
+                                data-src="{{ block.settings.image | img_url: 'grande' }}"
+                                class="lazyload"  
+                                loading="lazy" 
+                                alt="Marissa & Lauren signatures" 
+                                width="{{ block.settings.width_image_logo }}" 
+                                height="{{ block.settings.image.height }}" 
+                            />
+                        {% endif %}
+                    </div>
+                {%- endif -%}
+            {% endfor %}
+         </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Article News",
+  "class": "section-article-news",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+        "type": "header",
+        "content": "Layout Block Large in desktop"
+    },
+    {
+        "type": "select",
+        "id": "layout_block_news_large",
+        "label": "Layout Block News Large",
+        "options": [
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "news_block_large",
+      "name": "News Block Large",
+      "settings": [
+        {
+          "type": "html",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading block large"
+        },
+        {
+          "type": "textarea",
+          "id": "news_description",
+          "label": "Description",
+          "default": "When downtown gals Lauren Schwab and Marissa Vosper realized there weren't great options for everyday lingerie - as comfortable and cool-looking as their Alexander Wang tees - they spent a year trying on undergarments in fitting rooms across the city and surveying thousands of women. The result is four simple styles produced with premium-quality cotton and nylon elastane sourced from Belgium and the U.S..."
+        },
+        {
+          "type": "checkbox",
+          "id": "insert_br_after_new_description",
+          "label": "Insert <br> into after description",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "news_image",
+          "label": "Image Logo"
+        },
+        {
+          "type": "range",
+          "id": "width_news_image",
+          "min": 100,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "label": "Font size",
+          "default": 140
+        }
+      ]
+    },
+    {
+      "type": "news_block_small",
+      "name": "News Block Small",
+      "settings": [
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description News",
+          "default": "Challenging the status quo by building something better – uncomplicated, considered, minimal – that's what Negative is all about."
+        },
+        {
+          "type": "checkbox",
+          "id": "insert_br_after_description",
+          "label": "Insert <br> into after description",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image Logo"
+        },
+        {
+          "type": "range",
+          "id": "width_image_logo",
+          "min": 100,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "label": "Font size",
+          "default": 140
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article News",
+      "blocks": [
+        {
+          "type": "news_block_large"
+        },
+        {
+          "type": "news_block_small"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

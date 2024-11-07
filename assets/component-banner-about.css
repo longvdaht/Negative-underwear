@@ -1,0 +1,232 @@
+.banner-about .grid {
+    margin-bottom: 0;
+}
+
+.banner-about .grid__item {
+    position: relative;
+}
+
+@media screen and (min-width: 750px) {
+    .banner-about__grid--reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.banner-about__media {
+    min-height: 100%;
+    overflow: visible;
+    border: none;
+}
+
+.banner-about__media--placeholder {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-about__media--placeholder > svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.banner-about__content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 235px;
+    justify-content: center;
+    align-self: center;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-about .banner-about__media-item > * {
+    overflow: hidden;
+}
+
+.banner-about .global-media-settings {
+    overflow: hidden !important;
+}
+
+.banner-about .banner-about__text-item > * {
+    overflow: hidden;
+}
+
+.banner-about .banner-about__text-item h2 {
+    font-weight: 400;
+    text-transform: none;
+    font-size: 26px;
+    line-height: 110%;
+    letter-spacing: .02em;
+}
+
+@media screen and (max-width: 749px) {
+    .banner-about__content--mobile-right > * {
+        align-self: flex-end;
+        text-align: right;
+    }
+
+    .banner-about__content--mobile-center > * {
+        align-self: center;
+        text-align: center;
+    }
+    
+    .collapse-padding .banner-about__grid .banner-about__content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .banner-about .banner-about__text-item {
+        max-width: 287px;
+    }
+
+    .banner-about .banner-about__media-item {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .banner-about__grid--reverse .banner-about__content {
+        margin-left: auto;
+    }
+
+    .banner-about__content--bottom {
+        justify-content: flex-end;
+        align-self: flex-end;
+    }
+
+    .banner-about__content--top {
+        justify-content: flex-start;
+        align-self: flex-start;
+    }
+
+    .banner-about__content--desktop-right > * {
+        align-self: flex-end;
+        text-align: right;
+    }
+
+    .banner-about__content--desktop-left > * {
+        align-self: flex-start;
+        text-align: left;
+    }
+
+    .banner-about__content--desktop-center > * {
+        align-self: center;
+        text-align: center;
+    }
+
+    .banner-about__media-item--small,
+    .banner-about__media-item--large + .banner-about__text-item {
+        flex-grow: 0;
+    }
+    .banner-about .banner-about__text-item {
+        width: 50%;
+        max-width: 50%;
+    }
+    .banner-about .banner-about__media-item {
+        width: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
+.banner-about .gradient {
+    transform: perspective(0);
+}
+
+@media screen and (min-width: 591px) {
+    .banner-about .banner-about__text-item h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .banner-about .banner-about__text-item h2 {
+        font-size: 32px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    .banner-about .banner-about__text-item h2 {
+        font-size: 42px;
+        line-height: 120%;
+    }
+}
+
+.banner-about__content > * + * {
+    margin-top: 2rem;
+}
+
+.banner-about__content > .banner-about__text:empty ~ a {
+    margin-top: 2rem;
+}
+
+.banner-about__content > :first-child:is(.banner-about__heading),
+.banner-about__text--caption + .banner-about__heading,
+.banner-about__text--caption:first-child {
+    margin-top: 0;
+}
+
+.banner-about__content :last-child:is(.banner-about__heading),
+.banner-about__text--caption {
+    margin-bottom: 0;
+}
+
+.banner-about__content .button + .banner-about__text {
+    margin-top: 2rem;
+}
+
+.banner-about__content .banner-about__text + .button {
+    margin-top: 3rem;
+}
+
+.banner-about__heading {
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 750px) {
+    .collapse-padding
+        .banner-about__grid:not(.banner-about__grid--reverse)
+        .banner-about__content:not(.banner-about__content--desktop-center) {
+        padding-right: 0;
+    }
+
+    .collapse-padding
+        .banner-about__grid--reverse
+        .banner-about__content:not(.banner-about__content--desktop-center) {
+        padding-left: 0;
+    }
+}
+
+/* check for flexbox gap in older Safari versions */
+@supports not (inset: 10px) {
+    .banner-about .grid {
+        margin-left: 0;
+    }
+}
+
+/*
+    Multirow
+    note: consider removing from this stylesheet if multirow-specific styles increase signficantly
+  */
+.multirow__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--grid-mobile-vertical-spacing);
+}
+
+@media screen and (min-width: 750px) {
+    .multirow__inner {
+        row-gap: var(--grid-desktop-vertical-spacing);
+    }
+}

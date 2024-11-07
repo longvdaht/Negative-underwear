@@ -1,0 +1,134 @@
+.collection-slider {
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.collection-slider .section-header {
+    padding: 30px;
+    background-color: #fff;
+}
+
+.collection-slider .box-content {
+    padding: 0 30px;
+}
+
+.collection-slider .box-content h2 {
+    font-weight: 400;
+    text-transform: none;
+    font-size: 24px;
+    line-height: 1.1em;
+    letter-spacing: 0.02em;
+    color: #000;
+    margin: 0 0 10px;
+}
+.collection-slider .box-content .font-light {
+  font-weight: 300;
+}
+
+.collection-slider .box-content .description {
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: #000;
+    margin: 0;
+}
+
+.collection-slider .content-slider {
+    position: relative;
+    max-width: 66.666%;
+    left: 16.666%;
+}
+
+.collection-slider .collections {
+    max-width: 100vw;
+    margin-bottom: 0;
+}
+
+.collection-slider .collection.slick-slide {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.collection-slider .btn-custom {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.42;
+    letter-spacing: .05em;
+    color: #000;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 8px 16px;
+    border: 1px solid #000;
+    background-color: transparent;
+    text-transform: uppercase;
+    transition: background-color 0.15s ease-out;
+    text-decoration: none;
+}
+
+.collection-slider .btn-custom:hover {
+    background-color: #ffffff;
+}
+
+.collection-slider .slick-next,
+.collection-slider .slick-prev {
+    height: 50%;
+    top: 25%;
+    width: 50px;
+    z-index: 1;
+}
+
+.collection-slider .slick-next {
+    right: -45px;
+}
+
+.collection-slider .slick-prev {
+    left: -45px;
+}
+.collection-slider .button {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 591px) {
+    .collection-slider .content-slider {
+        max-width: 100%;
+        left: 0;
+    }
+
+    .collection-slider .section-header {
+        margin-bottom: 30px;
+    }
+
+    .collection-slider .box-content .description {
+        font-size: 16px;
+    }
+
+    .collection-slider .box-content {
+        padding-top: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .collection-slider .box-content {
+        width: 66.666%;
+        margin: 0 auto;
+    }
+    .collection-slider .box-content h2 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .collection-slider .slick-next {
+        right: -20px;
+    }
+
+    .collection-slider .slick-prev {
+        left: -20px;
+    }
+
+}

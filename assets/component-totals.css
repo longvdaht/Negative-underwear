@@ -1,0 +1,53 @@
+.totals {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.totals > * {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.totals > h2 {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: .05em;
+}
+
+.totals * {
+  line-height: 1;
+}
+
+.totals > * + * {
+  margin-left: 2rem;
+}
+
+.totals__subtotal-value {
+  font-style: normal;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-size: 20px;
+  white-space: nowrap;
+  font-weight: 400;
+  color: #000;
+}
+#your-shopping-cart .cart__footer .totals__subtotal, 
+#your-shopping-cart .cart__footer .totals__subtotal-value {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.563;
+  letter-spacing: 0;
+}
+
+.cart__ctas + .totals {
+  margin-top: 2rem;
+}
+
+@media all and (min-width: 750px) {
+  .totals {
+    justify-content: flex-end;
+  }
+}

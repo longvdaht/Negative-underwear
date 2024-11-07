@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "main-collection-product-grid-plus",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

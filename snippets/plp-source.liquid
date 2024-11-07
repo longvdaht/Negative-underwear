@@ -1,0 +1,26 @@
+<div id="pdp_source">
+  {% assign selected_variant = currentVariant %}
+  {% if product.selected_variant.id != blank %}
+    {% assign selected_variant = product.selected_variant %}
+  {% endif %}
+  {% assign quantity_option = product.options_by_name['Quantity'].values.size %}
+  {% assign sourceValue = ' ' %} 
+  {%- for option in product.options_with_values -%}
+     {% if option.name == 'Quantity' and selected_variant.options[forloop.index0] contains 'Pack' %}
+      {% assign sourceValue = 'pdp_twopackbutton'%} 
+    {% endif %}
+  {%- endfor -%}
+
+  {%- liquid 
+    assign productTitle = product.title | split: " in " | first
+    for item in cart.items
+      assign itemTitle = item.title | split: " in " | first 
+      if itemTitle == productTitle and sourceValue != 'pdp_twopackbutton'
+        assign sourceValue = 'pdp_singleunit'
+      endif
+    endfor
+  -%} 
+  {% if quantity_option > 1 or sourceValue != '' %}
+    <input type="hidden" name="properties[_pack_creation_method]" value="{{ sourceValue }}"  >
+  {% endif %}
+</div>

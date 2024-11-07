@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "88ecb453-bbe1-40ba-a0f5-c4e750d58712": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".c-headerText-title {text-align: center;}",
+        "h1 {color: #ff000000;}",
+        ".c-headerText-subtitle {text-align: center;}",
+        ".c-okeReferralsApp .c-formItem {margin-bottom: 24px; text-align: center;}"
+      ],
+      "settings": {
+        "custom_liquid": "<header class=\"section-header text-center\">\n  <h1>.<\/h1>\n<\/header>\n\n<div class=\"rte rte--nomargin rte--indented-images\">\n  <div data-oke-referrals-widget><\/div>\n<\/div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "88ecb453-bbe1-40ba-a0f5-c4e750d58712"
+  ]
+}

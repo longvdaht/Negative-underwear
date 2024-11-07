@@ -1,0 +1,25 @@
+{% comment %}
+Responsive product images with srcset.
+{% endcomment %}
+
+{% assign default_default_size = "medium" %}
+{% assign default_sizes = "25vw" %}
+
+{% if default_size == nil %}{% assign default_size = default_default_size %}{% endif %}
+{% if sizes == nil %}{% assign sizes = default_sizes %}{% endif %}
+<!-- reponsive-product-image-smaller -->
+<img 
+	src="{{ image.src | product_img_url: 'thumb' }}"
+	data-src="{{ image.src | product_img_url: default_size }}"
+	srcset="{{ image.src | product_img_url: 'small' }} 50w,
+		{{ image.src | product_img_url: 'compact' }} 80w,
+		{{ image.src | product_img_url: 'medium' }} 120w,
+		{{ image.src | product_img_url: 'large' }} 240w,
+		{{ image.src | product_img_url: 'grande' }} 300w"
+	sizes="{{ sizes }}"
+	width="{{ image.width }}" height="{{ image.height }}"
+	data-js-responsive="true"
+	loading="lazy"
+	alt="{{ product.title }}{% if attributes contains 'alt' %} (alternate view){% endif %}"
+	{% if attributes != nil %}{{ attributes }}{% endif %}
+/>

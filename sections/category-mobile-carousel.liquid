@@ -1,0 +1,136 @@
+{%- if section.blocks.size -%}
+
+    <section id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="collection-carousel" class="main-carousel hide">
+
+        <div class="swiper collection_carousel">
+            <div class="swiper-wrapper">
+
+                {%- for block in section.blocks -%}
+                    {%- if block.settings.image != blank -%}
+                        <a href="{{block.settings.link}}" class="collection_carousel-container swiper-slide">
+                            <figure class="collection_carousel-container-image">
+                                {{ block.settings.image | image_url: width: 100 | image_tag:
+                                    class: 'collection_carousel__image',
+                                    height: 'auto', loading: 'lazy'
+                                }}
+                            </figure>
+                            <h2 class="collection_carousel-container-title">{{block.settings.title }}</h2>
+                        </a>
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sliderContainer = document.querySelector('.main-carousel');
+        if (sliderContainer && !sliderContainer?.classList?.contains('hide')) {
+          const header = document.querySelector('.section-header-collection .h1');
+            if (header) {
+                header.style.paddingTop = '10px';
+            }
+          }
+        
+          new Swiper('.swiper.collection_carousel', {
+              direction: 'horizontal',
+              autoHeight: false,
+              slidesPerView: 'auto',
+              spaceBetween: 18
+          });
+        });
+    </script>
+
+    <style>
+        .main-carousel.hide {
+            display: none;
+        }
+        .collection_carousel {
+            display: block;
+            overflow-x: hidden;
+            padding: 0 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+        .collection_carousel figure {
+            padding: 0;
+            margin: 0;
+        }
+        .collection_carousel-container {
+            max-width: 64px;
+            height: 63px;
+            margin-bottom: 2rem;
+        }
+        .collection_carousel-container-image {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .collection_carousel__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .collection_carousel-container-title {
+            color: #000;
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 12px;
+            margin-bottom: 0;
+        }
+        @media screen and (min-width: 768px) {
+            .collection_carousel {
+            }
+            .collection_carousel {
+                display: none;
+            }
+        }
+        @media screen and (min-width:590px) {
+            .collection_carousel {
+                margin-top: 4.8rem
+            }
+        }
+    </style>
+{%- endif -%}
+{% schema %}
+{
+    "name": "Collection carousel",
+    "max_blocks": 18,
+    "blocks": [
+    {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image",
+                "info": "1120 x 1200px .jpg recommended"
+            }, 
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading",
+                "default": "Collection name"
+            }, 
+            {
+                "type": "url",
+                "id": "link",
+                "label": "link"
+            }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "category": "Collection",
+            "name": "Collection carousel",
+            "settings": {}
+        }
+    ]
+}
+{% endschema %}

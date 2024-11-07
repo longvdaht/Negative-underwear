@@ -1,0 +1,108 @@
+{
+  "sections": {
+    "motherhood-heading": {
+      "type": "motherhood-heading",
+      "settings": {
+      }
+    },
+    "motherhood": {
+      "type": "motherhood",
+      "blocks": {
+        "1588965552901": {
+          "type": "stage",
+          "settings": {
+            "title": "Pregnancy",
+            "timeline-title": "Pregnancy",
+            "bra-family-description": "Key words: super soft + stretchy. Pieces that feel like heaven on the skin and flex with a changing body.",
+            "section-style": "collection",
+            "block-collection": "pregnancy",
+            "quote": "",
+            "quoted": ""
+          }
+        },
+        "1588965579069": {
+          "type": "stage",
+          "settings": {
+            "title": "Gifts",
+            "timeline-title": "Gifts",
+            "bra-family-description": "For a baby shower (or a gift to self), if anyone is deserving of useful luxuries, it's a new mom.",
+            "section-style": "collection",
+            "block-collection": "gifts-1",
+            "quote": "",
+            "quoted": ""
+          }
+        },
+        "1590780323479": {
+          "type": "stage",
+          "settings": {
+            "title": "On Pregnancy",
+            "timeline-title": "",
+            "bra-family-description": "",
+            "section-style": "quote",
+            "block-collection": "",
+            "quote": "The human body is truly an incredible thing. Before my pregnancies and delivering my babies, I did not appreciate what my body was capable of. I now have a deep respect and awareness for how strong and resilient my body is.",
+            "quoted": "Lauren Schwab,<br>\nNegative Co-Founder",
+            "quote-img-1": "shopify:\/\/shop_images\/Lauren_01.jpg",
+            "quote-img-2": "shopify:\/\/shop_images\/Lauren_02-B.jpg",
+            "quote-img-3": "shopify:\/\/shop_images\/Lauren_03.jpg"
+          }
+        },
+        "1588965606093": {
+          "type": "stage",
+          "settings": {
+            "title": "Newborn",
+            "timeline-title": "Newborn",
+            "bra-family-description": "A messy moment for sure, but full of love. Pieces designed for nursing, sleeping, recovering, washing, repeating.",
+            "section-style": "collection",
+            "block-collection": "newborn",
+            "quote": "",
+            "quoted": ""
+          }
+        },
+        "1588965630020": {
+          "type": "stage",
+          "settings": {
+            "title": "#momlife",
+            "timeline-title": "#momlife",
+            "bra-family-description": "Feeling like your (new) self again. Everyday, go-to staples that make you feel pulled together as everything else evolves.",
+            "section-style": "collection",
+            "block-collection": "momlife",
+            "quote": "",
+            "quoted": ""
+          }
+        },
+        "1590781110444": {
+          "type": "stage",
+          "settings": {
+            "title": "On #Momlife",
+            "timeline-title": "",
+            "bra-family-description": "",
+            "section-style": "quote",
+            "block-collection": "",
+            "quote": "Becoming a mama is empowering, all-encompassing, overwhelming, eye-opening and heart-bursting - all at once. It's an impossible juggle. It's also falling in love every day.",
+            "quoted": "Marissa Vosper,<br>\nNegative Co-Founder",
+            "quote-img-1": "shopify:\/\/shop_images\/Marissa_01-B.jpg",
+            "quote-img-2": "shopify:\/\/shop_images\/Marissa_02.jpg",
+            "quote-img-3": "shopify:\/\/shop_images\/Marissa_03.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "1588965552901",
+        "1588965579069",
+        "1590780323479",
+        "1588965606093",
+        "1588965630020",
+        "1590781110444"
+      ],
+      "settings": {
+        "footer-image": "shopify:\/\/shop_images\/motherhood-ugc-grid.jpg",
+        "footer-headline": "Some mamas we love, in Negative"
+      }
+    }
+  },
+  "order": [
+    "motherhood-heading",
+    "motherhood"
+  ]
+}

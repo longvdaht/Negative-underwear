@@ -1,0 +1,147 @@
+.section-feedback {
+    display: block;
+    width: 100%;
+    margin: 30px auto;
+    max-width: 1280px;
+    text-align: center;
+}
+
+.section-feedback .feedback-media {
+    text-align: center;
+}
+
+.section-feedback h2 {
+    font-weight: 400;
+    text-transform: none;
+    font-size: 24px;
+    line-height: 1.1em;
+    letter-spacing: .02em;
+    color: #000;
+    display: block;
+    margin: 30px;
+}
+
+.section-feedback img {
+    width: 100%;
+    max-width: 66.666%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.section-feedback h2 b, .section-feedback h2 del {
+    display: inline-block;
+    line-height: 0;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0 0.1em;
+}
+
+.section-feedback h2 del {
+    border-bottom: 0.07em solid #000;
+}
+
+@media screen and (min-width: 591px) {
+    .section-feedback img {
+        max-width: 384px;
+    }
+}
+
+.section-quotes {
+    overflow: hidden;
+}
+
+.section-quotes .quotes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.section-quotes .quote {
+    width: 50%;
+    padding: 15px;
+    text-align: center;
+}
+
+.section-quotes .quote .hide {
+    display: none;
+}
+
+.section-quotes .quote blockquote {
+    font-size: 14px;
+    padding: 15px;
+    line-height: 1.385;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    border: none;
+    font-style: normal;
+}
+
+.section-quotes .quote img {
+    max-width: 45%;
+    margin: 0 auto;
+    height: auto;
+}
+
+.section--quotes .quote img.who-what-wear {
+    max-width: 60%;
+}
+
+@media screen and (min-width: 768px) {
+    .section-feedback {
+        margin: 60px auto;
+    }
+
+    .section-feedback h2 {
+        font-size: 30px;
+    }
+
+    .section-quotes .quote {
+        padding: 30px 60px;
+    }
+
+    .section-quotes .quote blockquote {
+        font-size: 18px;
+        padding: 15px 30px 15px;
+    }
+
+    .section-quotes .quote img {
+        max-width: 30%;
+    }
+}
+
+.section-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 30px auto;
+    max-width: 1280px;
+}
+
+.section-button a {
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 12px;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background-color: #222;
+    color: #fff;
+    transition: background-color .4s ease-out;
+    width: fit-content;
+}
+
+.section-button a:hover {
+    transition: background-color .15s ease-out;
+    background-color: #414141;
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .section-button {
+        margin: 60px auto;
+    }
+}

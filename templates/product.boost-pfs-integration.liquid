@@ -1,0 +1,26 @@
+{% layout none %}
+	{% assign productTitle = product.title | replace: " and in ", " and " %}
+	{% assign productFamily = productTitle | split: " in " | first | handleize | remove: '-0' %}
+	{% liquid
+		assign productsInFamily = 0
+		if product.vendor contains "Last Chance"
+			assign isLastChance = true
+		else
+			assign isLastChance = false
+		endif
+
+		for prod in collections[productFamily].products
+			if prod.vendor contains "Last Chance"
+				if isLastChance
+					assign productsInFamily = productsInFamily | plus: 1
+				endif
+			else
+				if isLastChance == false
+					assign productsInFamily = productsInFamily | plus: 1
+				endif
+			endif
+		endfor
+	%}
+	{% if productsInFamily > 1 %}
+		<div class="products-in-family">Available in {{ productsInFamily }} colors</div>
+{% endif %}

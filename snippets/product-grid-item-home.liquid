@@ -1,0 +1,336 @@
+<!-- /snippets/product-grid-item-home.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+{% endcomment %}
+
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'small--one-half large--one-third medium--one-half' %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+	{% unless product.selected_or_first_available_variant.title contains "Pack" or product.title contains "Pack" %}
+		{% assign on_sale = true %}
+	{% endunless %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available or product.title contains "Pack" %}
+	{% assign sold_out = false %}
+{% endif %}
+
+<div class="grid__item grid-product {{ grid_item_width }} product-grid-item-liquid{% for t in product.tags %}{% if t contains "show" %} {{ t | handleize }}{% endif %}{% endfor %}">
+	<a href="{{ product.url | within: collection }}">
+		<span class="grid-product__image-wrapper">
+			{% assign showedSaleTagAlready = false %}			
+			{% for tag in product.tags %}
+				{% assign t = tag | handleize %}
+				{% if t == "warehouse-sale" and on_sale %}
+					{% assign showedSaleTagAlready = true %}
+					<div class="saletag"><a href="/collections/warehouse-sale/">Warehouse Sale</a></div>
+				{% endif %}
+				{% if t == "limited" %}
+					<div class="saletag limited">Limited Edition</div>
+				{% endif %}
+				{% if t == "show-sale-sticker" %}
+					{% assign on_sale = true %}
+				{% endif %}
+			{% endfor %}
+
+			{% unless product.title contains 'Gift Card' or product.title contains "Pack" %}
+				{% assign qty = 0 %}
+				{% for variant in product.variants %}
+					{% if variant.inventory_quantity > 0 %}
+						{% comment %}<!--  + {{ variant.inventory_quantity }} -->{% endcomment %}
+						{% assign qty = qty | plus: variant.inventory_quantity %}
+					{% endif %}
+				{% endfor %}
+				{% comment %}<!-- QTY: {{ qty }} -->{% endcomment %}
+
+   {% if current_variant.available and current_variant.inventory_quantity <= 0 %}
+						<div class="saletag sold-out">Sold Out</div>
+				{% elsif qty < settings.low_stock_threshold %}
+					<div class="saletag almost-sold-out qty-{{ qty }}">Only a few left!</div>
+				{% endif %}
+			{% endunless %}
+			{% unless showedSaleTagAlready %}
+				{% if on_sale %}
+					<div class="saletag"></div>
+				{% endif %}
+			{% endunless %}
+			
+			<span class="grid-product__image-link">
+				{% if imageSize == "smaller" %}
+					{% render 'responsive-product-image-smaller',
+						image: product.images[0],
+						sizes: '(max-width: 480px) 30vw, (min-width: 481px) and (max-width: 768px) 30vw, 25vw',
+						attributes: 'class="grid-product__image default lazyload"' 
+					%}
+					{% render 'responsive-product-image-smaller-alt',
+						image: product.images[1],
+						sizes: '(max-width: 480px) 30vw, (min-width: 481px) and (max-width: 768px) 30vw, 25vw',
+						attributes: 'class="grid-product__image alt lazyload"' 
+					%}
+				{% else %}
+					{% render 'responsive-product-image',
+						image: product.images[0],
+						sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+						attributes: 'class="grid-product__image default lazyload"' 
+					%}
+					{% render 'responsive-product-image-alt',
+						image: product.images[1],
+						sizes: '(max-width: 480px) 60vw, (min-width: 481px) and (max-width: 768px) 60vw, 50vw',
+						attributes: 'class="grid-product__image alt lazyload"' 
+					%}
+				{% endif %}
+			</span>
+		</span>
+		<span class="grid-product__meta{% if on_sale %} on-sale{% endif %}">
+			<span class="grid-product__title">{{ product.title }}{% if product.title contains "Swim" %} &#x1F334;{% endif %}</span>
+			<span class="grid-product__price{% if on_sale %} onsale{% endif %}">
+				{% if product.price_varies %}
+					<!-- varies -->
+					{% if on_sale and product.title contains "Pack" %}
+						 <span class="visually-hidden">Original price: </span>
+						<s>{% if localization.country.iso_code == 'CA' %}CA{% endif %}{{ product.compare_at_price_min | money_without_trailing_zeros }}</s> <span class="visually-hidden">Discounted price: </span>
+					{% endif %}
+				{% if localization.country.iso_code == 'CA' %}CA{% endif %}	{{ product.price_min | money_without_trailing_zeros }}
+					<span class="icon-fallback-text">
+						<span class="icon icon-plus grid-product__price-min" aria-hidden="true"></span>
+						<span class="fallback-text">+</span>
+					</span>
+				{% else %}
+					<!-- not varies -->
+					{% if on_sale and product.title contains "Pack" %}
+						 <span class="visually-hidden">Original price: </span><s>{% if localization.country.iso_code == 'CA' %}CA{% endif %}{{ product.compare_at_price_max | money_without_trailing_zeros }}</s> <span class="visually-hidden">Discounted price: </span>
+					{% endif %}
+					<span class="price">{% if localization.country.iso_code == 'CA' %}CA{% endif %}{{ product.price | money_without_trailing_zeros }}</span>
+				{% endif %}
+			</span>
+		</span>
+	</a>
+	<div class="review-summary text-left">
+        {% render 'okendo-reviews-product-rating-summary', product: product %}
+	</div>
+	<div class="swatches otherColors template-product">
+		
+		{% assign availableSwatchHTML = "" %}
+		{% assign soldoutSwatchHTML = "" %}
+		{% assign productTitle = product.title | replace: " and in ", " and " %}
+		{% assign productFamily = productTitle | split: " in " | first | handleize | remove: '-0' %}
+		{% if product.title contains "Pack" %}
+			{% assign productFamily = productFamily | append: "-pack" %}
+		{% endif %}
+		{% assign productsInFamily = collections[productFamily].products.size %}
+
+		{% if productsInFamily > 1 %}		
+			{% for prod in collections[productFamily].products %}
+				{% comment %}<!--    prod.handle: {{ prod.handle }} -->{% endcomment %}
+				{% assign handle = prod.handle | replace: '-', ' ' | split: ' ' %}
+				{% comment %}<!--    handle: {{ handle }} -->{% endcomment %}
+
+				{% if prod.handle contains 'black-buff-buff-black' %}
+					{% assign color = 'black-buff-buff-black' %}
+				{% elsif prod.handle contains 'buff-black-buff-buff-white' %}
+					{% assign color = 'buff-black-buff-buff-white' %}									
+				{% elsif prod.handle contains 'black-buff-haze' %}
+					{% assign color = 'black-buff-haze' %}
+				{% elsif prod.handle contains 'black-buff-coral' %}
+					{% assign color = 'black-buff-coral' %}
+				{% elsif prod.handle contains 'black-buff-moon' %}
+					{% assign color = 'black-buff-moon' %}
+				{% elsif prod.handle contains 'black-buff-peach-haze' %}
+					{% assign color = 'black-buff-peach-haze' %}
+				{% elsif prod.handle contains 'black-buff-peach' %}
+					{% assign color = 'black-buff-peach' %}
+				{% elsif prod.handle contains 'black-buff-slate' %}
+					{% assign color = 'black-buff-slate' %}
+				{% elsif prod.handle contains 'black-buff-white' %}
+					{% assign color = 'black-buff-white' %}
+				{% elsif prod.handle contains 'black-buff' %}
+					{% assign color = 'black-buff' %}
+				{% elsif prod.handle contains 'black-essaouira' %}
+					{% assign color = 'black-essaouira' %}
+				{% elsif prod.handle contains 'black-haze-moon' %}
+					{% assign color = 'black-haze-moon' %}
+				{% elsif prod.handle contains 'black-marble' %}
+					{% assign color = 'black-marble' %}
+				{% elsif prod.handle contains 'black-off-white' %}
+					{% assign color = 'black-offwhite' %}
+				{% elsif prod.handle contains 'black-peach-slate' %}
+					{% assign color = 'black-peach-slate' %}
+				{% elsif prod.handle contains 'black-slate' %}
+					{% assign color = 'black-slate' %}
+				{% elsif prod.handle contains 'black-white-buff' %}
+					{% assign color = 'black-white-buff' %}
+				{% elsif prod.handle contains 'black-white-moon' %}
+					{% assign color = 'black-white-moon' %}
+				{% elsif prod.handle contains 'black-white-heather-grey' %}
+					{% assign color = 'black-white-grey' %}
+				{% elsif prod.handle contains 'black-white' %}
+					{% assign color = 'black-white' %}
+					
+				{% elsif prod.handle contains 'buff-boa' %}
+					{% assign color = 'buff-boa' %}
+				{% elsif prod.handle contains 'buff-blacktrim' or prod.handle contains 'buff-black' %}
+					{% assign color = 'buff-blacktrim' %}
+				{% elsif prod.handle contains 'buff-coral' %}
+					{% assign color = 'buff-coral' %}
+				{% elsif prod.handle contains 'buff-essaouira' %}
+					{% assign color = 'buff-essaouira' %}
+				{% elsif prod.handle contains 'buff-haze-peach' %}
+					{% assign color = 'buff-haze-peach' %}
+				{% elsif prod.handle contains 'cherry-buff-white' %}
+					{% assign color = 'cherry-buff-white' %}
+				{% elsif prod.handle contains 'coral-buff-white' %}
+					{% assign color = 'coral-buff-white' %}
+				{% elsif prod.handle contains 'buff-white' %}
+					{% if prod.handle contains "pack" %}
+						{% assign color = 'buff-white-stripe' %}
+					{% else %}
+						{% assign color = 'buff-whitetrim' %}
+					{% endif %}
+				{% elsif prod.handle contains 'buff-off-white' %}
+					{% assign color = 'buff-offwhite' %}
+					
+				{% elsif prod.handle contains 'coral-haze-moon' %}
+					{% assign color = 'coral-haze-moon' %}
+				{% elsif prod.handle contains 'cherry-coral-peach' %}
+					{% assign color = 'cherry-coral-peach' %}
+				{% elsif prod.handle contains 'coral-peach' %}
+					{% assign color = 'coral-peach' %}
+				{% elsif prod.handle contains 'coral-white' %}
+					{% assign color = 'coral-white' %}
+					
+				{% elsif prod.handle contains 'glacier-stripe' %}
+					{% assign color = 'glacier-stripe' %}
+
+				{% elsif prod.handle contains 'haze-blacktrim' or prod.handle contains 'haze-black' %}
+					{% assign color = 'haze-blacktrim' %}
+
+				{% elsif prod.handle contains 'heather-grey-white' %}
+					{% assign color = 'heather-grey-white' %}
+					
+				{% elsif prod.handle contains 'moon-colorblock' %}
+					{% assign color = 'moon-colorblock' %}
+				{% elsif prod.handle contains 'moon-metallic' %}
+					{% assign color = 'moon-metallic' %}
+				{% elsif prod.handle contains 'moon-black' %}
+					{% assign color = 'moon-black' %}
+
+				{% elsif prod.handle contains 'navy-white' %}
+					{% assign color = 'navy-white' %}
+				{% elsif prod.handle contains 'navy-cosmos' %}
+					{% assign color = 'navy-cosmos' %}
+				{% elsif prod.handle contains 'navy-moon' %}
+					{% if prod.handle contains "pack" %}
+						{% assign color = 'navy-moon-stripe' %}
+					{% else %}
+						{% assign color = 'navy-moon' %}
+					{% endif %}
+				{% elsif prod.handle contains 'navy-slate-peach' %}
+					{% assign color = 'navy-slate-peach' %}
+
+				{% elsif prod.handle contains 'off-white-black' %}
+					{% assign color = 'offwhite-black' %}
+
+				{% elsif prod.handle contains 'peach-essaouira' %}
+					{% assign color = 'peach-essaouira' %}
+				{% elsif prod.handle contains 'peach-coral' %}
+					{% assign color = 'peach-coral' %}
+				{% elsif prod.handle contains 'peach-blacktrim' or prod.handle contains 'peach-black' %}
+					{% assign color = 'peach-blacktrim' %}
+				{% elsif prod.handle contains 'peach-haze-slate' %}
+					{% assign color = 'peach-haze-slate' %}
+				{% elsif prod.handle contains 'peach-haze-moon' %}
+					{% assign color = 'peach-haze-moon' %}
+				{% elsif prod.handle contains 'peach-moire' %}
+					{% assign color = 'peach-moire' %}
+
+				{% elsif prod.handle contains 'slate-moire' %}
+					{% assign color = 'slate-moire' %}
+
+				{% elsif prod.handle contains 'white-cherries' %}
+					{% assign color = 'white-cherries' %}
+				{% elsif prod.handle contains 'white-feel' %}
+					{% assign color = 'white-feel-good' %}
+				{% elsif prod.handle contains 'white-boa' %}
+					{% assign color = 'white-boa' %}
+				{% elsif prod.handle contains 'white-cosmos' %}
+					{% assign color = 'white-cosmos' %}
+				{% elsif prod.handle contains 'white-peach' %}
+					{% assign color = 'white-peach' %}
+				{% elsif prod.handle contains 'white-heather-grey' %}
+					{% assign color = 'white-heather-grey' %}
+				{% elsif prod.handle contains 'white-essaouira' %}
+					{% assign color = 'white-essaouira' %}
+
+				{% else %}
+					{% assign color = handle.first %}
+				{% endif %}
+				<!-- color: {{ color }} -->
+
+
+				{% assign productHandle = prod.handle | replace: 'lined-sieve', 'lined-sve' %}
+
+				{% assign tempHandle = prod.handle | replace: 'buff-black', 'buff-blk' | replace: 'peach-black', 'peach-blk' | replace: 'haze-black', 'haze-blk' | replace: 'lined-sieve', 'lined-sve' %}
+				
+				{% assign swatchColor = prod.title | split: " in " | last | remove: ' - Final Sale' | escape %}
+
+				{% comment %}<!-- swatchColor: {{ swatchColor }}. available? {{ prod.available }} -->{% endcomment %}
+				{% if prod.available %}
+					{% comment %}<!-- prod.title compared to title? {{ prod.title }} vs. {{ title }} -->{% endcomment %}
+					{% assign availableSwatchHTML = availableSwatchHTML 
+						| append: '<a href="/collections/all/products/' | append: prod.handle 
+						| append: '" title="' 
+						| append: prod.title 
+						| append: '" class="swatch-holder '
+						| append: color %}
+					{% if prod.title == product.title %}
+						{% assign availableSwatchHTML = availableSwatchHTML | append: ' current' %}
+					{% endif %}
+					{% assign availableSwatchHTML = availableSwatchHTML | append: '">' %}
+
+					{% assign tempcolor = '-' | append: color | append: '--' %}
+
+					{% comment %}<!-- does {{ potentialNewColor }} contain {{ tempcolor }}? -->{% endcomment %}
+					{% if potentialNewColor contains tempcolor %}
+						{% assign availableSwatchHTML = availableSwatchHTML | append: '<span class="new-swatch">NEW</span>' %}
+					{% endif %}
+					{% assign availableSwatchHTML = availableSwatchHTML | append: '<span class="swatch product-' | append: color | append: '" data-color="' | append: swatchColor | append: '" aria-hidden="true">' | append: swatchColor | append: '</span></a>' %}
+				{% else %}	
+					{% assign soldoutSwatchHTML = soldoutSwatchHTML | append: '<a href="/collections/all/products/' | append: prod.handle  | append: '" title="' | append: prod.title  | append: '" class="swatch-holder' %}
+
+					{% if prod.title == product.title %}
+						{% assign soldoutSwatchHTML = soldoutSwatchHTML | append: ' current' %}
+					{% endif %}
+
+					{% assign soldoutSwatchHTML = soldoutSwatchHTML | append: '"><span class="swatch product-' | append: color | append: ' soldout" data-color="' | append: swatchColor | append: '" aria-hidden="true">' | append: swatchColor | append: '</span></a>' %}
+				{% endif %}
+
+			{% endfor %}
+
+			<div class="swatchgroup">{{ availableSwatchHTML }}{{ soldoutSwatchHTML }}</div>
+
+		{% endif %}
+
+		{% comment %}<!-- end available colors -->{% endcomment %}
+	
+		{% if newColorSoon != false and potentialNewColor.size < 1 %}
+			{% comment %}<!-- how long is that potentialNewColor? {{ potentialNewColor.size }} -->{% endcomment %}
+			<a href="javascript:void(0)" title="New color launching soon!" class="swatch-holder soon"><span class="swatch product-soon" data-color="New color launching soon!">New color launching soon!</span></a>
+		{% endif %}
+
+		
+	</div>
+</div>

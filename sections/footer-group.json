@@ -1,0 +1,25 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "menu": "footer",
+        "newsletter_enable": true,
+        "newsletter_heading": "We write cute emails too.",
+        "newsletter_description": "No spam, we swear.",
+        "newsletter_text_sign_up": "",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "payment_enable": false,
+        "show_policy": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

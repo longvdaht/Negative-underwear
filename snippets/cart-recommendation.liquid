@@ -1,0 +1,25 @@
+{% assign featureCollection = settings.cart_drawer_collection %}
+<div class="cart-feature_collection">
+	{% if settings.cart_collection_title != blank %}
+	<h3>{{ settings.cart_collection_title }}</h3>
+	{% else %}
+	<h3>{{ featureCollection.title }}</h3>
+	{% endif %}
+	<div class='feature_collection-wrapper'>
+	{% for product in featureCollection.products limit: 10 %}
+		<div class='product-wrapper {% if forloop.length <= 3 %}one-third{% endif %}'>
+		<a href='{{ product.url }}'>
+			<img src="{{ product.featured_image | img_url: 'master' }}" width='85' height='120'>
+			<p>{{ product.title }}</p>
+			<p>{{ product.price | money }}</p>
+		</a>
+		<select>
+			{% for variant in product.variants %}
+				<option value="{{ variant.id }}">{{ variant.title }}</option>
+			{% endfor %}
+		</select>
+		<button type="button" class="button btn--secondary">Add To Cart</button>
+		</div>
+	{% endfor %}
+	</div>
+</div>

@@ -1,0 +1,269 @@
+{
+  "sections": {
+    "main-title": {
+      "type": "main-page-title",
+      "settings": {
+      }
+    },
+    "news": {
+      "type": "article-press-news",
+      "blocks": {
+        "947ca8d8-e273-492c-a4df-426815de13be": {
+          "type": "news_block_large",
+          "settings": {
+            "heading": "Best Comfortable Lingerie <br>\nBEST OF NEW YORK - NYMAG 2015",
+            "news_description": "When downtown gals Lauren Schwab and Marissa Vosper realized there weren't great options for everyday lingerie - as comfortable and cool-looking as their Alexander Wang tees - they spent a year trying on undergarments in fitting rooms across the city and surveying thousands of women. The result is four simple styles produced with premium-quality cotton and nylon elastane sourced from Belgium and the U.S. The sizes cover the typical 32A-to-36D range ($70 to $85), with non-wire bras, high-waisted briefs, and a seamless line on the horizon.",
+            "insert_br_after_new_description": false,
+            "news_image": "shopify:\/\/shop_images\/NewYork.png",
+            "width_news_image": 200
+          }
+        },
+        "a1d8f214-633f-431c-a7ab-a1dac32cb189": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "This luxury lingerie brand is comfortable, sexy, and simple with fabric from the finest manufacturers, designed to impress without the frills.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/InStyle_b64e69b9-cda0-445c-b93b-0dba7e7384f9.png",
+            "width_image_logo": 170
+          }
+        },
+        "a7879a8b-a367-4f74-bc50-c772a7ba5f9a": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "The Best New Lingerie Labels to Shop Now: Negative Underwear are on our list of designers who are rethinking the intimates game from the inside out.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/vogue.png",
+            "width_image_logo": 155
+          }
+        }
+      },
+      "block_order": [
+        "947ca8d8-e273-492c-a4df-426815de13be",
+        "a1d8f214-633f-431c-a7ab-a1dac32cb189",
+        "a7879a8b-a367-4f74-bc50-c772a7ba5f9a"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "left"
+      }
+    },
+    "62aed0b4-17d6-4fb0-ab2b-be2c117ca1ad": {
+      "type": "article-press-news",
+      "blocks": {
+        "template--16060433760433__62aed0b4-17d6-4fb0-ab2b-be2c117ca1ad-16891310867fcca734-1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Negative focuses on comfortable, uncomplicated lingerie. Its everyday pieces are designed by women for women and appeal to the minimalist in us all.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/StyleCaster.png",
+            "width_image_logo": 200
+          }
+        },
+        "e56398fc-7e77-46ee-9087-8df6c7421273": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Preaching the mantra of \"Treat Yourself,\" Negative is underwear for the confident woman who doesn't need ostentatious adornments to distract from her innate allure. Negative is unlike anything on the market: sexy and comfortable.",
+            "insert_br_after_description": true,
+            "image": "shopify:\/\/shop_images\/logo-home.png",
+            "width_image_logo": 140
+          }
+        }
+      },
+      "block_order": [
+        "template--16060433760433__62aed0b4-17d6-4fb0-ab2b-be2c117ca1ad-16891310867fcca734-1",
+        "e56398fc-7e77-46ee-9087-8df6c7421273"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "left"
+      }
+    },
+    "118c842c-5989-4990-bc5e-eeb3814d224b": {
+      "type": "article-press-news",
+      "blocks": {
+        "template--16060433760433__118c842c-5989-4990-bc5e-eeb3814d224b-16891310867fcca734-0": {
+          "type": "news_block_large",
+          "settings": {
+            "heading": "Best New Online Shops - Negative Underwear,<br>\nBest Lingerie",
+            "news_description": "With the goal of making uncomplicated underwear for complicated people (that's you), Negative stripped down the concept of sexy lingerie to its basics to deliver on what you really want from your bras and panties — to feel awesome in your own skin. In less than a year, founders Marissa Vosper and Lauren Schwab achieved their goal in spades. Negative already has a list of devotees that includes Lucky EIC Eva Chen, Hannah Bronfman, and many an R29 editor obsessing over the label's perfect underpinnings.",
+            "insert_br_after_new_description": false,
+            "news_image": "shopify:\/\/shop_images\/r29-logo-condensed-b.svg",
+            "width_news_image": 205
+          }
+        },
+        "template--16060433760433__118c842c-5989-4990-bc5e-eeb3814d224b-16891310867fcca734-1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Challenging the status quo by building something better – uncomplicated, considered, minimal – that's what Negative is all about.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/elle.png",
+            "width_image_logo": 125
+          }
+        },
+        "812baed9-4206-4f4e-90be-ef810c2c590e": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Negative's collection is unique by focusing on the details and not compromising - resulting in comfortable, everyday styles that flatter with a luxurious, contemporary touch.",
+            "insert_br_after_description": true,
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2016-07-28_at_12.25.02_PM.png",
+            "width_image_logo": 125
+          }
+        }
+      },
+      "block_order": [
+        "template--16060433760433__118c842c-5989-4990-bc5e-eeb3814d224b-16891310867fcca734-0",
+        "template--16060433760433__118c842c-5989-4990-bc5e-eeb3814d224b-16891310867fcca734-1",
+        "812baed9-4206-4f4e-90be-ef810c2c590e"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "right"
+      }
+    },
+    "3e26c4b8-1e88-4439-a5c7-5645e114430c": {
+      "type": "article-press-news",
+      "blocks": {
+        "template--16060433760433__3e26c4b8-1e88-4439-a5c7-5645e114430c-16891310867fcca734-1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Negative empowers women in a unique way: by supporting body images. Its mission reads, \"In a world of pushed up and overdone, we're intentionally not.\"",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/huffington-post_55a975aa-8806-49f6-8451-26b8ae2df0bd.png",
+            "width_image_logo": 250
+          }
+        },
+        "b264ce9c-d1b7-4782-baff-ae478f5ca890": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Negative: underpinnings by two young women who get it, made for the woman who would rather go commando. The vibe is feminine, unprissy and cool.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/images.png",
+            "width_image_logo": 160
+          }
+        }
+      },
+      "block_order": [
+        "template--16060433760433__3e26c4b8-1e88-4439-a5c7-5645e114430c-16891310867fcca734-1",
+        "b264ce9c-d1b7-4782-baff-ae478f5ca890"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "left"
+      }
+    },
+    "f2218a46-46eb-47e7-9fe3-e8064f1d99b2": {
+      "type": "article-press-news",
+      "blocks": {
+        "template--16060433760433__f2218a46-46eb-47e7-9fe3-e8064f1d99b2-16891310867fcca734-0": {
+          "type": "news_block_large",
+          "settings": {
+            "heading": "Meet The Millennial Power Women<br>\nBehind Negative Underwear:",
+            "news_description": "Marissa Vosper and Lauren Schwab co-founded luxury online lingerie brand Negative Underwear, in 2014. The firm has gone from strength to strength... recently named the best comfortable lingerie label by New York Magazine. Creating and expanding a business from their own pockets and ideas was not easy. But the two founders did so through a real understanding of their market, and differentiation (intimate apparel that is comfortable, sexy and simple).",
+            "insert_br_after_new_description": false,
+            "news_image": "shopify:\/\/shop_images\/unspecified-8.jpg",
+            "width_news_image": 175
+          }
+        },
+        "template--16060433760433__f2218a46-46eb-47e7-9fe3-e8064f1d99b2-16891310867fcca734-1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Eva Chen named them one of her favorite brands. Gwyneth Paltrow asked them to come up with an exclusive for Goop. And Miley Cyrus was spotted wearing Negative's new bodysuit all over instagram.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/unspecified-11.jpg",
+            "width_image_logo": 200
+          }
+        },
+        "14cf1f7a-603c-4832-947f-9bf2423bfc1f": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Lingerie with Day to Night Appeal - bridging the space between functional and beautiful, Negative fills a gap. In a world of push-ups and pink, Negative goes back to basics.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/imgres.jpg",
+            "width_image_logo": 200
+          }
+        }
+      },
+      "block_order": [
+        "template--16060433760433__f2218a46-46eb-47e7-9fe3-e8064f1d99b2-16891310867fcca734-0",
+        "template--16060433760433__f2218a46-46eb-47e7-9fe3-e8064f1d99b2-16891310867fcca734-1",
+        "14cf1f7a-603c-4832-947f-9bf2423bfc1f"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "right"
+      }
+    },
+    "7c7433cd-7a9e-4b0e-9093-22d8ad9be8f5": {
+      "type": "article-press-news",
+      "blocks": {
+        "template--16060433760433__7c7433cd-7a9e-4b0e-9093-22d8ad9be8f5-16891310867fcca734-1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Negative is making a name for itself in the industry - standing out by offering comfortable, functional, quality lingerie. The message is clear: this is about what women want.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/unspecified-13.jpg",
+            "width_image_logo": 240
+          }
+        },
+        "3b2e6eba-95b8-445f-9e0d-56afd30601e1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "At Negative, lingerie never looked so cool. This line is based on the idea of a sexy minimalism: flattering cuts, uncomplicated details, classy prints and colors.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/nylon_large_0b3f1ff6-bd3b-4549-8118-c651eb5a2e21.jpg",
+            "width_image_logo": 140
+          }
+        }
+      },
+      "block_order": [
+        "template--16060433760433__7c7433cd-7a9e-4b0e-9093-22d8ad9be8f5-16891310867fcca734-1",
+        "3b2e6eba-95b8-445f-9e0d-56afd30601e1"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "left"
+      }
+    },
+    "70664488-b879-45cb-9500-b566e5db1f96": {
+      "type": "article-press-news",
+      "blocks": {
+        "template--16060433760433__70664488-b879-45cb-9500-b566e5db1f96-16891310867fcca734-1": {
+          "type": "news_block_small",
+          "settings": {
+            "description": "Upending the market with lingerie designed by women, for women - the result is Negative, whose goal is to sell confidence that isn't in the form of bows or push up pads.",
+            "insert_br_after_description": false,
+            "image": "shopify:\/\/shop_images\/unspecified-14.jpg",
+            "width_image_logo": 180
+          }
+        }
+      },
+      "block_order": [
+        "template--16060433760433__70664488-b879-45cb-9500-b566e5db1f96-16891310867fcca734-1"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "layout_block_news_large": "left"
+      }
+    },
+    "72cf75f6-366c-4775-a3fe-074bcfbad79b": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<hr><\/hr>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main-title",
+    "news",
+    "62aed0b4-17d6-4fb0-ab2b-be2c117ca1ad",
+    "118c842c-5989-4990-bc5e-eeb3814d224b",
+    "3e26c4b8-1e88-4439-a5c7-5645e114430c",
+    "f2218a46-46eb-47e7-9fe3-e8064f1d99b2",
+    "7c7433cd-7a9e-4b0e-9093-22d8ad9be8f5",
+    "70664488-b879-45cb-9500-b566e5db1f96",
+    "72cf75f6-366c-4775-a3fe-074bcfbad79b"
+  ]
+}

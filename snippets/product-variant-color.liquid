@@ -1,0 +1,407 @@
+<div class="product-single__params" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+  <meta itemprop="price" content="{{ product.selected_or_first_available_variant.price | money_without_currency }}" />
+  <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+  <meta itemprop="availability" content="https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}" />
+  {% unless product.type contains "Gift" %}
+    <div class="price-otherColors">
+      <div class="otherColors tighter">
+        <label class="available-colors small--text-center">Color{% unless is_sticky %}: {% if productColor.size > 0 %}&nbsp;<strong class="product-color text-capitalize">{{ productColor | remove: ' - 2 Pack' | remove: ' - 3 Pack' | remove: ' (Pack)' | remove: ' (2 Pack)' | remove: ' (3 Pack)' }}</strong>{% endif %} {% endunless %}</label>
+
+        <div class="swatches">
+          {% assign productsInFamily = collections[productFamily].products.size %}
+          <!-- product family: {{ productFamily }} products in collection? {{ productsInFamily }} -->
+
+          {% if productsInFamily > 0 %}
+            <!--  we have a collection! {{ collections[productFamily].products.size }} -->
+        
+            {% for prod in collections[productFamily].products %}
+              {% comment %}<!--    prod.handle: {{ prod.handle }} -->{% endcomment %}
+              {% assign handle = prod.handle | replace: '-', ' ' | split: ' ' %}
+              {% comment %}<!--    handle: {{ handle }} -->{% endcomment %}
+              
+              {% liquid
+                assign showIt = true
+                
+                if prod.vendor contains "Last Chance"
+                  assign showIt = false                     
+                endif
+                
+                if isLastChance
+                  if showIt == true
+                    assign showIt = false
+                  else
+                    assign showIt = true
+                  endif
+                endif
+              %}
+              {% if showIt %}
+              
+                {% liquid
+                  if prod.handle contains 'black-buff-buff-black'
+                    assign color = 'black-buff-buff-black'
+                  elsif prod.handle contains 'buff-black-buff-buff-white'
+                    assign color = 'buff-black-buff-buff-white'                 
+                  elsif prod.handle contains 'black-buff-haze'
+                    assign color = 'black-buff-haze'
+                  elsif prod.handle contains 'black-buff-coral'
+                    assign color = 'black-buff-coral'
+                  elsif prod.handle contains 'black-buff-moon'
+                    assign color = 'black-buff-moon'
+                  elsif prod.handle contains 'black-buff-peach-haze'
+                    assign color = 'black-buff-peach-haze'
+                  elsif prod.handle contains 'black-buff-peach'
+                    assign color = 'black-buff-peach'
+                  elsif prod.handle contains 'black-buff-slate'
+                    assign color = 'black-buff-slate'
+                  elsif prod.handle contains 'black-buff-white'
+                    assign color = 'black-buff-white'
+                  elsif prod.handle contains 'black-buff'
+                    assign color = 'black-buff'
+                  elsif prod.handle contains 'black-essaouira'
+                    assign color = 'black-essaouira'
+                  elsif prod.handle contains 'black-haze-moon'
+                    assign color = 'black-haze-moon'
+                  elsif prod.handle contains 'black-marble'
+                    assign color = 'black-marble'
+                  elsif prod.handle contains 'black-off-white'
+                    assign color = 'black-offwhite'
+                  elsif prod.handle contains 'black-peach-slate'
+                    assign color = 'black-peach-slate'
+                  elsif prod.handle contains 'black-slate'
+                    assign color = 'black-slate'
+                  elsif prod.handle contains 'black-white-buff'
+                    assign color = 'black-white-buff'
+                  elsif prod.handle contains 'black-white-moon'
+                    assign color = 'black-white-moon'
+                  elsif prod.handle contains 'black-white-heather-grey'
+                    assign color = 'black-white-grey'
+                  elsif prod.handle contains 'black-white'
+                    assign color = 'black-white'
+                
+                  elsif prod.handle contains 'buff-boa'
+                    assign color = 'buff-boa'
+                  elsif prod.handle contains 'buff-blacktrim' or prod.handle contains 'buff-black'
+                    assign color = 'buff-blacktrim'
+                  elsif prod.handle contains 'buff-coral'
+                    assign color = 'buff-coral'
+                  elsif prod.handle contains 'buff-essaouira'
+                    assign color = 'buff-essaouira'
+                  elsif prod.handle contains 'buff-haze-peach'
+                    assign color = 'buff-haze-peach'
+                  elsif prod.handle contains 'cherry-buff-white'
+                    assign color = 'cherry-buff-white'
+                  elsif prod.handle contains 'coral-buff-white'
+                    assign color = 'coral-buff-white'
+                  elsif prod.handle contains 'buff-white'
+                    if prod.handle contains "pack"
+                      assign color = 'buff-white-stripe'
+                    else
+                      assign color = 'buff-whitetrim'
+                    endif
+                  elsif prod.handle contains 'buff-off-white'
+                    assign color = 'buff-offwhite'
+
+                  elsif prod.handle contains 'cobalt-glacier'
+                    assign color = 'cobalt-glacier'
+                
+                  elsif prod.handle contains 'coral-haze-moon'
+                    assign color = 'coral-haze-moon'
+                  elsif prod.handle contains 'cherry-coral-peach'
+                    assign color = 'cherry-coral-peach'
+                  elsif prod.handle contains 'coral-peach'
+                    assign color = 'coral-peach'
+                  elsif prod.handle contains 'coral-white'
+                    assign color = 'coral-white'
+                
+                  elsif prod.handle contains 'glacier-stripe'
+                    assign color = 'glacier-stripe'
+
+                  elsif prod.handle contains 'haze-blacktrim' or prod.handle contains 'haze-black'
+                    assign color = 'haze-blacktrim'
+
+                  elsif prod.handle contains 'heather-grey-white'
+                    assign color = 'heather-grey-white'
+                
+                  elsif prod.handle contains 'lilac-essaouira'
+                    assign color = 'lilac-essaouira'
+
+                  elsif prod.handle contains 'moon-colorblock'
+                    assign color = 'moon-colorblock'
+                  elsif prod.handle contains 'moon-metallic'
+                    assign color = 'moon-metallic'
+                  elsif prod.handle contains 'moon-black'
+                    assign color = 'moon-black'
+
+                  elsif prod.handle contains 'navy-white'
+                    assign color = 'navy-white'
+                  elsif prod.handle contains 'navy-cosmos'
+                    assign color = 'navy-cosmos'
+                  elsif prod.handle contains 'navy-tie-dye'
+                    assign color = 'navy-tiedye'
+                  elsif prod.handle contains 'navy-moon'
+                    if prod.handle contains "pack"
+                      assign color = 'navy-moon-stripe'
+                    else
+                      assign color = 'navy-moon'
+                    endif
+                  elsif prod.handle contains 'navy-slate-peach'
+                    assign color = 'navy-slate-peach'
+
+                  elsif prod.handle contains 'off-white-black'
+                    assign color = 'offwhite-black'
+
+                  elsif prod.handle contains 'peach-essaouira'
+                    assign color = 'peach-essaouira'
+                  elsif prod.handle contains 'peach-coral'
+                    assign color = 'peach-coral'
+                  elsif prod.handle contains 'peach-blacktrim' or prod.handle contains 'peach-black'
+                    assign color = 'peach-blacktrim'
+                  elsif prod.handle contains 'peach-haze-slate'
+                    assign color = 'peach-haze-slate'
+                  elsif prod.handle contains 'peach-haze-moon'
+                    assign color = 'peach-haze-moon'
+                  elsif prod.handle contains 'peach-moire'
+                    assign color = 'peach-moire'
+
+                  elsif prod.handle contains 'slate-moire'
+                    assign color = 'slate-moire'
+
+                  elsif prod.handle contains 'white-cherries'
+                    assign color = 'white-cherries'
+                  elsif prod.handle contains 'white-feel'
+                    assign color = 'white-feel-good'
+                  elsif prod.handle contains 'white-boa'
+                    assign color = 'white-boa'
+                  elsif prod.handle contains 'white-cosmos'
+                    assign color = 'white-cosmos'
+                  elsif prod.handle contains 'white-peach'
+                    assign color = 'white-peach'
+                  elsif prod.handle contains 'white-heather-grey'
+                    assign color = 'white-heather-grey'
+                  elsif prod.handle contains 'white-essaouira'
+                    assign color = 'white-essaouira'
+
+                  else
+                    assign color = handle.first
+                  endif
+              
+                %}
+                <!-- color: {{ color }} -->
+
+                {% assign productHandle = prod.handle | replace: 'lined-sieve', 'lined-sve' %}
+
+                {% assign tempHandle = prod.handle | replace: 'buff-black', 'buff-blk' | replace: 'heather-grey-white', 'heather-grey-wht' | replace: 'navy-white', 'navy-wht' | replace: 'coral-white', 'coral-wht' | replace: 'moon-black', 'moon-blk' | replace: 'peach-black', 'peach-blk' | replace: 'haze-black', 'haze-blk' | replace: 'lined-sieve', 'lined-sve' %}
+          
+                {% assign prodTitle = prod.title | replace: " and in ", " and " %}
+                {% assign swatchColor = prodTitle | split: " in " | last | remove: ' - Final Sale' | remove: ' - 2 Pack' | remove: ' - 3 Pack' | remove: ' (Pack)' | remove: ' (2 Pack)' | remove: ' (3 Pack)' | escape %}
+
+                {% assign isCore = false %}
+                {% assign checkColor = "|" | append: swatchColor | append: "|" %}
+                {% assign isLimit = false %}
+                {% if limitColors contains checkColor %}
+                  {% assign isLimit = true %}
+                {% endif %}
+                {% comment %}
+                <!-- swatchColor: {{ swatchColor }}. available? {{ prod.available }} -->
+                <!-- prod.title compared to title? [{{ prod.title }}] vs. [{{ title }}] -->
+                {% endcomment %}
+              
+                {% if isLimit %}
+                  {% assign limitedSwatchHTML = limitedSwatchHTML 
+                    | append: '<a href="/collections/all/products/' | append: prod.handle 
+                    | append: '" title="' 
+                    | append: prod.title 
+                    | append: '" class="swatch-holder '
+                    | append: color %}
+                  {% if prod.title == product.title %}
+                    {% assign limitedSwatchHTML = limitedSwatchHTML | append: ' current" aria-selected="true' %}
+                  {% else %}
+                    {% assign limitedSwatchHTML = limitedSwatchHTML | append: '" aria-selected="false' %}
+                  {% endif %}
+                  {% assign limitedSwatchHTML = limitedSwatchHTML | append: '">' %}
+
+                  {% assign tempcolor = '-' | append: color | append: '--' %}
+                  {% if settings.show_sale_on_swatches %}
+                    {% comment %}<!-- check if it's on sale: {{ prod.first_available_variant.price }} vs. {{ prod.first_available_variant.compare_at_price }} -->{% endcomment %}
+                    {% unless prod.title contains "Pack" %}
+                      {% if prod.first_available_variant.compare_at_price > 0 and prod.first_available_variant.price < prod.first_available_variant.compare_at_price %}
+                        {% assign limitedSwatchHTML = limitedSwatchHTML | append: '<span class="new-swatch sale">SALE</span>' %}
+                      {% endif %}
+                    {% endunless %}
+                  {% else %}
+                    {% comment %}<!-- does {{ potentialNewColor }} contain {{ tempcolor }}? -->{% endcomment %}
+                    {% assign override = false %}
+                    {% if potentialNewColor contains "heather-grey-wht" and tempcolor contains "heather-grey-white" %}
+                      {% assign override = true %}
+                    {% elsif potentialNewColor contains "navy-wht" and tempcolor contains "navy-white" %}
+                      {% assign override = true %}
+                    {% elsif potentialNewColor contains "coral-wht" and tempcolor contains "coral-white" %}
+                      {% assign override = true %}
+                    {% endif %}
+                
+                    {% if potentialNewColor contains tempcolor or override %}
+                      {% assign limitedSwatchHTML = limitedSwatchHTML | append: '<span class="new-swatch">NEW</span>' %}
+                    {% endif %}
+                  {% endif %}
+                  {% assign limitedSwatchHTML = limitedSwatchHTML | append: '<span class="limited-color">Limited</span>' %}
+                  {% assign limitedSwatchHTML = limitedSwatchHTML | append: '<span class="swatch product-' | append: color %}
+                
+                  {% unless prod.available %}
+                    {% assign limitedSwatchHTML = limitedSwatchHTML | append: ' soldout' %}
+                  {% endunless %}
+
+                  {%- liquid 
+                    assign quantity_option = product.options_by_name['Quantity'].values.size
+                    assign has_single_available = false
+                    assign no_single_variant = false
+                    assign variantAvailable = prod.variants | where: 'available', true
+                    for variant in variantAvailable
+                      if variant.title contains 'Single'
+                        assign has_single_available = true
+                        break
+                      elsif variant.title contains '-Pack'
+                        assign has_single_available = false
+                      else
+                        assign no_single_variant = true
+                      endif
+                    endfor
+                    unless quantity_option <= 1
+                      unless no_single_variant 
+                        unless has_single_available
+                          assign coreSwatchHTML = coreSwatchHTML | append: ' soldout'
+                        endunless
+                      endunless
+                    endunless
+
+                    assign limitedSwatchHTML = limitedSwatchHTML | append: '" data-color="' | append: swatchColor | append: '">' | append: swatchColor | append: '</span></a>'
+                  -%}
+                
+                {% else %}
+                  {% assign coreSwatchHTML = coreSwatchHTML 
+                    | append: '<a href="/collections/all/products/' | append: prod.handle 
+                    | append: '" title="' 
+                    | append: prod.title 
+                    | append: '" class="swatch-holder '
+                    | append: color %}
+                  {% if prod.title == product.title %}
+                    {% assign coreSwatchHTML = coreSwatchHTML | append: ' current" aria-selected="true' %}
+                  {% else %}
+                    {% assign coreSwatchHTML = coreSwatchHTML | append: '" aria-selected="false' %}
+                  {% endif %}
+                  
+                  {% assign coreSwatchHTML = coreSwatchHTML | append: '">' %}
+
+                  {% assign tempcolor = '-' | append: color | append: '--' %}
+                  {% if settings.show_sale_on_swatches %}
+                    {% comment %}<!-- check if it's on sale: {{ prod.first_available_variant.price }} vs. {{ prod.first_available_variant.compare_at_price }} -->{% endcomment %}
+                    {% unless prod.title contains "Pack" %}
+                      {% if prod.first_available_variant.compare_at_price > 0 and prod.first_available_variant.price < prod.first_available_variant.compare_at_price %}
+                        {% assign coreSwatchHTML = coreSwatchHTML | append: '<span class="new-swatch sale">SALE</span>' %}
+                      {% endif %}
+                    {% endunless %}
+                  {% else %}
+                    {% comment %}<!-- does {{ potentialNewColor }} contain {{ tempcolor }}? -->{% endcomment %}
+                    {% assign override = false %}
+                    {% if potentialNewColor contains "heather-grey-wht" and tempcolor contains "heather-grey-white" %}
+                      {% assign override = true %}
+                    {% elsif potentialNewColor contains "navy-wht" and tempcolor contains "navy-white" %}
+                      {% assign override = true %}
+                    {% elsif potentialNewColor contains "coral-wht" and tempcolor contains "coral-white" %}
+                      {% assign override = true %}
+                    {% endif %}
+                
+                    {% if potentialNewColor contains tempcolor or override %}
+                      {% assign coreSwatchHTML = coreSwatchHTML | append: '<span class="new-swatch">NEW</span>' %}
+                    {% endif %}
+                  {% endif %}
+                  {% assign coreSwatchHTML = coreSwatchHTML | append: '<span class="swatch product-' | append: color %}
+                
+                  {% unless prod.available %}
+                    {% assign coreSwatchHTML = coreSwatchHTML | append: ' soldout' %}
+                  {% endunless %}
+
+                  {%- liquid 
+                    assign quantity_option = product.options_by_name['Quantity'].values.size
+                    assign has_single_available = false
+                    assign no_single_variant = false
+                    assign variantAvailable = prod.variants | where: 'available', true
+                    for variant in variantAvailable
+                      if variant.title contains 'Single'
+                        assign has_single_available = true
+                        break
+                      elsif variant.title contains '-Pack'
+                        assign has_single_available = false
+                      else
+                        assign no_single_variant = true
+                      endif
+                    endfor
+                    unless quantity_option <= 1
+                      unless no_single_variant 
+                        unless has_single_available
+                          assign coreSwatchHTML = coreSwatchHTML | append: ' soldout'
+                        endunless
+                      endunless
+                    endunless
+                    
+                  -%}
+                
+                  {% assign coreSwatchHTML = coreSwatchHTML | append: '" data-color="' | append: swatchColor | append: '">' | append: swatchColor | append: '</span></a>' %}
+                  
+                {% endif %}
+                
+              {% endif %}
+
+            {% endfor %}
+        
+        
+          {% else %}
+            <!-- there is no collection for this one. sad. -->
+        
+          {% endif %}    
+                 
+
+          <span class="swatchgroup swatches-core">{{ coreSwatchHTML }}</span>
+          {% if limitedSwatchHTML != blank %}
+            <span class="swatchgroup swatches-seasonal">{{ limitedSwatchHTML }}</span>
+          {% endif %}
+          
+          {% if newColorSoon != false and potentialNewColor.size < 1 %}
+            {% comment %}<!-- how long is that potentialNewColor? {{ potentialNewColor.size }} -->{% endcomment %}
+            <a href="javascript:void(0)" title="New color launching soon!" class="swatch-holder soon"><span class="swatch product-soon" data-color="New color launching soon!">New color launching soon!</span></a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  {% endunless %}
+  <div class="clearfix tagholder">
+    {% if isWarehouseSale %}
+      <div class="saletag"><a href="/collections/warehouse-sale/">Warehouse Sale</a></div>
+    {% endif %}
+
+    {% if productQty < settings.low_stock_threshold and productQty > 0 %}
+      <div class="saletag almost-sold-out">Only a few left!</div>
+    {% endif %}
+  </div>
+
+  {% liquid
+    assign onlyOneInEach = true
+    
+    for option in product.options_with_values
+      if option.values.size > 1
+        assign onlyOneInEach = false
+        break
+      endif
+    endfor
+  %}
+
+  {% if isRestock %}
+    {% if restockText contains "Never" or restockText contains "never" %}
+      {% assign restockText = "No restock planned for this item" %}
+      <script>
+        $('.extra-waitlist-btn').addClass('hide hide-always');
+      </script>
+    {% endif %}
+    <p class="restock">Planned restock: <strong>{{ restockText }}</strong></p>
+  {% endif %}
+</div>

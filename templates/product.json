@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "afb1e95c-e38b-418d-95c5-479bd17acf97": {
+          "type": "rating",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "b03b08cc-e843-473a-b8c9-ba0225c0ac1a": {
+          "type": "variant",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "wonderment_pdp_etas_fGEdqH": {
+          "type": "shopify:\/\/apps\/wonderment\/blocks\/pdpEtas\/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {
+            "eta_text_font_size": 16,
+            "hint_text_font_size": 12,
+            "custom_css": ""
+          }
+        },
+        "6911e657-87d0-49eb-838a-47ac33ac9c14": {
+          "type": "desc_with_accordion",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "afb1e95c-e38b-418d-95c5-479bd17acf97",
+        "description",
+        "b03b08cc-e843-473a-b8c9-ba0225c0ac1a",
+        "variant_picker",
+        "buy_buttons",
+        "wonderment_pdp_etas_fGEdqH",
+        "6911e657-87d0-49eb-838a-47ac33ac9c14"
+      ],
+      "settings": {
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "4ddcda0d-a4bc-4c03-8de5-36a05f73524a": {
+      "type": "related-products-custom",
+      "settings": {
+      }
+    },
+    "cd810873-fc8f-4edc-b90a-cca4635b998b": {
+      "type": "reviews-product",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "4ddcda0d-a4bc-4c03-8de5-36a05f73524a",
+    "cd810873-fc8f-4edc-b90a-cca4635b998b"
+  ]
+}

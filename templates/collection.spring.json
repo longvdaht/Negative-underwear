@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "image_banner_ddMz7E": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_RhndWp": {
+          "type": "heading",
+          "settings": {
+            "heading": ""
+          }
+        },
+        "text_Baajnq": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        },
+        "buttons_JM4ALG": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RhndWp",
+        "text_Baajnq",
+        "buttons_JM4ALG"
+      ],
+      "settings": {
+        "section_fullwidth": true,
+        "image": "shopify:\/\/shop_images\/Artboard_1_2.jpg",
+        "image_fullwidth": true,
+        "image_2": "shopify:\/\/shop_images\/Artboard_2_1.jpg",
+        "image_link": "",
+        "invert_on_desktop": false,
+        "invert_on_mobile": false,
+        "show_text_box": false,
+        "enable_content": false,
+        "content_fullwidth": false,
+        "desktop_content_alignment": "center",
+        "desktop_content_position": "middle",
+        "mobile_content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-plus",
+      "settings": {
+        "products_per_page": 41,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner_ddMz7E",
+    "product-grid"
+  ]
+}

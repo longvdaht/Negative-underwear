@@ -1,0 +1,88 @@
+<!-- /snippets/product-grid-item-set.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% assign grid_item_width = 'small--one-half medium--one-half large--one-half extralarge--one-third' %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+<div class="grid__item grid-product grid-item-kit grid-item-set {{ grid_item_width }} product-{{ forloop.index | minus: 1 }}">
+	<div itemscope itemtype="http://schema.org/Product" class="product-holder" id="product-{{ product.id }}">
+		<meta itemprop="name" content="{{ product.title }}" />
+		{% if product.metafields.okendo.RatingAndReviewCount > 0 %}
+			<div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+				<meta itemprop="reviewCount" content="{{ product.metafields.okendo.RatingAndReviewCount }}" />
+				<meta itemprop="ratingValue" content="{{ product.metafields.okendo.ReviewAverageValue }}" />
+			</div>
+		{% endif %}
+		<div class="grid-product__image-wrapper">
+			<a class="grid-product__image-link" href="{{ product.url | within: collection }}" onClick="ga('send', 'event', 'BuyTheSet', 'Clicked Product from Set', '{{ product.title }}');">
+				<!-- product/// {{ product.title }} -->
+				{% render 'responsive-product-image',
+					image: product.images[0],
+					sizes: '(max-width: 590px) 700px, (min-width: 591px) and (max-width: 768px) 60vw, 50vw',
+					attributes: 'class="grid-product__image lazyload"' 
+				%}
+				{% render 'responsive-product-image-alt',
+					image: product.images[1],
+					sizes: '(max-width: 590px) 60vw, (min-width: 591px) and (max-width: 768px) 60vw, 50vw',
+					attributes: 'class="grid-product__image lazyload"' 
+				%}
+			</a>
+		</div>
+		<a href="{{ product.url | within: collection }}" class="grid-product__meta pgik" onClick="ga('send', 'event', 'BuyTheSet', 'Clicked Product from Set', '{{ product.title }}');">
+			<span class="grid-product__title">{{ product.title }}</span>
+		</a>
+		<div class="inline-buy">
+			<div class="variants{% unless product.variants.size > 1 %} hidden{% endunless %}">
+				<select id="variant-listbox-{{ product.handle }}" name="id" class="medium kit-selectmenu" onchange="ga('send', 'event', 'BuyTheSet', 'Change Set Dropdown', '{{ product.title }}');" aria-label="Size">
+					<option disabled selected="selected" value="null">Select Size</option>
+				
+					{% for variant in product.variants %}
+						{% unless variant.title contains "Pack" %}
+							{% comment %}<!-- original var name: {{ variant.title }} -->{% endcomment %}
+							{% assign variantColor = variant.title | remove: '/ Single' | split: '/' | last %}
+							{% comment %}<!-- variantColor: {{ variantColor }} -->{% endcomment %}
+							{% assign variantTitle = variant.title | remove: '/ Single' | remove: variantColor | remove: ' /' | remove: '/ ' %}
+							{% comment %}<!-- assign variantTitle = variantTitle
+								| replace: ' / A', 'A'
+								| replace: ' / B', 'B'
+								| replace: ' / C', 'C'
+								| replace: ' / DDD', 'DDD'
+								| replace: ' / DD', 'DD'
+								| replace: ' / D', 'D'
+							-->{% endcomment %}
+							{% unless variant.sku == "X" %}
+								<option data-sku="{{ variant.sku }}" {% if variant.inventory_quantity <= 0 and variant.available == false %}DISABLED {% endif %} value="{{ variant.id }}">
+									{{ variantTitle }}
+								</option>
+							{% endunless %}
+						{% endunless %}
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="large--hide clearfix"></div>
+

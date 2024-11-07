@@ -1,0 +1,104 @@
+{{ 'component-collection-detail.css' | asset_url | stylesheet_tag }}
+
+{% style %} 
+    .background-{{ section.id }}-color {
+        background-color: {{ section.settings.background }};
+    }
+
+{% endstyle %}
+
+<div class="collection-detail background-{{ section.id }}-color">
+	<div class="detail-container">
+		<div class="detail-media">
+			<div class="details">
+			{% for block in section.blocks %}
+				<div class="detail">
+					<img 
+            src="{{ block.settings.image | img_url: '1000x1000' }}" 
+            data-src="{{ block.settings.image | img_url: '1000x' }}"
+            loading="lazy" 
+            class="lazyload" 
+            width="{{ block.settings.image.width }}" 
+            height="{{ block.settings.image.height }}" 
+            alt="{{ block.settings.image.alt }}" 
+          />
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+		<div class="box-content">
+			<h2>{{ section.settings.heading_section }}</h2>
+			<div class="description">{{ section.settings.description_section }}</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "Details",
+  "class": "section--details",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_section",
+      "default": "Image with text",
+      "label": "Heading section"
+    },
+    {
+      "type": "text",
+      "id": "description_section",
+      "default": "We focus on the essentials and ditch the rest — you won’t find unnecessary bows, padding or adornments. Our minimalist approach emphasizes comfort, quality and function first.",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "detail",
+      "name": "Detail",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+        "name": "Collection Details",
+        "blocks": [
+            {
+                "type": "detail"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+
+	$('.details').slick({
+		arrows			: true,
+		dots			: false,
+		adaptiveHeight	: true,
+		prevArrow		: '<button type="button" class="slick-prev">&lt;</button>',
+		nextArrow		: '<button type="button" class="slick-next">&gt;</button>',
+		autoplay		: false
+	});
+	
+	$(window).on('resize orientationchange', function() {
+		//console.log('details - reslick dat');
+		$('.details').slick('resize');
+	});
+
+
+{% endjavascript %}

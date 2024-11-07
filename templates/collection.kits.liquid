@@ -1,0 +1,7 @@
+<div class="clearfix">
+	{% paginate collection.products by 1000 %} 
+	{% for product in collection.products %}
+		<div class="bold-bundle" data-product-id="{{ product.id }}"&gt ></div>
+	{% endfor %}
+	{% endpaginate %}
+</div>

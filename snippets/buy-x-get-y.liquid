@@ -1,0 +1,12 @@
+{% if settings.product_buy_enable == true and settings.product_buy != blank %}
+	{% assign product_buy_x_get_y = settings.product_buy %}
+    {% paginate product_buy_x_get_y.metafields.gwp.buy_x_get_y_product.value by 500 %}
+    	{% for item in product_buy_x_get_y.metafields.gwp.buy_x_get_y_product.value %}
+    	  {% if product.id == item.id %}
+    			<input type="hidden" name="properties[type_free_product]" value="buy_x_get_y">
+    			<input type="hidden" name="properties[product_y]" value="{{ product_buy_x_get_y.selected_or_first_available_variant.id }}">
+					{% break %}
+    	  {% endif %}
+    	{% endfor %}
+	{% endpaginate %}
+{% endif %}

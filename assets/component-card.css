@@ -1,0 +1,941 @@
+.card-wrapper {
+  color: inherit;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+}
+
+.card {
+  text-decoration: none;
+  text-align: var(--text-alignment);
+}
+
+.card:not(.ratio) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card.card--horizontal {
+  --text-alignment: left;
+  --image-padding: 0rem;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.card--horizontal.ratio:before {
+  padding-bottom: 0;
+}
+
+.card--card.card--horizontal {
+  padding: 1.2rem;
+}
+
+.card--card.card--horizontal.card--text {
+  column-gap: 0;
+}
+
+.card--card {
+  height: 100%;
+}
+
+.card--card,
+.card--standard .card__inner {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid rgba(var(--color-foreground), var(--border-opacity));
+}
+
+.card--card:after,
+.card--standard .card__inner:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: calc(var(--border-width) * 2 + 100%);
+  height: calc(var(--border-width) * 2 + 100%);
+  top: calc(var(--border-width) * -1);
+  left: calc(var(--border-width) * -1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
+    rgba(var(--color-shadow), var(--shadow-opacity));
+}
+
+/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
+.card--card.gradient,
+.card__inner.gradient {
+  transform: perspective(0);
+}
+
+/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
+.card__inner.color-background-1 {
+  background: transparent;
+}
+
+.card .card__inner .card__media {
+  overflow: hidden;
+  /* Fix for Safari border bug on hover */
+  z-index: 0;
+  border-radius: calc(var(--border-radius) - var(--border-width) - var(--image-padding));
+}
+
+.card--card .card__inner .card__media {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.card--standard.card--text {
+  background-color: transparent;
+}
+
+.card-information {
+  text-align: var(--text-alignment);
+}
+
+.card__media,
+.card .media {
+  bottom: 0;
+  position: absolute;
+  top: 0;
+}
+
+.card .media {
+  width: 100%;
+}
+
+.card__media {
+  margin: var(--image-padding);
+  width: calc(100% - 2 * var(--image-padding));
+}
+
+.card--standard .card__media {
+  margin: var(--image-padding);
+}
+
+.card__inner {
+  width: 100%;
+}
+
+.card--media .card__inner .card__content {
+  position: relative;
+  padding: calc(var(--image-padding) + 1rem);
+}
+
+.card__content {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) max-content minmax(0, 1fr);
+  padding: 1rem;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.card__content--auto-margins {
+  grid-template-rows: minmax(0, auto) max-content minmax(0, auto);
+}
+
+.card__information {
+  grid-row-start: 2;
+}
+
+.card:not(.ratio) > .card__content {
+  grid-template-rows: max-content minmax(0, 1fr) max-content auto;
+}
+
+.card__badge {
+  align-self: flex-end;
+  grid-row-start: 3;
+  justify-self: flex-start;
+}
+
+.card__badge.top {
+  align-self: flex-start;
+  grid-row-start: 1;
+}
+
+.card__badge.right {
+  justify-self: flex-end;
+}
+
+.card:not(.card--horizontal) > .card__content > .card__badge {
+  margin: 1.3rem;
+}
+
+.card__media .media img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+}
+
+.card__inner:not(.ratio) > .card__content {
+  height: 100%;
+}
+
+.card__heading {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.card__heading:last-child {
+  margin-bottom: 0;
+}
+
+.card--horizontal .card__heading,
+.card--horizontal .price__container .price-item,
+.card--horizontal__quick-add {
+  font-size: calc(var(--font-heading-scale) * 1.2rem);
+}
+
+.card--horizontal .card-information > *:not(.visually-hidden:first-child) + *:not(.rating) {
+  margin-top: 0;
+}
+
+.card--horizontal__quick-add:before {
+  box-shadow: none;
+}
+.title-and-price{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 13px;
+}
+.title-and-price .price{
+  white-space: nowrap;
+  text-align: right;
+  padding-left: 5px;
+  line-height: 1.2;
+}
+@media only screen and (min-width: 1051px) {
+  .card__heading{
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (min-width: 750px) {
+  .card--horizontal .card__heading,
+  .card--horizontal .price__container .price-item,
+  .card--horizontal__quick-add {
+    font-size: calc(var(--font-heading-scale) * 1.3rem);
+  }
+}
+
+.card--card.card--media > .card__content {
+  margin-top: calc(0rem - var(--image-padding));
+}
+
+.card--standard.card--text a::after,
+.card--card .card__heading a::after {
+  bottom: calc(var(--border-width) * -1);
+  left: calc(var(--border-width) * -1);
+  right: calc(var(--border-width) * -1);
+  top: calc(var(--border-width) * -1);
+}
+
+.card__heading a::after {
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.card__heading a:after {
+  outline-offset: 0.3rem;
+}
+
+.card__heading a:focus:after {
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+}
+
+.card__heading a:focus-visible:after {
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+}
+
+.card__heading a:focus:not(:focus-visible):after {
+  box-shadow: none;
+  outline: 0;
+}
+
+.card__heading a:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .card .media.media--hover-effect > img:only-child,
+  .card-wrapper .media.media--hover-effect > img:only-child {
+    transition: transform var(--duration-long) ease;
+  }
+
+  .card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
+    opacity: 0;
+  }
+
+  .card-wrapper:hover .media.media--hover-effect > img + img {
+    opacity: 1;
+  }
+
+  .underline-links-hover:hover a {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+  }
+}
+
+.card--standard.card--media .card__inner .card__information,
+.card--standard.card--text:not(.card--horizontal) > .card__content .card__heading:not(.card__heading--placeholder),
+.card--standard:not(.card--horizontal) > .card__content .card__badge,
+.card--standard.card--text.article-card > .card__content .card__information,
+.card--standard > .card__content .card__caption {
+  display: none;
+}
+
+.card--standard:not(.card--horizontal) .placeholder-svg {
+  height: auto;
+  width: 100%;
+}
+
+.card--standard > .card__content {
+  padding: 0;
+}
+
+.card--standard > .card__content .card__information {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.card--card.card--media .card__inner .card__information,
+.card--card.card--text .card__inner,
+.card--card.card--media > .card__content .card__badge {
+  display: none;
+}
+
+.card--horizontal .card__badge,
+.card--horizontal.card--text .card__inner {
+  display: none;
+}
+
+.card--extend-height {
+  height: 100%;
+}
+
+.card--extend-height.card--standard.card--text,
+.card--extend-height.card--media {
+  display: flex;
+  flex-direction: column;
+}
+
+.card--extend-height.card--standard.card--text .card__inner,
+.card--extend-height.card--media .card__inner {
+  flex-grow: 1;
+}
+
+.card .icon-wrap {
+  white-space: nowrap;
+  transition: transform var(--duration-short) ease;
+  overflow: hidden;
+}
+
+.card-information {
+  width: 100%;
+}
+
+.card-information > * {
+  color: rgb(var(--color-foreground));
+}
+
+.card-information > .price {
+  color: rgb(var(--color-foreground));
+}
+
+.card-information .caption {
+  letter-spacing: 0.07rem;
+}
+
+.card-article-info {
+  margin-top: 1rem;
+}
+
+/* Card Shapes */
+
+.card--shape .card__content {
+  padding-top: 0;
+}
+
+.card--shape.card--standard:not(.card--text) .card__inner {
+  border: 0; /* Border is not currently compatible with image shapes for standard cards. */
+  background-color: transparent;
+  filter: drop-shadow(
+    var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius)
+      rgba(var(--color-shadow), var(--shadow-opacity))
+  );
+}
+
+.card--shape.card--standard:not(.card--text) .card__inner:after {
+  display: none;
+}
+
+.grid__item:nth-child(2n) .shape--blob {
+  clip-path: polygon(var(--shape--blob-2));
+}
+
+.grid__item:nth-child(3n) .shape--blob {
+  clip-path: polygon(var(--shape--blob-3));
+}
+
+.grid__item:nth-child(4n) .shape--blob {
+  clip-path: polygon(var(--shape--blob-4));
+}
+
+.grid__item:nth-child(5n) .shape--blob {
+  clip-path: polygon(var(--shape--blob-5));
+}
+
+.grid__item:nth-child(7n) .shape--blob {
+  clip-path: polygon(var(--shape--blob-6));
+}
+
+.grid__item:nth-child(8n) .shape--blob {
+  clip-path: polygon(var(--shape--blob-1));
+}
+
+/* Card Shape Hover Rules */
+
+@media (prefers-reduced-motion: no-preference) {
+  .product-card-wrapper .shape--round {
+    transition: clip-path var(--duration-long) ease;
+  }
+
+  .product-card-wrapper:hover .shape--round {
+    clip-path: ellipse(47% 47% at 50% 50%);
+  }
+
+  .product-card-wrapper .shape--blob {
+    transition: clip-path var(--duration-long) ease-in-out;
+  }
+
+  .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-5));
+  }
+
+  .grid__item:nth-child(2n) .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-6));
+  }
+
+  .grid__item:nth-child(3n) .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-1));
+  }
+
+  .grid__item:nth-child(4n) .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-2));
+  }
+
+  .grid__item:nth-child(5n) .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-3));
+  }
+
+  .grid__item:nth-child(7n) .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-4));
+  }
+
+  .grid__item:nth-child(8n) .product-card-wrapper:hover .shape--blob {
+    clip-path: polygon(var(--shape--blob-5));
+  }
+}
+.okeReviews[data-oke-container], div.okeReviews {
+    font-size: 14px;
+    font-size: 13,5px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+.oke-sr {
+    --oke-stars-foregroundColor: #97C5E2;
+    --oke-stars-backgroundColor: #E5E5E5;
+    --oke-stars-borderWidth: 0;
+}
+.oke-sr {
+    display: inline-block;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.okeReviews[data-oke-container] *, .okeReviews[data-oke-container] :after, .okeReviews[data-oke-container] :before, div.okeReviews *, div.okeReviews :after, div.okeReviews :before {
+    box-sizing: border-box;
+}
+.oke-sr-count, .oke-sr-rating, .oke-sr-stars {
+    display: inline-block;
+    vertical-align: middle;
+}
+.oke-sr-rating {
+    display: none;
+}
+.oke-sr-stars {
+    line-height: 1;
+    margin-right: 8px;
+}
+.oke-stars {
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+}
+.oke-stars-background svg {
+    overflow: visible;
+}
+.oke-stars-foreground {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.okeReviews[data-oke-container] .oke-a11yText, div.okeReviews .oke-a11yText {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.review-summary .oke-sr-count {
+    font-size: 11px;
+    font-weight: 300;
+}
+.swatchgroup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  position: relative; }
+  .swatchgroup:empty {
+    display: none; }
+    .swatchgroup:empty + .swatchgroup {
+      margin-top: 0; }
+      .swatchgroup:empty + .swatchgroup:before {
+        content: ''; }
+  @media screen and (max-width: 590px) {
+    body:not(.template-index) .swatchgroup {
+      max-width: 100%;
+      justify-content: center;
+      align-items: center; } }
+.swatch-holder.field{
+  width: auto;
+  transition: none;
+}
+.swatch-holder {
+  border: 1px solid transparent;
+  border-radius: 50%;
+  padding: 6px 2px 2px;
+  margin: 0 3px 4px 0;
+  display: inline-flex;
+  order: 100;
+  position: relative; }
+  .swatch-holder.current {
+    border-color: black; }
+  .template-index .swatch-holder {
+    margin: 0; }
+    @media screen and (max-width: 590px) {
+      .template-index .swatch-holder {
+        padding: 0 2px; }
+        .template-index .swatch-holder .swatch {
+          top: 4px;
+          margin: -2px 0 6px; } }
+  @media screen and (max-width: 590px) {
+    body:not(.template-index) .swatch-holder {
+      padding: 0px 4px;
+      margin-right: 0;
+      border-width: 2px; } }
+  .swatch-holder.black {
+    order: 1; }
+  .swatch-holder.washed-black {
+    order: 2; }
+  .swatch-holder.graphite {
+    order: 3; }
+  .swatch-holder.heather-grey, .swatch-holder.grey {
+    order: 4; }
+  .swatch-holder.heather-grey-white {
+    order: 5; }
+  .swatch-holder.moon {
+    order: 6; }
+  .swatch-holder.moon-black {
+    order: 7; }
+  .swatch-holder.haze {
+    order: 8; }
+  .swatch-holder.haze-blacktrim {
+    order: 9; }
+  .swatch-holder.lilac {
+    order: 10; }
+  .swatch-holder.lilac-essaouira {
+    order: 11; }
+  .swatch-holder.navy {
+    order: 12; }
+  .swatch-holder.navy-white {
+    order: 13; }
+  .swatch-holder.navy-tiedye {
+    order: 14; }
+  .swatch-holder.slate {
+    order: 15; }
+  .swatch-holder.cobalt {
+    order: 16; }
+  .swatch-holder.surf {
+    order: 17; }
+  .swatch-holder.azure {
+    order: 18; }
+  .swatch-holder.glacier {
+    order: 19; }
+  .swatch-holder.glacier-stripe {
+    order: 20; }
+  .swatch-holder.field {
+    order: 21; }
+  .swatch-holder.bay {
+    order: 22; }
+  .swatch-holder.fizz {
+    order: 23; }
+  .swatch-holder.peach {
+    order: 24; }
+  .swatch-holder.peach-blacktrim {
+    order: 25; }
+  .swatch-holder.sorbet {
+    order: 26; }
+  .swatch-holder.babe {
+    order: 27; }
+  .swatch-holder.sunrise {
+    order: 28; }
+  .swatch-holder.puff {
+    order: 29; }
+  .swatch-holder.coral {
+    order: 30; }
+  .swatch-holder.coral-white {
+    order: 31; }
+  .swatch-holder.punch {
+    order: 32; }
+  .swatch-holder.cherry {
+    order: 33; }
+  .swatch-holder.sand {
+    order: 34; }
+  .swatch-holder.buff {
+    order: 35; }
+  .swatch-holder.buff-boa {
+    order: 36; }
+  .swatch-holder.buff-white, .swatch-holder.buff-whitetrim {
+    order: 37; }
+  .swatch-holder.buff-black, .swatch-holder.buff-blacktrim {
+    order: 38; }
+  .swatch-holder.ivory {
+    order: 39; }
+  .swatch-holder.white {
+    order: 40; }
+  .swatch-holder.white-buff {
+    order: 41; }
+  .swatch-holder.white-cherries-edition {
+    order: 42; }
+  .swatch-holder.white-boa {
+    order: 43; }
+
+.swatch {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: -4px 0 0;
+  position: relative;
+  overflow: hidden;
+  text-indent: 1000px; }
+  .template-index .swatch {
+    width: 12px;
+    height: 12px; }
+    .swatch.product-albatross {
+      background-color: #f4f0f0;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-albatross.png?v=171310112385848891371688398985); }
+    .swatch.product-azure {
+      background-color: #8dbeee; }
+    .swatch.product-babe {
+      background-color: #fbd6db; }
+    .swatch.product-bay {
+      background-color: #e3f3e0; }
+    .swatch.product-black {
+      background-color: black; }
+    .swatch.product-black-essaouira {
+      background-color: #222222;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-essaouira.jpg?v=146588284489772557361688398990); }
+    .swatch.product-black-marble {
+      background-color: #0e0c14;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-marble.jpg?v=56041168583627198751688398992); }
+    .swatch.product-black-offwhite, .swatch.product-black-off-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-offwhite.png?v=37607666622729256151688398992); }
+    .swatch.product-black-buff {
+      background-color: #efc7b4;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff.png?v=154283196781536389941688398990); }
+    .swatch.product-black-buff-buff-black {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-buff-black.png?v=144066946977046971281688398986); }
+    .swatch.product-buff-black-buff-buff-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-black-buff-buff-white.png?v=80337617137771460911688398996); }
+    .swatch.product-black-peach-slate {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-peach-slate.png?v=107170645549939461281688398993); }
+    .swatch.product-black-buff-haze {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-haze.png?v=73824406440612996431688398987); }
+    .swatch.product-black-buff-coral {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-coral.png?v=5651851394647448511688398986); }
+    .swatch.product-black-buff-peach {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-peach.png?v=98833361995127958071688398988); }
+    .swatch.product-black-buff-peach-haze {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-peach-haze.png?v=125903114283826433141688398988); }
+    .swatch.product-black-haze-moon {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-haze-moon.png?v=84602679976394848391688398991); }
+    .swatch.product-black-buff-moon {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-moon.png?v=117859227592420712811688398987); }
+    .swatch.product-black-buff-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-white.png?v=103558475684066923451688398989); }
+    .swatch.product-black-buff-slate {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-buff-slate.png?v=85933079363758295791688398989); }
+    .swatch.product-black-slate {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-slate.png?v=111725870060765078791688398993); }
+    .swatch.product-black-white-buff {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-white-buff.png?v=111626495362355480181688398994); }
+    .swatch.product-black-white-moon {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-white-moon.png?v=8541645173415947481688398995); }
+    .swatch.product-black-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-white.png?v=165144944395007518981688398995); }
+    .swatch.product-black-white-grey {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-black-white-grey.png?v=47712014625932261691688398994); }
+    .swatch.product-buff {
+      background-color: #cc9778; }
+    .swatch.product-buff-blacktrim {
+      background-color: #efc7b4;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-black.png?v=13151594980371713121688398997); }
+    .swatch.product-buff-boa {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-boa.jpg?v=63938837650831632961688398997); }
+    .swatch.product-buff-coral {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-coral.png?v=60641157051714656171688398998); }
+    .swatch.product-buff-essaouira {
+      background-color: #cc9778;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-essaouira.jpg?v=27792320585757950081688398998); }
+    .swatch.product-buff-whitetrim {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-white.png?v=176948478038687849411688399000); }
+    .swatch.product-buff-white-stripe {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-white-stripe.png?v=30564401064341673601688399000); }
+    .swatch.product-buff-haze-peach {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-haze-peach.png?v=64650874410498949321688398999); }
+    .swatch.product-buff-offwhite, .swatch.product-buff-off-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-buff-offwhite.png?v=49466292600116057891688398999); }
+    .swatch.product-cobalt {
+      background-color: #4880e4; }
+    .swatch.product-cobalt-glacier {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-cobalt-glacier.png?v=142380770962366850761688399003); }
+    .swatch.product-colorblock {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-colorblock.png?v=75012519883051476871688399003); }
+    .swatch.product-cherry-buff-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-cherry-buff-white.png?v=122668266366641336431688399001); }
+    .swatch.product-cherry-coral-peach {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-cherry-coral-peach.png?v=138656669769973957471688399002); }
+    .swatch.product-coral-buff-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-coral-buff-white.png?v=34915091685841600991688399003); }
+    .swatch.product-cherry {
+      background-color: #e2001c; }
+    .swatch.product-coral-peach {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-coral-peach.png?v=113194347424310153121688399004); }
+    .swatch.product-coral-haze-moon {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-coral-haze-moon.png?v=34591769004645859781688399004); }
+    .swatch.product-coral-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-coral-white.png?v=31719876662921397871688399005); }
+    .swatch.product-coral {
+      background-color: #f77670; }
+    .swatch.product-cosmos {
+      background-color: #293663;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-cosmos.jpg?v=33187935063333379821688399005); }
+    .swatch.product-damask {
+      background-color: #e7e5e3;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-damask.jpg?v=124872138978401229031688399006); }
+    .swatch.product-field {
+      background-color: #029b6d; }
+    .swatch.product-fizz {
+      background-color: #dabaab; }
+    .swatch.product-garnet {
+      background-color: #7e2a3a; }
+    .swatch.product-glacier {
+      background-color: #e0eef3; }
+    .swatch.product-glacier-stripe {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-glacier-stripe.jpg?v=179468983226816829621688399007); }
+    .swatch.product-graphite {
+      background-color: #6e6669; }
+    .swatch.product-haze {
+      background-color: #9c746d; }
+    .swatch.product-haze-black, .swatch.product-haze-blacktrim {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-haze-black.png?v=137179442212569259751688399007); }
+    .swatch.product-heather {
+      background-color: #cacacd; }
+    .swatch.product-heather-grey-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-heather-grey-white.png?v=93376282385819530691688399008); }
+    .swatch.product-ice {
+      background-color: #dce1e4; }
+    .swatch.product-ivy, .swatch.product-ivy-stripe {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-ivystripe.png?v=1667669306193560971695928471); }
+    .swatch.product-lilac {
+      background-color: #ddd0d9; }
+    .swatch.product-lilac-essaouira {
+      background-color: #ddd0d9;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-lilac-essaouira.jpg?v=97639892156527751531688399008); }
+    .swatch.product-moire {
+      background-color: #e3c4ad;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-peach-moire.jpg?v=99767471979128454981688399018); }
+    .swatch.product-moon {
+      background-color: #efebe8; }
+    .swatch.product-moon-black {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-moon-black.png?v=133956011542880510781688399009); }
+    .swatch.product-moon-colorblock {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-moon-colorblock.png?v=158251154854024106971688399010); }
+    .swatch.product-moon-metallic {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-moon-metallic.jpg?v=148992036555352368601688399010); }
+    .swatch.product-navy {
+      background-color: #140d38; }
+    .swatch.product-navy-cosmos {
+      background-color: #140d38;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-navy-cosmos.jpg?v=57931944530620865681688399011); }
+    .swatch.product-navy-white {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-navy-white.png?v=117383576961030376291688399013); }
+    .swatch.product-navy-moon {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-navy-moon.png?v=95791253885273659271688399012); }
+    .swatch.product-navy-moon-stripe {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-navy-moon-stripe.png?v=155592520029737202051688399011); }
+    .swatch.product-navy-tiedye {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-navy-tiedye.jpg?v=34569922956067767201688399013); }
+    .swatch.product-navy-slate-peach {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-navy-slate-peach.png?v=10927299553471865461688399012); }
+    .swatch.product-nudev1 {
+      background-color: #E8D7C7; }
+    .swatch.product-nudev1black, .swatch.product-peachblack {
+      background-color: #E3DAD7;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/nude-black-swatch.png?28890); }
+    .swatch.product-offwhite {
+      background-color: #f4eae2; }
+    .swatch.product-offwhite-black, .swatch.product-off-white-black {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-offwhite-black.png?v=130039284365450460601688399015); }
+    .swatch.product-peach {
+      background-color: #f4d7c3; }
+    .swatch.product-peach-blacktrim, .swatch.product-peach-black {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-peach-black.png?v=80364073851852347591688399015); }
+    .swatch.product-peach-coral {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-peach-coral.png?v=148454683356186800111688399016); }
+    .swatch.product-peach-haze-slate {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-peach-haze-slate.png?v=150978241893801855921688399017); }
+    .swatch.product-peach-haze-moon {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-peach-haze-moon.png?v=152749681755587357671688399017); }
+    .swatch.product-peach-essaouira {
+      background-color: #eaddcd;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-peach-essaouira.jpg?v=23060352132772077611688399016); }
+    .swatch.product-puff {
+      background-color: #f6e6e8; }
+    .swatch.product-punch {
+      background-color: #e22859; }
+    .swatch.product-sand {
+      background-color: #e8d7c9;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-sand.jpg?v=165767853236850419341688399019); }
+    .swatch.product-sieve {
+      background-color: #372e28;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-sieve.png?v=155364271353648494491688399019); }
+    .swatch.product-slate {
+      background-color: #7987a0; }
+    .swatch.product-slate-moire {
+      background-color: #737988;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-slate-moire.jpg?v=94100229717141754161688399020); }
+    .swatch.product-soon {
+      background-color: white;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-new.png?v=179363520983297751971688399014);
+      margin-left: -5px; }
+    .swatch.product-soft, .swatch.product-soft-serve {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-softserve.png?v=10180940852447984991688399022); }
+    .swatch.product-sorbet {
+      background-color: #f0d9af; }
+    .swatch.product-spark {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-spark.png?v=60509929697633994121695928471); }
+    .swatch.product-stone {
+      background-color: #beacad;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-stone.jpg?v=115102587958505117051688399022); }
+    .swatch.product-surf {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-surf.jpg?v=53532462772982171441688399023); }
+    .swatch.product-sunrise {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-sunrise.png?v=2480101107751475521688399023); }
+    .swatch.product-washed {
+      background-color: #48484a; }
+    .swatch.product-white {
+      background-color: #f7f7f7; }
+    .swatch.product-white-essaouira {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-white-essaouira.jpg?v=152687364526007419461688399025); }
+    .swatch.product-white-boa {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-white-boa.jpg?v=79023681402525349551688399024); }
+    .swatch.product-white-cosmos {
+      background-color: #edecea;
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-white-cosmos.jpg?v=58438737814160835731688399025); }
+    .swatch.product-white-cherries, .swatch.product-white-cherries-edition {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-white-cherries.jpg?v=112059149829873529991688399024); }
+    .swatch.product-white-heather-grey {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-white-heather-grey.png?v=41908063750483868861688399028); }
+    .swatch.product-white-peach {
+      background-image: url(//negativeunderwear.com/cdn/shop/t/119/assets/swatch-white-peach.png?v=46384258284726371791688399028); }
+    .swatch.soldout {
+      border-color: #6e6e77; }
+  @media screen and (max-width: 590px) {
+    .swatch {
+      margin: -2px -1px 8px;
+      top: 5px;
+      width: 30px;
+      height: 30px; } }
+
+.new-swatch {
+  position: absolute;
+  z-index: 5;
+  background: #32769c;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 1;
+  border-radius: 2px;
+  color: white;
+  padding: 1px 3px 1px;
+  bottom: -5px;
+  right: 0;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); }
+  .new-swatch.sale {
+    background: #b30000; }
+
+.swatches-seasonal {
+  margin-top: 30px; }
+  .swatches-seasonal:before {
+    content: "Limited Edition";
+    position: absolute;
+    left: 0;
+    top: -22px;
+    
+    font-weight: 500;
+    font-size: 12px;
+    color: #6e6e77;
+    white-space: nowrap; }
+    @media screen and (max-width: 590px) {
+      .swatches-seasonal:before {
+        width: 100%;
+        text-align: center; } }
+
+#negative-disco-pant-in-navy .swatch.product-navy, #negative-disco-open-cardi-in-navy .swatch.product-navy {
+  background-image: url(//cdn.shopify.com/s/files/1/0221/4866/files/color-disco-navy.png?v=1702662787); 
+}
+ .swatch.product-maritime {
+      background-image: url(//cdn.shopify.com/s/files/1/0221/4866/files/color-maritime.png?v=1702662788); 
+ }
+.swatch.product-orchid {
+      background-image: url(//cdn.shopify.com/s/files/1/0221/4866/files/color-orchid.png?v=1702662786); 
+ }
+
+@media screen and (max-width: 590px) {
+  .grid__item.grid-product .swatch {
+    width: 12px;
+    height: 12px;
+  }
+  .grid__item.grid-product .swatch-holder {
+    border-width: 1px;
+  }
+} 

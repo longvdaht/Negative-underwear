@@ -1,0 +1,25 @@
+{% assign on_sale = false %}
+{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+	{% unless product.selected_or_first_available_variant.title contains "Pack" or product.title contains "Pack" %}
+		{% assign on_sale = true %}
+	{% endunless %}
+{% endif %}
+<span class="grid-product__price{% if on_sale %} onsale{% endif %}">
+    {% if product.price_varies %}
+        <!-- varies -->
+        {% if on_sale or product.title contains "Pack" %}
+        	<span class="visually-hidden">Original price: </span><s>{{ product.compare_at_price_min | money_without_trailing_zeros }}</s> <span class="visually-hidden">Discounted price: </span>
+        {% endif %}
+        {{ product.price_min | money_without_trailing_zeros }}
+        <span class="icon-fallback-text">
+            <span class="icon icon-plus grid-product__price-min" aria-hidden="true"></span>
+            <span class="fallback-text">+</span>
+        </span>
+    {% else %}
+        <!-- not varies -->
+        {% if on_sale or product.title contains "Pack" %}
+        	<span class="visually-hidden">Original price: </span><s>{{ product.compare_at_price_max | money_without_trailing_zeros }}</s> <span class="visually-hidden">Discounted price: </span>
+        {% endif %}
+        <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+    {% endif %}
+</span>

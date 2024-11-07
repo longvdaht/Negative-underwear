@@ -1,0 +1,113 @@
+
+<!-- Start of Afterpay assets -->
+<script type="application/javascript" src="https://static-us.afterpay.com/javascript/present-afterpay.js"></script>
+<script>
+  const isGiftCard = (item) => item.product_type === "Gift Card";
+  
+  function giftCardDetected() {
+    const afterpayProduct = {{ product | json }};
+    const afterpayCartItems = {{ cart.items | json }};
+    
+    if(afterpayProduct) {
+	  return (afterpayProduct.type === "Gift Card");
+    }
+
+    if(afterpayCartItems) {
+	  return (afterpayCartItems.some(isGiftCard));
+    } 
+    return false;
+  }
+  let amount = 0, priceSelector = "", locale = 'en_US';
+  let baseObserverConfig = { activated: true, isDecimalPrice: true };
+  let mutationObserver = null;
+  
+	{%case template.name%} 
+      {%when "product"%}
+  		amount = {{product.selected_or_first_available_variant.price | json}}; 
+        priceSelector = ".AddToCart";
+// 	    mutationObserver = { 
+//             ...baseObserverConfig, 
+// 			targetPriceSelector: '',
+// 		};
+        
+      {%when "cart"%}     
+        amount = {{cart.total_price | json}}; 
+        priceSelector = ".grid--full.cart__row--table-large:nth-last-child(2)";
+		mutationObserver = { 
+                 ...baseObserverConfig,
+                  // observerTarget: '.PageContent',
+	           targetPriceSelector: '',
+		};
+  	  {% when "product" or "cart"%}
+        const apConfig = {
+          afterpayLogoColor: 'black',
+          priceSelector, locale, amount,
+          showUpperLimit: false,
+          mutationObserver,
+          minMaxThreshold: {
+            min: 100,
+            max: 100000
+          },
+          hideAfterpay: giftCardDetected()
+        };
+
+        window.addEventListener("load",function(){
+          new presentAfterpay(apConfig).init();
+        });
+  {%endcase%}
+</script>
+
+<style type="text/css">
+  .afterpay-logo {
+    width: 5.5em !important;
+    height: auto !important;
+  }
+  .afterpay-paragraph {
+    font-size: 12px;
+    margin-bottom: 18px !important;
+    color: #6e6e77 !important;
+    font-family: "nimbus-sans",Helvetica,Arial,sans-serif !important;
+  }
+  .afterpay-logo-link {
+   	display: inline-block; 
+  }
+  @media screen and (max-width: 590px){
+    .afterpay-paragraph {
+      font-size: 14px;
+    }
+  }
+  {%case template.name%} 
+  	{%when "cart"%}
+      .afterpay-paragraph {
+        margin-top: -5px !important;
+        line-height: 1.2em !important;
+        text-align: right !important;
+      }
+
+      @media only screen and (max-width: 768px) {
+        .afterpay-paragraph {
+          text-align: center !important;
+        }
+      }
+  	{%when "product"%}
+      .afterpay-paragraph {
+        margin-top: 6px;
+        text-align: center;
+      }
+  {%endcase%}
+  
+  .c-afterpay-info-modal-preface__p {
+    font-size: 0.5em;
+  }
+  .c-afterpay-info-modal-preface__copy {
+    font-size: 16px !important;
+  }
+  .c-afterpay-info-modal-process__heading {
+    font-size: 1.1em !important;
+    text-transform: unset;
+  }
+  .c-afterpay-info-modal-process__copy {
+    font-size: 12px !important;
+  }
+</style>
+<!-- End of Afterpay assets -->

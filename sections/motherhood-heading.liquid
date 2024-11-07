@@ -1,0 +1,30 @@
+<div class="headerholder">
+	<div class="container">
+		<header class="section-motherhood-heading text-center imgholder small--hide medium--hide lazyload" style="background-image: url({{ 'header-motherhood.jpg' | asset_url }})">
+			<div class="display-table-cell large--one-half">
+			</div>
+			<div class="display-table-cell large--one-third textholder">
+				<h1>{{ page.title }}</h1>
+		
+				<div class="description">
+					{{ page.content }}
+				</div>
+			</div>
+		</header>
+		<header class="section-motherhood-heading mobile text-center imgholder large--hide lazyload" style="background-image: url({{ 'header-motherhood-mobile.jpg' | asset_url }})">
+			<div class="textholder">
+				<h2 class="h1 mobile-title">{{ page.title }}</h2>
+		
+				<div class="description">
+					{{ page.content }}
+				</div>
+			</div>
+		</header>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Motherhood Heading",
+    "settings": []
+  }
+{% endschema %}

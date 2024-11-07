@@ -1,0 +1,194 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary
+      class="header__icon header__icon--menu header__icon--summary link focus-inset"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      <span class="burger-icon burger-icon--top"></span>
+      <span class="burger-icon burger-icon--mid"></span>
+      <span class="burger-icon burger-icon--bottom"></span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <div class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}" tabindex="-1">
+            {%- if settings.predictive_search_enabled -%}
+              <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+            {%- else -%}
+              <search-form class="search-modal__form">
+            {%- endif -%}
+                <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+                  <div class="field">
+                    <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                      <span class="icon icon-search"></span>
+                    </button>
+                    <input class="search__input field__input"
+                      id="{{ input_id }}"
+                      type="search"
+                      name="q"
+                      value="{{ search.terms | escape }}"
+                      placeholder="{{ 'general.search.search' | t }}"
+                      {%- if settings.predictive_search_enabled -%}
+                        role="combobox"
+                        aria-expanded="false"
+                        aria-owns="predictive-search-results"
+                        aria-controls="predictive-search-results"
+                        aria-haspopup="listbox"
+                        aria-autocomplete="list"
+                        autocorrect="off"
+                        autocomplete="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                      {%- endif -%}
+                    >
+                    <input type="hidden" name="options[prefix]" value="last">
+                    <button type="reset" class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}" aria-label="{{ 'general.search.reset' | t }}">
+                      <span class="close icon icon-x"></span>
+                    </button>
+                  </div>
+
+                  {%- if settings.predictive_search_enabled -%}
+                    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                      <div class="predictive-search__loading-state">
+                        <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+                  {%- endif -%}
+                </form>
+              {%- if settings.predictive_search_enabled -%}
+                </predictive-search>
+              {%- else -%}
+                </search-form>
+              {%- endif -%}
+          </div>
+          <nav class="menu-drawer__navigation">
+            <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- for link in section.settings.menu.links -%}
+                <li class="navigation-image navigation-image--{{ link.title | handleize }}">
+                  {%- if link.links != blank -%}
+                    <div id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                      <a class="menu-drawer__float-link" href="{{ link.url }}">{{ link.title }}</a>
+                      <div
+                        id="HeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-base menu-drawer__menu-item menu-drawer__menu-item-dropdown list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                        {% if link.title contains '[' %}
+                          style="color: {{ link.title | split: '[' | last | remove: ']' }}"
+                        {% endif %}
+                      >
+                        <span class="menu-drawer__label">
+                          <span {% if link.title contains '[' %} style="color: {{ link.title | split: '[' | last | remove: ']' }}"{% endif %}>
+                            {{ link.title | split: '[' | first | escape }}
+                          </span>
+                          <span class="icon icon-plus"></span>
+                        </span>
+                      </div>
+                      <div
+                        id="link-{{ link.handle | escape }}"
+                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                        tabindex="-1"
+                      >
+                        <div class="menu-drawer__inner-submenu">
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- for childlink in link.links -%}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ childlink.url }}"
+                                    class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                    {% if childlink.title contains '[' %}
+                                      style="color: {{ childlink.title | split: '[' | last | remove: ']' }}"
+                                    {% endif %}
+                                  >
+                                    <span class="menu-drawer__label">{{ childlink.title | split: '[' | first | escape }}</span>
+                                  </a>
+                                {%- else -%}
+                                  <div id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                    <div
+                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                      class="menu-drawer__menu-item menu-drawer__menu-item-dropdown link link--text list-menu__item focus-inset"
+                                      {% if childlink.title contains '[' %}
+                                        style="color: {{ childlink.title | split: '[' | last | remove: ']' }}"
+                                      {% endif %}
+                                    >
+                                    <a href="{{ childlink.url }}">
+                                      <span class="menu-drawer__label">{{ childlink.title | split: '[' | first | escape }}</span>
+                                        <span class="icon icon-plus"></span>
+                                      </a>
+                                    </div>
+                                    <div
+                                      id="childlink-{{ childlink.handle | escape }}"
+                                      class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                    >
+                                      <ul
+                                        class="menu-drawer__menu list-menu"
+                                        role="list"
+                                        tabindex="-1"
+                                      >
+                                        {%- for grandchildlink in childlink.links -%}
+                                          <li>
+                                            <a
+                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                              href="{{ grandchildlink.url }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              {% if grandchildlink.current %}
+                                                aria-current="page"
+                                              {% endif %}
+                                              {% if grandchildlink.title contains '[' %}
+                                                style="color: {{ grandchildlink.title | split: '[' | last | remove: ']' }}"
+                                              {% endif %}
+                                            >
+                                            <span class="menu-drawer__label">{{ grandchildlink.title | split: '[' | first | escape }}</span>
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  {%- else -%}
+                    <a
+                      id="HeaderDrawer-{{ link.handle }}"
+                      href="{{ link.url }}"
+                      class="menu-drawer__menu-item menu-drawer__menu-base list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      {% if link.current %}
+                        aria-current="page"
+                      {% endif %}
+                      {% if link.title contains '[' %}
+                        style="color: {{ link.title | split: '[' | last | remove: ']' }}"
+                      {% endif %}
+                    >
+                      <span class="menu-drawer__label">
+                        {{ link.title | split: '[' | first | escape }}
+                      </span>
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>

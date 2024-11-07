@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main-title": {
+      "type": "main-page-title",
+      "settings": {
+      }
+    },
+    "reviews": {
+      "type": "okendo-reviews-widget",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main-title",
+    "reviews"
+  ]
+}

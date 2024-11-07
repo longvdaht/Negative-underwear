@@ -1,0 +1,181 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "50751ace-34ac-49ef-9057-af92c777aeef": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16148259995825__50751ace-34ac-49ef-9057-af92c777aeef-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sugar coated"
+          }
+        },
+        "template--16148259995825__50751ace-34ac-49ef-9057-af92c777aeef-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get yourself something sweet<\/p>"
+          }
+        },
+        "template--16148259995825__50751ace-34ac-49ef-9057-af92c777aeef-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP GLACÉ  ->",
+            "button_link_1": "shopify:\/\/collections\/glace",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16148259995825__50751ace-34ac-49ef-9057-af92c777aeef-heading-1",
+        "template--16148259995825__50751ace-34ac-49ef-9057-af92c777aeef-text-1",
+        "template--16148259995825__50751ace-34ac-49ef-9057-af92c777aeef-buttons-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HP_GlaceSantana_Desktop_01.jpg",
+        "image_2": "shopify:\/\/shop_images\/HP_GlaceSantana_Mobile_02.jpg",
+        "image_link": "shopify:\/\/collections\/glace",
+        "invert_on_mobile": true,
+        "show_text_box": false,
+        "enable_content": true,
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "cb4a6c7f-3286-402d-a369-2b204eb17480": {
+      "type": "collection-list",
+      "blocks": {
+        "template--16148259995825__cb4a6c7f-3286-402d-a369-2b204eb17480-featured_collection-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "best-selling-bras",
+            "image": "shopify:\/\/shop_images\/Carousel_-_Best_Selling_Bras_1.jpg",
+            "title_override": ""
+          }
+        },
+        "template--16148259995825__cb4a6c7f-3286-402d-a369-2b204eb17480-featured_collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "best-selling-whipped",
+            "image": "shopify:\/\/shop_images\/Carousel_-_Whipped_Best_Sellers_1.jpg",
+            "title_override": ""
+          }
+        },
+        "template--16148259995825__cb4a6c7f-3286-402d-a369-2b204eb17480-featured_collection-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "womens-underwire-bras",
+            "image": "shopify:\/\/shop_images\/Carousel_-_Underwire_Bras_1.jpg",
+            "title_override": ""
+          }
+        },
+        "a9cc513e-e44d-49af-8f70-7766ca0f2502": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "womens-sleepwear",
+            "image": "shopify:\/\/shop_images\/Carousel_-_Sleepwear_1.jpg",
+            "title_override": ""
+          }
+        },
+        "4e17b2c5-1e36-44ac-b6ad-b2254c5c23c0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "eyelet-lace",
+            "image": "shopify:\/\/shop_images\/Carousel_-_Eyelet_Lace_1.jpg",
+            "title_override": ""
+          }
+        },
+        "1d85b6e5-d1b8-4f12-b379-4f1f47a84400": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "best-selling-lounge",
+            "image": "shopify:\/\/shop_images\/Carousel_-_Best_Selling_Lounge_1.jpg",
+            "title_override": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16148259995825__cb4a6c7f-3286-402d-a369-2b204eb17480-featured_collection-1",
+        "template--16148259995825__cb4a6c7f-3286-402d-a369-2b204eb17480-featured_collection-2",
+        "template--16148259995825__cb4a6c7f-3286-402d-a369-2b204eb17480-featured_collection-3",
+        "a9cc513e-e44d-49af-8f70-7766ca0f2502",
+        "4e17b2c5-1e36-44ac-b6ad-b2254c5c23c0",
+        "1d85b6e5-d1b8-4f12-b379-4f1f47a84400"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "columns_tablet": 4,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 83
+      }
+    },
+    "6a6ebc34-77bb-465b-9839-c6dd11f56a7f": {
+      "type": "image-banner-highlight",
+      "blocks": {
+        "template--16148259995825__6a6ebc34-77bb-465b-9839-c6dd11f56a7f-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Heard that good things come in pairs."
+          }
+        },
+        "template--16148259995825__6a6ebc34-77bb-465b-9839-c6dd11f56a7f-button-1": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHOP SIEVE PACKS ->",
+            "link": "shopify:\/\/collections\/sieve-diy-packs"
+          }
+        }
+      },
+      "block_order": [
+        "template--16148259995825__6a6ebc34-77bb-465b-9839-c6dd11f56a7f-heading-1",
+        "template--16148259995825__6a6ebc34-77bb-465b-9839-c6dd11f56a7f-button-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Secondary_-_Packs_-_Bras.jpg",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "5f601fe0-87bc-496f-a389-e2c170a192d2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Customer Faves",
+        "description": "",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "customer-faves",
+        "products_to_show": 24,
+        "columns_desktop": 2,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 23,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "50751ace-34ac-49ef-9057-af92c777aeef",
+    "cb4a6c7f-3286-402d-a369-2b204eb17480",
+    "6a6ebc34-77bb-465b-9839-c6dd11f56a7f",
+    "5f601fe0-87bc-496f-a389-e2c170a192d2"
+  ]
+}

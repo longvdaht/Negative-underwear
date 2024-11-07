@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "smoothie-career": {
+      "type": "smoothie-career-search",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "smoothie-career"
+  ]
+}

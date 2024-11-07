@@ -1,0 +1,147 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Complimentary US shipping on all orders. Easy returns. 🎉",
+            "link": "",
+            "type": "us"
+          }
+        },
+        "576ee566-a85b-4aaf-8995-ee7de2c8dea4": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "15% off sitewide through Monday",
+            "link": "",
+            "type": "all"
+          }
+        },
+        "7eec36d0-8f12-43da-9bc8-025b7d3bec9a": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Free US shipping on all orders from now through Dec. 31. No strings attached.",
+            "link": "",
+            "type": "all"
+          }
+        },
+        "9abd8bd7-900a-4e9d-b8f2-74a0596fcb3e": {
+          "type": "announcement",
+          "settings": {
+            "text": "Give $20, get $20. Win win.",
+            "link": "shopify:\/\/pages\/referrals",
+            "type": "all"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "576ee566-a85b-4aaf-8995-ee7de2c8dea4",
+        "7eec36d0-8f12-43da-9bc8-025b7d3bec9a",
+        "9abd8bd7-900a-4e9d-b8f2-74a0596fcb3e"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "include_extra_assets": true,
+        "show_line_separator": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "navigation_image_BDV4GV": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lounge_WhippedHenley_Black_Ksenia_02_NN_02118dc9-9c9b-4d9b-a4cf-b2883c79c47a.jpg",
+            "text": "Best Sellers"
+          }
+        },
+        "navigation_image_XrAB4z": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bras_GlaceTrianglebra_Garnet_Santana_01_69d0db0e-dd0e-458b-80c8-ab66e26a39fd.jpg",
+            "text": "New"
+          }
+        },
+        "navigation_image_MXFfWj": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP-SieveNonWire-Black_1.jpg",
+            "text": "Bras"
+          }
+        },
+        "navigation_image_h4WULn": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bottom_BaseBoyShort_Black_Victoria_03_2048x_1.jpg",
+            "text": "Underwear"
+          }
+        },
+        "navigation_image_fDEknt": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lounge_WhippedLSTee_HeatheredGrey_Ksenia_01_NN_1cf40c7a-47b9-4423-9bec-46c0856602ea.jpg",
+            "text": "Whipped"
+          }
+        },
+        "navigation_image_itQJQz": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lounge_WaffleHenley_Sand_Darion_01_e34f6a17-ed2e-47bf-af89-fc9ee06bfd5f.jpg",
+            "text": "Lounge"
+          }
+        },
+        "navigation_image_XaARnC": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Lounge_ParachuteZipUp_Black_Santana_01_1.jpg",
+            "text": "Collections"
+          }
+        },
+        "navigation_image_mbzzND": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Sleep_LSShirt_Navy_Ksenia_01.jpg",
+            "text": "Sleep"
+          }
+        }
+      },
+      "block_order": [
+        "navigation_image_BDV4GV",
+        "navigation_image_XrAB4z",
+        "navigation_image_MXFfWj",
+        "navigation_image_h4WULn",
+        "navigation_image_fDEknt",
+        "navigation_image_itQJQz",
+        "navigation_image_XaARnC",
+        "navigation_image_mbzzND"
+      ],
+      "settings": {
+        "nav_color": "#ed1313",
+        "nav_link_lv1_color": "#0c0d0d",
+        "nav_link_lv2_color": "#000000",
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

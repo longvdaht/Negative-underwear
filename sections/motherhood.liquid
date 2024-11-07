@@ -1,0 +1,312 @@
+{{ 'motherhood.css' | asset_url | stylesheet_tag }}
+
+<div class="mothernav text-center">
+	<label>Shop the Timeline:</label>
+	<ul class="inline-list">
+		{% for block in section.blocks %}
+			{% if block.settings.timeline-title.size > 0 %}
+				<li><a href="#{{ block.settings.title | handleize }}">{{ block.settings.timeline-title }}</a></li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>
+
+
+<div class="features text-center clearfix">
+	{% assign quotecount = 0 %}	
+	{% for block in section.blocks %}
+		{% assign mod = 1 %}
+		{% assign collection = collections[block.settings.block-collection] %}
+		
+		<section id="{{ block.settings.title | handleize }}" class="clearfix">
+				
+		{% if block.settings.section-style == "collection" %}
+			<div class="grid block-{{ forloop.index }}">
+				<div class="grid__item large--one-half push--large--one-quarter">
+					<h2 class="headline"><a href="/collections/{{ block.settings.block-collection }}">{{ block.settings.title | escape }}</a></h2>
+			
+					{% if block.settings.bra-family-description.size > 0 %}
+						<p class="description">{{ block.settings.bra-family-description | escape }}</p>
+					{% endif %}
+				</div>
+			</div>
+		
+			<div class="products container">
+				<div class="mobile-scroller wrapper grid-slider-holder">
+					<div id="slider-{{ block.settings.title | handleize }}" class="grid-slider">
+						{% for product in collection.products %}
+							{% render 'product-grid-item', product: product %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$('#slider-{{ block.settings.title | handleize }}').slick({
+						arrows: true,
+						dots: false,
+						infinite: true,
+						slidesToShow: 3,
+						slidesToScroll: 3,
+						responsive: [
+							{
+							  breakpoint: 768,
+							  settings: {
+								slidesToShow: 2,
+								slidesToScroll: 2
+							  }
+							}
+						]
+					});
+				});
+			</script>
+		
+		{% else %}
+			{% assign quotecount = quotecount | plus: 1 %}
+			{% assign quotemod = quotecount | modulo: 2 %}
+			<div class="tan-bg">
+				<div class="container">
+					<div class="display-table">
+						<div class="display-table-cell large--one-half{% if quotemod == 0 %} push--large--one-half{% endif %}">
+							<div class="padded">
+								<div class="large--hide">
+									<h3 class="headline"><a href="/collections/{{ block.settings.block-collection }}">{{ block.settings.title | escape }}</a></h3>
+			
+									{% if block.settings.bra-family-description.size > 0 %}
+										<p class="description padded">{{ block.settings.bra-family-description | escape }}</p>
+									{% endif %}
+								</div>
+								
+								<div id="slider-{{ block.settings.title | handleize }}">
+									<div class="product-single__photo-wrapper"><img src="{{ block.settings.quote-img-1 | img_url: 'master' }}" data-src="{{ block.settings.quote-img-1 | img_url: '1020x' }}" class="lazyload" alt="{{ block.settings.title }} Photo 1" width="{{ block.settings.quote-img-1.width }}" height="{{ block.settings.quote-img-1.height }}" /></div>				
+									{% if block.settings.quote-img-2 %}
+										<div class="product-single__photo-wrapper"><img src="{{ block.settings.quote-img-2 | img_url: 'master' }}" data-src="{{ block.settings.quote-img-2 | img_url: '1020x' }}" class="lazyload" alt="{{ block.settings.title }} Photo 2" width="{{ block.settings.quote-img-2.width }}" height="{{ block.settings.quote-img-2.height }}" /></div>
+									{% endif %}
+									{% if block.settings.quote-img-3 %}
+										<div class="product-single__photo-wrapper"><img src="{{ block.settings.quote-img-3 | img_url: 'master' }}" data-src="{{ block.settings.quote-img-3 | img_url: '1020x' }}" class="lazyload" alt="{{ block.settings.title }} Photo 3" width="{{ block.settings.quote-img-3.width }}" height="{{ block.settings.quote-img-3.height }}" /></div>
+									{% endif %}
+									{% if block.settings.quote-img-4 %}
+										<div class="product-single__photo-wrapper"><img src="{{ block.settings.quote-img-4 | img_url: 'master' }}" data-src="{{ block.settings.quote-img-4 | img_url: '1020x' }}" class="lazyload" alt="{{ block.settings.title }} Photo 4" width="{{ block.settings.quote-img-4.width }}" height="{{ block.settings.quote-img-4.height }}" /></div>
+									{% endif %}
+									{% if block.settings.quote-img-5 %}
+										<div class="product-single__photo-wrapper"><img src="{{ block.settings.quote-img-5 | img_url: 'master' }}" data-src="{{ block.settings.quote-img-5 | img_url: '1020x' }}" class="lazyload" alt="{{ block.settings.title }} Photo 5" width="{{ block.settings.quote-img-5.width }}" height="{{ block.settings.quote-img-5.height }}" /></div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="display-table-cell large--one-half{% if quotemod == 0 %} pull--large--one-half{% endif %}">
+							<div class="product-details">
+								<div class="small--hide medium--hide">
+									<h3 class="headline"><a href="/collections/{{ block.settings.block-collection }}">{{ block.settings.title | escape }}</a></h3>
+								</div>
+								
+								{% if block.settings.quote.size > 0 %}
+									<blockquote>“{{ block.settings.quote | escape }}”</blockquote>
+									<cite>—{{ block.settings.quoted }}</cite>
+								{% endif %}
+								{% comment %}
+									{% if block.settings.block-collection %}
+										<a href="{{ collection.url }}" class="btn">Shop Now &ndash;&gt;</a>
+									{% endif %}
+								{% endcomment %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$('#slider-{{ block.settings.title | handleize }}').slick({
+						arrows         : false,
+						dots           : true
+					});
+				});
+			</script>
+		
+		
+		{% endif %}
+
+		</section>
+	{% endfor %}
+</div>
+
+<div class="container">
+	<div class="grid features">
+		<div class="grid__item large--five-sixths push--large--one-twelfth text-center">
+			<h2>{{ section.settings.footer-headline }}</h2>
+				
+			<img src="{{ section.settings.footer-image | img_url: 'master' }}" data-src="{{ section.settings.footer-image | img_url: '2048x' }}" class="lazyload" alt="{{ section.settings.footer-headline }}" width="{{ section.settings.footer-image.width }}" height="{{ section.settings.footer-image.height }}" />
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+
+		function stickMotherNav() {
+			var windowWidth = $(window).width();
+			console.log('stickMotherNav ' + windowWidth);
+			
+			if (windowWidth > 1050) {			// big
+				$(".mothernav").sticky({
+					wrapperClassName: 'sticky-mothernav-wrapper',
+					topSpacing: 106,
+					zIndex: 95
+				});
+			} else {							// lil
+				$(".mothernav").sticky({
+					wrapperClassName: 'sticky-mothernav-wrapper',
+					topSpacing: 73,
+					zIndex: 95
+				});
+			}
+		}
+		stickMotherNav();
+		
+		$(window).on('resize orientationchange', function() {
+			stickMotherNav();
+		});
+
+
+		$(document).on("scroll", onScroll);
+	
+		//smoothscroll
+		$('a[href^="#"]').on('click', function (e) {
+			e.preventDefault();
+			$(document).off("scroll");
+		
+			$('a').each(function () {
+				$(this).removeClass('active');
+			})
+			$(this).addClass('active');
+	  
+			var target = this.hash,
+				menu = target;
+			$target = $(target);
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top+2
+			}, 500, 'swing', function () {
+				window.location.hash = target;
+				$(document).on("scroll", onScroll);
+			});
+		});
+	});
+
+	function onScroll(event) {
+		var offset = 160;
+		var scrollPos = $(document).scrollTop() + offset;
+		
+		$('.mothernav a').each(function () {
+			var currLink = $(this);
+			var refElement = $(currLink.attr("href"));
+			if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+				$('#menu-center ul li a').removeClass("active");
+				currLink.addClass("active");
+			}
+			else{
+				currLink.removeClass("active");
+			}
+		});
+	}
+	
+</script>
+
+{% schema %}
+{
+  "name": "Motherhood Landing Page",
+  "class": "section--features",
+  "settings": [
+	{
+	  "type": "image_picker",
+	  "id": "footer-image",
+	  "label": "Footer Image"
+	},
+	{
+	  "type": "text",
+	  "id": "footer-headline",
+	  "label": "Footer Headline"
+	}
+  ],
+  "blocks": [
+    {
+      "type": "stage",
+      "name": "Stage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "timeline-title",
+          "label": "Timeline Title"
+        },
+        {
+          "type": "textarea",
+          "id": "bra-family-description",
+          "label": "Description"
+        },
+		{
+			"type": "radio",
+			"id": "section-style",
+			"label": "Section Style",
+			"options": [
+			  {
+				"value": "collection",
+				"label": "Collection"
+			  },
+			  {
+				"value": "quote",
+				"label": "Quote"
+			  }
+			]
+		},
+        {
+		  "id": "block-collection",
+		  "type": "collection",
+		  "label": "Collection Link"
+		},
+        {
+		  "id": "quote",
+		  "type": "textarea",
+		  "label": "Quote Text"
+		},
+        {
+		  "id": "quoted",
+		  "type": "textarea",
+		  "label": "Quoted Person"
+		},
+		{
+		  "type": "image_picker",
+		  "id": "quote-img-1",
+		  "label": "Quote Image 1"
+		},
+		{
+		  "type": "image_picker",
+		  "id": "quote-img-2",
+		  "label": "Quote Image 2"
+		},
+		{
+		  "type": "image_picker",
+		  "id": "quote-img-3",
+		  "label": "Quote Image 3"
+		},
+		{
+		  "type": "image_picker",
+		  "id": "quote-img-4",
+		  "label": "Quote Image 4"
+		},
+		{
+		  "type": "image_picker",
+		  "id": "quote-img-5",
+		  "label": "Quote Image 5"
+		}
+		
+      ]
+    }
+  ]
+}
+{% endschema %}

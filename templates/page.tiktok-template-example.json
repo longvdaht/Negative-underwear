@@ -1,0 +1,183 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "4312283a-67bb-41ef-b5d4-fe1803b94402": {
+      "type": "banner-about",
+      "blocks": {
+        "template--16059359658161__4312283a-67bb-41ef-b5d4-fe1803b94402-16885248341f483ba1-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Making complicated things uncomplicated since 2014"
+          }
+        }
+      },
+      "block_order": [
+        "template--16059359658161__4312283a-67bb-41ef-b5d4-fe1803b94402-16885248341f483ba1-0"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/header-whynegative_2048x_ed0fa277-bef9-4fb1-89fb-4e7e8117cac8.webp",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "background": "#d2d2d0",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_bottom": 30
+      }
+    },
+    "fc537450-1744-43e5-ad47-6dc11031c0bc": {
+      "type": "collection-slider",
+      "blocks": {
+        "template--16059359658161__fc537450-1744-43e5-ad47-6dc11031c0bc-1688525347fd254bb7-0": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/NEG1427_NK-100-08E-2_Sieve_Non-Wire_Bra_-_Haze_-_2_V1_530cfe73-a9bf-4224-bc85-116983246def.jpg",
+            "title": "Bras",
+            "collection-link": "shopify:\/\/collections\/womens-bras"
+          }
+        },
+        "b4934473-68f9-4b4e-b490-7f3ed2d8e7d5": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1102_NK-104-02FC_Cotton_French_Cut_Brief_in_White_V2.jpg",
+            "title": "Underwear",
+            "collection-link": "shopify:\/\/collections\/womens-underwear"
+          }
+        },
+        "daaa800a-c2eb-4a56-86fd-043b8c8d4e00": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WhippedATop_HeatherGrey.jpg",
+            "title": "Whipped",
+            "collection-link": "shopify:\/\/collections\/whipped"
+          }
+        },
+        "6197b259-8c20-44db-90f2-18c1e75b684a": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1155_NK-211-121K_Supreme_Sleep_Shirt_in_Black_w__White_Piping_V1.jpg",
+            "title": "Sleep",
+            "collection-link": "shopify:\/\/collections\/womens-sleepwear"
+          }
+        },
+        "ffbb37f3-6f96-4337-978f-6f786dd42fcd": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/NEG1553_NK-400-42X_Club_Crew_in_Glacier_V4_1.jpg",
+            "title": "Sweats",
+            "collection-link": "shopify:\/\/collections\/club-negative"
+          }
+        }
+      },
+      "block_order": [
+        "template--16059359658161__fc537450-1744-43e5-ad47-6dc11031c0bc-1688525347fd254bb7-0",
+        "b4934473-68f9-4b4e-b490-7f3ed2d8e7d5",
+        "daaa800a-c2eb-4a56-86fd-043b8c8d4e00",
+        "6197b259-8c20-44db-90f2-18c1e75b684a",
+        "ffbb37f3-6f96-4337-978f-6f786dd42fcd"
+      ],
+      "settings": {
+        "heading_section": "Operating in the Negative space",
+        "description_section": "We focus on the essentials and ditch the rest — you won’t find unnecessary bows, padding or adornments. Our minimalist approach emphasizes comfort, quality and function first."
+      }
+    },
+    "5f601fe0-87bc-496f-a389-e2c170a192d2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Customer Faves",
+        "description": "",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "customer-faves",
+        "products_to_show": 24,
+        "columns_desktop": 2,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 23,
+        "padding_bottom": 0
+      }
+    },
+    "ff1eb989-4e81-44a1-bf84-7468266e7179": {
+      "type": "quotes",
+      "blocks": {
+        "bc6da14d-a81b-4c54-8cf3-48f9dacccce0": {
+          "type": "feedback",
+          "settings": {
+            "heading_feedback": "Here’s to <b>feeling amazing<\/b> in your own skin - no <del>frills<\/del> or <del>fluff<\/del> required.",
+            "image_feedback": "shopify:\/\/shop_images\/signature_0874b723-b833-4fcb-983e-66d333b7e0dd.jpg"
+          }
+        },
+        "template--16059359658161__ff1eb989-4e81-44a1-bf84-7468266e7179-16885460431c415da8-0": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/VOGUE_57c9b0a3-e84e-42e0-8bbf-399834f3a850.png",
+            "title": "Vogue",
+            "quote": "“Rethinking the intimates games from the inside out”"
+          }
+        },
+        "1db55c2d-262e-4090-a6db-519eaa186be0": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/NYM-2.png",
+            "title": "New York Magazine",
+            "quote": "Best Comfortable Lingerie\n(Best of New York)"
+          }
+        },
+        "a7d1b81a-2f84-4607-8aaf-6de543ac93c8": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WWW.png",
+            "title": "Who What Wear",
+            "quote": "“This is hands down the most comfortable bra I’ve ever worn.”"
+          }
+        },
+        "24bd42e1-3cd5-45de-925d-ea8598b0e9e0": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/refinery-29.png",
+            "title": "Refinery 29",
+            "quote": "“Negative stripped down the concepts of sexy lingerie to its basics to deliver on what you really want - to feel awesome in your own skin.”"
+          }
+        },
+        "01d8aef9-3aef-4be3-8d2d-24b101dbe4db": {
+          "type": "button",
+          "settings": {
+            "label_button": "Shop the collection",
+            "button_url": "shopify:\/\/collections\/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "bc6da14d-a81b-4c54-8cf3-48f9dacccce0",
+        "template--16059359658161__ff1eb989-4e81-44a1-bf84-7468266e7179-16885460431c415da8-0",
+        "1db55c2d-262e-4090-a6db-519eaa186be0",
+        "a7d1b81a-2f84-4607-8aaf-6de543ac93c8",
+        "24bd42e1-3cd5-45de-925d-ea8598b0e9e0",
+        "01d8aef9-3aef-4be3-8d2d-24b101dbe4db"
+      ],
+      "settings": {
+        "background": "#ecf3f8"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "4312283a-67bb-41ef-b5d4-fe1803b94402",
+    "fc537450-1744-43e5-ad47-6dc11031c0bc",
+    "5f601fe0-87bc-496f-a389-e2c170a192d2",
+    "ff1eb989-4e81-44a1-bf84-7468266e7179"
+  ]
+}

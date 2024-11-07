@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ 'checkout.css' | asset_url | stylesheet_tag }}
+    {{ checkout_scripts }}
+    <link rel="stylesheet" href="https://use.typekit.net/kov3shz.css">
+  
+  {% include "globale-checkout-css" %}
+
+  {% style %}
+    @font-face {
+      font-family: "nimbus-sans", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+  {% endstyle %}
+  
+<!-- PLACE AT START OF DOCUMENT HEAD. DO NOT CHANGE-->
+<script type="text/javascript" src="https://safevisit.online/?lcid=11181" async defer></script>
+<!-- END -->    
+  </head>
+  <body>
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+  
+	
+
+	<!-- rebuy slim -->
+	{{ 'rebuy-slim.scss.css' | asset_url | stylesheet_tag }}
+
+	<div data-rebuy-id="{{ settings.rebuy_checkout_id }}"></div>
+	<script async src="https://cdn.rebuyengine.com/onsite/js/rebuy.js?shop=negative-underwear.myshopify.com"></script>
+
+	{% if settings.rebuy_additional.size > 0 %}
+		<!-- additional rebuy code -->		
+		<div data-rebuy-id="{{ settings.rebuy_additional }}"></div>
+	{% endif %}
+
+
+  {% include "globale-checkout-js" %}
+
+<!-- accessibe -->
+<script> (function(){ var s = document.createElement('script'); var h = document.querySelector('head') || document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init({ statementLink : '', footerHtml : '', hideMobile : false, hideTrigger : false, disableBgProcess : false, language : 'en', position : 'left', leadColor : '#146ff8', triggerColor : '#000000', triggerRadius : '50%', triggerPositionX : 'left', triggerPositionY : 'bottom', triggerIcon : 'people', triggerSize : 'small', triggerOffsetX : 25, triggerOffsetY : 25, mobile : { triggerSize : 'small', triggerPositionX : 'left', triggerPositionY : 'bottom', triggerOffsetX : 10, triggerOffsetY : 25, triggerRadius : '50%' } }); }; h.appendChild(s); })(); </script>
+
+    <!-- ----------------------Shopify_Customer_Script---------------------- -->
+{% if customer %}
+  <script>
+  window.addEventListener('load', function() {window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "userData",
+      "customer_id": "{{ customer.id }}",
+      "customer_ordercount": "{{ customer.orders_count }}",
+      "customer_ltv": "{{ customer.total_spent }}",
+      "value": "{{total_price | times: 0.01}}",
+      "customer_accountstatus": "{{ customer.has_account }}",
+      "customer_email": "{{ customer.email }}",
+      "customer_firstname": "{{customer.first_name}}",
+      "customer_lastname": "{{customer.last_name}}",
+      "customer_phone": "{{ customer.phone }}",
+      "customer_tags": "{{ customer.tags }}",
+      "new_customer": "{% if customer.orders_count > 1 %} isNewCustomer = 1; {% endif %}
+      "customer_marketingstatus": "{{ customer.accepts_marketing }}"
+
+    });
+  }, false);
+</script>
+{% endif %}
+<!-- ----------------------Shopify_Customer_Script---------------------- -->
+    
+<script type="text/javascript">
+
+	function insertAfter(el, referenceNode) {
+		referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+	}
+	function checkShippingOptions() {
+		if (Shopify.Checkout.step == "shipping_method") {
+			console.log('   check shipping options ');
+			
+			var radioWrappers = document.getElementsByClassName("radio-wrapper");
+			var productNames = document.getElementsByClassName("product__description__name");
+
+			for (var i=0; i<radioWrappers.length; i++) {
+				console.log(' + checking radio wrapper ' + i + ' ' + radioWrappers[i].getAttribute("data-shipping-method"));
+
+				if (radioWrappers[i].getAttribute("data-shipping-method").indexOf('Overnight') != -1) {       
+					console.log(" radioLabel " + i + " has the correct attribute");				
+					console.log("   - let's warn 'em! ");
+					
+					var newEl = document.createElement('div');
+					newEl.className = "overnight-note";
+					newEl.innerHTML = '*Please note, overnight orders placed on Saturday or Sunday will ship the following Monday'; 
+					insertAfter(newEl, radioWrappers[i]);
+				}
+			}
+		}
+	}
+
+	document.addEventListener('page:load', function() {
+		console.log('page:load -- ' + Shopify.Checkout.step);
+		checkShippingOptions();
+	});
+	document.addEventListener('page:change', function() {
+        console.log('page:change -- ' + Shopify.Checkout.step);
+		checkShippingOptions();
+	});
+
+</script>
+<!-- Checkout Accessibility Hotfix (166780) -->
+{{ 'Hotfix-CheckoutAccessibility-166780_REV01.js' | asset_url | script_tag }}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ8LNXPJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</body>
+</html>
