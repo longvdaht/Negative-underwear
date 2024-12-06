@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "faq_sale_bullet": "Price slashed, Annual Sale items with a red SALE tag are final sale. Full priced items and packs purchased with the 15% off discount are eligible for refund, credit or exchange. <a href=\"\/pages\/faq\">For more info on our sale policies -&gt;<\/a>",
-    "logo": "shopify:\/\/shop_images\/logo.svg",
+    "faq_sale_bullet": "Price slashed, Annual Sale items with a red SALE tag are final sale. Full priced items and packs purchased with the 15% off discount are eligible for refund, credit or exchange. <a href=\"/pages/faq\">For more info on our sale policies -&gt;</a>",
+    "logo": "shopify://shop_images/logo.svg",
     "logo_width": 160,
-    "favicon": "shopify:\/\/shop_images\/favicon-128.png",
+    "favicon": "shopify://shop_images/favicon-128.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -45,13 +54,13 @@
     "card_shadow_horizontal_offset": 0,
     "card_shadow_vertical_offset": 4,
     "card_shadow_blur": 5,
-    "faq_tab": "<ul>\n\t\t\n<li>Price-slashed items are either exchange only or final sale. Any item marked as \"exchange only\" are eligible for direct size exchange only (aka no refunds). Items marked as \"final sale\" are not eligible for returns or exchanges. <\/li>\n<li>All full-priced, unworn items, with tags attached and in their original packaging are eligible for return or exchange within 30 days of placing your order.<\/li>\n<li>Please note, packs must be returned in full. We do not accept partial returns of packs.<\/li>\n\t<li>Want to know our full returns policies? <a href=\"\/pages\/returns-exchanges\" title=\"Negative Underwear Returns &amp; Exchanges\">Here you go<\/a>.<\/li>\n\t<li>Want more info about shipping, materials or care instructions? <a href=\"\/pages\/faq\" title=\"Negative Underwear FAQ\">Here<\/a>!\n\t<br><br><em>Q’s on fit or sizing? Email us at <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com<\/a><\/em>\n<\/li>\n<\/ul>",
+    "faq_tab": "<ul>\n\t\t\n<li>Price-slashed items are either exchange only or final sale. Any item marked as \"exchange only\" are eligible for direct size exchange only (aka no refunds). Items marked as \"final sale\" are not eligible for returns or exchanges. </li>\n<li>All full-priced, unworn items, with tags attached and in their original packaging are eligible for return or exchange within 60 days of placing your order.</li>\n<li>Please note, packs must be returned in full. We do not accept partial returns of packs.</li>\n\t<li>Want to know our full returns policies? <a href=\"/pages/returns-exchanges\" title=\"Negative Underwear Returns &amp; Exchanges\">Here you go</a>.</li>\n\t<li>Want more info about shipping, materials or care instructions? <a href=\"/pages/faq\" title=\"Negative Underwear FAQ\">Here</a>!\n\t<br><br><em>Q’s on fit or sizing? Email us at <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com</a></em>\n</li>\n</ul>",
     "pdp_promo_text": "Free U.S. shipping on orders over $100. Easy returns.",
-    "sizechart-note-nonwire": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.<br\/><\/p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br\/>XS=0, S=1, M=2, L=3, XL=4, XXL=5<\/p>",
-    "sizechart-note-nonwire-plus": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.<\/p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br\/>XS=0, S=1, M=2, L=3, XL=4, XXL=5<\/p>",
-    "pdp_popup_content_1": "<p>This item is only eligible for size exchange and cannot be returned for a refund. Click <a href=\"https:\/\/negativeunderwear.com\/pages\/faq\" target=\"_blank\" title=\"https:\/\/negativeunderwear.com\/pages\/faq\">here <\/a>for more sale FAQ's.<\/p>",
+    "sizechart-note-nonwire": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.<br/></p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br/>XS=0, S=1, M=2, L=3, XL=4, XXL=5</p>",
+    "sizechart-note-nonwire-plus": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.</p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br/>XS=0, S=1, M=2, L=3, XL=4, XXL=5</p>",
+    "pdp_popup_content_1": "<p>This item is only eligible for size exchange and cannot be returned for a refund. Click <a href=\"https://negativeunderwear.com/pages/faq\" target=\"_blank\" title=\"https://negativeunderwear.com/pages/faq\">here </a>for more sale FAQ's.</p>",
     "pdp_tags_trigger_2": "final sale",
-    "pdp_popup_content_2": "<p>This item is final sale and cannot be returned or exchanged. Click <a href=\"https:\/\/negativeunderwear.com\/pages\/faq\" target=\"_blank\" title=\"https:\/\/negativeunderwear.com\/pages\/faq\">here <\/a>for more sale FAQ's.<\/p>",
+    "pdp_popup_content_2": "<p>This item is final sale and cannot be returned or exchanged. Click <a href=\"https://negativeunderwear.com/pages/faq\" target=\"_blank\" title=\"https://negativeunderwear.com/pages/faq\">here </a>for more sale FAQ's.</p>",
     "collection_card_style": "standard",
     "collection_card_image_padding": 0,
     "collection_card_text_alignment": "left",
@@ -66,7 +75,7 @@
     "blog_card_style": "standard",
     "blog_card_image_padding": 0,
     "blog_card_text_alignment": "left",
-    "blog_card_color_scheme": "background-2",
+    "blog_card_color_scheme": "background-1",
     "blog_card_border_thickness": 0,
     "blog_card_border_opacity": 10,
     "blog_card_corner_radius": 0,
@@ -106,15 +115,15 @@
     "sale_badge_color_scheme": "accent-2",
     "sold_out_badge_color_scheme": "inverse",
     "brand_headline": "",
-    "brand_description": "<p><\/p>",
+    "brand_description": "<p></p>",
     "brand_image_width": 100,
-    "social_facebook_link": "https:\/\/www.facebook.com\/NegativeUnderwear\/",
-    "social_instagram_link": "https:\/\/www.instagram.com\/negativeunderwear\/",
+    "social_facebook_link": "https://www.facebook.com/NegativeUnderwear/",
+    "social_instagram_link": "https://www.instagram.com/negativeunderwear/",
     "social_youtube_link": "",
     "social_tiktok_link": "",
     "social_twitter_link": "",
     "social_snapchat_link": "",
-    "social_pinterest_link": "https:\/\/www.pinterest.com\/negativeunderwear\/",
+    "social_pinterest_link": "https://www.pinterest.com/negativeunderwear/",
     "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
@@ -127,7 +136,7 @@
     "show_cart_note": false,
     "show_shipping_countdown": false,
     "show_promo_message": true,
-    "cart_promo_text": "Free US shipping on all orders.",
+    "cart_promo_text": "Complimentary shipping on all orders.",
     "cart_collection_title": "You may also like",
     "cart_drawer_collection": "you-may-also-like",
     "rebuy_cart_id": "55045",
@@ -137,12 +146,12 @@
     "product_buy": "free-gift-fancy-mesh-sock-in-black",
     "product_y_limit": "1",
     "product_get_enable": false,
-    "giftcard_background": "shopify:\/\/shop_images\/bg-giftcard.jpg",
-    "title_giftcard": "shopify:\/\/shop_images\/title-giftcard.png",
-    "checkout_logo_image": "shopify:\/\/shop_images\/checkout_logo_60.png",
+    "giftcard_background": "shopify://shop_images/bg-giftcard.jpg",
+    "title_giftcard": "shopify://shop_images/title-giftcard.png",
+    "checkout_logo_image": "shopify://shop_images/checkout_logo_60.png",
     "checkout_sidebar_background_color": "#fff",
-    "sizechart_note_nonwire": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.<br\/><\/p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br\/>XS=0, S=1, M=2, L=3, XL=4, XXL=5<\/p>",
-    "sizechart_note_nonwire_plus": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.<\/p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br\/>XS=0, S=1, M=2, L=3, XL=4, XXL=5<\/p>",
+    "sizechart_note_nonwire": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.<br/></p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br/>XS=0, S=1, M=2, L=3, XL=4, XXL=5</p>",
+    "sizechart_note_nonwire_plus": "<p>* Non-wire bra sizing can vary by preference and if you're toward the top of a size range and prefer more coverage, you may want to size up. For styles available in + sizes (designed with additional support details for our larger cup customers), we find DD's can be on the cusp - if you prefer more coverage and support, we suggest the + bra equivalent for your band size.</p><p>Btw, the size nomenclature has changed for Bra Tops. Here's the conversion:<br/>XS=0, S=1, M=2, L=3, XL=4, XXL=5</p>",
     "core_colors": "Black\nNavy\nWashed Black\nGraphite\nSlate\nHeather Grey\nWhite\nPeach\nBuff\nBuff + White",
     "sections": {
       "main-password-header": {
@@ -158,25 +167,22 @@
         }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "733389323033596483": {
-        "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/theme-settings\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "type": "shopify://apps/okendo-product-reviews-ugc/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
         "disabled": false,
         "settings": {
           "show_preview_data": true
         }
       },
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "5888675206956468567": {
-        "type": "shopify:\/\/apps\/loop-returns-exchanges\/blocks\/onstore\/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
+        "type": "shopify://apps/loop-returns-exchanges/blocks/onstore/e32ccd84-40d6-4b16-98bf-b6b9da010afd",
         "disabled": true,
         "settings": {
           "show-onstore-bar": false,
@@ -197,16 +203,14 @@
         }
       },
       "12592085946906583873": {
-        "type": "shopify:\/\/apps\/wunderkind\/blocks\/tag\/40b05e3b-2403-4814-8fab-e17e57e8b1aa",
+        "type": "shopify://apps/wunderkind/blocks/tag/40b05e3b-2403-4814-8fab-e17e57e8b1aa",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "15685250022964305326": {
-        "type": "shopify:\/\/apps\/elevar-conversion-tracking\/blocks\/dataLayerEmbed\/bc30ab68-b15c-4311-811f-8ef485877ad6",
+        "type": "shopify://apps/elevar-conversion-tracking/blocks/dataLayerEmbed/bc30ab68-b15c-4311-811f-8ef485877ad6",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       }
     },
     "color_schemes": {
@@ -423,7 +427,7 @@
       "sale_badge_color_scheme": "accent-2",
       "sold_out_badge_color_scheme": "inverse",
       "brand_headline": "",
-      "brand_description": "<p><\/p>",
+      "brand_description": "<p></p>",
       "brand_image_width": 100,
       "social_twitter_link": "",
       "social_facebook_link": "",
@@ -459,8 +463,6 @@
     }
   },
   "platform_customizations": {
-    "custom_css": [
-
-    ]
+    "custom_css": []
   }
 }

@@ -1,0 +1,244 @@
+<section class="collection-collage-section">
+    <div class="page-width">
+        <div class="content-new-collage">
+            <h2>{{ section.settings.title_section }}</h2>
+            <div class="collection-collage">
+                {% for block in section.blocks %}
+                    <div class="collection-collage-item" style="background-image: url('{{ block.settings.image | img_url: '720x720' }}'); grid-area: item{{ forloop.index }};">
+                        <a href="{{ block.settings.link }}" class="collection-link">
+                            <div class="collection-content-two">
+                                <h2>{{ block.settings.title }}</h2>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid Section",
+  "settings": [
+    {
+    "type": "text",
+    "id": "title_section",
+    "label": "Title Section"
+  }
+],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid Section"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+.collection-collage-section {
+    padding: 0;
+}
+
+.collection-collage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 353px);
+    grid-gap: 5px;
+    grid-template-areas:
+        "item1 item2"
+        "item3 item4"
+        "item5 item4";
+}
+
+.collection-collage-item {
+    position: relative;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease;
+}
+
+.collection-collage-item:hover {
+  background-size: 105%;
+}
+
+.collection-collage-item h2 {
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    color: #fff;
+}
+
+.collection-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.collection-content-two {
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.collection-collage-item:hover .collection-content-two {
+    opacity: 0.8;
+}
+
+/* Especificar el tamaño de cada área */
+.collection-collage .collection-collage-item:nth-child(1) { grid-area: item1; }
+.collection-collage .collection-collage-item:nth-child(2) { grid-area: item2; }
+.collection-collage .collection-collage-item:nth-child(3) { grid-area: item3; }
+.collection-collage .collection-collage-item:nth-child(4) { grid-area: item4; }
+.collection-collage .collection-collage-item:nth-child(5) { grid-area: item5; }
+
+.content-new-collage {
+    padding: 0 7%;
+}
+.content-new-collage h2{
+  margin-bottom: 28px;
+  margin-top: 15px;
+}
+.collection-collage-item{
+  background-repeat: no-repeat;
+}
+@media (max-width: 1500px) {
+  .collection-collage-item {
+      background-size: 108%;
+  }
+  .collection-collage-item:hover {
+      background-size: 112%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .collection-collage-item {
+      background-size: 112%;
+  }
+  .collection-collage-item:hover {
+      background-size: 116%;
+  }
+}
+
+@media (max-width: 1350px) {
+  .collection-collage-item {
+      background-size: 120%;
+  }
+  .collection-collage-item:hover {
+      background-size: 125%;
+  }
+}
+
+@media (max-width: 1260px) {
+  .collection-collage-item {
+      background-size: 130%;
+  }
+  .collection-collage-item:hover {
+      background-size: 135%;
+  }
+}
+
+@media (max-width: 1164px) {
+  .collection-collage-item {
+      background-size: 137%;
+  }
+  .collection-collage-item:hover {
+      background-size: 140%;
+  }
+}
+
+@media (max-width: 1101px) {
+  .collection-collage-item {
+      background-size: 145%;
+  }
+  .collection-collage-item:hover {
+      background-size: 150%;
+  }
+}
+
+@media (max-width: 1040px) {
+  .collection-collage-item {
+      background-size: 160%;
+  }
+  .collection-collage-item:hover {
+      background-size: 165%;
+  }
+}
+
+@media (max-width: 970px) {
+  .collection-collage-item {
+      background-size: cover;
+  }
+
+  .collection-collage-item:hover {
+    background-size: cover;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .content-new-collage {
+        padding: 0;
+    }
+
+    .collection-collage-item {
+      background-size: cover;
+    }
+    .collection-collage-item:hover {
+      background-size: cover;
+    }
+    .collection-collage-item h2 {
+        font-size: 18px;
+    }
+
+    .collection-collage {
+        grid-template-rows: repeat(3, 196px);
+        grid-gap: 3px;
+    }
+    .content-new-collage h2{
+      margin-bottom: 20px;
+      margin-top: 15px;
+    }
+}
+
+</style>

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "track_your_order_heading": {
@@ -6,7 +15,7 @@
         "track_your_order": {
           "type": "html",
           "settings": {
-            "section_html": "<style>\n  .wndr-sx--heading {\n    font-size: 2.5rem;\n    text-align: center;\n  }\n  .wonderment-ab-container > div > form {\n     margin-top: 20px;\n  }\n  .tp-form-header.tp-search-header {\n    display: none !important;\n  }\n<\/style>\n<h2 class=\"wndr-sx--heading\">Track your order<\/h2>"
+            "section_html": "<style>\n  .wndr-sx--heading {\n    font-size: 2.5rem;\n    text-align: center;\n  }\n  .wonderment-ab-container > div > form {\n     margin-top: 20px;\n  }\n  .tp-form-header.tp-search-header {\n    display: none !important;\n  }\n</style>\n<h2 class=\"wndr-sx--heading\">Track your order</h2>"
           }
         }
       },
@@ -22,9 +31,8 @@
       "type": "apps",
       "blocks": {
         "wonderment": {
-          "type": "shopify:\/\/apps\/wonderment\/blocks\/wonderBlock\/89d63369-6ee7-4097-ac41-8229c6f90001",
-          "settings": {
-          }
+          "type": "shopify://apps/wonderment/blocks/wonderBlock/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {}
         }
       },
       "block_order": [
@@ -85,14 +93,14 @@
           "type": "question",
           "settings": {
             "title": "What are your shipping policies?",
-            "text": "<p><strong>Standard Shipping<\/strong><\/p><ul><li>Sent Monday through Friday, excluding holidays<\/li><li>Orders typically ship 1-2 business days after being placed<\/li><li>Free shipping on all US orders over $100.  No strings attached.<\/li><li>Orders are expected to arrive within 7-10 days from being shipped<\/li><\/ul><p><strong>Expedited Shipping<\/strong><\/p><ul><li>Rush orders ($25 flat rate) are expected to arrive within 2-3 business days from being shipped<\/li><li>Overnight orders ($35 flat rate) must be placed before 12PM EST and are expected to arrive within 1-2 business days from being shipped<\/li><\/ul>"
+            "text": "<p><strong>Standard Shipping</strong></p><ul><li>Sent Monday through Friday, excluding holidays</li><li>Orders typically ship 1-2 business days after being placed</li><li>Free shipping on all US orders over $100.  No strings attached.</li><li>Orders are expected to arrive within 7-10 days from being shipped</li></ul><p><strong>Expedited Shipping</strong></p><ul><li>Rush orders ($25 flat rate) are expected to arrive within 2-3 business days from being shipped</li><li>Overnight orders ($35 flat rate) must be placed before 12PM EST and are expected to arrive within 1-2 business days from being shipped</li></ul>"
           }
         },
         "shipping-cost-question": {
           "type": "question",
           "settings": {
             "title": "What is your international shipping policy?",
-            "text": "<ul><li>Ordering: To get started, scroll to the bottom of the page and select your country from the drop down menu. Local currency should update automatically. Duties, taxes, and shipping fees are calculated at checkout.<\/li><li>Shipping: International orders should arrive within 5-10 business days of the ship date. Note, we do not ship to international PO boxes.<\/li><li>Returns: We accept back unworn, unwashed items with tags attached within 30 days of the order date. To initiate a return, please <a href=\"https:\/\/web.global-e.com\/Returns\/Portal\/gsBzq\" target=\"_blank\">click here<\/a> and enter the order number and email address associated with the order. International customers are responsible to pay a flat rate shipping fee which will be deducted from the refund total. Duties, taxes, and shipping fees are non-refundable. Email <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com<\/a> if you have any questions regarding your return.<\/li><li>For more information, <a href=\"https:\/\/service.global-e.com\/?id=74002292-a6b1-4d2d-bace-3cf7ea4f5de9&isPro=true&merchantCsEmail=hello%40negativeunderwear.com\" target=\"_blank\">click here<\/a> to review our International Help Center. If you need any additional assistance, please email <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com<\/a>.<\/li><li>See our Terms of Service for more information on International ordering.<\/li><\/ul>"
+            "text": "<ul><li>Ordering: To get started, scroll to the bottom of the page and select your country from the drop down menu. Local currency should update automatically. Duties, taxes, and shipping fees are calculated at checkout.</li><li>Shipping: International orders should arrive within 5-10 business days of the ship date. Note, we do not ship to international PO boxes.</li><li>Returns: We accept back unworn, unwashed items with tags attached within 30 days of the order date. To initiate a return, please <a href=\"https://web.global-e.com/Returns/Portal/gsBzq\" target=\"_blank\">click here</a> and enter the order number and email address associated with the order. International customers are responsible to pay a flat rate shipping fee which will be deducted from the refund total. Duties, taxes, and shipping fees are non-refundable. Email <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com</a> if you have any questions regarding your return.</li><li>For more information, <a href=\"https://service.global-e.com/?id=74002292-a6b1-4d2d-bace-3cf7ea4f5de9&isPro=true&merchantCsEmail=hello%40negativeunderwear.com\" target=\"_blank\">click here</a> to review our International Help Center. If you need any additional assistance, please email <a href=\"mailto:hello@negativeunderwear.com\">hello@negativeunderwear.com</a>.</li><li>See our Terms of Service for more information on International ordering.</li></ul>"
           }
         },
         "sizes-question": {
@@ -100,7 +108,7 @@
           "disabled": true,
           "settings": {
             "title": "How do your sizes work?",
-            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.<\/p>"
+            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.</p>"
           }
         },
         "shipping-heading": {
@@ -114,14 +122,14 @@
           "type": "question",
           "settings": {
             "title": "What is your return policy and process?",
-            "text": "<p>You can request a return or exchange up to 30 days after your order was placed. All returns must be unwashed, unworn and undamaged. They’re intimates after all 😉<\/p><p><strong>-&gt; <\/strong><a href=\"https:\/\/negative-underwear.loopreturns.com\/#\/\" target=\"_blank\"><strong>Click right here to start a return!<\/strong><\/a><br\/><br\/>We offer free exchanges and returns to store credit. For refunds to your original payment, we have a $5 restocking fee to help support the many people in our supply chain. You’ll spot this deducted from the balance of your refund once we’ve received and clicked \"good to go!\" on your return.<\/p><p><strong>Please note,<\/strong><\/p><ul><li>All price reduced SALE items are Final Sale and not eligible for return or exchange. Items purchased (unworn, with tags, in original packaging) are eligible to return for credit or exchange only within 30 days of placing your order.<\/li><li>Exchanges, store credits and\/or refunds will be issued only after returned goods have been received and inspected by our warehouse to confirm they meet our return-eligible criteria above.<\/li><li>Store credit requests are free to process and issued electronically; credits do not expire and can be used toward anything on our site.<\/li><li>Please allow up to 5 business days to receive and process your return request after your return package has been shipped.<\/li><li>While we try our best, direct exchange requests are not guaranteed because our stock is limited.<\/li><li>If you’re returning part of a Kit or Pack, the refunded amount will reflect the item’s Kit \/ Pack price, not the standard full price of the item.<\/li><li>If you’re returning an item purchased with a discount code, your refund will reflect the item’s proportionally discounted price, not the standard full price of the item.<\/li><li>Damaged returns and returns sent back without prior authorization will be returned to sender.<\/li><li>Digital gift cards are non-refundable.<\/li><li>No printer? No problem. You can now return via QR code at all eligible USPS QR locations.<\/li><\/ul><p><\/p>"
+            "text": "<p>You can request a return or exchange up to 30 days after your order was placed. All returns must be unwashed, unworn and undamaged. They’re intimates after all 😉</p><p><strong>-&gt; </strong><a href=\"https://negative-underwear.loopreturns.com/#/\" target=\"_blank\"><strong>Click right here to start a return!</strong></a><br/><br/>We offer free exchanges and returns to store credit. For refunds to your original payment, we have a $5 restocking fee to help support the many people in our supply chain. You’ll spot this deducted from the balance of your refund once we’ve received and clicked \"good to go!\" on your return.</p><p><strong>Please note,</strong></p><ul><li>All price reduced SALE items are Final Sale and not eligible for return or exchange. Items purchased (unworn, with tags, in original packaging) are eligible to return for credit or exchange only within 30 days of placing your order.</li><li>Exchanges, store credits and/or refunds will be issued only after returned goods have been received and inspected by our warehouse to confirm they meet our return-eligible criteria above.</li><li>Store credit requests are free to process and issued electronically; credits do not expire and can be used toward anything on our site.</li><li>Please allow up to 5 business days to receive and process your return request after your return package has been shipped.</li><li>While we try our best, direct exchange requests are not guaranteed because our stock is limited.</li><li>If you’re returning part of a Kit or Pack, the refunded amount will reflect the item’s Kit / Pack price, not the standard full price of the item.</li><li>If you’re returning an item purchased with a discount code, your refund will reflect the item’s proportionally discounted price, not the standard full price of the item.</li><li>Damaged returns and returns sent back without prior authorization will be returned to sender.</li><li>Digital gift cards are non-refundable.</li><li>No printer? No problem. You can now return via QR code at all eligible USPS QR locations.</li></ul><p></p>"
           }
         },
         "when-arriving-question": {
           "type": "question",
           "settings": {
             "title": "Can I return an internationally shipped order?",
-            "text": "<p>Items purchased through Matches Fashion are only returnable through their website. If an international order is placed through Negative’s site, it is the responsibility of the customer to return the item for either refund or store credit. Please note, international orders are not eligible for direct exchange.<\/p>"
+            "text": "<p>Items purchased through Matches Fashion are only returnable through their website. If an international order is placed through Negative’s site, it is the responsibility of the customer to return the item for either refund or store credit. Please note, international orders are not eligible for direct exchange.</p>"
           }
         },
         "ship-international-question": {
@@ -129,7 +137,7 @@
           "disabled": true,
           "settings": {
             "title": "Do you ship internationally?",
-            "text": "<p>Currently we are only shipping to USA and Canada.<\/p>"
+            "text": "<p>Currently we are only shipping to USA and Canada.</p>"
           }
         },
         "return-policy-question": {
@@ -137,7 +145,7 @@
           "disabled": true,
           "settings": {
             "title": "What is your return policy?",
-            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.<\/p>"
+            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.</p>"
           }
         }
       },

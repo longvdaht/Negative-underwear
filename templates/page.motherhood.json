@@ -1,9 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "motherhood-heading": {
       "type": "motherhood-heading",
-      "settings": {
-      }
+      "settings": {}
     },
     "motherhood": {
       "type": "motherhood",
@@ -42,9 +50,9 @@
             "block-collection": "",
             "quote": "The human body is truly an incredible thing. Before my pregnancies and delivering my babies, I did not appreciate what my body was capable of. I now have a deep respect and awareness for how strong and resilient my body is.",
             "quoted": "Lauren Schwab,<br>\nNegative Co-Founder",
-            "quote-img-1": "shopify:\/\/shop_images\/Lauren_01.jpg",
-            "quote-img-2": "shopify:\/\/shop_images\/Lauren_02-B.jpg",
-            "quote-img-3": "shopify:\/\/shop_images\/Lauren_03.jpg"
+            "quote-img-1": "shopify://shop_images/Lauren_01.jpg",
+            "quote-img-2": "shopify://shop_images/Lauren_02-B.jpg",
+            "quote-img-3": "shopify://shop_images/Lauren_03.jpg"
           }
         },
         "1588965606093": {
@@ -81,9 +89,9 @@
             "block-collection": "",
             "quote": "Becoming a mama is empowering, all-encompassing, overwhelming, eye-opening and heart-bursting - all at once. It's an impossible juggle. It's also falling in love every day.",
             "quoted": "Marissa Vosper,<br>\nNegative Co-Founder",
-            "quote-img-1": "shopify:\/\/shop_images\/Marissa_01-B.jpg",
-            "quote-img-2": "shopify:\/\/shop_images\/Marissa_02.jpg",
-            "quote-img-3": "shopify:\/\/shop_images\/Marissa_03.jpg"
+            "quote-img-1": "shopify://shop_images/Marissa_01-B.jpg",
+            "quote-img-2": "shopify://shop_images/Marissa_02.jpg",
+            "quote-img-3": "shopify://shop_images/Marissa_03.jpg"
           }
         }
       },
@@ -96,7 +104,7 @@
         "1590781110444"
       ],
       "settings": {
-        "footer-image": "shopify:\/\/shop_images\/motherhood-ugc-grid.jpg",
+        "footer-image": "shopify://shop_images/motherhood-ugc-grid.jpg",
         "footer-headline": "Some mamas we love, in Negative"
       }
     }

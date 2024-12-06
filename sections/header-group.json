@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -35,7 +44,7 @@
           "type": "announcement",
           "settings": {
             "text": "Give $20, get $20. Win win.",
-            "link": "shopify:\/\/pages\/referrals",
+            "link": "shopify://pages/referrals",
             "type": "all"
           }
         }
@@ -60,57 +69,57 @@
         "navigation_image_BDV4GV": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WhippedHenley_Black_Ksenia_02_NN_02118dc9-9c9b-4d9b-a4cf-b2883c79c47a.jpg",
+            "image": "shopify://shop_images/Lounge_WhippedHenley_Black_Ksenia_02_NN_02118dc9-9c9b-4d9b-a4cf-b2883c79c47a.jpg",
             "text": "Best Sellers"
           }
         },
         "navigation_image_XrAB4z": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Bras_GlaceTrianglebra_Garnet_Santana_01_69d0db0e-dd0e-458b-80c8-ab66e26a39fd.jpg",
+            "image": "shopify://shop_images/Bras_GlaceTrianglebra_Garnet_Santana_01_69d0db0e-dd0e-458b-80c8-ab66e26a39fd.jpg",
             "text": "New"
           }
         },
         "navigation_image_MXFfWj": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/PDP-SieveNonWire-Black_1.jpg",
+            "image": "shopify://shop_images/PDP-SieveNonWire-Black_1.jpg",
             "text": "Bras"
           }
         },
         "navigation_image_h4WULn": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Bottom_BaseBoyShort_Black_Victoria_03_2048x_1.jpg",
+            "image": "shopify://shop_images/Bottom_BaseBoyShort_Black_Victoria_03_2048x_1.jpg",
             "text": "Underwear"
           }
         },
         "navigation_image_fDEknt": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WhippedLSTee_HeatheredGrey_Ksenia_01_NN_1cf40c7a-47b9-4423-9bec-46c0856602ea.jpg",
+            "image": "shopify://shop_images/Lounge_WhippedLSTee_HeatheredGrey_Ksenia_01_NN_1cf40c7a-47b9-4423-9bec-46c0856602ea.jpg",
             "text": "Whipped"
           }
         },
         "navigation_image_itQJQz": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WaffleHenley_Sand_Darion_01_e34f6a17-ed2e-47bf-af89-fc9ee06bfd5f.jpg",
+            "image": "shopify://shop_images/Lounge_WaffleHenley_Sand_Darion_01_e34f6a17-ed2e-47bf-af89-fc9ee06bfd5f.jpg",
             "text": "Lounge"
-          }
-        },
-        "navigation_image_XaARnC": {
-          "type": "navigation-image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ParachuteZipUp_Black_Santana_01_1.jpg",
-            "text": "Collections"
           }
         },
         "navigation_image_mbzzND": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Sleep_LSShirt_Navy_Ksenia_01.jpg",
+            "image": "shopify://shop_images/Sleep_LSShirt_Navy_Ksenia_01.jpg",
             "text": "Sleep"
+          }
+        },
+        "navigation_image_XaARnC": {
+          "type": "navigation-image",
+          "settings": {
+            "image": "shopify://shop_images/Lounge_Whipped_Cami_Cherry_Ksenia_02_f503b5de-5315-4c5f-bcb2-2e1b2b683c02.jpg",
+            "text": "Gift Guide [red]"
           }
         }
       },
@@ -121,8 +130,8 @@
         "navigation_image_h4WULn",
         "navigation_image_fDEknt",
         "navigation_image_itQJQz",
-        "navigation_image_XaARnC",
-        "navigation_image_mbzzND"
+        "navigation_image_mbzzND",
+        "navigation_image_XaARnC"
       ],
       "settings": {
         "nav_color": "#ed1313",

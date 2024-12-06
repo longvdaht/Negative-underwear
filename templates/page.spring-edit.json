@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -22,7 +31,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<p>PSA: Anyone who says they don't like Valentine's Day has prob never received Negative for the occasion.<\/p>"
+            "text": "<p>PSA: Anyone who says they don't like Valentine's Day has prob never received Negative for the occasion.</p>"
           }
         }
       },
@@ -32,9 +41,9 @@
       ],
       "settings": {
         "section_fullwidth": true,
-        "image": "shopify:\/\/shop_images\/Artboard_1.jpg",
+        "image": "shopify://shop_images/Artboard_1.jpg",
         "image_fullwidth": true,
-        "image_2": "shopify:\/\/shop_images\/Artboard_1.jpg",
+        "image_2": "shopify://shop_images/Artboard_1.jpg",
         "image_link": "",
         "invert_on_desktop": false,
         "invert_on_mobile": true,
@@ -56,7 +65,7 @@
         "template--16361513812145__ca025246-6fb7-455c-bcaa-8d1817a0b0e5-detail-1": {
           "type": "detail",
           "settings": {
-            "image": "shopify:\/\/shop_images\/HP_GiftGuide_Desktop_01.jpg"
+            "image": "shopify://shop_images/HP_GiftGuide_Desktop_01.jpg"
           }
         }
       },
@@ -80,7 +89,7 @@
         "products_to_show": 13,
         "show_button": false,
         "button_text": "SHOP ALL ->",
-        "button_link": "https:\/\/negativeunderwear.com\/collections\/valentines-day-aesthetic",
+        "button_link": "https://negativeunderwear.com/collections/valentines-day-aesthetic",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
@@ -97,7 +106,7 @@
         "products_to_show": 2,
         "show_button": false,
         "button_text": "SHOP ALL ->",
-        "button_link": "https:\/\/negativeunderwear.com\/collections\/stuff-to-watch-rom-coms-in",
+        "button_link": "https://negativeunderwear.com/collections/stuff-to-watch-rom-coms-in",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
@@ -114,7 +123,7 @@
         "products_to_show": 20,
         "show_button": false,
         "button_text": "SHOP ALL ->",
-        "button_link": "https:\/\/negativeunderwear.com\/collections\/for-the-extravagant-girlies",
+        "button_link": "https://negativeunderwear.com/collections/for-the-extravagant-girlies",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
@@ -131,7 +140,7 @@
         "products_to_show": 15,
         "show_button": false,
         "button_text": "SHOP ALL ->",
-        "button_link": "https:\/\/negativeunderwear.com\/collections\/back-to-basics",
+        "button_link": "https://negativeunderwear.com/collections/back-to-basics",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
@@ -148,7 +157,7 @@
         "products_to_show": 22,
         "show_button": false,
         "button_text": "SHOP ALL ->",
-        "button_link": "https:\/\/negativeunderwear.com\/collections\/gifts-to-self",
+        "button_link": "https://negativeunderwear.com/collections/gifts-to-self",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_top_mobile": 0,

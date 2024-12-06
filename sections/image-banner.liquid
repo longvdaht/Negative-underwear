@@ -43,7 +43,7 @@
             {% if section.settings.image_fullwidth %} banner-fullwidth{% endif %}"
   >
     {% if section.settings.image_link != blank %}
-      <a href="{{ section.settings.image_link | default: '#' }}" class="image-banner-link">
+      <a href="{{ section.settings.image_link | default: '#' }}" class="image-banner-link"></a>
     {% endif %}
     {% if section.blocks.size > 0 and section.settings.enable_content %}
       <div class="banner__content page-width
@@ -52,7 +52,7 @@
         <div class="banner__box content-container content-container--full-width-mobile gradient is-dark
                     {% if section.settings.invert_on_desktop %} invert-on-desktop{% endif %}
                     {% if section.settings.invert_on_mobile %} invert-on-mobile{% endif %}
-                    banner__box-position-{{ section.settings.desktop_content_position }}"> </a>
+                    banner__box-position-{{ section.settings.desktop_content_position }}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'heading' -%}

@@ -1,107 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "category_mobile_carousel_UHEMhM": {
-      "type": "category-mobile-carousel",
-      "blocks": {
-        "collection_bGbajH": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ClubPullover_Cherry_Ravy_01_30c5dfb4-b3c1-4477-92f8-14567ddc6574.jpg",
-            "title": "New",
-            "link": "shopify:\/\/collections\/new"
-          }
-        },
-        "collection_GMhnmA": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ParachuteZipUp_Black_Santana_01_40410ba6-1998-4673-b2ef-0ac65f2f443f.jpg",
-            "title": "Best Sellers",
-            "link": "shopify:\/\/collections\/best-sellers"
-          }
-        },
-        "collection_VqMn6Q": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/bras-slider.jpg",
-            "title": "Bras",
-            "link": "shopify:\/\/collections\/womens-bras"
-          }
-        },
-        "collection_KHhwfF": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Underwear-slider.png",
-            "title": "Underwear",
-            "link": "https:\/\/negativeunderwear.com\/collections\/underwear"
-          }
-        },
-        "collection_wwhpAe": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Whipped-slider-2.jpg",
-            "title": "Whipped",
-            "link": "https:\/\/negativeunderwear.com\/collections\/whipped"
-          }
-        },
-        "collection_Mt4xe9": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WaffleKnitPullover_Puff_KseniaXS_01.jpg",
-            "title": "Lounge",
-            "link": "https:\/\/negativeunderwear.com\/collections\/lounge"
-          }
-        },
-        "collection_jBaxtw": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Sleep_EclipseSilkCami_Lilac_Ksenia_02_5683923f-4d71-4276-83ad-496f9762ca59.jpg",
-            "title": "Sleep",
-            "link": "https:\/\/negativeunderwear.com\/collections\/supreme-sleep"
-          }
-        },
-        "collection_creJhT": {
-          "type": "collection",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WhippedHenley_Black_Ksenia_03.jpg",
-            "title": "Fall",
-            "link": "shopify:\/\/collections\/fall-edit"
-          }
-        }
-      },
-      "block_order": [
-        "collection_bGbajH",
-        "collection_GMhnmA",
-        "collection_VqMn6Q",
-        "collection_KHhwfF",
-        "collection_wwhpAe",
-        "collection_Mt4xe9",
-        "collection_jBaxtw",
-        "collection_creJhT"
-      ],
-      "disabled": true,
-      "settings": {
-      }
-    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
         "19e98322-c60f-4dfc-bf91-1f1c52772985": {
           "type": "heading",
           "settings": {
-            "heading": "Fino Cashmere"
+            "heading": "New in travel essentials"
           }
         },
         "33074092-5e90-40da-b92e-d9b0f96a6978": {
           "type": "text",
           "settings": {
-            "text": "<p>A minimalist take on the deluxe classic<\/p>"
+            "text": "<p>Meet the Whipped Eye Mask and Travel Wrap</p>"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
             "button_label_1": "SHOP NEW >",
-            "button_link_1": "shopify:\/\/collections\/new",
+            "button_link_1": "shopify://collections/new",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -116,10 +43,10 @@
       ],
       "settings": {
         "section_fullwidth": false,
-        "image": "shopify:\/\/shop_images\/Artboard_2_6.jpg",
+        "image": "shopify://shop_images/Artboard_2_copy_3_1c9c6039-0e20-4e21-8820-e69ec59b20bb.jpg",
         "image_fullwidth": false,
-        "image_2": "shopify:\/\/shop_images\/Artboard_3_5.jpg",
-        "image_link": "shopify:\/\/collections\/new",
+        "image_2": "shopify://shop_images/HP_Options_copyArtboard_3_9a864855-458c-4198-8169-66fcf58b8185.jpg",
+        "image_link": "shopify://collections/new",
         "invert_on_desktop": false,
         "invert_on_mobile": false,
         "show_text_box": false,
@@ -137,57 +64,73 @@
     "276fe8a6-bd6a-4b06-965a-7485b765d7ec": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_LeaG7W": {
+        "featured_collection_HwfPwf": {
           "type": "featured_collection",
           "settings": {
-            "collection": "womens-bras",
-            "title_override": "Shop Bras"
+            "collection": "the-red-edit",
+            "title_override": "Shop The Red Edit"
           }
         },
         "featured_collection_6gMPQe": {
           "type": "featured_collection",
           "settings": {
-            "collection": "womens-underwear",
-            "title_override": "Shop Underwear"
-          }
-        },
-        "featured_collection_HwfPwf": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "womens-loungewear",
-            "title_override": "Shop Lounge"
+            "collection": "quiet-luxury",
+            "title_override": "Shop Quiet Luxury"
           }
         },
         "535e8b8d-5756-4ff2-bb23-3364ce5012d9": {
           "type": "featured_collection",
           "settings": {
-            "collection": "womens-sleepwear",
-            "title_override": "Shop Sleep"
+            "collection": "cozy-vibes-only",
+            "title_override": "Shop Cozy Vibes"
           }
         },
         "featured_collection_iXHzjP": {
           "type": "featured_collection",
           "settings": {
-            "collection": "fall-edit",
-            "title_override": "Shop Fall Edit"
+            "collection": "cult-classics",
+            "title_override": "Shop Cult Classics"
+          }
+        },
+        "featured_collection_8d6XFf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "party-girl-era",
+            "title_override": "Shop The Party Girl Era"
+          }
+        },
+        "featured_collection_BFpBTc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "for-the-sleepy-girlies",
+            "title_override": "Shop for the Sleepy Girlies"
+          }
+        },
+        "featured_collection_LeaG7W": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "the-little-things",
+            "title_override": "Shop The Little Things"
           }
         }
       },
       "block_order": [
-        "featured_collection_LeaG7W",
-        "featured_collection_6gMPQe",
         "featured_collection_HwfPwf",
+        "featured_collection_6gMPQe",
         "535e8b8d-5756-4ff2-bb23-3364ce5012d9",
-        "featured_collection_iXHzjP"
+        "featured_collection_iXHzjP",
+        "featured_collection_8d6XFf",
+        "featured_collection_BFpBTc",
+        "featured_collection_LeaG7W"
       ],
       "settings": {
         "title": "",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "show_view_all": false,
         "columns_mobile": "2",
-        "padding_top": 30,
+        "padding_top": 20,
         "padding_bottom": 83
       }
     },
@@ -197,14 +140,14 @@
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-0": {
           "type": "heading",
           "settings": {
-            "heading": "The Cherry on top."
+            "heading": "Bc we love to add a little cherry on top."
           }
         },
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-1": {
           "type": "button",
           "settings": {
-            "button_text": "SHOP WHIPPED 🍒>",
-            "link": "shopify:\/\/collections\/whipped"
+            "button_text": "SHOP Underwear >",
+            "link": "shopify://collections/underwear-packs"
           }
         }
       },
@@ -213,7 +156,7 @@
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/Artboard_7_4.jpg",
+        "image": "shopify://shop_images/HP_Options_copyArtboard_4.jpg",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -225,11 +168,11 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "best-selling-underwear",
-        "products_to_show": 8,
+        "collection": "party-girl-era",
+        "products_to_show": 11,
         "columns_desktop": 3,
-        "show_view_all": false,
-        "view_all_style": "solid",
+        "show_view_all": true,
+        "view_all_style": "link",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -243,7 +186,7 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "<center><pclass=\"h1\"><a class=\"link\" href=\"https:\/\/www.instagram.com\/negativeunderwear\/\" target=\"_blank\" rel=\"noopener noreferrer\" >@negativeunderwear<\/a><\/p><center>\n    <div class=\"elfsight-sapp-ceb54410-007f-11e8-ba15-69dda390aa77\" data-elfsight-app-lazy><\/div>",
+        "custom_liquid": "<center><pclass=\"h1\"><a class=\"link\" href=\"https://www.instagram.com/negativeunderwear/\" target=\"_blank\" rel=\"noopener noreferrer\" >@negativeunderwear</a></p><center>\n    <div class=\"elfsight-sapp-ceb54410-007f-11e8-ba15-69dda390aa77\" data-elfsight-app-lazy></div>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
@@ -251,7 +194,6 @@
     }
   },
   "order": [
-    "category_mobile_carousel_UHEMhM",
     "image_banner",
     "276fe8a6-bd6a-4b06-965a-7485b765d7ec",
     "6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d",

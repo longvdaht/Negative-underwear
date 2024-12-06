@@ -1,0 +1,307 @@
+<section class="page-width">
+    <div class="page-section-gift-guide">
+        {% if section.settings.image_title != blank %}
+            {{ section.settings.image_title | image_url: width: 450 | image_tag }}
+        {% else %}
+            <h1>
+                {{ section.settings.title}}
+            </h1>
+        {% endif %}
+        <div class="content-items">
+            {% for block in section.blocks %}
+                <style>
+                   @media only screen and (max-width: 600px) {
+                        .collection-items-{{ block.id }} {
+                            background-image: url('{{ block.settings.image_mobile | img_url: '720x720' }}') !important;
+                        }
+                    }
+                </style>
+                <div class="collection-item collection-items-{{ block.id }} {{ block.settings.custom_classes }}" style="background-image: url('{{ block.settings.image | img_url: '720x720' }}');">
+                    <div class="collection-content">
+                        <h2 style="color: {{ block.settings.color_text }}">{{ block.settings.title }}</h2>
+                        <p style="color: {{ block.settings.color_text }}">{{ block.settings.description }}</p>
+                        <a style="color: {{ block.settings.color_text }}" href="{{ block.settings.link }}" class="shop-button">{{ block.settings.button_text }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+{% schema %}
+{
+  "name": "Hero Gift Guide",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title Section",
+        "default": "Our Holiday Collections"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_title",
+        "label": "Image Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_classes",
+          "label": "Custom classes"        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Background Image Mobile"
+        },
+        {
+            "type": "color",
+            "id": "color_text",
+            "label": "Color Text",
+            "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The Red Edit"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Friends don’t let friends miss out on the color of the season."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Collection >"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Gift Guid"
+    }
+  ]
+}
+{% endschema %}
+
+{% render 'fonts-custom-site' %}
+<style>
+.page-section-gift-guide {
+    padding: 0 7%;
+}
+
+/* accidenz_groteskmedium */
+.page-section-gift-guide h1 {
+    width: fit-content;
+    font-family: nimbus-sans, sans-serif;
+    font-size: 40px;
+    font-weight: 100;
+    line-height: 1.2em;
+    margin-bottom: 23px;
+}
+
+.page-section-gift-guide h1 .arrow {
+    padding-left: 10px;
+}
+
+.content-items {
+    display: flex;
+}
+
+.collection-item {
+    flex: 1;
+    position: relative;
+    background-size: cover;
+    background-position: left;
+    padding: 40px;
+    color: #fff;
+    text-align: left;
+    height: 807px;
+}
+
+.collection-content {
+    position: absolute;
+    bottom: 20%;
+    left: 20px;
+    max-width: 550px;
+    margin-left: 24px;
+}
+
+.collection-item h2 {
+    font-size: 59px;
+    margin-bottom: 5px;
+    color: #fff;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
+.collection-item p {
+    font-size: 27px;
+    margin-bottom: 15px;
+    line-height: 30px;
+    font-weight: 300;
+    width: 100%;
+}
+
+.collection-item.red_edit_block p{
+    max-width: 360px;
+}
+
+.collection-item.little_things_block p{
+    max-width: 460px;
+}
+
+.shop-button {
+    font-size: 28px;
+    font-weight: 100;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.shop-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.collection-item:nth-child(4) h2 {
+    color: #000;
+}
+
+.collection-item:nth-child(4) p {
+    color: #000;
+}
+
+.collection-item:nth-child(4) .shop-button {
+    color: #000;
+    border-bottom: 1px solid #000;
+}
+
+.collection-item:nth-child(2) .shop-button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.grid-product__title, .grid-product__price {
+    font-size: 16px;
+}
+
+.title-wrapper--no-top-margin {
+    padding: 0 7%;
+    margin-bottom: 2rem;
+}
+
+.title-wrapper--no-top-margin h2 {
+     font-size: 40px;
+}
+
+.swatch {
+    width: 12px !important;
+    height: 12px !important;
+}
+ 
+.swatchgroup {
+    justify-content: left !important;
+}
+
+span.grid-product__meta {
+    line-height: normal !important;
+}
+
+.footer__content-top {
+    margin: 0 60px 60px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .collection-item  {
+        height: 478px;
+        background-position: top;
+        background-size: cover;
+    }
+
+    .collection-collage-section h2 {
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+
+    .title-wrapper--no-top-margin {
+        padding: 0;
+    }
+
+    .title-wrapper--no-top-margin {
+        margin-bottom: 20px;
+    }
+
+    .title-wrapper--no-top-margin h2 {
+        font-size: 24px;
+    }
+
+    .page-section-gift-guide h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .page-section-gift-guide {
+        padding: 0;
+    }
+
+    .collection-item {
+        padding: 0;
+    }
+
+    .collection-content {
+        bottom: 55px;
+        left: 10px;
+        max-width: 90%;
+        margin-left: 0;
+        min-height: 130px;
+    }
+
+    .collection-item h2 {
+        font-size: 24px;
+    }
+
+    .collection-item p {
+        font-size: 13px;
+        margin-bottom: 4px;
+        line-height: normal;
+        font-weight: 300;
+        width: 100%;
+        max-width: 150px !important;
+    }
+
+    .shop-button {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .collection-item h2 {
+        font-size: 21px;
+        margin-top: 0;
+    }
+}
+
+</style>

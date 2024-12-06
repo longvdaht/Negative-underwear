@@ -1,70 +1,160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "category_mobile_carousel_hrwHRU": {
+      "type": "category-mobile-carousel",
+      "blocks": {
+        "collection_REXaGq": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Bras_GlaceTrianglebra_Garnet_Santana_01_1.jpg",
+            "title": "Best Selling",
+            "link": "https://negativeunderwear.com/collections/best-selling-bras"
+          }
+        },
+        "collection_bRhnwz": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Pack_Sieve_NWBra2x_BuffBlack.jpg",
+            "title": "Packs",
+            "link": "https://negativeunderwear.com/collections/bra-packs"
+          }
+        },
+        "collection_TjtrrJ": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/cdc4153ea3d4d0c82da64d814b7eab18.jpg",
+            "title": "Wireless",
+            "link": "https://negativeunderwear.com/collections/womens-wireless-bras"
+          }
+        },
+        "collection_wjCwVa": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/0a4cf30c987cb8d3f4fe99f883a5466f.jpg",
+            "title": "Underwire",
+            "link": "shopify://collections/womens-underwire-bras"
+          }
+        },
+        "collection_Q6FxNk": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/322b8c7a9375ae17ac08938b564ef01d.jpg",
+            "title": "Nursing",
+            "link": "https://negativeunderwear.com/collections/the-nursing-bra"
+          }
+        },
+        "collection_qectTG": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/aa52e1ff39603b505a8f847b5e33896f_d7da6dd2-19aa-45e4-b1f0-988fceb4982c.jpg",
+            "title": "DDD-G Cup",
+            "link": "https://negativeunderwear.com/collections/ddd-g-bras"
+          }
+        },
+        "collection_hrB4Rk": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Bra_GlaceTriangle_Buff_Santana_01_1.jpg",
+            "title": "Shop All",
+            "link": "https://negativeunderwear.com/collections/womens-bras"
+          }
+        }
+      },
+      "block_order": [
+        "collection_REXaGq",
+        "collection_bRhnwz",
+        "collection_TjtrrJ",
+        "collection_wjCwVa",
+        "collection_Q6FxNk",
+        "collection_qectTG",
+        "collection_hrB4Rk"
+      ],
+      "settings": {
+        "show_in_collection": [
+          "best-selling-bras",
+          "bra-packs",
+          "womens-wireless-bras",
+          "womens-underwire-bras",
+          "the-nursing-bra",
+          "womens-bras",
+          "ddd-g-bras"
+        ]
+      }
+    },
     "category_mobile_carousel_tJiNPH": {
       "type": "category-mobile-carousel",
       "blocks": {
         "collection_hWxYfV": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ClubPullover_Cherry_Ravy_01_30c5dfb4-b3c1-4477-92f8-14567ddc6574.jpg",
+            "image": "shopify://shop_images/Lounge_ClubPullover_Cherry_Ravy_01_30c5dfb4-b3c1-4477-92f8-14567ddc6574.jpg",
             "title": "New",
-            "link": "shopify:\/\/collections\/new"
+            "link": "shopify://collections/new"
           }
         },
         "collection_Q34XUT": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ParachuteZipUp_Black_Santana_01_40410ba6-1998-4673-b2ef-0ac65f2f443f.jpg",
+            "image": "shopify://shop_images/Lounge_ParachuteZipUp_Black_Santana_01_40410ba6-1998-4673-b2ef-0ac65f2f443f.jpg",
             "title": "Best Sellers",
-            "link": "shopify:\/\/collections\/best-sellers"
+            "link": "shopify://collections/best-sellers"
           }
         },
         "collection_Xtb6cF": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bras-slider.jpg",
+            "image": "shopify://shop_images/bras-slider.jpg",
             "title": "Bras",
-            "link": "shopify:\/\/collections\/womens-bras"
+            "link": "shopify://collections/womens-bras"
           }
         },
         "collection_tChPTA": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Underwear-slider.png",
+            "image": "shopify://shop_images/Underwear-slider.png",
             "title": "Underwear",
-            "link": "https:\/\/negativeunderwear.com\/collections\/underwear"
+            "link": "https://negativeunderwear.com/collections/underwear"
           }
         },
         "collection_UUkkWw": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Whipped-slider-2.jpg",
+            "image": "shopify://shop_images/Whipped-slider-2.jpg",
             "title": "Whipped",
-            "link": "https:\/\/negativeunderwear.com\/collections\/whipped"
+            "link": "https://negativeunderwear.com/collections/whipped"
           }
         },
         "collection_NT9bpB": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WaffleKnitPullover_Puff_KseniaXS_01.jpg",
+            "image": "shopify://shop_images/Lounge_WaffleKnitPullover_Puff_KseniaXS_01.jpg",
             "title": "Lounge",
-            "link": "https:\/\/negativeunderwear.com\/collections\/lounge"
+            "link": "https://negativeunderwear.com/collections/lounge"
           }
         },
         "collection_JMmK7Q": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Sleep_EclipseSilkCami_Lilac_Ksenia_02_5683923f-4d71-4276-83ad-496f9762ca59.jpg",
+            "image": "shopify://shop_images/Sleep_EclipseSilkCami_Lilac_Ksenia_02_5683923f-4d71-4276-83ad-496f9762ca59.jpg",
             "title": "Sleep",
-            "link": "https:\/\/negativeunderwear.com\/collections\/supreme-sleep"
+            "link": "https://negativeunderwear.com/collections/supreme-sleep"
           }
         },
         "collection_CjEBnU": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WhippedHenley_Black_Ksenia_03.jpg",
+            "image": "shopify://shop_images/Lounge_WhippedHenley_Black_Ksenia_03.jpg",
             "title": "Fall",
-            "link": "shopify:\/\/collections\/fall-edit"
+            "link": "shopify://collections/fall-edit"
           }
         }
       },
@@ -78,7 +168,90 @@
         "collection_JMmK7Q",
         "collection_CjEBnU"
       ],
+      "disabled": true,
       "settings": {
+        "show_in_collection": []
+      }
+    },
+    "category_mobile_carousel_k6hRjD": {
+      "type": "category-mobile-carousel",
+      "blocks": {
+        "collection_8pRmc3": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Lounge_WhippedBoxer_Moss_Santana_01_3e32ba7e-6165-4de0-8e65-db240ff50a6a.jpg",
+            "title": "Best Sellers",
+            "link": "https://negativeunderwear.com/collections/best-selling-underwear"
+          }
+        },
+        "collection_9MPG3B": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Pack_Sieve_Brief2x_BlackBlack.jpg",
+            "title": "Packs",
+            "link": "https://negativeunderwear.com/collections/underwear-packs"
+          }
+        },
+        "collection_Y4wRnj": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Bottom_GlaceGString_Black_Ksenia_02.jpg",
+            "title": "Thongs",
+            "link": "https://negativeunderwear.com/collections/thongs"
+          }
+        },
+        "collection_RTAnEz": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Underwear_BaseHighRiseBrief_Black_Thessica_01_51732094-f207-4ad3-bc02-5ab95bafaa1a.jpg",
+            "title": "Bikinis/ Briefs",
+            "link": "https://negativeunderwear.com/collections/womens-bikinis-briefs"
+          }
+        },
+        "collection_kPab6P": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/6830f81405669b585fa1b65ad828812a.jpg",
+            "title": "Boxers/ Boyshorts",
+            "link": "https://negativeunderwear.com/collections/womens-boxers-boyshorts"
+          }
+        },
+        "collection_WytbbE": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Bottom_SieveHWB_Black_Ksenia_03.jpg",
+            "title": "High Waist",
+            "link": "https://negativeunderwear.com/collections/womens-high-waist-briefs"
+          }
+        },
+        "collection_DX9mDG": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/60a0aa01b41a899a2a7edc7663415afc.jpg",
+            "title": "Shop All",
+            "link": "https://negativeunderwear.com/collections/womens-underwear"
+          }
+        }
+      },
+      "block_order": [
+        "collection_8pRmc3",
+        "collection_9MPG3B",
+        "collection_Y4wRnj",
+        "collection_RTAnEz",
+        "collection_kPab6P",
+        "collection_WytbbE",
+        "collection_DX9mDG"
+      ],
+      "settings": {
+        "show_in_collection": [
+          "best-selling-underwear",
+          "underwear-packs",
+          "thongs",
+          "womens-bikinis-briefs",
+          "womens-boxers-boyshorts",
+          "womens-high-waist-briefs",
+          "womens-underwear"
+        ]
       }
     },
     "product-grid": {
@@ -91,7 +264,9 @@
     }
   },
   "order": [
+    "category_mobile_carousel_hrwHRU",
     "category_mobile_carousel_tJiNPH",
+    "category_mobile_carousel_k6hRjD",
     "product-grid"
   ]
 }

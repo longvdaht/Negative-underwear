@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "category_mobile_carousel_JTh8gh": {
@@ -6,65 +15,65 @@
         "collection_CGx8zz": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ClubPullover_Cherry_Ravy_01_30c5dfb4-b3c1-4477-92f8-14567ddc6574.jpg",
+            "image": "shopify://shop_images/Lounge_ClubPullover_Cherry_Ravy_01_30c5dfb4-b3c1-4477-92f8-14567ddc6574.jpg",
             "title": "New",
-            "link": "shopify:\/\/collections\/new"
+            "link": "shopify://collections/new"
           }
         },
         "collection_ca6mCz": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_ParachuteZipUp_Black_Santana_01_40410ba6-1998-4673-b2ef-0ac65f2f443f.jpg",
+            "image": "shopify://shop_images/Lounge_ParachuteZipUp_Black_Santana_01_40410ba6-1998-4673-b2ef-0ac65f2f443f.jpg",
             "title": "Best Sellers",
-            "link": "shopify:\/\/collections\/best-sellers"
+            "link": "shopify://collections/best-sellers"
           }
         },
         "collection_McYqim": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bras-slider.jpg",
+            "image": "shopify://shop_images/bras-slider.jpg",
             "title": "Bras",
-            "link": "shopify:\/\/collections\/womens-bras"
+            "link": "shopify://collections/womens-bras"
           }
         },
         "collection_qfUbPE": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Underwear-slider.png",
+            "image": "shopify://shop_images/Underwear-slider.png",
             "title": "Underwear",
-            "link": "https:\/\/negativeunderwear.com\/collections\/underwear"
+            "link": "https://negativeunderwear.com/collections/underwear"
           }
         },
         "collection_z96hAy": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Whipped-slider-2.jpg",
+            "image": "shopify://shop_images/Whipped-slider-2.jpg",
             "title": "Whipped",
-            "link": "https:\/\/negativeunderwear.com\/collections\/whipped"
+            "link": "https://negativeunderwear.com/collections/whipped"
           }
         },
         "collection_a38iGD": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WaffleKnitPullover_Puff_KseniaXS_01.jpg",
+            "image": "shopify://shop_images/Lounge_WaffleKnitPullover_Puff_KseniaXS_01.jpg",
             "title": "Lounge",
-            "link": "https:\/\/negativeunderwear.com\/collections\/lounge"
+            "link": "https://negativeunderwear.com/collections/lounge"
           }
         },
         "collection_gwqNNk": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Sleep_EclipseSilkCami_Lilac_Ksenia_02_5683923f-4d71-4276-83ad-496f9762ca59.jpg",
+            "image": "shopify://shop_images/Sleep_EclipseSilkCami_Lilac_Ksenia_02_5683923f-4d71-4276-83ad-496f9762ca59.jpg",
             "title": "Sleep",
-            "link": "https:\/\/negativeunderwear.com\/collections\/supreme-sleep"
+            "link": "https://negativeunderwear.com/collections/supreme-sleep"
           }
         },
         "collection_xAGfYV": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Lounge_WhippedHenley_Black_Ksenia_03.jpg",
+            "image": "shopify://shop_images/Lounge_WhippedHenley_Black_Ksenia_03.jpg",
             "title": "Fall",
-            "link": "shopify:\/\/collections\/fall-edit"
+            "link": "shopify://collections/fall-edit"
           }
         }
       },
@@ -78,14 +87,13 @@
         "collection_gwqNNk",
         "collection_xAGfYV"
       ],
+      "disabled": true,
       "settings": {
+        "show_in_collection": []
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "custom_css": [
-        ".saletag {display: none;}"
-      ],
       "settings": {
         "products_per_page": 71,
         "padding_top": 0,
@@ -93,8 +101,5 @@
       }
     }
   },
-  "order": [
-    "category_mobile_carousel_JTh8gh",
-    "product-grid"
-  ]
+  "order": ["category_mobile_carousel_JTh8gh", "product-grid"]
 }

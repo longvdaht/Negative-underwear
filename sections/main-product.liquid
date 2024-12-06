@@ -799,7 +799,7 @@
           {% render 'icon-arrow' %}
         </a>
       </product-info>
-      <div class="matching-set js-matching-set">
+     <div class="matching-set js-matching-set">
         {% assign matching_set_product = product.metafields.custom.matching_set.value %}
         
         {% if matching_set_product %}
@@ -807,10 +807,12 @@
           <div class="matching-set__container">
             <!-- Image on the left -->
             <div class="matching-set__image">
+              <a href="{{ matching_set_product.url }}" class="matching-set__title">
               <img
                 src="{{ matching_set_product.featured_image | image_url: width: '300x' }}"
                 alt="{{ matching_set_product.featured_image.alt }}" 
               />
+              </a>
             </div>
       
             <!-- Info on the right -->
@@ -830,8 +832,7 @@
                 <div class="variant-label">Size</div>
                 <div class="variant-options">
                   {% assign size_option_index = -1 %}
-                  {% assign displayed_sizes = "" %} <!-- Initialize an empty string to track displayed sizes -->
-      
+                  
                   <!-- Find the index of the "Size" option -->
                   {% for option in matching_set_product.options_with_values %}
                     {% if option.name == 'Size' %}
@@ -839,20 +840,63 @@
                       {% break %}
                     {% endif %}
                   {% endfor %}
-      
+                  
                   {% if size_option_index != -1 %}
-                    {% assign displayed_sizes = "" %}
+                    {% assign has_single_or_2pack = false %}
+                    
+                    <!-- Check if the product has "Single" or "2-pack" variants -->
+                    {% for variant in matching_set_product.variants %}
+                      {% if variant.title contains "Single" or variant.title contains "2-pack" %}
+                        {% assign has_single_or_2pack = true %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    
                     {% for variant in matching_set_product.variants %}
                       {% assign size_value = variant.options[size_option_index] %}
-                      {% assign size_and_type = size_value | append: variant.title %}
                       
-                      <!-- Only display the "Single" variant for each size -->
-                      {% if variant.available and size_and_type contains "Single"%}
+                      <!-- If "Single" or "2-pack" exists, display only "Single" size variants -->
+                      {% if has_single_or_2pack %}
+                        {% if variant.title contains "Single" %}
+                          <div class="variant-option">
+                            <input 
+                              type="radio" 
+                              name="size" 
+                              id="variant_{{ variant.id }}" 
+                              value="{{ variant.id }}" 
+                              data-variant-id="{{ variant.id }}" 
+                              data-available="{{ variant.available }}" 
+                              class="variant-selector" 
+                              {% unless variant.available %}disabled{% endunless %}
+                            >
+                            <label 
+                              for="variant_{{ variant.id }}" 
+                              class="{% unless variant.available %}out-of-stock{% endunless %}"
+                            >
+                              {{ size_value }}
+                            </label>
+                          </div>
+                        {% endif %}
+                      {% else %}
+                        <!-- If "Single" or "2-pack" doesn't exist, display all size variants -->
                         <div class="variant-option">
-                          <input type="radio" name="size" id="variant_{{ variant.id }}" value="{{ variant.id }}" data-variant-id="{{ variant.id }}" class="variant-selector">
-                          <label for="variant_{{ variant.id }}">{{ size_value }}</label>
+                          <input 
+                            type="radio" 
+                            name="size" 
+                            id="variant_{{ variant.id }}" 
+                            value="{{ variant.id }}" 
+                            data-variant-id="{{ variant.id }}" 
+                            data-available="{{ variant.available }}" 
+                            class="variant-selector" 
+                            {% unless variant.available %}disabled{% endunless %}
+                          >
+                          <label 
+                            for="variant_{{ variant.id }}" 
+                            class="{% unless variant.available %}out-of-stock{% endunless %}"
+                          >
+                            {{ size_value }}
+                          </label>
                         </div>
-                        {% assign displayed_sizes = displayed_sizes | append: size_value %}
                       {% endif %}
                     {% endfor %}
                   {% else %}
@@ -860,6 +904,13 @@
                   {% endif %}
                 </div>
               </div>
+
+
+
+            </div>
+
+
+
             </div>
           </div>
       
@@ -967,12 +1018,34 @@
           border: 1px solid #000;
           font-size: bold;
         }
+        .variant-option label.out-of-stock {
+          position: relative;
+          cursor: not-allowed;
+        }
+
+        .variant-option label.out-of-stock::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: #ccc; /* Line color */
+          transform: rotate(-40deg); /* Optional: Slight tilt for the line */
+        }
+
+
       
         .matching-set__buttons {
           width: 100%;
           margin-top: 20px;
           max-width: 800px;
           margin: 20px auto 0;
+        }
+
+        .matching-set__buttons button {
+          display: inline-block;
+          text-align: center;
         }
       
         .matching-set .button {
@@ -1004,9 +1077,13 @@
           $('#add-to-cart-button').prop('disabled', true);
 
           function handleVariantSelection() {
-            var selectedVariantId = $('.variant-selector:checked').val();
-            if (selectedVariantId) {
+            var selectedVariant = $('.variant-selector:checked');
+            var isAvailable = selectedVariant.data('available');
+
+            if (selectedVariant.length && isAvailable) {
               $('#add-to-cart-button').text('Add To Cart').prop('disabled', false);
+            } else if (selectedVariant.length && !isAvailable) {
+              $('#add-to-cart-button').text('Out of stock').prop('disabled', true);
             } else {
               $('#add-to-cart-button').text('Select Size').prop('disabled', true);
             }
@@ -1073,13 +1150,6 @@
           function updateCountPrice(cart) {
             var $cartCountSelector = $('#cart-number');
             var $cartCostSelector = $('#cart-cost');
-      
-            if ($cartCountSelector) {
-              $cartCountSelector.removeClass('cart-link__bubble--visible');
-              if (cart.item_count > 0) {
-                $cartCountSelector.addClass('cart-link__bubble--visible').text(cart.item_count);
-              }
-            }
       
             if ($cartCostSelector) {
               $cartCostSelector.html(Shopify.formatMoney(cart.total_price, Shopify.money_format));

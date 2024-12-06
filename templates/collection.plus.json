@@ -1,14 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "category_mobile_carousel_86FBn4": {
+      "type": "category-mobile-carousel",
+      "blocks": {
+        "collection_BN9FJm": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Bras_GlaceTrianglebra_Garnet_Santana_01_1.jpg",
+            "title": "Best Selling",
+            "link": "https://negativeunderwear.com/collections/best-selling-bras"
+          }
+        },
+        "collection_PxUAQx": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Pack_Sieve_NWBra2x_BuffBlack.jpg",
+            "title": "Packs",
+            "link": "https://negativeunderwear.com/collections/bra-packs"
+          }
+        },
+        "collection_dqktxV": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/cdc4153ea3d4d0c82da64d814b7eab18.jpg",
+            "title": "Wireless",
+            "link": "https://negativeunderwear.com/collections/womens-wireless-bras"
+          }
+        },
+        "collection_XeMA8B": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/0a4cf30c987cb8d3f4fe99f883a5466f.jpg",
+            "title": "Underwire",
+            "link": "shopify://collections/womens-underwire-bras"
+          }
+        },
+        "collection_rmGU6B": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/322b8c7a9375ae17ac08938b564ef01d.jpg",
+            "title": "Nursing",
+            "link": "https://negativeunderwear.com/collections/the-nursing-bra"
+          }
+        },
+        "collection_QtnQAN": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/aa52e1ff39603b505a8f847b5e33896f_d7da6dd2-19aa-45e4-b1f0-988fceb4982c.jpg",
+            "title": "DDD-G Cup",
+            "link": "https://negativeunderwear.com/collections/ddd-g-bras"
+          }
+        },
+        "collection_nqLkHt": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Bra_GlaceTriangle_Buff_Santana_01_1.jpg",
+            "title": "Shop All",
+            "link": "https://negativeunderwear.com/collections/womens-bras"
+          }
+        }
+      },
+      "block_order": [
+        "collection_BN9FJm",
+        "collection_PxUAQx",
+        "collection_dqktxV",
+        "collection_XeMA8B",
+        "collection_rmGU6B",
+        "collection_QtnQAN",
+        "collection_nqLkHt"
+      ],
+      "settings": {
+        "show_in_collection": [
+          "ddd-g-bras"
+        ]
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid-plus",
       "settings": {
+        "products_per_page": 41,
         "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
+    "category_mobile_carousel_86FBn4",
     "product-grid"
   ]
 }

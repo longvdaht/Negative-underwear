@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hero_gift_guide_NJQ7Pp": {
+      "type": "hero-gift-guide",
+      "blocks": {
+        "collection_item_AT4mMc": {
+          "type": "collection_item",
+          "settings": {
+            "custom_classes": "red_edit_block",
+            "image": "shopify://shop_images/HP_OPTS_copyArtboard_3.jpg",
+            "image_mobile": "shopify://shop_images/HP_OPTS_copyArtboard_3.jpg",
+            "color_text": "#ffffff",
+            "title": "The Red Edit",
+            "description": "Friends don’t let friends miss out on the color of the season.",
+            "link": "shopify://collections/the-red-edit",
+            "button_text": "Shop Collection >"
+          }
+        },
+        "collection_item_LUHnUw": {
+          "type": "collection_item",
+          "settings": {
+            "custom_classes": "little_things_block",
+            "image": "shopify://shop_images/NEG2419_2671.jpg",
+            "image_mobile": "shopify://shop_images/NEG2419_2671.jpg",
+            "color_text": "#ffffff",
+            "title": "The Little Things",
+            "description": "PSA: Anything can be a stocking stuffer if you have a big enough stocking.",
+            "link": "shopify://collections/the-little-things",
+            "button_text": "Shop Collection >"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_AT4mMc",
+        "collection_item_LUHnUw"
+      ],
+      "custom_css": [
+        "img {padding: inherit; margin: auto; width: 700px; display: block;}"
+      ],
+      "settings": {
+        "title": "The Gift Guide",
+        "image_title": "shopify://shop_images/Glittery.jpg"
+      }
+    },
+    "product_list_new_kYeKVT": {
+      "type": "product-list-new",
+      "settings": {
+        "title": "This Year's Cozy Faves",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "columns_tablet": 4,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "padding_top": 50,
+        "padding_bottom": 10,
+        "featured_collection": "cozy-vibes-only"
+      }
+    },
+    "grid_image_gift_guide_JJJTQb": {
+      "type": "grid-image-gift-guide",
+      "blocks": {
+        "collection_item_X4Jkdr": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_1_95d5ce4a-9d5b-4e2b-a3e2-6aefd4d19a6a.jpg",
+            "title": "Cozy Vibes Only",
+            "link": "shopify://collections/cozy-vibes-only"
+          }
+        },
+        "collection_item_bVGJxh": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_1_copy_3.jpg",
+            "title": "Cult Classics",
+            "link": "shopify://collections/cult-classics"
+          }
+        },
+        "collection_item_pnFj6g": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_1_copy.jpg",
+            "title": "For the Sleepy Girlies",
+            "link": "shopify://collections/for-the-sleepy-girlies"
+          }
+        },
+        "collection_item_B3Acyi": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_1_copy_2.jpg",
+            "title": "Quiet Luxury",
+            "link": "shopify://collections/quiet-luxury"
+          }
+        },
+        "collection_item_rKK3x6": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_2_copy_17600332-9069-4452-8cba-fa822a474c58.jpg",
+            "title": "Party Girl Era",
+            "link": "shopify://collections/party-girl-era"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_X4Jkdr",
+        "collection_item_bVGJxh",
+        "collection_item_pnFj6g",
+        "collection_item_B3Acyi",
+        "collection_item_rKK3x6"
+      ],
+      "settings": {
+        "title_section": "More Gifts  >"
+      }
+    },
+    "product_list_new_JNNwRd": {
+      "type": "product-list-new",
+      "settings": {
+        "title": "This Year's Deluxe Faves",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "columns_tablet": 4,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "padding_top": 50,
+        "padding_bottom": 80,
+        "featured_collection": "quiet-luxury"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_gift_guide_NJQ7Pp",
+    "product_list_new_kYeKVT",
+    "grid_image_gift_guide_JJJTQb",
+    "product_list_new_JNNwRd"
+  ]
+}

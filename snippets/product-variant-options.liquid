@@ -1,11 +1,10 @@
 {% comment %}
-  Renders product variant options
+  Renders product variant options with metafield descriptions.
 
   Accepts:
   - product: {Object} product object.
   - option: {Object} current product_option object.
   - block: {Object} block object.
-
 
   Usage:
   {% render 'product-variant-options',
@@ -42,7 +41,7 @@
 </ul>
 {%- for value in optionValue -%}
   {% assign isUnavailableVariant = false %}
-  {% if  option.name == "Cup" %}
+  {% if option.name == "Cup" %}
     {% assign isUnavailableVariant = true %}
     {% for variant in product.variants %}
       {% if variant.option1 == currentVariant.options[0] and variant.option3 == currentVariant.options[2] and value == variant.options[1] %}
@@ -110,6 +109,7 @@
         {% endif %}
       >
 
+      
       <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
         {{ valueLabel -}}
         <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
@@ -125,6 +125,8 @@
         {% if option_selected == value %}
           checked
         {% endif %}
+        data-size-description="{{ product.variants[forloop.index0].metafields.custom.size_variant_description }}"
+        onclick="updateSizeDescription(this)"
       >
       <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
         {{ valueLabel -}}
@@ -138,13 +140,21 @@
       {% if option_selected == value %}
         selected="selected"
       {% endif %}{% if option_disabled or single_disabled %} class="value-disabled"{% endif %}
+      data-size-description="{{ product.variants[forloop.index0].metafields.custom.size_variant_description }}"
+      onclick="updateSizeDescription(this)"
     >
         {{- valueLabel -}}
     </option>
   {%- endif -%}
 {%- endfor -%}
 
+
 <script type="text/javascript">
+  function updateSizeDescription(selectedOption) {
+    const description = selectedOption.getAttribute('data-size-description');
+    document.getElementById('size-description').innerText = description;
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     const radioSizeInputs = document.querySelectorAll('input[type="radio"][name="Size"]');
     const radioBandInputs = document.querySelectorAll('input[type="radio"][name="Band"]');
@@ -184,7 +194,6 @@
     addToCartBtn.disabled = true;
 
     if (option2.length >= 1) {
-      // Disable the add to cart button initially
       addToCartBtn.disabled = true;
     }
 
@@ -201,7 +210,6 @@
       addToCartBtn.parentElement.classList.remove('need-select-size');
     }
   
-    // Add event listeners to each radio input
     option1.forEach(function(input) {
       input.addEventListener('change', function(e) {
         let opitonDisable = document.querySelector('.product-form__input input[type="radio"].hide-active-load:checked');

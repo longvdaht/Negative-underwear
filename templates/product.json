@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -5,23 +14,19 @@
       "blocks": {
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "afb1e95c-e38b-418d-95c5-479bd17acf97": {
           "type": "rating",
-          "settings": {
-          }
+          "settings": {}
         },
         "description": {
           "type": "description",
-          "settings": {
-          }
+          "settings": {}
         },
         "b03b08cc-e843-473a-b8c9-ba0225c0ac1a": {
           "type": "variant",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -37,7 +42,7 @@
           }
         },
         "wonderment_pdp_etas_fGEdqH": {
-          "type": "shopify:\/\/apps\/wonderment\/blocks\/pdpEtas\/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "type": "shopify://apps/wonderment/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
@@ -46,8 +51,7 @@
         },
         "6911e657-87d0-49eb-838a-47ac33ac9c14": {
           "type": "desc_with_accordion",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -69,13 +73,11 @@
     },
     "4ddcda0d-a4bc-4c03-8de5-36a05f73524a": {
       "type": "related-products-custom",
-      "settings": {
-      }
+      "settings": {}
     },
     "cd810873-fc8f-4edc-b90a-cca4635b998b": {
       "type": "reviews-product",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

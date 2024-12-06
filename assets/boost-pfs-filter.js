@@ -164,11 +164,17 @@ var boostPFSTemplate = {
       	var itemTagsHtml = '';
         for (var i = 0; i < data.tags.length; i++) {
           var tag = data.tags[i];
-          if (tag == 'limited') {
-            itemBadgesHtml = '<div class="saletag limited">Limited Edition</div>';
+          if (tag == 'best-seller') {
+            itemBadgesHtml = '<div class="saletag limited">Best Seller</div>';
           }
-          if (tag == 'show jenni circle') {
-            itemTagsHtml += 'show-jenni-circle';
+          if (tag == 'new') {
+            itemBadgesHtml = '<div class="saletag limited">New</div>';
+          }
+          if (tag == 'selling-fast') {
+            itemBadgesHtml = '<div class="saletag limited">Selling Fast</div>';
+          }
+          if (tag == 'low-stock') {
+            itemBadgesHtml = '<div class="saletag limited">Low Stock</div>';
           }
         }
       	itemHtml = itemHtml.replace(/{{itemBadges}}/g, itemBadgesHtml);
