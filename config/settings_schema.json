@@ -8,6 +8,35 @@
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
+    "name": "Scarcity Variants",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Scarcity Variants",
+        "info": "Make sure that in the metafields of the variant the Scarcity metafield is turned on."
+      },
+      {
+        "type": "checkbox",
+        "id": "scarcity_sidecart",
+        "label": "Show text Scarcity on sidecart",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "scarcity_pdp",
+        "label": "Show text Scarcity on PDP",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "scarcity_text",
+        "label": "Text Scarcity",
+        "info": "If there is no text, 'Low stock' will be displayed by default.",
+        "default": "Low stock"
+      }
+    ]
+  },
+  {
     "name": "Sales",
     "settings": [
       {

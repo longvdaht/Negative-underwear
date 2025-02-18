@@ -103,6 +103,9 @@
 					%}
 				{% endif %}
 			</span>
+			{% if plp_quick_add %}
+				{% render 'form-plp' product: product %}
+			{% endif %}
 		</span>
 
 		<span class="grid-product__meta{% if on_sale %} on-sale{% endif %}">

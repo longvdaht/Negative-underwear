@@ -17,8 +17,8 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Complimentary US shipping on all orders. Easy returns. 🎉",
-            "link": "",
+            "text": "Free U.S shipping on all orders over $100. Easy returns. 🎉",
+            "link": "https://negative-underwear.loopreturns.com/#/",
             "type": "us"
           }
         },
@@ -69,14 +69,14 @@
         "navigation_image_BDV4GV": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify://shop_images/Lounge_WhippedHenley_Black_Ksenia_02_NN_02118dc9-9c9b-4d9b-a4cf-b2883c79c47a.jpg",
+            "image": "shopify://shop_images/Lounge_WhippedHenley_Black_Ksenia_01.jpg",
             "text": "Best Sellers"
           }
         },
         "navigation_image_XrAB4z": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify://shop_images/Bras_GlaceTrianglebra_Garnet_Santana_01_69d0db0e-dd0e-458b-80c8-ab66e26a39fd.jpg",
+            "image": "shopify://shop_images/Lounge_WaffleKnitWideLegPant_HeatherGrey_Sydney_01.jpg",
             "text": "New"
           }
         },
@@ -118,8 +118,8 @@
         "navigation_image_XaARnC": {
           "type": "navigation-image",
           "settings": {
-            "image": "shopify://shop_images/Lounge_Whipped_Cami_Cherry_Ksenia_02_f503b5de-5315-4c5f-bcb2-2e1b2b683c02.jpg",
-            "text": "Gift Guide [red]"
+            "image": "shopify://shop_images/Swim_CutoutTop_Black_White_Ksenia_01_1c4f2adb-8014-439c-b801-37a70e1375ec.jpg",
+            "text": "Collections"
           }
         }
       },

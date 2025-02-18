@@ -534,3 +534,10 @@ small {
   width: 100%;
   margin-top: 20px;
 }
+
+/* Feature Scarcity Elements 86dv5dmj7 */
+.ajaxcart__product-meta[data-extra-text="_scarcity"]{
+  display: block;
+  position: relative;
+  color: transparent;
+}

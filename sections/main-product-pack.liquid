@@ -1166,7 +1166,7 @@
 
                 {% comment %} <p class="promo-text{% if settings.pdp_promo_text contains "U.S." %} ge-hide{% endif %}">{{ settings.pdp_promo_text }}</p> {% endcomment %}
 
-                    {% if product.description contains "*411*" %}
+                {% if product.description contains "*411*" %}
                   {% assign descriptionHtml = product.description
                     | split: '*411*' | last 
                     | remove: '<p>'
@@ -1184,17 +1184,25 @@
                   {% if sizechart.size > 0 %}
                     {% capture sizeChartLink %}<ul><li><a href="#{{ sizechart }}" class="size-here">Size Chart</a></li>{% endcapture %}
                     {% assign descriptionHtml = descriptionHtml
-                       | replace: '<ul>', sizeChartLink 
-                       | replace: '<li>Size Breakdown', '<li style="display:none">Size Breakdown' 
-                       | replace: '<li>Sizing Breakdown', '<li style="display:none">Sizing Breakdown' 
+                      | replace: '<ul>', sizeChartLink 
+                      | replace: '<li>Size Breakdown', '<li style="display:none">Size Breakdown' 
+                      | replace: '<li>Sizing Breakdown', '<li style="display:none">Sizing Breakdown' 
                     %}
                   {% endif %}
+                  {% capture tab_description %}
+                    {% assign tab_descriptionSplitted = product.description | split: '*411*' | first  %}
+                    <div class="description-tab">{{ tab_descriptionSplitted }}</div>
+                  {% endcapture %}
                   {% capture descr %}
                     <div class="accordion">
                       {% if product.type == "Gift Wrap" %}
+                        <h3 class="description-tab-header">Description</h3>
+                        {{ tab_description }}
                         <h3>Details</h3>
                         {{ descriptionHtml | replace: 'Fabric + Care', 'Material' }}
                       {% else %}
+                        <h3 class="description-tab-header">Description</h3>
+                        {{ tab_description }}
                         <h3>Fit</h3>
                         {{ descriptionHtml }}
                         <h3>FAQ</h3>

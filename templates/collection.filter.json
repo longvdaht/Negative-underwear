@@ -15,8 +15,8 @@
         "collection_REXaGq": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/Bras_GlaceTrianglebra_Garnet_Santana_01_1.jpg",
-            "title": "Best Selling",
+            "image": "shopify://shop_images/Lounge_Waffle_Knit_Lounge_Bralette_Cream_Ksenia_01.jpg",
+            "title": "Best Sellers",
             "link": "https://negativeunderwear.com/collections/best-selling-bras"
           }
         },
@@ -179,7 +179,7 @@
         "collection_8pRmc3": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/Lounge_WhippedBoxer_Moss_Santana_01_3e32ba7e-6165-4de0-8e65-db240ff50a6a.jpg",
+            "image": "shopify://shop_images/Underwear_SieveDipThong_Cherry_Ksenia_01.jpg",
             "title": "Best Sellers",
             "link": "https://negativeunderwear.com/collections/best-selling-underwear"
           }
@@ -257,7 +257,7 @@
     "product-grid": {
       "type": "main-collection-product-grid-filter",
       "settings": {
-        "products_per_page": 71,
+        "products_per_page": 91,
         "padding_top": 0,
         "padding_bottom": 0
       }

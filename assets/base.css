@@ -40,6 +40,9 @@
 variant-radios ul {
     list-style-type: none;
 }
+.sticky-add-to-cart__variants ul {
+    display: none;
+}
 .product-card-wrapper .card,
 .contains-card--product {
     --border-radius: var(--product-card-corner-radius);
@@ -2280,7 +2283,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
         left: calc(50% - 2px);
     }
     .header__heading-logo {
-        border: 1px solid black;
+        border: 0px solid black;
     }
 }
 .menu-opening .burger-icon--bottom {
@@ -5313,3 +5316,16 @@ margin-top: 16px;
     border: 0;
     padding: 0 !important;
 }
+
+/* update font-size */
+.template-article {
+  font-size: 16px;
+}
+.template-article h1, .template-article .h1 {
+  font-size: 45px;
+}
+.template-article h3, .template-article .h3, .template-article h2, .template-article .h2 {
+  font-size: 30px;
+}
+
+/* end update font size */

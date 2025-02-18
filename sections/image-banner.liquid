@@ -14,6 +14,7 @@
   @media screen and (max-width: 768px) {
     #Banner-{{ section.id }} {
       background-image: url({{ section.settings.image_2  | image_url: width: section.settings.image_2.width }}) ;
+      overflow: hidden;
     }
   }
   {%- endstyle -%}

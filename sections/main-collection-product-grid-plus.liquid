@@ -74,7 +74,7 @@
       {% endif %}
     </div>
     {% for product in collection.products %}
-    {% render 'product-grid-item-plus', product: product %}
+    {% render 'product-grid-item-plus', product: product, plp_quick_add: true %}
     {% endfor %}
 
   

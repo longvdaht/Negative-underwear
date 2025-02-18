@@ -1,0 +1,336 @@
+{%- liquid 
+  assign currentVariant = product.selected_or_first_available_variant
+  unless product.selected_variant.id
+    if currentVariant.title contains '-Pack' and currentVariant.available
+      for variant in product.variants
+        if variant.title contains 'Single' and variant.available
+          assign currentVariant = variant
+          break
+        endif
+      endfor
+    endif
+  endunless
+
+  assign has_single_available = false
+  assign no_single_variant = false
+  assign variantAvailable = product.variants | where: 'available', true
+  for variant in variantAvailable
+    if variant.title contains 'Single'
+      assign has_single_available = true
+      break
+    elsif variant.title contains '-Pack'
+      assign has_single_available = false
+    else
+      assign no_single_variant = true
+    endif
+  endfor
+  assign quantity_option = product.options_by_name['Quantity'].values.size
+  unless quantity_option <= 1
+    unless no_single_variant
+      unless has_single_available
+        assign currentVariant = product.variants[0]
+      endunless
+    endunless
+  endunless
+-%}
+
+{% assign productTitle = product.title | split: " in " | first %}
+{% assign productColor = product.title | remove: productTitle | remove_first: " in " | replace: " and in ", " and " | remove: ' - Final Sale' %}
+
+{% assign dynamicLimitColors = product.metafields.custom.limited_edition.value | remove: " " | replace: ',', '|' %}
+
+{% assign limitColors = "|" | append: dynamicLimitColors | append: "|" %}
+
+
+{% assign hasPlusSizing = false %}
+{% assign hasPacks = false %}
+{% assign sayComingSoon = false %}
+{% assign hasSet = false %}
+{% assign isWarehouseSale = false %}
+{% assign newColorSoon = false %}
+{% assign potentialNewColor = '' %}
+{% assign hasHighlight = false %}
+{% assign sizechart = '' %}
+{% assign productType = "null" %}
+{% assign isFinalSale = false %}
+{% assign isCreditRefundOnly = false %}
+{% assign isRestock = false %}
+{% assign showTshirtCircle = false %}
+{% assign showHolidayCircle = false %}
+{% assign showValentinesCircle = false %}
+{% assign showJenniCircle = false %}
+{% assign restockText = "" %}
+{% if product.first_available_variant.title contains "Pack" or product.title contains "Pack" %}
+  {% assign showSaleSticker = false %}
+{% else %}
+  {% assign showSaleSticker = true %}
+{% endif %}
+{% if product.type == "Swim" or product.type == "swim" %}
+  {% assign productType = "swim" %}
+{% endif %}
+
+{% liquid                     
+  if product.vendor contains "Last Chance"
+    assign isLastChance = true
+  else
+    assign isLastChance = false 
+  endif
+%}
+{% for tag in product.tags %}
+  {% assign t = tag | handleize %}
+
+  {% if t == "coming-soon" %}
+    {% assign sayComingSoon = true %}
+  {% endif %}
+  {% if t contains "-set" %}
+    {% assign hasSet = true %}
+    {% assign setHandle = t %}
+  {% endif %}
+  {% if t contains "packlink" %}
+    {% assign hasPacklink = true %}
+  {% endif %}
+  {% if t == "warehouse-sale" and product.compare_at_price_max > product.price_min %}
+    {% assign isWarehouseSale = true %}
+  {% endif %}
+  {% if t == "plus-bra-sizing" %}
+    {% assign hasPlusSizing = true %}
+  {% endif %}
+  {% if t == "show-tshirt-circle" %}
+    {% assign showTshirtCircle = true %}
+  {% endif %}
+  {% if t == "show-holiday-circle" %}
+    {% assign showHolidayCircle = true %}
+  {% endif %}
+  {% if t == "show-valentines-circle" %}
+    {% assign showValentinesCircle = true %}
+  {% endif %}
+  {% if t == "show-jenni-circle" %}
+    {% assign showJenniCircle = true %}
+  {% endif %}
+  {% if t == "show-sale-sticker" %}
+    {% assign showSaleSticker = true %}
+  {% endif %}
+
+  {% if t contains "highlight" %}
+    {% assign hasHighlight = true %}
+    {% capture imgName %}{{ t }}.png{% endcapture %}
+    <img src="{{ imgName | asset_url }}" alt="{{ tag | remove: 'highlight ' }}" />
+  {% endif %}
+  {% if tag contains "soon-" %}
+    {% assign newColorSoon = tag | split: 'soon-' | last %}
+  {% endif %}
+  {% if t contains "newcolor-" %}
+    {% if t contains 'black-marble' %}
+      {% assign newcolor = "newcolor-" | append: 'black-marble' %}
+    {% elsif t contains 'peach-black' %}
+      {% assign newcolor = "newcolor-" | append: 'peach-blacktrim' %}
+    {% elsif t contains 'buff-black' %}
+      {% assign newcolor = "newcolor-" | append: 'buff-blacktrim' %}
+    {% elsif t contains 'buff-white' %}
+      {% assign newcolor = "newcolor-" | append: 'buff-whitetrim' %}
+    {% elsif t contains 'coral-white' %}
+      {% assign newcolor = "newcolor-" | append: 'coral-wht' %}
+    {% elsif t contains 'heather-grey-white' %}
+      {% assign newcolor = "newcolor-" | append: 'heather-grey-wht' %}
+    {% elsif t contains 'haze-black' %}
+      {% assign newcolor = "newcolor-" | append: 'haze-blacktrim' %}
+    {% elsif t contains 'navy-white' %}
+      {% assign newcolor = "newcolor-" | append: 'navy-wht' %}
+    {% elsif t contains 'peach-moire' %}
+      {% assign newcolor = "newcolor-" | append: 'peach-moire' %}
+    {% elsif t contains 'slate-moire' %}
+      {% assign newcolor = "newcolor-" | append: 'slate-moire' %}
+    {% elsif t contains 'black-essaouira' %}
+      {% assign newcolor = "newcolor-" | append: 'black-essaouira' %}
+    {% elsif t contains 'white-essaouira' %}
+      {% assign newcolor = "newcolor-" | append: 'white-essaouira' %}
+    {% elsif t contains 'lilac-essaouira' %}
+      {% assign newcolor = "newcolor-" | append: 'lilac-essaouira' %}
+    {% elsif t contains 'buff-essaouira' %}
+      {% assign newcolor = "newcolor-" | append: 'buff-essaouira' %}
+    {% else %}
+      {% assign newcolor = t %}
+    {% endif %}
+
+    {% assign potentialNewColor = potentialNewColor | append: newcolor | append: '--' %}
+  {% endif %}
+
+  {% if t == "final-sale" %}
+    {% assign isFinalSale = true %}
+  {% elsif t == "credit-refund-only" %}
+    {% assign isCreditRefundOnly = true %}
+  {% endif %}
+  {% if t == "bras" or t == "non-wire-bra" %}
+    {% assign productType = "bra" %}
+  {% endif %}
+  {% if t == "sleepwear-bottom" %}
+    {% assign productType = "sleepwear-bottom" %}
+  {% endif %}
+  {% if t == "sweat-bottom" %}
+    {% assign productType = "sweat-bottom" %}
+  {% endif %}
+  {% if t == "swim-top" %}
+    {% assign productType = "swim-top" %}
+  {% endif %}
+  {% if t == "swim-bottom" %}
+    {% assign productType = "swim-bottom" %}
+  {% endif %}
+  {% if t == "sweat-top" %}
+    {% assign productType = "sweat-top" %}
+  {% endif %}
+  {% if t == "sleepwear-top" %}
+    {% assign productType = "sleepwear-top" %}
+    {% comment %}
+    <!-- % break % -->
+    <!-- since this seems to go alphabetically, stop checking so we don't override with tops - - - SWITCHED 2/8/21, may need to revisit -->
+    {% endcomment %}
+  {% endif %}
+  {% if t == "tops" %}
+    {% if product.title contains "Crew" %}
+      {% assign productType = "sweat-top" %}
+    {% elsif product.title contains "Bra Top" %}
+      {% assign productType = "bra" %}
+    {% else %}
+      {% assign productType = "top" %}
+    {% endif %}
+  {% endif %}
+  {% if t == "underwear" or t == "thongs" or product.title contains "Thong" or t contains "briefs" or t == "bike-short" or product.type == "Underwear" %}
+    {% assign productType = "underwear" %}
+  {% endif %}
+  {% if t contains "sizechart" %}
+    {% assign sizechart = t | split: 'sizechart-' | last %}
+  {% endif %}
+  {% if t contains "restock" %}
+    {% assign isRestock = true %}
+    {% assign restockText = tag | split: "estock" | last %}
+  {% endif %}
+{% endfor %}
+{% if product.title contains "Bodysuit" %}
+  {% assign productType = "bodysuit" %}
+{% elsif product.title contains "Robe" %}
+  {% assign productType = "robe" %}
+{% endif %}
+
+{% assign productQty = 0 %}
+{% for variant in product.variants %}
+  {% unless product.title contains "(Pack)" %}
+    {% if variant.title contains "-Pack" %}
+      {% assign hasPacks = true %}
+    {% endif %}
+  {% endunless %}
+  {% assign productQty = productQty | plus: variant.inventory_quantity %}
+{% endfor %}
+{% assign productFamily = productTitle | handleize | remove: '-0' %}
+{% if product.title contains "Pack" %}
+  {% assign productFamily = productFamily | append: '-pack' %}
+{% endif %}
+
+{% assign testArticleURL = 'size-charts/' | append: sizechart %}
+{% assign testArticle = articles[testArticleURL] %}
+
+{% if testArticle.created_at == blank %}
+  <!-- there is no post! use image like before -->
+  {% assign sizeChartStyle = "image" %}
+{% else %}
+  {% assign sizeChartArticle = testArticle %}
+  {% assign sizeChartStyle = "html" %}  
+  <!--    FOUND IT (we gots a post) -->
+  {% assign sizechartHtml = sizeChartArticle.content %}
+{% endif %}
+
+
+  {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+
+  {%- assign product_form_id = 'product-form-' | append: product.id -%}
+
+{% comment %} {% render 'product-variant-color', product: product, productColor: productColor, productFamily: productFamily, settings:
+settings, potentialNewColor: potentialNewColor, limitColors: limitColors, newColorSoon: newColorSoon, isLastChance:
+isLastChance %} {% endcomment %}
+
+<section id="shopify-section-main-product-ajax" class="shopify-section section js-product">
+  <p class="plp-form-product-title">{{ product.title }}</p>
+
+  {% render 'product-variant-picker-ajax', 
+    product: product, 
+    product_form_id: product_form_id, 
+    currentVariant: currentVariant, 
+    has_single_available: has_single_available, 
+    no_single_variant: no_single_variant %}
+
+  {% if sizechart.size > 0 %}
+    <span class="size-chart-opener size-chart-opener-{{ product.id }}">Size Chart</span>
+    <div class="plp-sizing-block">
+      <div class="plp-sizing-block-content">
+        <button class="closing-icon">
+          <span class="close icon icon-x"><span class="hide">Close</span></span>
+        </button>
+        <div class="clearfix">
+          {% capture sizechartNote %}sizechart-note-{{ sizechart }}{% endcapture %}
+
+          {% if sizeChartStyle == "html" %}
+            <h3>{{ sizeChartArticle.title }}</h3>
+            {{ sizechartHtml }}
+          {% else %}
+            {% capture chartTitle %}{% if sizechart contains "nonwire" %}Non-Wire Bra{% elsif sizechart == "bratop" %}Bra Top{% elsif sizechart == "bottoms" %}Underwear{% elsif sizechart == "apparel" %}Apparel{% endif %} Sizing{% endcapture %}
+            {% capture sizechartImg %}sizechart-{{ sizechart }}.png{% endcapture %}
+            <h3>{{ chartTitle }}</h3>
+            <img src="{{ sizechartImg | asset_img_url: 'thumb' }}" data-src="{{ sizechartImg | asset_img_url: '2048x' }}" class="lazyload sizechart" alt="{{ chartTitle }} Size Chart" />
+          {% endif %} 
+          <!-- {{ sizechartNote }} -->
+          {% if settings[sizechartNote].size > 0 %}
+            {{ settings[sizechartNote ] }}
+          {% endif %}
+          <p>Q’s about sizing or fit? Email us at hello@negativeunderwear.com</p>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="product-form__buttons need-select-size">
+    {%- liquid
+      assign check_against_inventory = true
+      if currentVariant.inventory_management != 'shopify' or  currentVariant.inventory_policy == 'continue'
+        assign check_against_inventory = false
+      endif
+      if currentVariant.quantity_rule.min > currentVariant.inventory_quantity and check_against_inventory
+        assign quantity_rule_soldout = true
+      endif
+    -%}
+    <button
+      id = "ProductSubmitButton-{{ section.id }}"
+      type="submit"
+      name="add"
+      class="AddToCart product-form__submit plp-form-atc button button--full-width select-size-load button--primary"
+      disabled="true"
+    >
+      <span>
+        {%- if currentVariant.available == false or quantity_rule_soldout -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- else -%}
+          <span class="cart-add">{{ 'products.product.add_to_cart' | t }}</span>
+          <span class="cart-select-size">{{ 'products.product.select_size_cart' | t }}</span>
+        {%- endif -%}
+      </span>
+
+
+      <span class="separator">|</span>
+
+      {%- render 'price',
+        product: product,
+        currentVariant: currentVariant,
+        use_variant: true
+        -%} 
+      <div class="loading-overlay__spinner hidden">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          class="spinner"
+          viewBox="0 0 66 66"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+    </button>
+  </div>
+</section>

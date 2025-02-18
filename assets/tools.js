@@ -8,7 +8,13 @@ class Tools {
       const sticky = document.querySelector(selectorSticky);
       const observed = document.querySelector(selectorObserved);
 
-      const stickyDisplayPosition = observed.offsetHeight;
+      let stickyDisplayPosition = observed.offsetHeight;
+
+      const matchingSetSection = document.querySelector('.js-product .matching-set.js-matching-set');
+      const accordionDescription = document.querySelector('.js-product .product-single__description');
+
+      stickyDisplayPosition = stickyDisplayPosition - (matchingSetSection ? matchingSetSection.offsetHeight : 0) - (accordionDescription ? accordionDescription.offsetHeight : 0)
+      
       let scroll = window.scrollY;
 
       if (scroll > stickyDisplayPosition) {
@@ -29,7 +35,21 @@ class Tools {
     }
 
     trigger && trigger.addEventListener('click', () => {
-      if (targetEl && !targetEl.getAttribute('open')) targetEl.setAttribute('open', null)
+      if (targetEl && !targetEl.getAttribute('open')) {
+        targetEl.setAttribute('open', null);
+        
+        const atcBtn = document.querySelector('.js-sticky-add-to-cart .AddToCart');
+        if(atcBtn) {
+          atcBtn.setAttribute('disabled', 'disabled');
+          atcBtn.querySelector('span').innerHTML = 'Select Size';
+          
+        }
+
+        const variants = document.querySelectorAll('.js-sticky-add-to-cart .pdp-input-option');
+        variants.forEach(variant => {
+          variant.removeAttribute('data-active')
+        })
+      }
     })
   }
 }

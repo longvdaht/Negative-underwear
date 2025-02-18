@@ -1,0 +1,67 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  - update_url: {Boolean} whether or not to update url when changing variants. If false, the url isn't updated. Default: true (optional).
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+
+{% assign hasPacks = false %}
+{% for variant in product.variants %}
+  {% unless product.title contains "(Pack)" %}
+    {% if variant.title contains "-Pack" %}
+      {% assign hasPacks = true %}
+    {% endif %}
+  {% endunless %}
+{% endfor %}
+
+{% assign wrapper = 'variant-radios' %}
+{% assign wrapper_item = 'fieldset' %}
+
+{% if is_sticky %}
+  {% assign wrapper = 'div' %}
+  {% assign wrapper_item = 'div' %}
+{% endif %}
+
+  {%- unless product.has_only_default_variant -%}
+      <{{ wrapper }}
+        id="variant-radios-{{ id | default: section.id }}"
+        class="variant-radios no-js-hidden {% if hasPacks %} has-packs{% endif %}"
+        data-section="{{ section.id }}"
+        data-url="{{ product.url }}"
+        {% if update_url == false %}
+          data-update-url="false"
+        {% endif %}
+        {{ block.shopify_attributes }}
+      >
+
+        {%- for option in product.options_with_values -%}
+          <{{ wrapper_item }} class="js product-form__input{% if option.name == 'Color' or option.name == 'Quantity' or option.values.size == 1 %} hide{% endif %}">
+
+            <div class="form__label{% if option.name == 'Size' %} justify-center{% endif %}">
+              <span>{{ option.name }} </span>
+            </div>
+            <div class="form__values">
+              {% render 'product-variant-options-ajax',
+                product: product,
+                option: option,
+                currentVariant: currentVariant,
+                index: forloop.index0,
+                has_single_available: has_single_available,
+                no_single_variant: no_single_variant,
+                is_sticky: is_sticky,
+                variant: variant
+              %}
+            </div>
+
+          </{{ wrapper_item }}>
+        {%- endfor -%}
+        <script type="application/json" id="product-variants-json">
+          {{ product.variants | json }}
+        </script>
+      </{{ wrapper }}>
+  {%- endunless -%}

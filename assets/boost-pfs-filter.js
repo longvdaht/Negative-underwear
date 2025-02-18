@@ -1,16 +1,17 @@
 // Override Settings
 var boostPFSFilterConfig = {
-    general: {
-        limit: 60,
-      	loadProductFirst: false,
-      	showPlaceholderProductList: false,
-      	enableSeo: false,
-        separateRefineByFromFilter: true,
-        // Placeholder  
-        showPlaceholderProductList: true,
-        placeholderProductPerRow: 3,
-        placeholderProductGridItemClass: 'grid__item grid-product small--one-half medium--one-half large--one-third',
-    }
+  general: {
+    limit: 60,
+    loadProductFirst: false,
+    showPlaceholderProductList: false,
+    enableSeo: false,
+    separateRefineByFromFilter: true,
+    // Placeholder
+    showPlaceholderProductList: true,
+    placeholderProductPerRow: 3,
+    placeholderProductGridItemClass:
+      'grid__item grid-product small--one-half medium--one-half large--one-third',
+  },
 };
 
 // Declare Templates
@@ -22,92 +23,113 @@ var boostPFSTemplate = {
     'vendorHtml': '<div>{{itemVendorLabel}}</div>',
     'isPack': ' is-pack',
 
-    // Grid Template 
-    'productGridItemHtml': '<div data-product-id={{itemId}} class="grid__item grid-product small--one-half medium--one-half large--one-third{{isPack}} {{itemTags}} {{itemHandle}}">' +
-								'<a href="{{itemUrl}}">' +
-									'<span class="grid-product__image-wrapper {{itemTitle}} {{soldOutClass}} {{saleClass}}">' +
-										'{{itemSaleLabel}}' +
-										'{{itemBadges}}' + 
-										'<span class="grid-product__image-link">' +
-											'{{itemThumbnail}}' +
-										'</span>' +
-									'</span>' +
-									'<span class="grid-product__meta {{saleClass}}">' +
-										'<span class="grid-product__title">{{itemTitle}}</span><span class="grid-product__price">{{itemPrice}}</span>' +
-									'</span>' +
-								'</a>' +
-  								'<div class="boost-custom-html"></div>' +
-                            '</div>',
-    'collectionHeaderItemHtml': 	'<div class="grid__item text-center small--hide medium--hide large--one-third section-header">' + 
-                                    '<h1>{{itemTitle}}</h1>' +
-                                    '<div class="grid">' + 
-                                        '<div class="grid__item">' +
-  											'<div class="rte">{{itemDesc}}</div>'+
-                                        '</div>'+
-                                    '</div>'+
-  								'</div>',
+  // Grid Template
+    productGridItemHtml:
+    '<div data-product-id="{{itemId}}" class="grid__item grid-product small--one-half medium--one-half large--one-third{{isPack}} {{itemTags}} {{itemHandle}}">' +
+    '<a class="plp-a-item" href="{{itemUrl}}">' +
+    '<span class="grid-product__image-wrapper {{itemTitle}} {{soldOutClass}} {{saleClass}}">' +
+    '{{itemSaleLabel}}' +
+    '{{itemBadges}}' +
+    '<span class="grid-product__image-link">' +
+    '{{itemThumbnail}}' +
+    '</span>' +
+    // Adding the form element here within the image wrapper
+    '<div class="form-plp">' +
+    '{{CTAFORM}}' +
+    '</div>' +
+    '</span>' +
+    '</a>' +
+    '<span class="grid-product__meta {{saleClass}}">' +
+    '<span class="grid-product__title">{{itemTitle}}</span>' +
+    '<span class="grid-product__price">{{itemPrice}}</span>' +
+    '</span>' +
+    '</div>',
 
-    // Pagination Template
-    'previousActiveHtml': '<span class="prev"><a href="{{itemUrl}}">&larr;</a></span>',
-    'previousDisabledHtml': '',
-    'nextActiveHtml': '<span class="next"><a href="{{itemUrl}}">&rarr;</a></span>',
-    'nextDisabledHtml': '',
-    'pageItemHtml': '<span class="page"><a href="{{itemUrl}}">{{itemTitle}}</a></span>',
-    'pageItemSelectedHtml': '<span class="page current">{{itemTitle}}</span>',
-    'pageItemRemainHtml': '<span class="deco">{{itemTitle}}</span>',
-    'paginateHtml': '<div class="pagination">{{previous}}{{pageItems}}{{next}}</ul>',
-  
-    // Sorting Template
-    'sortingHtml': '<label class="label--hidden">Sort</label><select class="collection-sort__input" aria-label="Sort">{{sortingItems}}</select>',
+
+  collectionHeaderItemHtml:
+    '<div class="grid__item text-center small--hide medium--hide large--one-third section-header">' +
+    '<h1>{{itemTitle}}</h1>' +
+    '<div class="grid">' +
+    '<div class="grid__item">' +
+    '<div class="rte">{{itemDesc}}</div>' +
+    '</div>' +
+    '</div>' +
+    '</div>',
+
+  // Pagination Template
+  previousActiveHtml:
+    '<span class="prev"><a href="{{itemUrl}}">&larr;</a></span>',
+  previousDisabledHtml: '',
+  nextActiveHtml: '<span class="next"><a href="{{itemUrl}}">&rarr;</a></span>',
+  nextDisabledHtml: '',
+  pageItemHtml:
+    '<span class="page"><a href="{{itemUrl}}">{{itemTitle}}</a></span>',
+  pageItemSelectedHtml: '<span class="page current">{{itemTitle}}</span>',
+  pageItemRemainHtml: '<span class="deco">{{itemTitle}}</span>',
+  paginateHtml:
+    '<div class="pagination">{{previous}}{{pageItems}}{{next}}</ul>',
+
+  // Sorting Template
+  sortingHtml:
+    '<label class="label--hidden">Sort</label><select class="collection-sort__input" aria-label="Sort">{{sortingItems}}</select>',
 };
 
-(function() {
-    var onSale = false,
-        soldOut = false,
-        priceVaries = false,
-        images = [],
-        firstVariant = {},
-        boostPFSImgDefaultSrc = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
-        boostPFSRangeWidths = [180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048];
-    
-    BoostPFS.inject(this);
-    boostPFSFilterConfig.general.separateRefineByFromFilter = (jQ('.boost-pfs-filter-tree-h').length && !Utils.isMobile() > 0 && boostPFSThemeConfig.custom.filter_tree_horizontal_style != 'style-expand') ? true : false;
-    
-    /************************** CUSTOMIZE DATA BEFORE BUILDING PRODUCT ITEM **************************/
-    function prepareShopifyData(data) {
-        // Displaying price base on the policy of Shopify, have to multiple by 100
-        soldOut = !data.available; // Check a product is out of stock
-        onSale = data['variants'][0].compare_at_price > data['variants'][0].price; // Check a product is on sale
-        priceVaries = data.price_min != data.price_max; // Check a product has many prices
-        // Convert images to array
-        images = data.images_info;
-        // Get First Variant (selected_or_first_available_variant)
-        firstVariant = data['variants'][0];
-        if (Utils.getParam('variant') !== null && Utils.getParam('variant') != '') {
-            var paramVariant = data.variants.filter(function(e) {
-                return e.id == Utils.getParam('variant');
-            });
-            if (typeof paramVariant[0] !== 'undefined') firstVariant = paramVariant[0];
-        } else {
-            for (var i = 0; i < data['variants'].length; i++) {
-                if (data['variants'][i].available) {
-                    firstVariant = data['variants'][i];
-                    break;
-                }
-            }
-        }
-        return data;
-    }
-    
-    /************************** END CUSTOMIZE DATA BEFORE BUILDING PRODUCT ITEM **************************/
-    /************************** BUILD PRODUCT LIST **************************/
-    // Build Product Grid Item
-    ProductGridItem.prototype.compileTemplate = function(data) {
-        if (!data) data = this.data;
-        // Customize API data to get the Shopify data
-        data = prepareShopifyData(data);
+(function () {
+  var onSale = false,
+    soldOut = false,
+    priceVaries = false,
+    images = [],
+    firstVariant = {},
+    boostPFSImgDefaultSrc =
+      'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+    boostPFSRangeWidths = [
+      180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048,
+    ];
 
-        var variantNames = "";
+  BoostPFS.inject(this);
+  boostPFSFilterConfig.general.separateRefineByFromFilter =
+    jQ('.boost-pfs-filter-tree-h').length &&
+    !Utils.isMobile() > 0 &&
+    boostPFSThemeConfig.custom.filter_tree_horizontal_style != 'style-expand'
+      ? true
+      : false;
+
+  /************************** CUSTOMIZE DATA BEFORE BUILDING PRODUCT ITEM **************************/
+  function prepareShopifyData(data) {
+    // Displaying price base on the policy of Shopify, have to multiple by 100
+    soldOut = !data.available; // Check a product is out of stock
+    onSale = data['variants'][0].compare_at_price > data['variants'][0].price; // Check a product is on sale
+    priceVaries = data.price_min != data.price_max; // Check a product has many prices
+    // Convert images to array
+    images = data.images_info;
+    // Get First Variant (selected_or_first_available_variant)
+    firstVariant = data['variants'][0];
+    if (Utils.getParam('variant') !== null && Utils.getParam('variant') != '') {
+      var paramVariant = data.variants.filter(function (e) {
+        return e.id == Utils.getParam('variant');
+      });
+      if (typeof paramVariant[0] !== 'undefined')
+        firstVariant = paramVariant[0];
+    } else {
+      for (var i = 0; i < data['variants'].length; i++) {
+        if (data['variants'][i].available) {
+          firstVariant = data['variants'][i];
+          break;
+        }
+      }
+    }
+    return data;
+  }
+
+  /************************** END CUSTOMIZE DATA BEFORE BUILDING PRODUCT ITEM **************************/
+  /************************** BUILD PRODUCT LIST **************************/
+  // Build Product Grid Item
+  ProductGridItem.prototype.compileTemplate = function (data) {
+    if (!data) data = this.data;
+    // Customize API data to get the Shopify data
+    data = prepareShopifyData(data);
+
+    var variantNames = '';
 
         for (var i=0; i<data['variants'].length; i++) {
         	var title = data['variants'][i].title;
@@ -189,6 +211,9 @@ var boostPFSTemplate = {
         }
     
         // Add main attribute (Always put at the end of this function)
+        let formHtml = PlpForm(data);
+
+        itemHtml = itemHtml.replace(/{{CTAFORM}}/g, formHtml);
         itemHtml = itemHtml.replace(/{{itemId}}/g, data.id);
         itemHtml = itemHtml.replace(/{{itemTitle}}/g, data.title);
         itemHtml = itemHtml.replace(/{{itemHandle}}/g, data.handle);
@@ -212,6 +237,29 @@ var boostPFSTemplate = {
     
         return html;
     }
+    function addClassToRightSideProducts() {
+      // Define a CSS media query for mobile devices
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    
+      // Run this only on mobile devices
+      if (isMobile) {
+        // Get all product grid items
+        const productItems = document.querySelectorAll('.grid__item');
+    
+        // Iterate through each product item
+        productItems.forEach((item, index) => {
+          // Since there are 2 items per row on mobile, every second item is on the right side
+          if ((index + 1) % 2 === 0) {
+            // Add a specific class to the items on the right side
+            item.classList.add('right-side-product');
+          }
+        });
+      }
+    }
+    
+    // Call the function on page load and when the window is resized
+    window.addEventListener('load', addClassToRightSideProducts);
+    window.addEventListener('resize', addClassToRightSideProducts);
     
     function buildItemImage(image, title) {
         var html = '';
@@ -241,6 +289,202 @@ var boostPFSTemplate = {
         }
         return html;
     }
+
+    function getDefaultVariant(variants) {
+      let idVariant = '';
+      for (const item of variants) {
+        //if (item.inventory_quantity) {
+        idVariant = item.id;
+        break;
+        //}
+      }
+      return idVariant;
+    }
+  
+  function PlpForm(product) {
+    const defaultVariantId = getDefaultVariant(product.variants);
+  
+    fetch(
+      window.Shopify.routes.root +
+        `?sections=main-product-ajax&product_handle=${product.handle}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const container = window.document.querySelector(
+          `.form-list-variants.pr_${product.id}`
+        );
+        //container.innerHTML = data['main-product-ajax'];
+        $(`.form-list-variants.pr_${product.id}`).html(
+          data['main-product-ajax']
+        );
+  
+        setTimeout(function () {
+          onSubmitOnPlp(`form#product-form-main-product-ajax-${product.id}`);
+          handleOpenModalButton(product.id);
+  
+          // Check if .form-list-variants has the class .open
+          if (container.classList.contains('open')) {
+            // Apply styles to .form-plp
+            document.querySelectorAll('.form-plp').forEach((formPlp) => {
+              formPlp.style.backgroundColor = "#f7f7f7"; // Example style change
+              formPlp.style.padding = "20px";
+              formPlp.style.borderRadius = "8px";
+            });
+          }
+        }, 400);
+      });
+  
+    let html = `<form
+        id="product-form-main-product-ajax-${product.id}"
+        method="post" 
+        action="/cart/add"  
+        accept-charset="UTF-8" 
+        class="form lgform AddToCartForm" 
+        novalidate="novalidate" data-type="add-to-cart-form" 
+        data-product-id="${product.id}" 
+        data-product-handle="${product.handle}" 
+        data-currency="${Shopify.currency.active}">
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="id" value="" class="product-variant-id" data-id="${defaultVariantId}">
+        <input type="hidden" name="quantity" value="1" class="product-quantity">
+  
+        <div class="form-list-variants pr_${product.id}"></div>
+        <button 
+          type="bottom" 
+          name="add" 
+          id="openmodal" 
+          class="AddToCart ${product.title.toLowerCase().indexOf("2-pack")!= -1 ? "plp-atc-redirect" : "plp-atc-opener"} product-form__submit button button--full-width button--primary"
+          style="position: absolute; bottom: 0px; right: 0px; z-index: 4; width: 25px; height: 25px; padding: 0px; margin: 0px; border: none; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"
+        >
+          <span class="plus">+</span>
+        </button>
+    </form>`;
+  
+    // Apply JavaScript or jQuery styles for further customization
+    setTimeout(() => {
+      // Add inline styles or dynamic classes for the button
+      $('.AddToCart.plp-atc-opener').css({
+        'position': 'absolute',
+        'bottom': '0px',
+        'right': '0px',
+        'z-index': '4',
+        'width': '25px',
+        'height': '25px',
+        'padding': '0px',
+        'margin': '0px',
+        'border': 'none',
+        'background-color': '#FFFFFF',
+        'color': '#000000',
+      });
+    }, 0); // Ensure HTML is fully rendered before applying the logic
+  
+    return html;
+}
+    function handleOpenModalButton(productID) {
+      if (!document.getElementById('modalStyles')) {
+        const style = document.createElement('style');
+        style.id = 'modalStyles';
+        style.innerHTML = `'
+          .no-scroll {
+            overflow: hidden;
+          }
+          .plp-atc-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            display: none;
+          }
+          @media screen and (max-width: 768px) {
+            .plp-atc-modal-overlay.active {
+              display: block!important;
+            }
+          }
+          .form-plp .form-list-variants.open {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 9999;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    
+      let overlay = document.querySelector('.plp-atc-modal-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'plp-atc-modal-overlay';
+        document.body.appendChild(overlay);
+      }
+      const btns = document.querySelectorAll(
+        `form#product-form-main-product-ajax-${productID} button.product-form__submit.plp-atc-opener`
+      );
+      const containers = document.querySelectorAll(
+        `.form-list-variants.pr_${productID}`
+      );
+    
+      btns.forEach((btn, index) => {
+        const container = containers[index];
+    
+        if (!document.body.contains(container)) {
+          document.body.appendChild(container);
+        }
+    
+        btn.addEventListener('click', (e) => {
+          e.preventDefault(); 
+    
+          if (!container.classList.contains('show')) {
+            closeModal();
+            container.classList.add('open', 'show');
+            overlay.classList.add('active');
+            if (window.innerWidth <= 768) {
+              document.body.classList.add('no-scroll');
+            }
+            const productItem = btn.closest('.grid__item.grid-product');
+            productItem.classList.add("plp-product-no-clickable");
+          }
+        });
+      });
+    
+      
+      overlay.addEventListener('click', closeModal);
+      document.addEventListener('click', (e) => {
+        const openContainer = document.querySelector('.form-list-variants.open.show');
+        if (openContainer && !openContainer.contains(e.target) && !e.target.closest(`button.product-form__submit`)) {
+          closeModal();
+        }
+      });
+    
+      function closeModal() {
+        const openContainers = document.querySelectorAll('.form-list-variants.open.show');
+        openContainers.forEach(container => {
+          container.classList.remove('show', 'open');
+          const productItem = container.closest('.grid__item.grid-product');
+          productItem.classList.remove("plp-product-no-clickable");
+        });
+        overlay.classList.remove('active');
+        if (window.innerWidth <= 768) {
+          document.body.classList.remove('no-scroll');
+        }
+        
+      }
+    }
+    
+    window.addEventListener('load', () => handleOpenModalButton('productID'));
+    window.addEventListener('resize', () => handleOpenModalButton('productID'));
+
+    
     /************************** END BUILD PRODUCT ITEM ELEMENTS **************************/
     /************************** BUILD TOOLBAR **************************/
     // Build Pagination
@@ -363,7 +607,13 @@ var boostPFSTemplate = {
         }
     
         var hasShopifyRoutes = Shopify && Shopify.routes && typeof Shopify.routes.root !== 'undefined';
-        var localeURLPart = hasShopifyRoutes ? Shopify.routes.root.replace(/\/$/, '') : '';
+        var localeURLPart = '';
+
+        if (hasShopifyRoutes) {
+          localeURLPart = Shopify.routes.root.replace(/\/$/, '');
+        } else if (elements.indexOf(boostPFSConfig.general.current_locale) > -1) {
+          localeURLPart = '/' + boostPFSConfig.general.current_locale;
+        }
     
         for (var i = 0; i < data.length; i++) {
             const prodId = data[i]['id'];
@@ -479,71 +729,81 @@ var boostPFSTemplate = {
         }
     };
 
-    FilterOption.prototype.afterRender = function() {
-      if (this.filterOptionId == "pf_t_size") {
-        var headerValues = '';
-        this.filterItems.forEach(function(filterOption) {
-    		// FilterOption has numberAppliedFilterItems field. We add those up.
-            var header = filterOption.value.replace('boost:', '').split(':')[0];
-            if (headerValues.indexOf(header) == -1) {
-                var newHeader = '<div class="filter-header" id="' + header.toLowerCase() + '">';
-                if (header.toLowerCase() == 'band') {
-                    newHeader += 'Wired Bras';
-                } else if (header.toLowerCase() == 'size') {
-                    newHeader += 'Non-Wire Bras';
-                } else {
-                    newHeader += header;
-                }
-                newHeader += '</div>';
-                headerValues += header + ',';
-              
-                filterOption.$element.before(newHeader);
-            }
-    	})
-      }
-    }
-    FilterOptionItem.prototype.buildLabel = function() {
-		var filterOption = this.filterOption ? this.filterOption : this.parent;
-      
-		var label = Utils.unescape(this.label);
-		var prefix = filterOption.prefix;
+  FilterOption.prototype.afterRender = function () {
+    if (this.filterOptionId == 'pf_t_size') {
+      var headerValues = '';
+      this.filterItems.forEach(function (filterOption) {
+        // FilterOption has numberAppliedFilterItems field. We add those up.
+        var header = filterOption.value.replace('boost:', '').split(':')[0];
+        if (headerValues.indexOf(header) == -1) {
+          var newHeader =
+            '<div class="filter-header" id="' + header.toLowerCase() + '">';
+          if (header.toLowerCase() == 'band') {
+            newHeader += 'Wired Bras';
+          } else if (header.toLowerCase() == 'size') {
+            newHeader += 'Non-Wire Bras';
+          } else {
+            newHeader += header;
+          }
+          newHeader += '</div>';
+          headerValues += header + ',';
 
-		if (typeof label != 'string') return '';
-
-		// Remove Prefix
-		if (typeof prefix == 'string') {
-			prefix = prefix.replace(/\\/g, '');
-			label = label.replace(prefix, '').trim();
-		}
-
-        if (filterOption.filterOptionId == 'pf_t_size') {
-            label = label.split(':')[1];
+          filterOption.$element.before(newHeader);
         }
-      
-		// No capital label of Rating filter option
-		if (label.indexOf('boost-pfs-filter-icon-star') > -1) return label;
-
-		// Make the text to uppercase
-		filterOption.displayAllValuesInUppercaseForm = filterOption.displayAllValuesInUppercaseForm || false;
-		if (filterOption.displayAllValuesInUppercaseForm) return label.toUpperCase();
-
-		// Make all letters lowercase first, then capitalize all first letters of each string in a filter option value
-		// For example: HELLO World => Hello World
-		if (Settings.getSettingValue('general.forceCapitalizeFilterOptionValues')) return Utils.capitalize(label, true);
-
-		// Make all letters lowercase first, then capitalize first letter of a filter option value
-		// For example: product fILTER => Product filter
-		if (Settings.getSettingValue('general.capitalizeFirstLetterFilterOptionValues')) return Utils.capitalize(label, true, true);
-
-		// Just capitalize first letter and don't change the format of any other letters 
-		// For example: hello wORLD => Hello WORLD
-		if (Settings.getSettingValue('general.capitalizeFilterOptionValues')) return Utils.capitalize(label);
-
-		// return label
-		return Utils.stripHtml(label);
-	};
-
-    FilterApi.beforeCall = function() {
-        Globals.queryParams.return_all_currency_fields = false;
+      });
     }
+  };
+  FilterOptionItem.prototype.buildLabel = function () {
+    var filterOption = this.filterOption ? this.filterOption : this.parent;
+
+    var label = Utils.unescape(this.label);
+    var prefix = filterOption.prefix;
+
+    if (typeof label != 'string') return '';
+
+    // Remove Prefix
+    if (typeof prefix == 'string') {
+      prefix = prefix.replace(/\\/g, '');
+      label = label.replace(prefix, '').trim();
+    }
+
+    if (filterOption.filterOptionId == 'pf_t_size') {
+      label = label.split(':')[1];
+    }
+
+    // No capital label of Rating filter option
+    if (label.indexOf('boost-pfs-filter-icon-star') > -1) return label;
+
+    // Make the text to uppercase
+    filterOption.displayAllValuesInUppercaseForm =
+      filterOption.displayAllValuesInUppercaseForm || false;
+    if (filterOption.displayAllValuesInUppercaseForm)
+      return label.toUpperCase();
+
+    // Make all letters lowercase first, then capitalize all first letters of each string in a filter option value
+    // For example: HELLO World => Hello World
+    if (Settings.getSettingValue('general.forceCapitalizeFilterOptionValues'))
+      return Utils.capitalize(label, true);
+
+    // Make all letters lowercase first, then capitalize first letter of a filter option value
+    // For example: product fILTER => Product filter
+    if (
+      Settings.getSettingValue(
+        'general.capitalizeFirstLetterFilterOptionValues'
+      )
+    )
+      return Utils.capitalize(label, true, true);
+
+    // Just capitalize first letter and don't change the format of any other letters
+    // For example: hello wORLD => Hello WORLD
+    if (Settings.getSettingValue('general.capitalizeFilterOptionValues'))
+      return Utils.capitalize(label);
+
+    // return label
+    return Utils.stripHtml(label);
+  };
+
+  FilterApi.beforeCall = function () {
+    Globals.queryParams.return_all_currency_fields = false;
+  };
 })();

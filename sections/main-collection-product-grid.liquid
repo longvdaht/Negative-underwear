@@ -82,7 +82,7 @@
       {% endif %}
     </div>
     {% for product in collection.products %}
-      {% render 'product-grid-item', product: product %}
+      {% render 'product-grid-item', product: product, plp_quick_add: true %}
     {% endfor %}
     {% if showExtraText %}
       <div class="text-center one-whole extra-text">

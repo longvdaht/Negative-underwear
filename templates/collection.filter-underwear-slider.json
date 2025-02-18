@@ -78,7 +78,10 @@
         "collection_NT9bpB",
         "collection_JMmK7Q"
       ],
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "show_in_collection": []
+      }
     },
     "product-grid": {
       "type": "main-collection-product-grid-filter",

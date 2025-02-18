@@ -29,7 +29,7 @@
 	{% assign sold_out = false %}
 {% endif %}
 <div class="grid__item grid-product {{ grid_item_width }} product-grid-item-liquid {{ product.handle }} {% for t in product.tags %}{% if t contains "show" %} {{ t | handleize }}{% endif %}{% endfor %}">
-	<a href="{{ product.url | within: collection }}">
+	<a class="plp-a-item" href="{{ product.url | within: collection }}">
 		<span class="grid-product__image-wrapper">
 			{% assign showedSaleTagAlready = false %}			
 			{% for tag in product.tags %}
@@ -68,7 +68,7 @@
 				{% endfor %}
 				<!-- QTY: {{ qty }} -->
 
-   {% if current_variant.available and current_variant.inventory_quantity <= 0 %}
+   				{% if current_variant.available and current_variant.inventory_quantity <= 0 %}
           
 					<div class="saletag sold-out">Sold Out</div>
 				{% else %}
@@ -116,6 +116,9 @@
 					%}
 				{% endif %}
 			</span>
+			{% if plp_quick_add %}
+				{% render 'form-plp' product: product %}
+			{% endif %}
 		</span>
 		<span class="grid-product__meta{% if on_sale %} on-sale{% endif %}">
 			<span class="grid-product__title">{{ product.title }}{% if product.title contains "Swim" %} &#x1F334;{% endif %}</span>
@@ -139,7 +142,7 @@
 				{% endif %}
 			</span>
 		</span>
-	</a>
+	</a>	
 	{% assign colorWording = "colors" %}
 	{% assign productTitle = product.title | replace: " and in ", " and " %}
 	{% assign productFamily = productTitle | split: " in " | first | handleize | remove: '-0' %}

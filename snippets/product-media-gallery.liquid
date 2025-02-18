@@ -143,6 +143,23 @@
   </div>
 </media-gallery>
 
+
+{% if product.media.size <= 5 %}
+  <style>
+  #product-photo-thumbs .slick-list {
+    padding-top: 0px !important;
+  }
+  @media screen and (max-width: 590px) {
+    .template-product .slick-initialized.desktop-slider-nav .slick-track {
+      width: 100vw !important;
+    }
+    .template-product .slick-initialized.desktop-slider-nav .slick-slide {
+      width: calc(100vw / 5.5) !important;
+    }
+  }
+  </style>
+  {% endif %}
+
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 
@@ -248,22 +265,70 @@
 			{% endif %}
 			adaptiveHeight : false,
       dotsClass: 'slick-dot'
-		});
-		$('.desktop-slider-nav').slick({
-			arrows      	: true,
-			dots        	: false,
-			vertical		: true,
-    		verticalSwiping	: true,
-			{% if product.media.size > 5 %}
-	 			infinite : true, 
- 			{% endif %}
-			asNavFor		: '.desktop-slider',
-		    slidesToShow	: 5,
-			slidesToScroll	: 1,
-			centerMode		: true,
-		    focusOnSelect	: true,
-        dotsClass: 'slick-dot'
-		});
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+      // Update slick-current for second
+      $('.desktop-slider-nav .slick-slide').removeClass('slick-current');
+      $('.desktop-slider-nav .slick-slide[data-slick-index="' + nextSlide + '"]').addClass('slick-current');
+    });
+
+    var sliderProduct = function() {
+      if ($(window).width() <= 590) {
+        if ($('.desktop-slider-nav').hasClass('slick-initialized')) {
+          $('.desktop-slider-nav').slick('unslick');
+        }
+        $('.desktop-slider-nav').slick({
+          arrows: true,
+          dots: false,
+          vertical		: false,
+          verticalSwiping	: false,
+          slidesToShow	: 5,
+          slidesToScroll	: 1,
+          centerMode: false,
+          focusOnSelect	: true,
+          centerPadding: '0px',
+          prevArrow: `<button type="button" class="slick-prev">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g transform="rotate(180, 9, 9)">
+                <path d="M7.02881 3L13.0578 9.02902L7.02881 15.058" stroke="#ECF3F9" stroke-width="2" stroke-miterlimit="20" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </button>`,
+          nextArrow: `<button type="button" class="slick-next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.02881 3L13.0578 9.02902L7.02881 15.058" stroke="#ECF3F9" stroke-width="2" stroke-miterlimit="20" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>`,
+          asNavFor : '.desktop-slider',
+          rows: 1, 
+          slidesPerRow: 1,
+          adaptiveHeight: false,
+          swipe: true,
+          touchMove: true,
+          draggable: true
+        });
+      } else {
+        $('.desktop-slider-nav').slick({
+          arrows      	: {% if product.media.size > 5 %}true{% else %}false{% endif %},
+          dots        	: false,
+          vertical		: true,
+          verticalSwiping	: true,
+          {% if product.media.size > 5 %}
+            infinite : true, 
+          {% endif %}
+          asNavFor		: '.desktop-slider',
+          slidesToShow	: 5,
+          slidesToScroll	: 1,
+          centerMode		: true,
+          focusOnSelect	: true,
+          dotsClass: 'slick-dot'
+        });
+      }
+    }
+    sliderProduct();
+    $(window).resize(function() {
+      sliderProduct();
+    });
+
 		if ($(window).width() >= 591) {
       var $imageZoom = $('.image-zoom');
       $imageZoom.each( function (idx, el) {

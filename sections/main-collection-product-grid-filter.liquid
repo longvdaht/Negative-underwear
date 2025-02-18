@@ -27,113 +27,133 @@
   }
 {%- endstyle -%}
 {% paginate collection.products by 60 %}
+  {% assign collectionTitle = collection.title %}
+  {% assign ct = current_tags | handleize %}
+  <!-- collection title: {{ ct }} -->
+  {% if ct contains 'non-wire' and ct contains 'sieve' %}
+    {% assign collectionTitle = 'Sieve Non-Wire Bras' %}
+  {% elsif ct == 'plunge' %}
+    {% assign collectionTitle = 'Plunge Bras' %}
+  {% elsif ct contains 'non-wire' and ct contains 'silky' %}
+    {% assign collectionTitle = 'Silky Non-Wire Bras' %}
+  {% elsif ct contains 'non-wire' %}
+    {% assign collectionTitle = 'Non-Wire Bras' %}
+  {% elsif ct contains 'high-waist-briefs' %}
+    {% assign collectionTitle = 'High-Waist Briefs' %}
+  {% elsif ct contains 'briefs' %}
+    {% assign collectionTitle = 'Briefs' %}
+  {% elsif ct contains 'thongs' %}
+    {% assign collectionTitle = 'Thongs' %}
+  {% elsif ct contains 'underwire' %}
+    {% assign collectionTitle = 'Underwire Bras' %}
+  {% endif %}
+  {% assign showExtraText = false %}
 
-{% assign collectionTitle = collection.title %}
-{% assign ct = current_tags | handleize %}
-<!-- collection title: {{ ct }} -->
-{% if ct contains 'non-wire' and ct contains 'sieve' %}
-  {% assign collectionTitle = "Sieve Non-Wire Bras" %}
-{% elsif ct == 'plunge' %}
-  {% assign collectionTitle = "Plunge Bras" %}
-{% elsif ct contains 'non-wire' and ct contains 'silky' %}
-  {% assign collectionTitle = "Silky Non-Wire Bras" %}
-{% elsif ct contains 'non-wire' %}
-  {% assign collectionTitle = "Non-Wire Bras" %}
-{% elsif ct contains 'high-waist-briefs' %}
-  {% assign collectionTitle = "High-Waist Briefs" %}
-{% elsif ct contains 'briefs' %}
-  {% assign collectionTitle = "Briefs" %}
-{% elsif ct contains 'thongs' %}
-  {% assign collectionTitle = "Thongs" %}
-{% elsif ct contains 'underwire' %}
-  {% assign collectionTitle = "Underwire Bras" %}
-{% endif %}
-{% assign showExtraText = false %}
-
-{% if collection.description contains "===" %}
-  {% assign showExtraText = true %}
-{% endif %}
-{% if collection.metafields.custom.collection_poster != blank %}
-  <script type="application/json" id="collection-poster-data">
-  {
-    "posters": [
-      {% assign posters = collection.metafields.custom.collection_poster.value | sort: 'position' %}
-      {% for poster in posters %}
+  {% if collection.description contains '===' %}
+    {% assign showExtraText = true %}
+  {% endif %}
+  {% if collection.metafields.custom.collection_poster != blank %}
+    <script type="application/json" id="collection-poster-data">
       {
-        "position": {{ poster.position }},
-        "position mobile": {{ poster.position_mobile }},
-        "link": "{{ poster.link }}",
-        "image": "{{ poster.image | image_url: width: 500 | prepend: 'https:' }}",
-        "title": "{{ poster.title }}"
-      }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ]
-  }
-  </script>
-{% endif %}
-<div class="section-{{ section.id }}-padding page-width template-collection-inner">
-  <div class="text-center large--hide section-header-collection">
-    <p class="h1" role="heading">{{ collectionTitle }}</p>
-    {% if collection.description != blank %}
-    <div class="grid">
-      <div class="grid__item">
-        <div class="rte">
-          {{ collection.description | remove: ' data-mce-fragment="1"' | remove: '<span>' | remove: '</span>' | split: '<p>===' | first | replace: '<p>', '<p role="heading">' }}
-        </div>
-      </div> 
-    </div>
-    {% endif %}
-  </div>
-  <sticky-filter>
-    <div class="filters">
-      <div class="filter-desktop-toolbar">
-      <div class="boost-pfs-filter-tree boost-pfs-filter-tree-h" data-is-desktop>
-            {% comment %} render placeholder template {% endcomment %}
-            {% render 'boost-pfs-filter-skeleton', type: 'filter-tree-h'  %}
+        "posters": [
+          {% assign posters = collection.metafields.custom.collection_poster.value | sort: 'position' %}
+          {% for poster in posters %}
+          {
+            "position": {{ poster.position }},
+            "position mobile": {{ poster.position_mobile }},
+            "link": "{{ poster.link }}",
+            "image": "{{ poster.image | image_url: width: 500 | prepend: 'https:' }}",
+            "title": "{{ poster.title }}"
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
+    </script>
+  {% endif %}
+  <div class="section-{{ section.id }}-padding page-width template-collection-inner">
+    <div class="text-center large--hide section-header-collection">
+      <p class="h1" role="heading">{{ collectionTitle }}</p>
+      {% if collection.description != blank %}
+        <div class="grid">
+          <div class="grid__item">
+            <div class="rte">
+              {{
+                collection.description
+                | remove: ' data-mce-fragment="1"'
+                | remove: '<span>'
+                | remove: '</span>'
+                | split: '<p>==='
+                | first
+                | replace: '<p>', '<p role="heading">'
+              }}
+            </div>
           </div>
-      <div class="boost-pfs-filter-tree-mobile-button">
-        {% render 'boost-pfs-filter-skeleton', type: 'button' %}
-      </div>
-          <div class="boost-pfs-filter-toolbar-item boost-pfs-filter-custom-sorting boost-pfs-filter-top-sorting">
-        {% render 'boost-pfs-filter-skeleton', width: 2 %}
-      </div>
-      </div>
-      <div class="boost-pfs-filter-refine-by-wrapper-h"></div>
-      <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v" data-is-mobile></div>
-    </div>
-  </sticky-filter>
-  {% assign grid_item_width = 'small--one-half medium--one-half large--one-third' %}
-
-  {% assign product_found = false %}
-  {% assign skip = false %}
-  <div class="content{% if collection.description.size > 100 %} long-description{% endif %}">
-    <div class="boost-pfs-filter-products grid-uniform">
-
-    </div>
-    {% if showExtraText %}
-      <div class="text-center one-whole extra-text">
-        <div class="padded">
-          <div class="content hide-content">
-            {{ collection.description | split: '===' | last | remove_first: '</p>' | remove: '<p><br></p>' | remove: '<p>&nbsp;</p>' | remove: 'target="_blank"' }}
-          </div>
-          <p class="show-more"><a href="#">+ more</a></p>
         </div>
+      {% endif %}
+    </div>
+    
+    <sticky-filter>
+      <div class="filters">
+        <div class="filter-desktop-toolbar">
+        <div class="boost-pfs-filter-tree boost-pfs-filter-tree-h" data-is-desktop>
+              {% comment %} render placeholder template {% endcomment %}
+              {% render 'boost-pfs-filter-skeleton', type: 'filter-tree-h'  %}
+            </div>
+        <div class="boost-pfs-filter-tree-mobile-button">
+          {% render 'boost-pfs-filter-skeleton', type: 'button' %}
+        </div>
+            <div class="boost-pfs-filter-toolbar-item boost-pfs-filter-custom-sorting boost-pfs-filter-top-sorting">
+          {% render 'boost-pfs-filter-skeleton', width: 2 %}
+        </div>
+        </div>
+        <div class="boost-pfs-filter-refine-by-wrapper-h"></div>
+        <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v" data-is-mobile></div>
       </div>
-    {% endif %}
-  </div>
+    </sticky-filter>
+    
+    {% assign grid_item_width = 'small--one-half medium--one-half large--one-third' %}
+
+    {% assign product_found = false %}
+    {% assign skip = false %}
+    <div class="content{% if collection.description.size > 100 %} long-description{% endif %}">
+      <div class="boost-pfs-filter-products grid-uniform"></div>
+      {% if showExtraText %}
+        <div class="text-center one-whole extra-text">
+          <div class="padded">
+            <div class="content hide-content">
+              {{
+                collection.description
+                | split: '==='
+                | last
+                | remove_first: '</p>'
+                | remove: '<p><br></p>'
+                | remove: '<p>&nbsp;</p>'
+                | remove: 'target="_blank"'
+              }}
+            </div>
+            <p class="show-more"><a href="#">+ more</a></p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
 
     <div class="boost-pfs-filter-bottom-pagination">
-    {% if paginate.pages > 1 %}
-      <div class="pagination">
-        {{ paginate | default_pagination | replace: '&laquo; Previous', '<span class="icon icon-arrow-left" aria-hidden="true"></span>' | replace: 'Next &raquo;', '<span class="icon icon-arrow-right" aria-hidden="true"></span>' }}
-      </div>
-    {% endif %}
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {{
+            paginate
+            | default_pagination
+            | replace: '&laquo; Previous', '<span class="icon icon-arrow-left" aria-hidden="true"></span>'
+            | replace: 'Next &raquo;', '<span class="icon icon-arrow-right" aria-hidden="true"></span>'
+          }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="boost-pfs-filter-load-more"></div>
+    {% if section.settings.image_shape == 'arch' %}
+      {% render 'mask-arch' %}
+    {%- endif -%}
   </div>
-  <div class="boost-pfs-filter-load-more"></div>
-  {% if section.settings.image_shape == 'arch' %}
-    {% render 'mask-arch' %}
-  {%- endif -%}
-</div>
 {% endpaginate %}
 <script>
   // Declare boostPFSThemeConfig variable

@@ -15,20 +15,20 @@
         "19e98322-c60f-4dfc-bf91-1f1c52772985": {
           "type": "heading",
           "settings": {
-            "heading": "New in travel essentials"
+            "heading": "Power suit"
           }
         },
         "33074092-5e90-40da-b92e-d9b0f96a6978": {
           "type": "text",
           "settings": {
-            "text": "<p>Meet the Whipped Eye Mask and Travel Wrap</p>"
+            "text": "<p>Introducing our 2025 swim capsule</p>"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP NEW >",
-            "button_link_1": "shopify://collections/new",
+            "button_label_1": "Shop Now >",
+            "button_link_1": "shopify://collections/the-swim-collection",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -43,12 +43,12 @@
       ],
       "settings": {
         "section_fullwidth": false,
-        "image": "shopify://shop_images/Artboard_2_copy_3_1c9c6039-0e20-4e21-8820-e69ec59b20bb.jpg",
+        "image": "shopify://shop_images/Artboard_8_5.jpg",
         "image_fullwidth": false,
-        "image_2": "shopify://shop_images/HP_Options_copyArtboard_3_9a864855-458c-4198-8169-66fcf58b8185.jpg",
-        "image_link": "shopify://collections/new",
+        "image_2": "shopify://shop_images/Artboard_9_5.jpg",
+        "image_link": "shopify://collections/the-swim-collection",
         "invert_on_desktop": false,
-        "invert_on_mobile": false,
+        "invert_on_mobile": true,
         "show_text_box": false,
         "enable_content": true,
         "content_fullwidth": false,
@@ -64,64 +64,94 @@
     "276fe8a6-bd6a-4b06-965a-7485b765d7ec": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_LeaG7W": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "womens-bras",
+            "title_override": "Shop Bras"
+          }
+        },
         "featured_collection_HwfPwf": {
           "type": "featured_collection",
           "settings": {
-            "collection": "the-red-edit",
-            "title_override": "Shop The Red Edit"
+            "collection": "womens-underwear",
+            "title_override": "Shop Underwear"
           }
         },
         "featured_collection_6gMPQe": {
           "type": "featured_collection",
           "settings": {
-            "collection": "quiet-luxury",
-            "title_override": "Shop Quiet Luxury"
+            "collection": "womens-loungewear",
+            "title_override": "Shop Loungewear"
           }
         },
         "535e8b8d-5756-4ff2-bb23-3364ce5012d9": {
           "type": "featured_collection",
           "settings": {
-            "collection": "cozy-vibes-only",
-            "title_override": "Shop Cozy Vibes"
+            "collection": "womens-sleepwear",
+            "title_override": "Shop Sleepwear"
           }
         },
-        "featured_collection_iXHzjP": {
+        "featured_collection_9ApVkz": {
           "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "everything-is-romantic",
+            "title_override": "Everything Is Romantic"
+          }
+        },
+        "featured_collection_XQNNFi": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "for-the-extravagant-girlies",
+            "title_override": "Permission To Be Extra"
+          }
+        },
+        "featured_collection_cHK6NP": {
+          "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "cult-classics",
-            "title_override": "Shop Cult Classics"
+            "title_override": "Cult Classics"
           }
         },
-        "featured_collection_8d6XFf": {
+        "featured_collection_TWdmJ8": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
-            "collection": "party-girl-era",
-            "title_override": "Shop The Party Girl Era"
+            "collection": "the-all-black-edit",
+            "title_override": "The All-Black Edit"
           }
         },
-        "featured_collection_BFpBTc": {
+        "featured_collection_yHxLwY": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
-            "collection": "for-the-sleepy-girlies",
-            "title_override": "Shop for the Sleepy Girlies"
+            "collection": "gifts-to-self",
+            "title_override": "Self Indulgence Is In"
           }
         },
-        "featured_collection_LeaG7W": {
+        "featured_collection_KwRrAU": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
-            "collection": "the-little-things",
-            "title_override": "Shop The Little Things"
+            "collection": "womens-matching-lounge-sets",
+            "title_override": "Match Made In Heaven"
           }
         }
       },
       "block_order": [
+        "featured_collection_LeaG7W",
         "featured_collection_HwfPwf",
         "featured_collection_6gMPQe",
         "535e8b8d-5756-4ff2-bb23-3364ce5012d9",
-        "featured_collection_iXHzjP",
-        "featured_collection_8d6XFf",
-        "featured_collection_BFpBTc",
-        "featured_collection_LeaG7W"
+        "featured_collection_9ApVkz",
+        "featured_collection_XQNNFi",
+        "featured_collection_cHK6NP",
+        "featured_collection_TWdmJ8",
+        "featured_collection_yHxLwY",
+        "featured_collection_KwRrAU"
       ],
       "settings": {
         "title": "",
@@ -140,14 +170,14 @@
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-0": {
           "type": "heading",
           "settings": {
-            "heading": "Bc we love to add a little cherry on top."
+            "heading": "This is your sign to expand your Whipped collection."
           }
         },
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-1": {
           "type": "button",
           "settings": {
-            "button_text": "SHOP Underwear >",
-            "link": "shopify://collections/underwear-packs"
+            "button_text": "SHOP Best Sellers >",
+            "link": "shopify://collections/best-selling-whipped"
           }
         }
       },
@@ -156,7 +186,7 @@
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-1"
       ],
       "settings": {
-        "image": "shopify://shop_images/HP_Options_copyArtboard_4.jpg",
+        "image": "shopify://shop_images/Artboard_4_15.jpg",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -168,7 +198,7 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "party-girl-era",
+        "collection": "womens-bras",
         "products_to_show": 11,
         "columns_desktop": 3,
         "show_view_all": true,
@@ -176,7 +206,7 @@
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
-        "show_rating": true,
+        "show_rating": false,
         "columns_mobile": "2",
         "padding_top": 23,
         "padding_bottom": 0

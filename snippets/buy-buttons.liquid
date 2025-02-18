@@ -133,21 +133,22 @@
             id = "ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="AddToCart product-form__submit button button--full-width select-size-load {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="AddToCart product-form__submit button button--full-width select-size-load {% if is_sticky %}sticky-cta-soldout-val pdp-sticky-atc-tracker {% endif %}{% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
             {% if currentVariant.available == false or quantity_rule_soldout or singleDisabled %}
               disabled
             {% endif %}
+            {% if is_sticky %}disabled{% endif %}
           >
             <span>
               {%- if currentVariant.available == false or quantity_rule_soldout or singleDisabled -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-              {% if is_sticky %}
-                {{ 'products.product.add_to_cart' | t }}
-              {% else %}
-                <span class="cart-add">{{ 'products.product.add_to_cart' | t }}</span>
-                <span class="cart-select-size">{{ 'products.product.select_size_cart' | t }}</span>
-              {% endif %}
+                {% if is_sticky %}
+                  {{ 'products.product.select_size_cart' | t }}
+                {% else %}
+                  <span class="cart-add">{{ 'products.product.add_to_cart' | t }}</span>
+                  <span class="cart-select-size">{{ 'products.product.select_size_cart' | t }}</span>
+                {% endif %}
               {%- endif -%}
             </span>
 
@@ -155,8 +156,8 @@
             {% unless is_sticky %}
               <span class="separator">|</span>
             {% endunless %}
-{% if localization.country.iso_code == 'CA' %} CA 
-{% endif %}
+{% comment %} {% if localization.country.iso_code == 'CA' %} CA
+{% endif %} {% endcomment %}
           {% unless hidden_price %}
             {%- render 'price',
               product: product,

@@ -642,6 +642,9 @@
             {%- when 'swatch' -%}
               {% render 'product-variant-swatch', product: product, block: block, product_form_id: product_form_id %}
             {%- when 'buy_buttons' -%}
+              {% if settings.scarcity_pdp %}
+                <span class="product__scarcity hide">{{ settings.scarcity_text | default: 'Low stock' }}</span>
+              {% endif %}
               {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true, currentVariant: currentVariant -%}
             {%- when 'rating' -%}
               <div class="review-summary">{% render 'okendo-reviews-product-rating-summary', product: product %}</div>
@@ -734,7 +737,7 @@
 
                 {% comment %} <p class="promo-text{% if settings.pdp_promo_text contains "U.S." %} ge-hide{% endif %}"{% unless currentVariant.available %} style="display: none"{% endunless %}>{{ settings.pdp_promo_text }}</p> {% endcomment %}
 
-                    {% if product.description contains "*411*" %}
+                {% if product.description contains "*411*" %}
                   {% assign descriptionHtml = product.description
                     | split: '*411*' | last 
                     | remove: '<p>'
@@ -753,17 +756,25 @@
                   {% if sizechart.size > 0 %}
                     {% capture sizeChartLink %}<ul><li><a href="#{{ sizechart }}" class="size-here">Size Chart</a></li>{% endcapture %}
                     {% assign descriptionHtml = descriptionHtml
-                       | replace_first: '<ul>', sizeChartLink 
-                       | replace: '<li>Size Breakdown', '<li style="display:none">Size Breakdown' 
-                       | replace: '<li>Sizing Breakdown', '<li style="display:none">Sizing Breakdown' 
+                      | replace_first: '<ul>', sizeChartLink 
+                      | replace: '<li>Size Breakdown', '<li style="display:none">Size Breakdown' 
+                      | replace: '<li>Sizing Breakdown', '<li style="display:none">Sizing Breakdown' 
                     %}
                   {% endif %}
+                  {% capture tab_description %}
+                    {% assign tab_descriptionSplitted = product.description | split: '*411*' | first  %}
+                    <div class="description-tab">{{ tab_descriptionSplitted }}</div>
+                  {% endcapture %}
                   {% capture descr %}
                     <div class="accordion">
                       {% if product.type == "Gift Wrap" %}
+                        <h3 class="description-tab-header">Description</h3>
+                        {{ tab_description }}
                         <h3 class="ui-accordion-header">Details</h3>
                         {{ descriptionHtml | replace: 'Fabric + Care', 'Material' }}
                       {% else %}
+                        <h3 class="description-tab-header">Description</h3>
+                        {{ tab_description }}
                         <h3 class="ui-accordion-header">Fit</h3>
                         {{ descriptionHtml }}
                         <h3 class="ui-accordion-header">FAQ</h3>
@@ -916,7 +927,7 @@
       
           <!-- Add to Cart button positioned below the image and info -->
           <div class="matching-set__buttons">
-            <button type="button" class="button button--full-width button--primary" id="add-to-cart-button" disabled>
+            <button type="button" class="button button--full-width button--primary matching-set-button-cta" id="add-to-cart-button" disabled>
               Select Size
             </button>
           </div>
@@ -1377,19 +1388,9 @@
       <button
         type="button"
         class="sticky-add-to-cart__open-variants product-form__submit button button--full-width button--primary"
-        {% if currentVariant.available == false %}hidden{% endif %}
-        avaiable="{{ currentVariant.available }}"
       >
-        {{ 'products.product.add_to_cart' | t }}
+        {{ 'products.product.select_size_cart' | t }}
       </button>
-      
-        <a
-          href="#ProductInfo-{{ section.id }}"
-          class="main-product-redirect-js product-form__submit button button--full-width button--primary"
-          {% if currentVariant.available %}hidden{% endif %}
-        >
-          {{ 'products.product.sold_out' | t }}
-        </a>
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'buy_buttons' -%}
@@ -1428,49 +1429,6 @@
 
 <!-- sizer product image: -->
 <img src="{{ sizerImage.src | img_url: '480x480' }}" id="ProductPhotoImg" class="hide" alt="Detail view of {{ product.title }} for sizer" />
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (Tools.mediaQuery('(max-width: 991px)')) {
-        Tools.makeSticky(
-          '.js-product',
-          '.js-sticky-add-to-cart',
-          () => {
-            Tools.toggle({
-              target: '.js-sticky-add-to-cart'
-            })
-          }
-        )
-
-        Tools.toggle({
-          control: '.sticky-add-to-cart__open-variants',
-          target: '.js-sticky-add-to-cart'
-        })
-      }
-
-      function isIE() {
-        const ua = window.navigator.userAgent;
-        const msie = ua.indexOf('MSIE ');
-        const trident = ua.indexOf('Trident/');
-
-        return msie > 0 || trident > 0;
-      }
-
-      if (!isIE()) return;
-      const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
-      const noScriptInputWrapper = document.createElement('div');
-      const variantSwitcher =
-        document.querySelector('variant-radios[data-section="{{ section.id }}"]') ||
-        document.querySelector('variant-selects[data-section="{{ section.id }}"]');
-      noScriptInputWrapper.innerHTML = document.querySelector(
-        '.product-form__noscript-wrapper-{{ section.id }}'
-      ).textContent;
-      variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
-
-      document.querySelector('#Variants-{{ section.id }}').addEventListener('change', function (event) {
-        hiddenInput.value = event.currentTarget.value;
-      });
-    });
-  </script>
 
   {%- liquid
     if currentVariant.featured_media
