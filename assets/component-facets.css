@@ -2297,3 +2297,7 @@ input.mobile-facets__checkbox {
     width: 96%;
     padding-top: 10px;
 }
+
+.sticky-filter-wrapper.is-sticky .filters.scroll-up {
+  top: 0!important;
+}
