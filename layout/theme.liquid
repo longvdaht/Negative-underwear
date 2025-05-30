@@ -142,6 +142,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- okendo -->
     {% render 'okendo-reviews-json-ld' %}
 
+    
+    <script src="{{ 'tools.js' | asset_url }}"  defer="defer"></script>
+
   
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script src="{{ 'jquery-ui.min.js' | asset_url }}"></script>
@@ -152,6 +155,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+
+    {% if template contains 'collection' %}
+      <script src="{{ 'collection-scripts.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -470,6 +478,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {% endif %}
   {{ 'tools.css' | asset_url | stylesheet_tag }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  {% comment %} test subcategories desktop {% endcomment %}
+  {% if collection.handle contains 'bras' or collection.handle contains 'bra' or collection.title contains 'bras' or collection.title contains 'bra' %}
+    <style>
+      @media screen and (min-width: 768px) {
+        .collection_carousel {
+          display: none;
+        }
+      }
+    </style>
+  {% endif %}
 </head>
   {% liquid
     assign bodyID = page_title | remove: '’' | handle | remove: '-amp' | remove: '-for-women' | remove: '-negative-underwear' | remove: '-39-' | remove: '-high-quality' | remove: 'womens-' | remove: '-negative' | remove: 'briefs-thongs-' | remove: 'best-selling-' | remove: '-underwear'
@@ -533,7 +552,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     last-chance
   {% endif %}
 {% endcapture %}
-  <body id="{{ bodyID }}" class="gradient {% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {{ page.title | replace: ' ', '-' | downcase | remove: "+" }} {{ bodyClass}}">
+  <body id="{{ bodyID }}" class="adtest-thumbnails gradient {% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {{ page.title | replace: ' ', '-' | downcase | remove: "+" }} {{ bodyClass}}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -547,14 +566,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <main id="MainContent" class="content-for-layout focus-none is-moved-by-drawer" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
-    <script src="{{ 'tools.js' | asset_url }}" async></script>
-
     {% sections 'footer-group' %}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
+
+    {% if settings.scarcity_sidecart %}
+    <style>
+      .ajaxcart__product-meta[data-extra-text="_scarcity"]::after{
+        content: '{{ settings.scarcity_text }}';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        color: #222;
+        pointer-events: all;
+      }
+    </style>
+    {% endif %}
 
     <script>
       window.shopUrl = '{{ request.origin }}';
@@ -645,7 +675,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	});
 </script>
 
-
 {% assign google_conversion_id = 966624746 %}
 {% assign shopify_store_country  = 'US' %}
 
@@ -699,7 +728,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- end google remarketing -->  
 
   <!-- Accessibility Code for "www.negativeunderwear.com" -->
-  <script>
+  {% comment %}<script>
     window.interdeal = {
         "sitekey": "4ebada458cfe8637300daa471e9d7c3c",
         "Position": "Left",
@@ -737,11 +766,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     	coreCall.setAttribute('data-cfasync', true );
     	body? body.appendChild(coreCall) : head.appendChild(coreCall);
     })(document, document.head, document.body);
-    </script>
+    </script>{% endcomment %}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ8LNXPJ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <script defer src="https://static.shopmy.us/Affiliates/sms_aff_clicktrack.js"></script>
+    <script>
+      const expandButtons = document.querySelectorAll('.expand-subMenu');
+      
+      expandButtons.forEach((button) => {
+        const dropdownMenu = button.nextElementSibling;
+      
+        function closeMenu() {
+          button.setAttribute('aria-expanded', 'false');
+          dropdownMenu.style.visibility = 'hidden';
+        }
+      
+        function toggleMenu() {
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          if (isExpanded) {
+            closeMenu();
+          } else {
+            button.setAttribute('aria-expanded', 'true');
+            dropdownMenu.style.visibility = 'visible';
+          }
+        }
+      
+        button.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            toggleMenu();
+            event.preventDefault(); 
+          } else if (event.key === 'Escape') {
+            if (button.getAttribute('aria-expanded') === 'true') {
+              closeMenu();
+            }
+          }
+        });
+      
+        dropdownMenu.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeMenu();
+            button.focus();
+          }
+        });
+      });
+    </script>
   </body>
 </html>

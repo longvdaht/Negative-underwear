@@ -14,6 +14,7 @@
   @media screen and (max-width: 768px) {
     #Banner-{{ section.id }} {
       background-image: url({{ section.settings.image_2  | image_url: width: section.settings.image_2.width }}) ;
+      overflow: hidden;
     }
   }
   {%- endstyle -%}
@@ -43,7 +44,7 @@
             {% if section.settings.image_fullwidth %} banner-fullwidth{% endif %}"
   >
     {% if section.settings.image_link != blank %}
-      <a href="{{ section.settings.image_link | default: '#' }}" class="image-banner-link"></a>
+      <a aria-label="{{ section.settings.image.alt }}" href="{{ section.settings.image_link | default: '#' }}" class="image-banner-link"></a>
     {% endif %}
     {% if section.blocks.size > 0 and section.settings.enable_content %}
       <div class="banner__content page-width

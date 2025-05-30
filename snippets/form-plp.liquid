@@ -1,0 +1,23 @@
+{% comment %} 
+{% render 'form-plp' product: product, available: available %}
+{% endcomment %}
+<div class="form-plp" style="position: relative; bottom: 85px;">
+    <form id="product-form-main-product-ajax-{{ product.id }}" method="post" action="/cart/add" accept-charset="UTF-8"
+        class="form lgform AddToCartForm" novalidate="novalidate" data-type="add-to-cart-form"
+        data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}"
+        data-currency="{{ Shopify.currency.active }}">
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="id" value="" class="product-variant-id" data-id="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="quantity" value="1" class="product-quantity">
+
+        <div class="form-list-variants pr_{{ product.id }}">
+            {% render 'main-product-alternative-ajax' product:product %}
+        </div>
+        {% assign fixed_title = product.title| strip | downcase %}
+        <button title="Open Quick View for {{product.title}}" type="bottom" name="add" id="openmodal" class="AddToCart {% if fixed_title contains "2-pack" %}plp-atc-redirect {% else %}plp-atc-opener {% endif %} product-form__submit button button--full-width button--primary"
+        style="position: absolute; bottom: 0px; right: 0px; z-index: 4; width: 25px; height: 25px; padding: 0px; margin: 0px; border: none; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+            <span class="plus">+</span>
+        </button>
+    </form>
+</div>

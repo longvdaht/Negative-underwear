@@ -8,11 +8,15 @@
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
 <div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer">
+
   <div class="drawer__fixed-header">
+    <div class="drawer__freeShippingMessage">
+      <p><span><img src="https://cdn.shopify.com/s/files/1/0221/4866/files/car.svg?v=1745605248" width="21" height="14" alt="Car"></span>Free US shipping on all orders over a $100</p>
+    </div>
     <div class="drawer__header">
       <div class="drawer__title">{{ 'general.cart.title' | t }}</div>
       <div class="drawer__close">
-        <button type="button" class="icon-fallback-text drawer__close-button js-drawer-close">
+        <button title="Close Cart" type="button" class="icon-fallback-text drawer__close-button js-drawer-close">
           <span class="burger-icon burger-icon--top"></span>
           <span class="burger-icon burger-icon--bottom"></span>
         </button>

@@ -18,6 +18,7 @@
         },
         "afb1e95c-e38b-418d-95c5-479bd17acf97": {
           "type": "rating",
+          "disabled": true,
           "settings": {}
         },
         "description": {
@@ -37,12 +38,13 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
         },
         "wonderment_pdp_etas_fGEdqH": {
           "type": "shopify://apps/wonderment/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "disabled": true,
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
@@ -77,6 +79,7 @@
     },
     "cd810873-fc8f-4edc-b90a-cca4635b998b": {
       "type": "reviews-product",
+      "disabled": true,
       "settings": {}
     }
   },

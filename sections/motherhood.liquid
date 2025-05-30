@@ -5,7 +5,7 @@
 	<ul class="inline-list">
 		{% for block in section.blocks %}
 			{% if block.settings.timeline-title.size > 0 %}
-				<li><a href="#{{ block.settings.title | handleize }}">{{ block.settings.timeline-title }}</a></li>
+				<li><a href="#{{ block.settings.title | handleize }}">{{ block.settings.timeline-title }}<span class="visually-hidden">&nbsp;Collection</span></a></li>
 			{% endif %}
 		{% endfor %}
 	</ul>

@@ -27,6 +27,40 @@
   {% assign wrapper_item = 'div' %}
 {% endif %}
 
+  {% assign stretch_value = product.metafields.product.size_chart %}
+  {% if stretch_value != blank %}
+    <div class="fit-container-custom" id="size-container_test">
+      <div class="fit-chart-container">
+        <div class="container-fit">
+          <div class="container-items">
+            {% for opt in product.metafields.product.size_chart.value.title_chart.value %}
+              <div class="item">
+                <!-- Indicator Circles -->
+                <!-- Option Text -->
+                <p class=" option-text">{{ opt }}</p>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="support-line">
+            {% if product.metafields.product.size_chart.value.value_of_the_size_chart == 1 %}
+              {% assign position_indicator = -1 %}
+            {% elsif product.metafields.product.size_chart.value.value_of_the_size_chart == 5 %}
+              {% assign position_indicator = 49 %}
+            {% elsif product.metafields.product.size_chart.value.value_of_the_size_chart == 10 %}
+              {% assign position_indicator = 99 %}
+            {% else %}
+              {% assign position_indicator = product.metafields.product.size_chart.value.value_of_the_size_chart
+                | times: 10
+              %}
+            {% endif %}
+            <div class="indicator-circle" style="left: {{ position_indicator }}%;"></div>
+            <div class="mid-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   {%- unless product.has_only_default_variant -%}
     {%- if block.settings.picker_type == 'button' -%}
       <{{ wrapper }}

@@ -29,7 +29,7 @@
 	{% assign sold_out = false %}
 {% endif %}
 <div class="grid__item grid-product {{ grid_item_width }} product-grid-item-liquid {{ product.handle }} {% for t in product.tags %}{% if t contains "show" %} {{ t | handleize }}{% endif %}{% endfor %}">
-	<a href="{{ product.url | within: collection }}">
+	<a class="plp-a-item" href="{{ product.url | within: collection }}">
 		<span class="grid-product__image-wrapper">
 			{% assign showedSaleTagAlready = false %}			
 			{% for tag in product.tags %}
@@ -68,7 +68,7 @@
 				{% endfor %}
 				<!-- QTY: {{ qty }} -->
 
-   {% if current_variant.available and current_variant.inventory_quantity <= 0 %}
+   				{% if current_variant.available and current_variant.inventory_quantity <= 0 %}
           
 					<div class="saletag sold-out">Sold Out</div>
 				{% else %}
@@ -89,6 +89,17 @@
 					<div class="saletag"></div>
 				{% endif %}
 			{% endunless %}
+
+            {% assign badge_shown = false %}
+            {% for variant in product.variants %}
+              {% assign variant_badges = variant.metafields.custom.variant_badges.value %}
+              {% if variant_badges %}
+               {% for variant_badge in variant_badges %}
+                   <div class="saletag variant-badge{% if badge_shown == true %} hidden{% endif %}" data-variant-id="{{ variant.id }}" data-product-id="{{ product.id }}">{{ variant_badge }}</div>
+               {% endfor %}
+               {% assign badge_shown = true %}
+              {% endif %}
+            {% endfor %}
 			
 			<span class="grid-product__image-link">
 				<!-- {{ template }} -->
@@ -115,7 +126,81 @@
 						attributes: 'class="grid-product__image alt lazyload"' 
 					%}
 				{% endif %}
+
+				{% comment %} {% render 'buildSwiperMobile' %} {% endcomment %}
+
+				<style>
+				/* AB TEST SWIPER */
+				/* @media (max-width: 500px) {
+                    .swiper-mobile-negative2 {
+                        display: block !important;
+                    }
+                } */
+                .swiper-mobile-negative2{
+                    display: none;
+                    background-color: #fff !important;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+                .grid__item{
+                    position: relative;
+                }
+
+                /* AB TEST SWIPER */
+                </style>
+                    <div class="swiper swiper-mobile-negative2">
+                        <div class="swiper-wrapper">
+                            {% for image in product.images limit: 3 %}
+                                <div class="swiper-slide">
+                                    <img src="{{ image | image_url }}" width="400" height="400" alt="{{ product.title | escape }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="swiper-pagination swiper-p-grid-product"></div>
+                    </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const swipers = document.querySelectorAll('.swiper-mobile-negative2');
+
+                        swipers.forEach(swiperElement => {
+                            const paginationElement = swiperElement.querySelector('.swiper-p-grid-product');
+                            const swiperInstance = new Swiper(swiperElement, {
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                                pagination: {
+                                    el: paginationElement,
+                                    clickable: true,
+                                    renderBullet: function (index, className) {
+                                        return '<span class="' + className + '" data-index="' + index + '"></span>';
+                                    },
+                                },
+                                on: {
+                                    slideChange: function () {
+                                        const bullets = paginationElement.querySelectorAll('.swiper-pagination-bullet');
+										console.log('Change Salide Active:', this.activeIndex);
+                                        bullets.forEach((bullet, index) => {
+                                            if (index === this.activeIndex) {
+                                                bullet.classList.add('swiper-pagination-bullet-active');
+                                            } else {
+                                                bullet.classList.remove('swiper-pagination-bullet-active');
+                                            }
+                                        });
+                                    },
+                                },
+                            });
+                            swiperElement.swiperInstance = swiperInstance;
+                        });
+                    });
+                </script>
+
+
 			</span>
+
 		</span>
 		<span class="grid-product__meta{% if on_sale %} on-sale{% endif %}">
 			<span class="grid-product__title">{{ product.title }}{% if product.title contains "Swim" %} &#x1F334;{% endif %}</span>
@@ -139,7 +224,7 @@
 				{% endif %}
 			</span>
 		</span>
-	</a>
+	</a>	
 	{% assign colorWording = "colors" %}
 	{% assign productTitle = product.title | replace: " and in ", " and " %}
 	{% assign productFamily = productTitle | split: " in " | first | handleize | remove: '-0' %}
@@ -169,5 +254,8 @@
 	%}
 	{% if productsInFamily > 1 %}
 		<div class="products-in-family">Available in {{ productsInFamily }} {{ colorWording }}</div>
+	{% endif %}
+	{% if plp_quick_add %}
+		{% render 'form-plp' product: product %}
 	{% endif %}
 </div>

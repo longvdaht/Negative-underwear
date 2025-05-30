@@ -90,6 +90,18 @@
         {% render 'plp-source' %}
         <!--  {% render 'plp-source' %} -->
         {% render 'buy-x-get-y', product: product %}
+        
+        {% assign trigger_tag_1 = settings.pdp_tags_trigger_1 %}
+        {% assign trigger_tag_2 = settings.pdp_tags_trigger_2 %}
+
+        {% for tag in product.tags %}
+            {% if tag contains trigger_tag_1 %}
+              <input type="hidden" name="properties[{{ 'general.cart.custom_properties' | t }}]" value="{{ settings.pdp_message_display_1 }}">
+            {% endif %}
+            {% if tag contains trigger_tag_2 %}
+               <input type="hidden" name="properties[{{ 'general.cart.custom_properties' | t }}]" value="{{ settings.pdp_message_display_2 }}">
+            {% endif %}
+        {% endfor %}
         <input
           type="hidden"
           name="id"
@@ -119,7 +131,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <div class="product-form__buttons need-select-size">
+        <div id="stickyAtcTracker" class="product-form__buttons need-select-size">
           {%- liquid
             assign check_against_inventory = true
             if currentVariant.inventory_management != 'shopify' or  currentVariant.inventory_policy == 'continue'
@@ -133,21 +145,22 @@
             id = "ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="AddToCart product-form__submit button button--full-width select-size-load {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="AddToCart product-form__submit button button--full-width select-size-load {% if is_sticky %}sticky-cta-soldout-val pdp-sticky-atc-tracker {% endif %}{% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
             {% if currentVariant.available == false or quantity_rule_soldout or singleDisabled %}
               disabled
             {% endif %}
+            {% if is_sticky %}disabled{% endif %}
           >
             <span>
               {%- if currentVariant.available == false or quantity_rule_soldout or singleDisabled -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-              {% if is_sticky %}
-                {{ 'products.product.add_to_cart' | t }}
-              {% else %}
-                <span class="cart-add">{{ 'products.product.add_to_cart' | t }}</span>
-                <span class="cart-select-size">{{ 'products.product.select_size_cart' | t }}</span>
-              {% endif %}
+                {% if is_sticky %}
+                  {{ 'products.product.select_size_cart' | t }}
+                {% else %}
+                  <span class="cart-add">{{ 'products.product.add_to_cart' | t }}</span>
+                  <span class="cart-select-size">{{ 'products.product.select_size_cart' | t }}</span>
+                {% endif %}
               {%- endif -%}
             </span>
 
@@ -155,8 +168,8 @@
             {% unless is_sticky %}
               <span class="separator">|</span>
             {% endunless %}
-{% if localization.country.iso_code == 'CA' %} CA 
-{% endif %}
+{% comment %} {% if localization.country.iso_code == 'CA' %} CA
+{% endif %} {% endcomment %}
           {% unless hidden_price %}
             {%- render 'price',
               product: product,

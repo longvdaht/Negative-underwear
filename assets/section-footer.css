@@ -598,3 +598,21 @@
     margin-left: auto;
   }
 }
+
+.footer .desktop-localization-wrapper {
+  width: 100%;
+  justify-content: flex-start;
+}
+.footer__content-top {
+  overflow: visible;
+}
+.footer .localization-form:only-child .button, .footer .localization-form:only-child .localization-form__select {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  min-height: 2rem;
+  height: 2rem;
+}
+.footer .localization-form__select .icon-caret {
+  display: block;
+}

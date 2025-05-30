@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hero_gift_guide_NJQ7Pp": {
+      "type": "hero-gift-guide",
+      "custom_css": [
+        "img {padding: inherit; margin: auto; width: 700px; display: block;}"
+      ],
+      "settings": {
+        "title": "The Gift Guide",
+        "image_title": "shopify://shop_images/IMG_3763.jpg"
+      }
+    },
+    "image_banner_94RcXL": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_gJY3yA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Everything Is Romantic"
+          }
+        },
+        "text_G9MKEt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you don’t like wearing pink and red, you clearly hate fun.</p>"
+          }
+        },
+        "buttons_YVWLKF": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections/everything-is-romantic",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_gJY3yA",
+        "text_G9MKEt",
+        "buttons_YVWLKF"
+      ],
+      "settings": {
+        "section_fullwidth": true,
+        "image": "shopify://shop_images/Artboard_2_10.jpg",
+        "image_fullwidth": false,
+        "image_2": "shopify://shop_images/Artboard_3_9.jpg",
+        "image_link": "",
+        "invert_on_desktop": false,
+        "invert_on_mobile": true,
+        "show_text_box": false,
+        "enable_content": true,
+        "content_fullwidth": false,
+        "desktop_content_alignment": "left",
+        "desktop_content_position": "middle",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_list_new_kYeKVT": {
+      "type": "product-list-new",
+      "settings": {
+        "title": "The Colors of the Season",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "columns_tablet": 4,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "padding_top": 20,
+        "padding_bottom": 10,
+        "featured_collection": "everything-is-romantic"
+      }
+    },
+    "grid_image_gift_guide_JJJTQb": {
+      "type": "grid-image-gift-guide",
+      "blocks": {
+        "collection_item_pnFj6g": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Self_Indulgence_Is_In_2d14db9e-cd57-456d-a851-b8f0e4241347.jpg",
+            "title": "Self Indulgence <br>Is In",
+            "link": "shopify://collections/gifts-to-self"
+          }
+        },
+        "collection_item_X4Jkdr": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Permission_to_be_Extra_997ffdd1-504c-4225-ba0b-61c62d814ccc.jpg",
+            "title": "Permission To<br> Be Extra",
+            "link": "shopify://collections/for-the-extravagant-girlies"
+          }
+        },
+        "collection_item_bVGJxh": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Cult_classics_4ce040fd-d5e4-4e8c-9aa4-2776a6c2a269.jpg",
+            "title": "Cult Classics",
+            "link": "shopify://collections/cult-classics"
+          }
+        },
+        "collection_item_B3Acyi": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Match_Made_In_Heaven_857807fd-7d02-42b0-922c-880b6d91548b.jpg",
+            "title": "Match Made <br>In Heaven",
+            "link": "shopify://collections/womens-matching-lounge-sets"
+          }
+        },
+        "collection_item_rKK3x6": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/The_All-Black_Edit_b0b6b751-2cc1-4b56-aec3-163061e03af7.jpg",
+            "title": "The All-Black Edit",
+            "link": "shopify://collections/the-all-black-edit"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_pnFj6g",
+        "collection_item_X4Jkdr",
+        "collection_item_bVGJxh",
+        "collection_item_B3Acyi",
+        "collection_item_rKK3x6"
+      ],
+      "settings": {
+        "title_section": "More Gifts  >"
+      }
+    },
+    "product_list_new_JNNwRd": {
+      "type": "product-list-new",
+      "settings": {
+        "title": "The Matching Sets of the Season",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "columns_tablet": 4,
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "padding_top": 50,
+        "padding_bottom": 80,
+        "featured_collection": "womens-matching-lounge-sets"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_gift_guide_NJQ7Pp",
+    "image_banner_94RcXL",
+    "product_list_new_kYeKVT",
+    "grid_image_gift_guide_JJJTQb",
+    "product_list_new_JNNwRd"
+  ]
+}

@@ -31,6 +31,13 @@
                   <span class="icon icon-arrow-down"></span>     
                 </a>
               </div>
+              <button aria-label="Expand {{ link.title }} Sub-Menu" aria-expanded="false" class="visually-hidden expand-subMenu">
+                  <span class="icon-dropdown">
+                      <svg width="40" height="25" viewBox="-2.5 -5 75 60" preserveAspectRatio="none">
+                        <path d="M0,0 l35,50 l35,-50" fill="none" stroke="black" stroke-linecap="round" stroke-width="5"></path>
+                      </svg> 
+                  </span>
+              </button>
               <ul
                 id="HeaderMenu-MenuList-{{ forloop.index }}"
                 class="header__submenu list-menu list-menu--disclosure gradient caption-large motion-reduce global-settings-popup"

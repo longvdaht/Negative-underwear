@@ -40,6 +40,9 @@
 variant-radios ul {
     list-style-type: none;
 }
+.sticky-add-to-cart__variants ul {
+    display: none;
+}
 .product-card-wrapper .card,
 .contains-card--product {
     --border-radius: var(--product-card-corner-radius);
@@ -2280,7 +2283,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
         left: calc(50% - 2px);
     }
     .header__heading-logo {
-        border: 1px solid black;
+        border: 0px solid black;
     }
 }
 .menu-opening .burger-icon--bottom {
@@ -4685,6 +4688,52 @@ option {
     }
 }
 
+/* DRAWER AB TEST FREE SHIPPING */
+
+.drawer__freeShippingMessage{
+    display: none; /* AB TEST FREE SHIPPING - BLOCK */
+}
+
+.free-shipping-message.ge-hide{
+    display: none !important;
+}
+
+/* .drawer__freeShippingMessage{
+    margin: 15px 0px 5px;
+    border-bottom: 1.8px solid #DDD;
+}
+
+.drawer__freeShippingMessage p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "nimbus-sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000;
+}
+
+.drawer__header{
+    padding: 0px 0px 15px !important;
+}
+
+.drawer__inner{
+    margin-top: 40px;
+}
+
+@media (max-width: 560px) {
+    .drawer__freeShippingMessage p {
+        gap: 4px;
+        font-size: 13px;
+    }
+} */
+
+/* DRAWER AB TEST FREE SHIPPING */
+
 .drawer__title,
 .drawer__close {
     display: table-cell;
@@ -5313,3 +5362,50 @@ margin-top: 16px;
     border: 0;
     padding: 0 !important;
 }
+
+/* update font-size */
+.template-article {
+  font-size: 16px;
+}
+.template-article h1, .template-article .h1 {
+  font-size: 45px;
+}
+.template-article h3, .template-article .h3, .template-article h2, .template-article .h2 {
+  font-size: 30px;
+}
+
+/* end update font size */
+body.menu-opening .announcement-bar-section {
+  z-index: 8!important;
+}
+header-menu {
+    display: block;
+  }
+header-menu:focus-visible {
+    outline: 0.2rem solid rgba(var(--color-foreground), 0.5) !important;
+    outline-offset: -0.2rem !important;
+    box-shadow: 0 0 0.2rem rgba(var(--color-foreground), 0.3) !important;
+}
+/* variant badges */
+.saletag.variant-badge {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding-top: 8px;
+  top: -20px;
+  left: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  color: #fff;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  padding: 0;
+}
+.saletag.variant-badge:not(.hidden) + .saletag.variant-badge:not(.hidden) {
+   top: 50px;
+}
+/* end variant badges */

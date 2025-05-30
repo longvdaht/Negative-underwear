@@ -1,0 +1,11 @@
+{% layout none %}
+{% assign badge_shown = false %}
+{% for variant in product.variants %}
+  {% assign variant_badges = variant.metafields.custom.variant_badges.value %}
+  {% if variant_badges %}
+   {% for variant_badge in variant_badges %}
+       <div class="saletag variant-badge{% if badge_shown == true %} hidden{% endif %}" data-variant-id="{{ variant.id }}" data-product-id="{{ product.id }}">{{ variant_badge }}</div>
+   {% endfor %}
+   {% assign badge_shown = true %}
+  {% endif %}
+{% endfor %}

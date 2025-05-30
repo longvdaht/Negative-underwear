@@ -103,14 +103,13 @@
         name="{{ option.name }}"
         value="{{ value | escape }}"
         form="{{ product_form_id }}"
-        class="{% if option_disabled or single_disabled %}disabled{% endif %}{% if isUnavailableVariant %} hide{% endif %}{% if option.name == 'Size' or option.name == 'Band' or option.name == 'Cup' %} hide-active-load{% endif %}"
+        class="pdp-input-option {% if option_disabled or single_disabled %}disabled{% endif %}{% if isUnavailableVariant %} hide{% endif %}{% if option.name == 'Size' or option.name == 'Band' or option.name == 'Cup' %} hide-active-load{% endif %}"
         {% if option_selected == value %}
           data-active="true"
         {% endif %}
       >
 
-      
-      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" class="sticky-atc-label-option sticky-cta-opt-soldout-validation{% if option_disabled or single_disabled %} sticky-cta-opt-soldout{% endif %}">
         {{ valueLabel -}}
         <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
       </label>
@@ -121,12 +120,10 @@
         name="{{ option.name }}"
         value="{{ value | escape }}"
         form="{{ product_form_id }}"
-        class="{% if option_disabled or single_disabled %}disabled{% endif %}{% if isUnavailableVariant %} hide{% endif %}{% if option.name == 'Size' or option.name == 'Band' or option.name == 'Cup' %} hide-active-load{% endif %}"
+        class="pdp-input-option {% if option_disabled or single_disabled %}disabled{% endif %}{% if isUnavailableVariant %} hide{% endif %}{% if option.name == 'Size' or option.name == 'Band' or option.name == 'Cup' %} hide-active-load{% endif %}"
         {% if option_selected == value %}
           checked
         {% endif %}
-        data-size-description="{{ product.variants[forloop.index0].metafields.custom.size_variant_description }}"
-        onclick="updateSizeDescription(this)"
       >
       <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
         {{ valueLabel -}}
@@ -140,8 +137,6 @@
       {% if option_selected == value %}
         selected="selected"
       {% endif %}{% if option_disabled or single_disabled %} class="value-disabled"{% endif %}
-      data-size-description="{{ product.variants[forloop.index0].metafields.custom.size_variant_description }}"
-      onclick="updateSizeDescription(this)"
     >
         {{- valueLabel -}}
     </option>
@@ -150,9 +145,59 @@
 
 
 <script type="text/javascript">
-  function updateSizeDescription(selectedOption) {
-    const description = selectedOption.getAttribute('data-size-description');
-    document.getElementById('size-description').innerText = description;
+  function updateSizeDescription() {
+    const variantSelectToScarcity = [
+      {% for varianSelect in product.variants %}
+        {% if varianSelect.inventory_quantity <= 10 and varianSelect.inventory_quantity != 0 %}
+          '{{ varianSelect.id }}'{% unless forloop.last %},{% endunless %}
+        {% endif %}
+      {% endfor %}
+    ];
+    const checkScarcity = () => {
+      const variantFirstSelect = '{{ product.first_available_variant.id }}';
+      const currentURL = window.location.href;
+      const urlParams = new URLSearchParams(currentURL.split('?')[1]);
+      const variantId = urlParams.get('variant');
+      const inpuitScarcity = `
+        <input 
+          type="hidden"
+          name="properties[_scarcity]"
+          value="true"
+          id="propertie-scarcity"
+        >
+      `;
+      const productScarcityElement = document.querySelector('.product__scarcity');
+      const addToCartForm = document.querySelector('.AddToCartForm');
+  
+      // Check if variant is in the scarcity list
+      const isScarcity = variantId 
+        ? variantSelectToScarcity.includes(variantId) 
+        : variantSelectToScarcity.includes(variantFirstSelect);
+
+      if (isScarcity) {
+        productScarcityElement?.classList.remove('hide');
+  
+        // Add input only if not already added
+        if (!document.getElementById('propertie-scarcity')) {
+          addToCartForm?.insertAdjacentHTML('afterbegin', inpuitScarcity);
+        }
+      } else {
+        productScarcityElement?.classList.add('hide');
+  
+        // Remove input if it exists
+        const inputToRemove = document.getElementById('propertie-scarcity');
+        inputToRemove?.remove();
+      }
+    };
+  
+    // Polling for window.updateScarcity
+    const interval = setInterval(() => {
+      if (window.updateScarcity) {
+        checkScarcity();
+        window.updateScarcity = false;
+        clearInterval(interval);
+      }
+    }, 100);
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -166,6 +211,17 @@
       const sizeVariantsEl = document.querySelector('.custom-variant__size-0 li[data-id= ' + radioId + ']');
       if (sizeVariantsEl) {
         radioInput.className = sizeVariantsEl.className;
+      }
+    });
+
+    const stickyRadioSizeInputs = document.querySelectorAll('.js-sticky-add-to-cart .pdp-input-option[name="Size"]');
+
+    stickyRadioSizeInputs.forEach((radioInput, index) => {
+      const radioValue = radioInput.getAttribute('value');
+      const sizeVariantsEl = document.querySelector(`.js-sticky-add-to-cart .custom-variant__size-0 li[data-size= '${radioValue}']`);
+      if (sizeVariantsEl) {
+        if (sizeVariantsEl.classList.contains('disabled'))
+        radioInput.classList.add('disabled');
       }
     });
     
@@ -239,6 +295,10 @@
       });
 
       input.addEventListener('click', function() {
+        {% if settings.scarcity_sidecart %}
+        window.updateScarcity = true;
+        updateSizeDescription()
+        {% endif %}
         let opitonDisable = document.querySelector('.product-form__input input[type="radio"].hide-active-load:checked');
         input.classList.remove('hide-active-load');;
         if (!opitonDisable && !input.classList.contains('disabled')) {

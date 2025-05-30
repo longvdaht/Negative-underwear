@@ -25,6 +25,7 @@
 }(function ($) {
     var slice = Array.prototype.slice; // save ref to original slice()
     var splice = Array.prototype.splice; // save ref to original slice()
+    let lastScrollTop = 0;
 
   var defaults = {
       topSpacing: 0,
@@ -132,6 +133,16 @@
               .css('z-index', s.zIndex);
           }
         }
+
+        let currentScroll = window.scrollY || document.documentElement.scrollTop;
+        if (currentScroll > lastScrollTop) {
+          s.stickyElement.addClass('scroll-down');
+          s.stickyElement.removeClass('scroll-up');
+        } else {
+          s.stickyElement.removeClass('scroll-down');
+          s.stickyElement.addClass('scroll-up');
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
       }
     },
     resizer = function() {

@@ -9,11 +9,11 @@
 	{% for product in featureCollection.products limit: 10 %}
 		<div class='product-wrapper {% if forloop.length <= 3 %}one-third{% endif %}'>
 		<a href='{{ product.url }}'>
-			<img src="{{ product.featured_image | img_url: 'master' }}" width='85' height='120'>
+			<img src="{{ product.featured_image | img_url: 'master' }}" width='85' height='120' alt="{{ product.title }}">
 			<p>{{ product.title }}</p>
 			<p>{{ product.price | money }}</p>
 		</a>
-		<select>
+		<select title="Variant Selector">
 			{% for variant in product.variants %}
 				<option value="{{ variant.id }}">{{ variant.title }}</option>
 			{% endfor %}

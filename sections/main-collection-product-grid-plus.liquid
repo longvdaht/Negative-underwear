@@ -74,7 +74,7 @@
       {% endif %}
     </div>
     {% for product in collection.products %}
-    {% render 'product-grid-item-plus', product: product %}
+    {% render 'product-grid-item-plus', product: product, plp_quick_add: true %}
     {% endfor %}
 
   
@@ -84,7 +84,7 @@
         <div class="content hide-content">
           {{ collection.description | split: '===' | last | remove_first: '</p>' | remove: '<p><br></p>' | remove: '<p>&nbsp;</p>' | remove: 'target="_blank"' }}
         </div>
-        <p class="show-more"><a href="#">+ more</a></p>
+        <p class="show-more"><a href="#">+ more<span class="visually-hidden">&nbsp;{{ collectionTitle }}</span></a></p>
       </div>
     </div>
   {% endif %}
