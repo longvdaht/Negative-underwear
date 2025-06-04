@@ -812,5 +812,143 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       });
     </script>
+    
+    {%- if settings.klaviyo_popup_form_id_1 != blank and settings.klaviyo_embed_form_id_1 != blank and settings.klaviyo_destination_elelemt_id_1 != blank -%}
+      <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            new MutationObserver(function(mutationsList, observer) {
+              let popupFormId_1 = '{{ settings.klaviyo_popup_form_id_1 }}';
+              let embedFormId_1 = '{{ settings.klaviyo_embed_form_id_1 }}';
+              let embedDest_1 = '#{{ settings.klaviyo_destination_elelemt_id_1 }}';
+              for(const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    if(mutation.addedNodes.length > 0){
+                        // Look for nodes added by Wunderkind
+                        if(mutation.addedNodes[0].id && mutation.addedNodes[0].nodeName === "DIV"){ 
+                            if(mutation.addedNodes[0].id.includes('bx-campaign-')){
+                                // The added node is of the format "bx-campaign-CAMPAIGNID". Use this ID to modify event_js.submission for the campaign.
+                                let cId = mutation.addedNodes[0].id.split("-")[2] 
+                                
+                                if(bouncex.campaigns[cId].deployment === "overlay"){ // Overlay/Modal form
+                                    bouncex.campaigns[cId].event_js.submission = `document.querySelector('div#bx-campaign-${cId}').remove(); window._klOnsite = window._klOnsite || []; window._klOnsite.push(['openForm', '${popupFormId_2}']);`
+                                }else if(bouncex.campaigns[cId].deployment === "embed"){ // Embedded form
+                                    bouncex.campaigns[cId].event_js.submission = `let div = document.createElement('div'); div.className = 'klaviyo-form-${embedFormId_2}'; document.querySelector('${embedDest_1}').prepend(div)`;
+                                }
+        
+                                // When someone submits a Wunderkind form, identify them so that the Klaviyo form that is later submitted will be associated with the correct profile
+                                let emailNode = mutation.addedNodes[0].querySelectorAll("input[type='email']")[0];
+                                let buttonNode = emailNode.parentNode.parentNode.parentNode.querySelectorAll("button.bx-button[type='submit']")[0];
+                                buttonNode.addEventListener('click', function(){
+                                    try {
+                                        let email = emailNode.value
+                                        if(email.length > 0){
+                                            klaviyo.identify({
+                                                '$email': email,
+                                                'formID': embedFormId_1
+                                            })
+                                        }
+                                  } catch(e){}
+                                })
+                            }
+                        }
+                    }
+                }        
+            }
+          }).observe(document, {childList: true, subtree: true});
+        });
+      </script>
+    {%- endif -%}
+    {%- if settings.klaviyo_popup_form_id_2 != blank and settings.klaviyo_embed_form_id_2 != blank and settings.klaviyo_destination_elelemt_id_2 != blank -%}
+        <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            new MutationObserver(function(mutationsList, observer) {
+              let popupFormId_2 = '{{ settings.klaviyo_popup_form_id_2 }}';
+              let embedFormId_2 = '{{ settings.klaviyo_embed_form_id_2 }}';
+              let embedDest_2 = '#{{ settings.klaviyo_destination_elelemt_id_2 }}';
+              for(const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    if(mutation.addedNodes.length > 0){
+                        // Look for nodes added by Wunderkind
+                        if(mutation.addedNodes[0].id && mutation.addedNodes[0].nodeName === "DIV"){ 
+                            if(mutation.addedNodes[0].id.includes('bx-campaign-')){
+                                // The added node is of the format "bx-campaign-CAMPAIGNID". Use this ID to modify event_js.submission for the campaign.
+                                let cId = mutation.addedNodes[0].id.split("-")[2] 
+                                
+                                if(bouncex.campaigns[cId].deployment === "overlay"){ // Overlay/Modal form
+                                    bouncex.campaigns[cId].event_js.submission = `document.querySelector('div#bx-campaign-${cId}').remove(); window._klOnsite = window._klOnsite || []; window._klOnsite.push(['openForm', '${popupFormId_2}']);`
+                                }else if(bouncex.campaigns[cId].deployment === "embed"){ // Embedded form
+                                    bouncex.campaigns[cId].event_js.submission = `let div = document.createElement('div'); div.className = 'klaviyo-form-${embedFormId_2}'; document.querySelector('${embedDest_2}').prepend(div)`;
+                                }
+        
+                                // When someone submits a Wunderkind form, identify them so that the Klaviyo form that is later submitted will be associated with the correct profile
+                                let emailNode = mutation.addedNodes[0].querySelectorAll("input[type='email']")[0];
+                                let buttonNode = emailNode.parentNode.parentNode.parentNode.querySelectorAll("button.bx-button[type='submit']")[0];
+                                buttonNode.addEventListener('click', function(){
+                                    try {
+                                        let email = emailNode.value
+                                        if(email.length > 0){
+                                            klaviyo.identify({
+                                                '$email': email,
+                                                'formID': embedFormId_2
+                                            })
+                                        }
+                                  } catch(e){}
+                                })
+                            }
+                        }
+                    }
+                }        
+            }
+          }).observe(document, {childList: true, subtree: true});
+        });
+      </script>
+    {%- endif -%}
+
+    {%- if settings.klaviyo_popup_form_id_3 != blank and settings.klaviyo_embed_form_id_3 != blank and settings.klaviyo_destination_elelemt_id_3 != blank -%}
+      <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            new MutationObserver(function(mutationsList, observer) {
+              let popupFormId_3 = '{{ settings.klaviyo_popup_form_id_3 }}';
+              let embedFormId_3 = '{{ settings.klaviyo_embed_form_id_3 }}';
+              let embedDest_3 = '#{{ settings.klaviyo_destination_elelemt_id_3 }}';
+              for(const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    if(mutation.addedNodes.length > 0){
+                        // Look for nodes added by Wunderkind
+                        if(mutation.addedNodes[0].id && mutation.addedNodes[0].nodeName === "DIV"){ 
+                            if(mutation.addedNodes[0].id.includes('bx-campaign-')){
+                                // The added node is of the format "bx-campaign-CAMPAIGNID". Use this ID to modify event_js.submission for the campaign.
+                                let cId = mutation.addedNodes[0].id.split("-")[2] 
+                                
+                                if(bouncex.campaigns[cId].deployment === "overlay"){ // Overlay/Modal form
+                                    bouncex.campaigns[cId].event_js.submission = `document.querySelector('div#bx-campaign-${cId}').remove(); window._klOnsite = window._klOnsite || []; window._klOnsite.push(['openForm', '${popupFormId_3}']);`
+                                }else if(bouncex.campaigns[cId].deployment === "embed"){ // Embedded form
+                                    bouncex.campaigns[cId].event_js.submission = `let div = document.createElement('div'); div.className = 'klaviyo-form-${embedFormId_3}'; document.querySelector('${embedDest_3}').prepend(div)`;
+                                }
+        
+                                // When someone submits a Wunderkind form, identify them so that the Klaviyo form that is later submitted will be associated with the correct profile
+                                let emailNode = mutation.addedNodes[0].querySelectorAll("input[type='email']")[0];
+                                let buttonNode = emailNode.parentNode.parentNode.parentNode.querySelectorAll("button.bx-button[type='submit']")[0];
+                                buttonNode.addEventListener('click', function(){
+                                    try {
+                                        let email = emailNode.value
+                                        if(email.length > 0){
+                                            klaviyo.identify({
+                                                '$email': email,
+                                                'formID': embedFormId_3
+                                            })
+                                        }
+                                  } catch(e){}
+                                })
+                            }
+                        }
+                    }
+                }        
+            }
+          }).observe(document, {childList: true, subtree: true});
+        });
+      </script>
+    {%- endif -%}
+    <div id="klaviyo-embed-placeholder"></div>
   </body>
 </html>

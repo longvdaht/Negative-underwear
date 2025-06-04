@@ -1767,5 +1767,70 @@
         "label": "Giftcard title"
       }
     ]
+  },
+  {
+    "name": "Klaviyo SMS",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Trigger 1"
+      },
+      {
+        "type": "text",
+        "label": "Wunderkind Form ID 1",
+        "id": "klaviyo_popup_form_id_1",
+        "info": "Klaviyo form ID 1"
+      },
+      {
+        "type": "text",
+        "label": "Klaviyo Form ID 1",
+        "id": "klaviyo_embed_form_id_1",
+      },
+      {
+        "type": "text",
+        "label": "Destination element id 1",
+        "id": "klaviyo_destination_elelemt_id_1"
+      },
+      {
+        "type": "header",
+        "content": "Trigger 2"
+      },
+      {
+        "type": "text",
+        "label": "Wunderkind Form ID 2",
+        "id": "klaviyo_popup_form_id_2",
+        "info": "Klaviyo form ID 2"
+      },
+      {
+        "type": "text",
+        "label": "Klaviyo Form ID 2",
+        "id": "klaviyo_embed_form_id_2",
+      },
+      {
+        "type": "text",
+        "label": "Destination element id 2",
+        "id": "klaviyo_destination_elelemt_id_2"
+      },
+      {
+        "type": "header",
+        "content": "Trigger 3"
+      },
+      {
+        "type": "text",
+        "label": "Wunderkind Form ID 3",
+        "id": "klaviyo_popup_form_id_3",
+        "info": "Klaviyo form ID 3"
+      },
+      {
+        "type": "text",
+        "label": "Klaviyo Form ID 3",
+        "id": "klaviyo_embed_form_id_3",
+      },
+      {
+        "type": "text",
+        "label": "Destination element id 3",
+        "id": "klaviyo_destination_elelemt_id_3"
+      }
+    ]
   }
 ]
