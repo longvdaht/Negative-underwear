@@ -2643,10 +2643,10 @@ details[open] .modal-overlay::after {
 
 .search-modal__close-button.link {
     position: absolute;
-    right: 5px;
-    top: 10px;
-    width: auto;
-    height: auto;
+    right: 0;
+    top: 0;
+    width: 46px;
+    height: 46px;
     font-size: 24px;
     color: #6e6e77;
 }
@@ -5409,3 +5409,13 @@ header-menu:focus-visible {
    top: 50px;
 }
 /* end variant badges */
+.header__icon--menu {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: -25px;
+}
+.menu-drawer__navigation-container .search__input.field__input {
+    margin-right: 2px;
+}
