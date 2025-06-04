@@ -5387,7 +5387,7 @@ header-menu:focus-visible {
     box-shadow: 0 0 0.2rem rgba(var(--color-foreground), 0.3) !important;
 }
 /* variant badges */
-.saletag.variant-badge {
+.saletag.variant-badge, .saletag.product-badge {
   display: flex;
   width: 60px;
   height: 60px;

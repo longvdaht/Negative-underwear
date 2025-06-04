@@ -72,6 +72,12 @@
                {% assign badge_shown = true %}
               {% endif %}
             {% endfor %}
+
+			{% if product.metafields.custom.product_badge %}
+				<div class="saletag product-badge">
+					{{ product.metafields.custom.product_badge }}
+				</div>
+			{% endif %}
 			
 			<span class="grid-product__image-link">
 				{% if imageSize == "smaller" %}

@@ -15,20 +15,20 @@
         "19e98322-c60f-4dfc-bf91-1f1c52772985": {
           "type": "heading",
           "settings": {
-            "heading": "Fine print"
+            "heading": "Introducing Bermuda"
           }
         },
         "33074092-5e90-40da-b92e-d9b0f96a6978": {
           "type": "text",
           "settings": {
-            "text": "<p>Whipped in Maritime, now in new styles.</p>"
+            "text": "<p>Second best to doing yoga on a pink beach at sunrise.</p>"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "SHOP NOW >",
-            "button_link_1": "shopify://collections/new",
+            "button_label_1": "SHOP 3-Packs >",
+            "button_link_1": "shopify://collections/underwear-packs",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -43,10 +43,10 @@
       ],
       "settings": {
         "section_fullwidth": false,
-        "image": "shopify://shop_images/Artboard_10_3.jpg",
+        "image": "shopify://shop_images/Artboard_2_25.jpg",
         "image_fullwidth": false,
-        "image_2": "shopify://shop_images/Artboard_9_13.jpg",
-        "image_link": "shopify://collections/new",
+        "image_2": "shopify://shop_images/Artboard_3_18.jpg",
+        "image_link": "shopify://collections/underwear-packs",
         "invert_on_desktop": false,
         "invert_on_mobile": false,
         "show_text_box": false,
@@ -116,14 +116,14 @@
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-0": {
           "type": "heading",
           "settings": {
-            "heading": "Orange you glad this exists?"
+            "heading": "A low effort approach to being cute."
           }
         },
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-1": {
           "type": "button",
           "settings": {
-            "button_text": "SHOP SORBET >",
-            "link": "shopify://collections/womens-sleepwear"
+            "button_text": "SHOP NEW IN WHIPPED >",
+            "link": "shopify://collections/whipped"
           }
         }
       },
@@ -132,7 +132,7 @@
         "template--16059053146289__6b9f0b0c-242e-4a62-a0ae-d9dae6bb1a1d-1688639242a17582f9-1"
       ],
       "settings": {
-        "image": "shopify://shop_images/Artboard_6_11.jpg",
+        "image": "shopify://shop_images/Artboard_4_22.jpg",
         "padding_top": 36,
         "padding_bottom": 36
       }
